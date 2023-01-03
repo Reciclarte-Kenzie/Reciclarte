@@ -6,23 +6,26 @@ export const StyledLoginPage = styled.section`
   gap: 5vh;
 
   position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(0, 0);
-  /* margin: -50px 0 0 -50px; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: -50px 0 0 -50px;
 
-  section {
-    width: fit-content;
-  }
+  width: fit-content;
 
   a {
     font-weight: 400;
     font-size: 24px;
     color: white;
-    text-decoration: none;
     text-align: center;
-    background-color: orange;
+    background-color: #f7941d;
+    border: 1px solid #f7941d;
     border-radius: 24px;
     padding: 0.5rem 1.5rem;
+
+    :hover {
+      border: 1px solid #011b0c;
+      background-color: #011b0c;
+    }
   }
 `;

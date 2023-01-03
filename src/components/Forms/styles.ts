@@ -14,5 +14,7 @@ export const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
     gap: 2vh;
+    padding: 0px;
+    margin: 0;
   }
 `;
