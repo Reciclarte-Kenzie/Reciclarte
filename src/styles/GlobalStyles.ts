@@ -11,5 +11,10 @@ export const GlobalStyles = createGlobalStyle`
         --color-grey-50: #F5F5F5;
         --color-orange-80: #F7941D;
         --color-white: #FFFFFF;
+
+        --font-size-40: 40px;
+        --font-size-24: 24px;
+        --font-size-16: 16px;
+        --font-size-16: 12px;
     }
 `
