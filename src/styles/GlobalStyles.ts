@@ -19,4 +19,20 @@ export const GlobalStyles = createGlobalStyle`
 
         --radius-1: 8px;
     }
+
+    a {
+        text-decoration: none;
+    }
+
+    input, select {
+        border: none;
+        outline: none;
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+    }
 `
