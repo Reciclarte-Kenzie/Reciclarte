@@ -6,6 +6,8 @@ export const StyledForm = styled.form`
   justify-content: center;
   gap: 2vh;
 
+  position: relative;
+
   width: clamp(280px, 90%, 400px);
 
   fieldset {

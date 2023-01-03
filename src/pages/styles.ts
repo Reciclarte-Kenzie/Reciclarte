@@ -16,6 +16,7 @@ export const StyledLoginPage = styled.section`
 
   @media (min-width: 700px) {
     left: 50%;
+    flex-direction: row;
   }
 
   section:first-of-type {
@@ -36,6 +37,16 @@ export const StyledLoginPage = styled.section`
     color: var(--color-green-100);
   }
 
+  p {
+    position: relative;
+    top: -85px;
+    left: 16px;
+    height: 0px;
+    font-weight: 400;
+    font-size: var(--font-size-12);
+    color: var(--color-orange-80);
+  }
+
   .referRegister {
     display: flex;
     flex-direction: column;
@@ -47,22 +58,28 @@ export const StyledLoginPage = styled.section`
     top: 50%;
     left: 56%;
     transform: translate(-35%, 0%);
-  }
 
-  a {
-    font-weight: 400;
-    font-size: var(--font-size-24);
-    color: var(--color-white);
-    text-align: center;
-    background-color: var(--color-orange-80);
-    border: 1px solid var(--color-orange-80);
-    border-radius: calc(3 * var(--radius-1));
-    padding: 0.5rem 1.5rem;
-    width: clamp(281px, 100%, 300px);
+    h3 {
+      font-weight: 400;
+      font-size: var(--font-size-16);
+      color: var(--color-green-100);
+    }
 
-    :hover {
-      border: 1px solid var(--color-green-100);
-      background-color: var(--color-green-100);
+    a {
+      font-weight: 400;
+      font-size: var(--font-size-24);
+      color: var(--color-white);
+      text-align: center;
+      background-color: var(--color-orange-80);
+      border: 1px solid var(--color-orange-80);
+      border-radius: calc(3 * var(--radius-1));
+      padding: 0.5rem 1.5rem;
+      width: clamp(281px, 100%, 300px);
+
+      :hover {
+        border: 1px solid var(--color-green-100);
+        background-color: var(--color-green-100);
+      }
     }
   }
 `;
