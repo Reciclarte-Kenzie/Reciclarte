@@ -12,9 +12,11 @@ export const GlobalStyles = createGlobalStyle`
         --color-orange-80: #F7941D;
         --color-white: #FFFFFF;
 
-        --font-size-40: 40px;
-        --font-size-24: 24px;
-        --font-size-16: 16px;
-        --font-size-16: 12px;
+        --font-size-40: 2.5rem;
+        --font-size-24: 1.5rem;
+        --font-size-16: 1rem;
+        --font-size-12: 0.75rem;
+
+        --radius-1: 8px;
     }
 `
