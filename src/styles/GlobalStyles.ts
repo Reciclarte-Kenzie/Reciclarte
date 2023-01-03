@@ -24,15 +24,19 @@ export const GlobalStyles = createGlobalStyle`
         text-decoration: none;
     }
 
-    input, select {
-        border: none;
-        outline: none;
-    }
-
     button {
         background-color: transparent;
         border: none;
         cursor: pointer;
         text-align: center;
+    }
+    
+    input, select {
+        border: none;
+        outline: none;
+    }
+
+    ul {
+        list-style-type: none;
     }
 `
