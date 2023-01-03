@@ -8,6 +8,11 @@ export const GlobalStyles = createGlobalStyle`
         padding: 0;
     }
 
+    body {
+        min-height: 100vh;
+        width: 100%;
+    }
+
     :root {
         --color-green-100: #011B0C;
         --color-green-90: #022E15;
