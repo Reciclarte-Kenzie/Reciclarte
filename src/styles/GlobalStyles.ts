@@ -1,6 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
+    * {
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
     :root {
         --color-green-100: #011B0C;
         --color-green-90: #022E15;
