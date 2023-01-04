@@ -39,7 +39,7 @@ export const StyledLoginPage = styled.section`
   p {
     position: relative;
     top: -85px;
-    left: 16px;
+    left: clamp(-75px, 20%, -80px);
     height: 0px;
     font-weight: 400;
     font-size: var(--font-size-12);
