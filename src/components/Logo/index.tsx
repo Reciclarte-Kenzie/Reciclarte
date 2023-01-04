@@ -5,7 +5,6 @@ export const BlackNameLogo = () => {
   return (
     <StyledLogo>
       <img src={blackNameLogo} alt="Reciclarte" />
-      <figcaption>Reciclarte</figcaption>
     </StyledLogo>
   );
 };

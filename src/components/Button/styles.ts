@@ -9,6 +9,8 @@ export const StyledButton = styled.button`
   font-size: var(--font-size-24);
   padding: 1vh 0;
   width: clamp(250px, 100%, 300px);
+  width: 25.62rem;
+  max-width: 100%;
 
   :hover {
     border: 2px solid var(--color-green-90);

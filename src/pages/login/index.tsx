@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { LoginForm } from "../../components/Forms/LoginForm";
 import { BlackNameLogo } from "../../components/Logo";
 import { StyledLoginPage } from "./styles";
