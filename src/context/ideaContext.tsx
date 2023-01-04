@@ -96,4 +96,14 @@ export const IdeaProvider = ({ children }: IdeaProviderProps) => {
       toast.error("Não foi possível buscar por materiais");
     }
   }
+
+  const getIdeasCategories = async () => {
+    try {
+      const ideasCategories = await api.get("/ideas/categories");
+
+      return ideasCategories;
+    } catch (error) {
+      toast.error("Não foi possível buscar pelas categorias");
+    }
+  }
 };
