@@ -76,7 +76,7 @@ export const StyledHome = styled.div`
               border-radius: var(--radius-1);
 
               :hover {
-                background-color: var(--color-green-90);
+                background-color: var(--color-orange-70);
               }
             }
           }

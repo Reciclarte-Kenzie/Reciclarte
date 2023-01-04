@@ -27,7 +27,7 @@ export const Home = () => {
               <div>
                 <h3>Title</h3>
                 <p>pppppppp</p>
-                <button>Ver ideia</button>
+                <button>Ver ideia...</button>
               </div>
             </li>
             <li>
