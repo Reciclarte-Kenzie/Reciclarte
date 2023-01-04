@@ -11,6 +11,7 @@ interface iButtonProps
   className?: string;
   label: string;
   action?: () => void;
+  disabled?: boolean;
 }
 
 export function Button({
@@ -19,6 +20,7 @@ export function Button({
   type = "submit",
   className,
   label,
+  disabled,
 }: iButtonProps) {
   return (
     <StyledButton
@@ -26,6 +28,7 @@ export function Button({
       type={type}
       onClick={action}
       className={className}
+      disabled={disabled}
     >
       {text}
     </StyledButton>

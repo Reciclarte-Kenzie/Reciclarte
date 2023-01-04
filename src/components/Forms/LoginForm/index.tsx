@@ -39,7 +39,7 @@ export const LoginForm = () => {
         register={register("password")}
       />
       {errors.password?.message && <p>{errors.password.message}</p>}
-      <Button text="Logar" label="Botão de login" />
+      <Button text="Logar" label="Botão de login" disabled={loading} />
     </StyledForm>
   );
 };
