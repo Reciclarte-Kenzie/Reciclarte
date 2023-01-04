@@ -18,7 +18,7 @@ export interface iIdeaData {
   userId: number;
 }
 
-interface iIdeaContextProvider {
+interface iIdeasContextProvider {
   createIdea: (newIdeaData: iIdeaData, closeModal: () => void) => Promise<void>,
   editIdea: (editedIdeaData: iIdeaData, closeModal: () => void) => Promise<void>,
   deleteIdea: (deletedIdeaId: number, closeModal: () => void) => Promise<void>,
@@ -27,9 +27,9 @@ interface iIdeaContextProvider {
   getIdeasCategories: () => Promise<AxiosResponse<string[]> | undefined>
 }
 
-export const IdeaContext = createContext<iIdeaContextProvider>({} as iIdeaContextProvider);
+export const IdeasContext = createContext<iIdeasContextProvider>({} as iIdeasContextProvider);
 
-export const IdeaProvider = ({ children }: IdeaProviderProps) => {
+export const IdeasProvider = ({ children }: IdeaProviderProps) => {
   const headers = {
     headers: {
       authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
@@ -118,8 +118,8 @@ export const IdeaProvider = ({ children }: IdeaProviderProps) => {
   }
 
   return (
-    <IdeaContext.Provider value={{createIdea, editIdea, deleteIdea, searchIdeas, getIdeasMaterials, getIdeasCategories}}>
+    <IdeasContext.Provider value={{createIdea, editIdea, deleteIdea, searchIdeas, getIdeasMaterials, getIdeasCategories}}>
       {children}
-    </IdeaContext.Provider>
+    </IdeasContext.Provider>
   );
 };
