@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 import { createContext } from "react";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
@@ -6,7 +7,7 @@ interface IdeaProviderProps {
   children: React.ReactNode;
 }
 
-interface iIdeaData {
+export interface iIdeaData {
   title: string;
   imgs: string[];
   steps: string;
@@ -17,7 +18,16 @@ interface iIdeaData {
   userId: number;
 }
 
-export const IdeaContext = createContext({});
+interface iIdeaContextProvider {
+  createIdea: (newIdeaData: iIdeaData, closeModal: () => void) => Promise<void>,
+  editIdea: (editedIdeaData: iIdeaData, closeModal: () => void) => Promise<void>,
+  deleteIdea: (deletedIdeaId: number, closeModal: () => void) => Promise<void>,
+  searchIdeas: (queryParams: string[]) => Promise<AxiosResponse<iIdeaData[]> | undefined>,
+  getIdeasMaterials: () => Promise<AxiosResponse<string[]> | undefined>,
+  getIdeasCategories: () => Promise<AxiosResponse<string[]> | undefined>
+}
+
+export const IdeaContext = createContext<iIdeaContextProvider>({} as iIdeaContextProvider);
 
 export const IdeaProvider = ({ children }: IdeaProviderProps) => {
   const headers = {
@@ -65,7 +75,7 @@ export const IdeaProvider = ({ children }: IdeaProviderProps) => {
     }
   };
 
-  const searchIdeas = async (queryParams: string[]) => {
+  const searchIdeas = async (queryParams: string[]): Promise<AxiosResponse<iIdeaData[]> | undefined> => {
     try {
       let ideasRequestRoute = "/ideas";
 
@@ -87,7 +97,7 @@ export const IdeaProvider = ({ children }: IdeaProviderProps) => {
     }
   }
 
-  const getIdeasMaterials = async () => {
+  const getIdeasMaterials = async (): Promise<AxiosResponse<string[]> | undefined> => {
     try {
       const ideasMaterials = await api.get("/ideas/materials");
 
@@ -97,7 +107,7 @@ export const IdeaProvider = ({ children }: IdeaProviderProps) => {
     }
   }
 
-  const getIdeasCategories = async () => {
+  const getIdeasCategories = async (): Promise<AxiosResponse<string[]> | undefined> => {
     try {
       const ideasCategories = await api.get("/ideas/categories");
 
@@ -106,4 +116,10 @@ export const IdeaProvider = ({ children }: IdeaProviderProps) => {
       toast.error("Não foi possível buscar pelas categorias");
     }
   }
+
+  return (
+    <IdeaContext.Provider value={{createIdea, editIdea, deleteIdea, searchIdeas, getIdeasMaterials, getIdeasCategories}}>
+      {children}
+    </IdeaContext.Provider>
+  );
 };
