@@ -9,7 +9,7 @@ export const StyledForm = styled.form`
 
   position: relative;
 
-  width: clamp(280px, 90%, 400px);
+  width: clamp(280px, 100%, 400px);
 
   fieldset {
     border: none;
