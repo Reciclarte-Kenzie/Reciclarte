@@ -15,12 +15,6 @@ export const StyledButton = styled.button<iStyledButton>`
     props.width ? props.width : "clamp(250px, 100%, 300px)"};
   transition: 300ms;
 
-  :hover,
-  :focus {
-    border: 2px solid var(--color-orange-70);
-    background-color: var(--color-orange-70);
-  }
-
   :disabled {
     background-color: var(--color-grey-40);
     border: 2px solid var(--color-grey-100);
@@ -34,18 +28,49 @@ export const StyledButton = styled.button<iStyledButton>`
           background-color: var(--color-white);
           border: 2px solid var(--color-white);
           color: var(--color-orange-80);
+
+          :hover,
+          :focus {
+            border: 2px solid var(--color-grey-50);
+            background-color: var(--color-grey-50);
+          }
         `;
       case "whiteBorder":
         return css`
           background-color: var(--color-orange-80);
           border: 2px solid var(--color-white);
           color: var(--color-white);
+
+          :hover,
+          :focus {
+            background-color: var(--color-orange-70);
+          }
+        `;
+
+      case "grey":
+        return css`
+          background-color: var(--color-grey-60);
+          border: 2px solid var(--color-grey-60);
+          color: var(--grey-100);
+
+          :hover,
+          :focus {
+            border: 2px solid var(--color-orange-70);
+            background-color: var(--color-orange-70);
+            color: var(--color-grey-70);
+          }
         `;
       default:
         return css`
           background-color: var(--color-orange-80);
           border: 2px solid var(--color-orange-80);
           color: var(--color-white);
+
+          :hover,
+          :focus {
+            border: 2px solid var(--color-orange-70);
+            background-color: var(--color-orange-70);
+          }
         `;
     }
   }}
