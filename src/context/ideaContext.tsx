@@ -20,35 +20,48 @@ interface iIdeaData {
 export const IdeaContext = createContext({});
 
 export const IdeaProvider = ({ children }: IdeaProviderProps) => {
+  const headers = {
+    headers: {
+      authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
+    },
+  };
+
   const createIdea = async (newIdeaData: iIdeaData, closeModal: () => void) => {
     try {
-        await api.post("/ideas", newIdeaData, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem("@TOKEN")}`
-            }
-        });
+      await api.post("/ideas", newIdeaData, headers);
 
-        toast.success("Ideia criada com sucesso.");
+      toast.success("Ideia criada com sucesso.");
 
-        closeModal();
+      closeModal();
     } catch (error) {
-        toast.error("Não foi possível cadastrar a ideia");
+      toast.error("Não foi possível cadastrar a ideia");
     }
   };
 
-  const editIdea = async (editedIdeaData: iIdeaData, closeModal: () => void) => {
+  const editIdea = async (
+    editedIdeaData: iIdeaData,
+    closeModal: () => void
+  ) => {
     try {
-        await api.patch("/ideas", editedIdeaData, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem("@TOKEN")}`
-            }
-        });
+      await api.patch("/ideas", editedIdeaData, headers);
 
-        toast.success("Ideia editada com sucesso.");
+      toast.success("Ideia editada com sucesso.");
 
-        closeModal();
+      closeModal();
     } catch (error) {
-        toast.error("Não foi possível editar a ideia");
+      toast.error("Não foi possível editar a ideia");
+    }
+  };
+
+  const deleteIdea = (deletedIdeaId: number, closeModal: () => void) => {
+    try {
+      api.delete(`/ideas/${deletedIdeaId}`, headers);
+
+      toast.success("Ideia excluída com sucesso.");
+
+      closeModal();
+    } catch (error) {
+      toast.error("Não foi possível excluir a ideia.");
     }
   };
 };
