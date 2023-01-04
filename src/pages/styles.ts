@@ -107,8 +107,8 @@ export const StyledLoginPage = styled.section`
       width: clamp(288px, 100%, 300px);
 
       :hover {
-        border: 1px solid var(--color-green-100);
-        background-color: var(--color-green-100);
+        border: 1px solid var(--color-orange-70);
+        background-color: var(--color-orange-70);
       }
     }
 

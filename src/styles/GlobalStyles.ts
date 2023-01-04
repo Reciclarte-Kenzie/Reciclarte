@@ -21,7 +21,9 @@ export const GlobalStyles = createGlobalStyle`
         --color-grey-70: #848484;
         --color-grey-60: #D2D2D2;
         --color-grey-50: #F5F5F5;
+        --color-grey-40: #EDDCDC;
         --color-orange-80: #F7941D;
+        --color-orange-70:#FEAB48;
         --color-white: #FFFFFF;
 
         --font-size-40: 2.5rem;
@@ -51,4 +53,4 @@ export const GlobalStyles = createGlobalStyle`
     ul {
         list-style-type: none;
     }
-`
+`;

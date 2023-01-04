@@ -10,8 +10,9 @@ export const StyledButton = styled.button`
   padding: 1vh 0;
   width: clamp(250px, 100%, 300px);
 
-  :hover {
-    border: 2px solid var(--color-green-90);
-    background-color: var(--color-green-90);
+  :hover,
+  :focus {
+    border: 2px solid var(--color-orange-70);
+    background-color: var(--color-orange-70);
   }
 `;
