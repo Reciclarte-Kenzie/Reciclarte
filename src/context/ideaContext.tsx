@@ -64,4 +64,28 @@ export const IdeaProvider = ({ children }: IdeaProviderProps) => {
       toast.error("Não foi possível excluir a ideia.");
     }
   };
+
+  const searchIdeas = (queryParams: string[]) => {
+    try {
+      let ideasRequestRoute = "/ideas";
+
+      queryParams.forEach((queryParam, index) => {
+        if (index == 0) {
+          ideasRequestRoute += "?";
+        } else {
+          ideasRequestRoute += "&";
+        }
+
+        ideasRequestRoute += queryParam;
+      })
+
+      const foundIdeas = api.get(ideasRequestRoute);
+
+      return foundIdeas;
+    } catch (error) {
+      toast.error("Não foi possível buscar pelas ideias.");
+    }
+
+    return [];
+  }
 };
