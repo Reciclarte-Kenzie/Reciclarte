@@ -1,11 +1,8 @@
 import { AxiosResponse } from "axios";
 import { createContext } from "react";
+import { Outlet } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
-
-interface IdeaProviderProps {
-  children: React.ReactNode;
-}
 
 export interface iIdeaData {
   title: string;
@@ -29,7 +26,7 @@ interface iIdeasContextProvider {
 
 export const IdeasContext = createContext<iIdeasContextProvider>({} as iIdeasContextProvider);
 
-export const IdeasProvider = ({ children }: IdeaProviderProps) => {
+export const IdeasProvider = () => {
   const headers = {
     headers: {
       authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
@@ -119,7 +116,7 @@ export const IdeasProvider = ({ children }: IdeaProviderProps) => {
 
   return (
     <IdeasContext.Provider value={{createIdea, editIdea, deleteIdea, searchIdeas, getIdeasMaterials, getIdeasCategories}}>
-      {children}
+      <Outlet />
     </IdeasContext.Provider>
   );
 };

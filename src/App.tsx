@@ -10,10 +10,8 @@ export function App() {
     <>
       <BrowserRouter>
         <UserProvider>
-          <IdeasProvider>
-            <GlobalStyles />
-            <RoutesApp />
-          </IdeasProvider>
+          <GlobalStyles />
+          <RoutesApp />
         </UserProvider>
       </BrowserRouter>
     </>
