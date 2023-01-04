@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ContainerStyled } from "../styles/Container/styles";
+import { ContainerStyled } from "../../styles/Container/styles";
 
 export const StyledLoginContainer = styled(ContainerStyled)`
   max-width: 100%;

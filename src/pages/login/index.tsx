@@ -1,7 +1,7 @@
 // import { Link } from "react-router-dom";
 import { LoginForm } from "../../components/Forms/LoginForm";
 import { BlackNameLogo } from "../../components/Logo";
-import { StyledLoginContainer, StyledLoginPage } from "../styles";
+import { StyledLoginContainer, StyledLoginPage } from "./styles";
 
 export const LoginPage = () => {
   return (
