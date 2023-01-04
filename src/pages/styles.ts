@@ -105,6 +105,7 @@ export const StyledLoginPage = styled.section`
       border-radius: calc(3 * var(--radius-1));
       padding: 0.5rem 1.5rem;
       width: clamp(288px, 100%, 300px);
+      transition: 300ms;
 
       :hover {
         border: 1px solid var(--color-orange-70);
