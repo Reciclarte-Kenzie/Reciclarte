@@ -53,9 +53,9 @@ export const IdeaProvider = ({ children }: IdeaProviderProps) => {
     }
   };
 
-  const deleteIdea = (deletedIdeaId: number, closeModal: () => void) => {
+  const deleteIdea = async (deletedIdeaId: number, closeModal: () => void) => {
     try {
-      api.delete(`/ideas/${deletedIdeaId}`, headers);
+      await api.delete(`/ideas/${deletedIdeaId}`, headers);
 
       toast.success("Ideia excluída com sucesso.");
 
@@ -65,7 +65,7 @@ export const IdeaProvider = ({ children }: IdeaProviderProps) => {
     }
   };
 
-  const searchIdeas = (queryParams: string[]) => {
+  const searchIdeas = async (queryParams: string[]) => {
     try {
       let ideasRequestRoute = "/ideas";
 
@@ -79,7 +79,7 @@ export const IdeaProvider = ({ children }: IdeaProviderProps) => {
         ideasRequestRoute += queryParam;
       })
 
-      const foundIdeas = api.get(ideasRequestRoute);
+      const foundIdeas = await api.get(ideasRequestRoute);
 
       return foundIdeas;
     } catch (error) {
@@ -87,5 +87,9 @@ export const IdeaProvider = ({ children }: IdeaProviderProps) => {
     }
 
     return [];
+  }
+
+  const getIdeasMaterials = async () => {
+
   }
 };
