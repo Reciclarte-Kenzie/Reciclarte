@@ -24,8 +24,8 @@ export const GlobalStyles = createGlobalStyle`
         --color-orange-80: #F7941D;
         --color-white: #FFFFFF;
 
-        --font-size-40: 2.5rem;
-        --font-size-24: 1.5rem;
+        --font-size-25: 1.563rem;
+        --font-size-18: 1.125rem;
         --font-size-16: 1rem;
         --font-size-12: 0.75rem;
 
