@@ -6,7 +6,7 @@ export const StyledButton = styled.button`
   border-radius: var(--radius-1);
   color: var(--color-white);
   font-weight: 400;
-  font-size: var(--font-size-24);
+  font-size: var(--font-size-18);
   padding: 1vh 0;
   width: clamp(250px, 100%, 300px);
 

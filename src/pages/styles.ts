@@ -67,7 +67,7 @@ export const StyledLoginPage = styled.section`
 
   h2 {
     font-weight: 600;
-    font-size: var(--font-size-40);
+    font-size: var(--font-size-25);
     color: var(--color-green-100);
   }
 
@@ -97,7 +97,7 @@ export const StyledLoginPage = styled.section`
 
     a {
       font-weight: 400;
-      font-size: var(--font-size-24);
+      font-size: var(--font-size-18);
       color: var(--color-white);
       text-align: center;
       background-color: var(--color-orange-80);
@@ -124,7 +124,7 @@ export const StyledLoginPage = styled.section`
       width: 100%;
 
       h3 {
-        font-size: var(--font-size-24);
+        font-size: var(--font-size-18);
         color: var(--color-white);
       }
 
