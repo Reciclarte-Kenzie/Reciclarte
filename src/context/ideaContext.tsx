@@ -85,11 +85,15 @@ export const IdeaProvider = ({ children }: IdeaProviderProps) => {
     } catch (error) {
       toast.error("Não foi possível buscar pelas ideias.");
     }
-
-    return [];
   }
 
   const getIdeasMaterials = async () => {
+    try {
+      const ideasMaterials = await api.get("/ideas/materials");
 
+      return ideasMaterials;
+    } catch (error) {
+      toast.error("Não foi possível buscar por materiais");
+    }
   }
 };
