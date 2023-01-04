@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { ContainerStyled } from "../styles/Container/styles";
-// import loginImage from "../assets/imgs/loginImage.svg";
 
 export const StyledLoginContainer = styled(ContainerStyled)`
   max-width: 100%;
