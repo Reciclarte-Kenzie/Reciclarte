@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ContainerStyled } from "../styles/Container/styles";
+import loginImage from "../assets/imgs/loginImage.svg";
 
 export const StyledLoginContainer = styled(ContainerStyled)`
   max-width: 100%;
@@ -7,6 +8,15 @@ export const StyledLoginContainer = styled(ContainerStyled)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: var(--color-grey-50);
+
+  @media (min-width: 700px) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-white);
+  }
 `;
 
 export const StyledLoginPage = styled.section`
@@ -21,7 +31,25 @@ export const StyledLoginPage = styled.section`
   width: 90%;
 
   @media (min-width: 700px) {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    place-items: center;
+    gap: 0;
+
+    width: 95vw;
+    height: 95vh;
+
+    padding-bottom: 0;
+
+    border-radius: var(--radius-1);
+    background-color: var(--color-grey-50);
+
+    form {
+      grid-row: 2;
+      grid-column: 1;
+      grid-column: 1 / span 5;
+    }
   }
 
   section:first-of-type {
@@ -30,6 +58,11 @@ export const StyledLoginPage = styled.section`
     justify-content: center;
     align-items: center;
     width: clamp(280px, 100%, 400px);
+
+    @media (min-width: 700px) {
+      width: clamp(200px, 210px, 300px);
+      grid-column: 1 / span 5;
+    }
   }
 
   h2 {
@@ -76,6 +109,28 @@ export const StyledLoginPage = styled.section`
       :hover {
         border: 1px solid var(--color-green-100);
         background-color: var(--color-green-100);
+      }
+    }
+
+    @media (min-width: 700px) {
+      height: 100%;
+      grid-row: 1 / span 2;
+      grid-column: 6 / span 3;
+      background-image: url(${loginImage});
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      border-radius: 0 var(--radius-1) var(--radius-1) 0;
+      width: 100%;
+
+      h3 {
+        font-size: var(--font-size-24);
+        color: var(--color-white);
+      }
+
+      a {
+        font-size: var(--font-size-16);
+        width: clamp(200px, 210px, 300px);
       }
     }
   }

@@ -11,6 +11,11 @@ export const StyledForm = styled.form`
 
   width: clamp(280px, 100%, 400px);
 
+  @media (min-width: 700px) {
+    width: clamp(200px, 100%, 365px);
+    padding-bottom: 20px;
+  }
+
   fieldset {
     border: none;
     display: flex;
