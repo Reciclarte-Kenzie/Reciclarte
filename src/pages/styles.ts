@@ -124,7 +124,7 @@ export const StyledLoginPage = styled.section`
       width: 100%;
 
       h3 {
-        font-size: var(--font-size-18);
+        font-size: var(--font-size-25);
         color: var(--color-white);
       }
 
