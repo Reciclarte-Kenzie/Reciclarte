@@ -32,7 +32,7 @@ export const StyledLoginPage = styled.section`
 
   @media (min-width: 700px) {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(8, 1fr);
     grid-template-rows: 1fr 1fr;
     place-items: center;
     gap: 0;
