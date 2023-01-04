@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { ContainerStyled } from "../../styles/Container/styles";
-import loginImage from "../../assets/imgs/loginImage.svg";
 
 export const StyledLoginContainer = styled(ContainerStyled)`
   max-width: 100%;
@@ -29,6 +28,7 @@ export const StyledLoginPage = styled.section`
   padding-bottom: 2%;
 
   width: 90%;
+  transition: 300ms;
 
   @media (min-width: 700px) {
     display: grid;
@@ -52,6 +52,13 @@ export const StyledLoginPage = styled.section`
     }
   }
 
+  form {
+    @media (min-height: 725px) {
+      align-self: center;
+      padding-bottom: 25px;
+    }
+  }
+
   section:first-of-type {
     display: flex;
     flex-direction: column;
@@ -63,22 +70,49 @@ export const StyledLoginPage = styled.section`
       width: clamp(200px, 210px, 300px);
       grid-column: 1 / span 5;
     }
+
+    @media (min-height: 725px) {
+      align-self: center;
+    }
+  }
+
+  figure {
+    @media (min-height: 725px) {
+      height: 280px;
+      width: clamp(280px, 100%, 400px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  img {
+    height: 100%;
   }
 
   h2 {
     font-weight: 600;
     font-size: var(--font-size-25);
     color: var(--color-green-100);
+
+    @media (min-height: 725px) {
+      font-size: var(--font-size-36);
+    }
   }
 
   p {
     position: relative;
-    top: -85px;
-    left: clamp(-75px, 20%, -80px);
+    top: -12px;
+    display: flex;
+    align-self: baseline;
     height: 0px;
     font-weight: 400;
     font-size: var(--font-size-12);
     color: var(--color-orange-80);
+
+    @media (min-width: 700px) {
+      font-size: var(--font-size-14);
+    }
   }
 
   .referRegister {
@@ -117,7 +151,7 @@ export const StyledLoginPage = styled.section`
       height: 100%;
       grid-row: 1 / span 2;
       grid-column: 6 / span 3;
-      background-image: url(${loginImage});
+      background-image: url("https://i.imgur.com/Fx12mnR.png");
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;

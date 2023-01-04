@@ -13,7 +13,11 @@ export const StyledInput = styled.input`
   }
   :focus {
     border: 1px solid var(--color-green-100);
+<<<<<<< HEAD
     outline: 1px solid var(--color-green-100);
+=======
+    outline: none;
+>>>>>>> ec2772884c355dec5cae795b880dd6b786d0f383
   }
 `;
 

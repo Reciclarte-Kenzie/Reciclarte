@@ -16,9 +16,9 @@ export const StyledButton = styled.button<iStyledButton>`
   transition: 300ms;
 
   :disabled {
-    background-color: var(--color-grey-40);
-    border: 2px solid var(--color-grey-100);
-    color: var(--color-grey-100);
+    background-color: var(--color-grey-60);
+    border: none;
+    color: var(--color-grey-90);
   }
 
   ${({ buttonType }) => {
