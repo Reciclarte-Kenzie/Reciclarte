@@ -4,23 +4,20 @@ import { Button } from "../../Button";
 import { Input } from "../../input";
 import { StyledForm } from "../styles";
 import { loginSchema } from "./loginSchema";
-
-type iLoginBody = {
-  email: string;
-  password: string;
-};
+import { iLoginData, UserContext } from "../../../context/userContext";
+import { useContext } from "react";
 
 export const LoginForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<iLoginBody>({
+  } = useForm<iLoginData>({
     mode: "onBlur",
     resolver: yupResolver(loginSchema),
   });
-
-  const onSubmit: SubmitHandler<iLoginBody> = (data) => console.log(data);
+  const { loginSubmit, loading } = useContext(UserContext);
+  const onSubmit: SubmitHandler<iLoginData> = (data) => loginSubmit(data);
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
@@ -29,6 +26,8 @@ export const LoginForm = () => {
         placeholder="Insira seu email"
         id="email"
         label="E-mail"
+        disabled={loading}
+        register={register("email")}
       />
       {errors.email?.message && <p>{errors.email.message}</p>}
       <Input
@@ -36,13 +35,11 @@ export const LoginForm = () => {
         placeholder="Insira sua senha"
         id="password"
         label="Senha"
+        disabled={loading}
+        register={register("password")}
       />
-      {errors.email?.message && <p>{errors.email.message}</p>}
-      <Button
-        text="Logar"
-        action={() => console.log("action")}
-        label="Botão de login"
-      />
+      {errors.password?.message && <p>{errors.password.message}</p>}
+      <Button text="Logar" label="Botão de login" disabled={loading} />
     </StyledForm>
   );
 };

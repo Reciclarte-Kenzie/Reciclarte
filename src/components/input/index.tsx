@@ -1,3 +1,4 @@
+import { UseFormRegisterReturn } from "react-hook-form";
 import { StyledInput, StyledLabel } from "./styles";
 
 interface iInput {
@@ -5,9 +6,18 @@ interface iInput {
   placeholder: string;
   label: string;
   id: string;
+  register?: UseFormRegisterReturn;
+  disabled?: boolean;
 }
 
-export const Input = ({ type = "text", placeholder, label, id }: iInput) => {
+export const Input = ({
+  type = "text",
+  placeholder,
+  label,
+  id,
+  register,
+  disabled,
+}: iInput) => {
   return (
     <fieldset>
       <StyledLabel htmlFor={id}>{label}</StyledLabel>
@@ -15,7 +25,10 @@ export const Input = ({ type = "text", placeholder, label, id }: iInput) => {
         type={type}
         placeholder={placeholder}
         id={id}
+        name={id}
         aria-label={placeholder}
+        {...register}
+        disabled={disabled}
       />
     </fieldset>
   );

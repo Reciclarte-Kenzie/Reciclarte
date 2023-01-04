@@ -53,4 +53,4 @@ export const GlobalStyles = createGlobalStyle`
     ul {
         list-style-type: none;
     }
-`
+`;

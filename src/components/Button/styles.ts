@@ -1,19 +1,77 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const StyledButton = styled.button`
-  background-color: var(--color-orange-80);
-  border: 2px solid var(--color-orange-80);
+interface iStyledButton {
+  buttonType?: string;
+  width?: string;
+  padding?: string;
+}
+
+export const StyledButton = styled.button<iStyledButton>`
   border-radius: var(--radius-1);
-  color: var(--color-white);
   font-weight: 400;
-  font-size: var(--font-size-24);
-  padding: 1vh 0;
-  width: clamp(250px, 100%, 300px);
-  width: 25.62rem;
-  max-width: 100%;
+  font-size: var(--font-size-18);
+  padding: ${(props) => (props.padding ? props.padding : "1vh 0")};
+  width: ${(props) =>
+    props.width ? props.width : "clamp(250px, 100%, 300px)"};
+  transition: 300ms;
 
-  :hover {
-    border: 2px solid var(--color-green-90);
-    background-color: var(--color-green-90);
+  :disabled {
+    background-color: var(--color-grey-40);
+    border: 2px solid var(--color-grey-100);
+    color: var(--color-grey-100);
   }
+
+  ${({ buttonType }) => {
+    switch (buttonType) {
+      case "invert":
+        return css`
+          background-color: var(--color-white);
+          border: 2px solid var(--color-white);
+          color: var(--color-orange-80);
+
+          :hover,
+          :focus {
+            border: 2px solid var(--color-grey-50);
+            background-color: var(--color-grey-50);
+          }
+        `;
+      case "whiteBorder":
+        return css`
+          background-color: var(--color-orange-80);
+          border: 2px solid var(--color-white);
+          color: var(--color-white);
+
+          :hover,
+          :focus {
+            background-color: var(--color-orange-70);
+          }
+        `;
+
+      case "grey":
+        return css`
+          background-color: var(--color-grey-60);
+          border: 2px solid var(--color-grey-60);
+          color: var(--grey-100);
+
+          :hover,
+          :focus {
+            border: 2px solid var(--color-orange-70);
+            background-color: var(--color-orange-70);
+            color: var(--color-grey-70);
+          }
+        `;
+      default:
+        return css`
+          background-color: var(--color-orange-80);
+          border: 2px solid var(--color-orange-80);
+          color: var(--color-white);
+
+          :hover,
+          :focus {
+            border: 2px solid var(--color-orange-70);
+            background-color: var(--color-orange-70);
+          }
+        `;
+    }
+  }}
 `;

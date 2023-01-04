@@ -19,6 +19,6 @@ export const StyledInput = styled.input`
 
 export const StyledLabel = styled.label`
   font-weight: 400;
-  font-size: var(--font-size-24);
+  font-size: var(--font-size-18);
   color: var(--color-green-100);
 `;
