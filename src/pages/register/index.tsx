@@ -22,8 +22,7 @@ export function RegisterPage(){
     
     const onSubmit: SubmitHandler<iRegister> = (data) => { 
         const {confirmation,...body} = (data)
-        console.log(body)
-        /* registerSubmit(body) */ } ;
+        registerSubmit(body)} ;
     return(
         <StyledRegisterPage>
             <BlackNameLogo />

@@ -13,7 +13,7 @@ export const StyledRegisterPage = styled.main`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 25rem;
+        width: 22.8125rem;
         max-width: 100%;
     }
 
