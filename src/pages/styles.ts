@@ -53,7 +53,7 @@ export const StyledLoginPage = styled.section`
   }
 
   form {
-    @media (min-height: 700px) {
+    @media (min-height: 725px) {
       align-self: center;
       padding-bottom: 25px;
     }
@@ -71,13 +71,13 @@ export const StyledLoginPage = styled.section`
       grid-column: 1 / span 5;
     }
 
-    @media (min-height: 700px) {
+    @media (min-height: 725px) {
       align-self: center;
     }
   }
 
   figure {
-    @media (min-height: 700px) {
+    @media (min-height: 725px) {
       height: 280px;
       width: clamp(280px, 100%, 400px);
       display: flex;
@@ -95,7 +95,7 @@ export const StyledLoginPage = styled.section`
     font-size: var(--font-size-25);
     color: var(--color-green-100);
 
-    @media (min-height: 700px) {
+    @media (min-height: 725px) {
       font-size: var(--font-size-36);
     }
   }
