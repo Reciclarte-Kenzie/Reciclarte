@@ -20,7 +20,7 @@ interface iIdeaData {
 export const IdeaContext = createContext({});
 
 export const IdeaProvider = ({ children }: IdeaProviderProps) => {
-  const createIdea = async (newIdeaData: iIdeaData, callback: () => void) => {
+  const createIdea = async (newIdeaData: iIdeaData, closeModal: () => void) => {
     try {
         await api.post("/ideas", newIdeaData, {
             headers: {
@@ -30,9 +30,25 @@ export const IdeaProvider = ({ children }: IdeaProviderProps) => {
 
         toast.success("Ideia criada com sucesso.");
 
-        callback();
+        closeModal();
     } catch (error) {
         toast.error("Não foi possível cadastrar a ideia");
+    }
+  };
+
+  const editIdea = async (editedIdeaData: iIdeaData, closeModal: () => void) => {
+    try {
+        await api.patch("/ideas", editedIdeaData, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("@TOKEN")}`
+            }
+        });
+
+        toast.success("Ideia editada com sucesso.");
+
+        closeModal();
+    } catch (error) {
+        toast.error("Não foi possível editar a ideia");
     }
   };
 };
