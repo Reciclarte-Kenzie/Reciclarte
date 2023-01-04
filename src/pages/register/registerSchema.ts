@@ -9,6 +9,7 @@ export const registerSchema = yup.object().shape({
         .min(8, "A senha precisa ter no minimo 8 caracteres")
         .matches(/(?=.*?[a-z])/i, "Precisa ter pelo menos 1 letra")
         .matches(/(?=.*?[0-9])/, "Precisa ter pelo menos 1 numero"),
+    confirmation: yup.string().test("password", "As senhas precisam ser iguais", function(value){return this.parent.password === value}) ,
     profile_pic: yup.string(),
     bio: yup.string().required("Bio obrigatório"),
 })

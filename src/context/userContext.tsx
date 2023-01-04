@@ -19,9 +19,9 @@ export interface iLoginData {
 
 export interface iRegisterData {
   //se der erro na typagem do login, ou register, talvez estamos typando duas vezes.
+  name: string;
   email: string;
   password: string;
-  name: string;
   bio: string;
   profile_pic: string;
 }

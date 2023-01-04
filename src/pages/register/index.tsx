@@ -9,21 +9,21 @@ import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
+import { iRegisterData } from "../../context/userContext";
 
-interface iRegisterBody {
-    name: string;
-    email: string;
-    password: string;
-    profile_pic: string;
-    bio: string;
-};
-
+interface iRegister extends iRegisterData {
+    confirmation: string;
+  }
 
 export function RegisterPage(){
-    const { register, handleSubmit, formState : {errors} } = useForm<iRegisterBody>({
+    const { register, handleSubmit, formState : {errors} } = useForm<iRegister>({
         mode: "onBlur", resolver: yupResolver(registerSchema)})
-    const {registerSubmit} = useContext(UserContext)
+    const {registerSubmit, loading} = useContext(UserContext)
     
+    const onSubmit: SubmitHandler<iRegister> = (data) => { 
+        const {confirmation,...body} = (data)
+        console.log(body)
+        /* registerSubmit(body) */ } ;
     return(
         <StyledRegisterPage>
             <BlackNameLogo />
@@ -33,13 +33,13 @@ export function RegisterPage(){
                     <button> Voltar </button>
                 </Link>
             </div>
-            <StyledForm onSubmit={handleSubmit(registerSubmit)} noValidate>
+            <StyledForm onSubmit={handleSubmit(onSubmit)} noValidate>
                 <Input
                     type="name"
                     placeholder="Insira seu nome"
                     id="name"
                     label="Name"
-                    {...register("name")}
+                    register = {register("name")}
                 />
                 {errors.name?.message && <p>{errors.name.message}</p>}
                 <Input
@@ -47,7 +47,7 @@ export function RegisterPage(){
                     placeholder="Insira sua email"
                     id="email"
                     label="E-mail"
-                    {...register("email")}
+                    register = {register("email")}
                 />
                 {errors.email?.message && <p>{errors.email.message}</p>}
                 <Input
@@ -55,7 +55,15 @@ export function RegisterPage(){
                     placeholder="Insira sua senha"
                     id="password"
                     label="Senha"
-                    {...register("password")}
+                    register = {register("password")}
+                />
+                {errors.password?.message && <p>{errors.password.message}</p>}
+                <Input
+                    type="password"
+                    placeholder="Insira sua senha"
+                    id="confirmation"
+                    label="Confirme sua senha"
+                    register = {register("confirmation")}
                 />
                 {errors.password?.message && <p>{errors.password.message}</p>}
                 <Input
@@ -63,7 +71,7 @@ export function RegisterPage(){
                     placeholder="Insira seu avatar"
                     id="profile_pic"
                     label="Avatar"
-                    {...register("profile_pic")}
+                    register = {register("profile_pic")}
                 />
                 {errors.profile_pic?.message && <p>{errors.profile_pic.message}</p>}
                 <Input
@@ -71,12 +79,13 @@ export function RegisterPage(){
                     placeholder="Escreva sobre você"
                     id="bio"
                     label="Bio"
-                    {...register("bio")}
+                    register = {register("bio")}
                 />
                 {errors.bio?.message && <p>{errors.bio.message}</p>}
                 <Button
-                    text="Cadastrar"
-                    label="Botão de login"
+                    text ="Cadastrar"
+                    label ="Botão de login"
+                    disabled = {loading}
                 />
             </StyledForm>
         </StyledRegisterPage>
