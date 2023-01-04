@@ -38,11 +38,7 @@ export const LoginForm = () => {
         label="Senha"
       />
       {errors.email?.message && <p>{errors.email.message}</p>}
-      <Button
-        text="Logar"
-        action={() => console.log("action")}
-        label="Botão de login"
-      />
+      <Button text="Logar" label="Botão de login" />
     </StyledForm>
   );
 };

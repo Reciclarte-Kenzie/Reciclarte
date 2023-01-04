@@ -4,6 +4,7 @@ export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 2vh;
 
   position: relative;
@@ -17,5 +18,10 @@ export const StyledForm = styled.form`
     gap: 2vh;
     padding: 0px;
     margin: 0;
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
   }
 `;

@@ -10,7 +10,7 @@ interface iButtonProps
   type?: "submit" | "button" | "reset" | undefined;
   className?: string;
   label: string;
-  action: () => void;
+  action?: () => void;
 }
 
 export function Button({

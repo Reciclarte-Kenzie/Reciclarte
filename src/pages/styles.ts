@@ -1,21 +1,24 @@
 import styled from "styled-components";
+import { ContainerStyled } from "../styles/Container/styles";
+
+export const StyledLoginContainer = styled(ContainerStyled)`
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const StyledLoginPage = styled.section`
   display: flex;
   flex-direction: column;
   gap: 4vh;
 
-  position: absolute;
-  top: 60%;
-  left: 53%;
-  transform: translate(-50%, -50%);
-  margin: -50px 0 0 -50px;
   padding-bottom: 2%;
 
-  width: fit-content;
+  width: clamp(280px, 90%, 400px);
 
   @media (min-width: 700px) {
-    left: 50%;
     flex-direction: row;
   }
 
@@ -24,11 +27,7 @@ export const StyledLoginPage = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-35%, 0%);
+    width: clamp(280px, 90%, 400px);
   }
 
   h2 {
@@ -53,11 +52,7 @@ export const StyledLoginPage = styled.section`
     gap: 3vh;
     justify-content: center;
     align-items: center;
-
-    position: relative;
-    top: 50%;
-    left: 56%;
-    transform: translate(-35%, 0%);
+    width: clamp(280px, 90%, 400px);
 
     h3 {
       font-weight: 400;
