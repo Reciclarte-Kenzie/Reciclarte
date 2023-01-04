@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
@@ -10,12 +10,13 @@ export interface iIdeaData {
   steps: string;
   materials: string[];
   categories: string[];
-  estimated_cost: number;
-  difficulty_level: number;
+  estimatedCost: number;
+  difficultyLevel: number;
   userId: number;
 }
 
 interface iIdeasContextProvider {
+  loading: boolean,
   createIdea: (newIdeaData: iIdeaData, closeModal: () => void) => Promise<void>,
   editIdea: (editedIdeaData: iIdeaData, closeModal: () => void) => Promise<void>,
   deleteIdea: (deletedIdeaId: number, closeModal: () => void) => Promise<void>,
@@ -27,6 +28,8 @@ interface iIdeasContextProvider {
 export const IdeasContext = createContext<iIdeasContextProvider>({} as iIdeasContextProvider);
 
 export const IdeasProvider = () => {
+  const [loading, setLoading] = useState(true);
+
   const headers = {
     headers: {
       authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
@@ -35,6 +38,8 @@ export const IdeasProvider = () => {
 
   const createIdea = async (newIdeaData: iIdeaData, closeModal: () => void) => {
     try {
+      setLoading(true);
+
       await api.post("/ideas", newIdeaData, headers);
 
       toast.success("Ideia criada com sucesso.");
@@ -42,6 +47,8 @@ export const IdeasProvider = () => {
       closeModal();
     } catch (error) {
       toast.error("Não foi possível cadastrar a ideia");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,6 +57,8 @@ export const IdeasProvider = () => {
     closeModal: () => void
   ) => {
     try {
+      setLoading(true);
+
       await api.patch("/ideas", editedIdeaData, headers);
 
       toast.success("Ideia editada com sucesso.");
@@ -57,11 +66,15 @@ export const IdeasProvider = () => {
       closeModal();
     } catch (error) {
       toast.error("Não foi possível editar a ideia");
+    } finally {
+      setLoading(false);
     }
   };
 
   const deleteIdea = async (deletedIdeaId: number, closeModal: () => void) => {
     try {
+      setLoading(true);
+
       await api.delete(`/ideas/${deletedIdeaId}`, headers);
 
       toast.success("Ideia excluída com sucesso.");
@@ -69,11 +82,15 @@ export const IdeasProvider = () => {
       closeModal();
     } catch (error) {
       toast.error("Não foi possível excluir a ideia.");
+    } finally {
+      setLoading(false);
     }
   };
 
   const searchIdeas = async (queryParams: string[]): Promise<AxiosResponse<iIdeaData[]> | undefined> => {
     try {
+      setLoading(true);
+
       let ideasRequestRoute = "/ideas";
 
       queryParams.forEach((queryParam, index) => {
@@ -91,31 +108,41 @@ export const IdeasProvider = () => {
       return foundIdeas;
     } catch (error) {
       toast.error("Não foi possível buscar pelas ideias.");
+    } finally {
+      setLoading(false);
     }
   }
 
   const getIdeasMaterials = async (): Promise<AxiosResponse<string[]> | undefined> => {
     try {
+      setLoading(true);
+
       const ideasMaterials = await api.get("/ideas/materials");
 
       return ideasMaterials;
     } catch (error) {
       toast.error("Não foi possível buscar por materiais");
+    } finally {
+      setLoading(false);
     }
   }
 
   const getIdeasCategories = async (): Promise<AxiosResponse<string[]> | undefined> => {
     try {
+      setLoading(true);
+
       const ideasCategories = await api.get("/ideas/categories");
 
       return ideasCategories;
     } catch (error) {
       toast.error("Não foi possível buscar pelas categorias");
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
-    <IdeasContext.Provider value={{createIdea, editIdea, deleteIdea, searchIdeas, getIdeasMaterials, getIdeasCategories}}>
+    <IdeasContext.Provider value={{loading, createIdea, editIdea, deleteIdea, searchIdeas, getIdeasMaterials, getIdeasCategories}}>
       <Outlet />
     </IdeasContext.Provider>
   );
