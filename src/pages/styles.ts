@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ContainerStyled } from "../styles/Container/styles";
-import loginImage from "../assets/imgs/loginImage.svg";
+// import loginImage from "../assets/imgs/loginImage.svg";
 
 export const StyledLoginContainer = styled(ContainerStyled)`
   max-width: 100%;
@@ -29,6 +29,7 @@ export const StyledLoginPage = styled.section`
   padding-bottom: 2%;
 
   width: 90%;
+  transition: 300ms;
 
   @media (min-width: 700px) {
     display: grid;
@@ -151,7 +152,7 @@ export const StyledLoginPage = styled.section`
       height: 100%;
       grid-row: 1 / span 2;
       grid-column: 6 / span 3;
-      /* background-image: url(${loginImage}); */
+      background-image: url("https://i.imgur.com/Fx12mnR.png");
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
