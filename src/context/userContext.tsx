@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
 
@@ -26,7 +26,17 @@ export interface iRegisterData {
   profile_pic: string;
 }
 
-export const UserContext = createContext({});
+interface iUserContextProvider {
+  user: iUser | null;
+  loading: boolean;
+  loginSubmit: (data: iLoginData) => void;
+  registerSubmit: (data: iRegisterData) => void;
+  logout: () => void;
+}
+
+export const UserContext = createContext<iUserContextProvider>(
+  {} as iUserContextProvider
+);
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
   const [user, setUser] = useState<iUser | null>(null);
@@ -52,7 +62,6 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       toast.error("Algo deu errado!");
     } finally {
       setLoading(false);
-      <Navigate to="/" />;
     }
   };
 
