@@ -27,7 +27,7 @@ export const Home = () => {
               <div>
                 <h3>Title</h3>
                 <p>pppppppp</p>
-                <span>pppppppp</span>
+                <button>Ver ideia</button>
               </div>
             </li>
             <li>
@@ -35,7 +35,7 @@ export const Home = () => {
               <div>
                 <h3>Title</h3>
                 <p>pppppppp</p>
-                <span>pppppppp</span>
+                <button>Ver ideia</button>
               </div>
             </li>
           </ul>
