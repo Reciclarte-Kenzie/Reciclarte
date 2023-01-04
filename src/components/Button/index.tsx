@@ -11,10 +11,7 @@ interface iButtonProps
   className?: string;
   label: string;
   action?: () => void;
-<<<<<<< HEAD
-=======
   disabled?: boolean;
->>>>>>> 6ccd3d3e2f36b836adad08c60d884ee30bbb3cc6
 }
 
 export function Button({
