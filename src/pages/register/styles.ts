@@ -8,6 +8,22 @@ export const StyledRegisterPage = styled.main`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 2rem;
+
+    p {
+    position: relative;
+    top: -12px;
+    display: flex;
+    align-self: baseline;
+    height: 0px;
+    font-weight: 400;
+    font-size: var(--font-size-12);
+    color: var(--color-orange-80);
+
+        @media (min-width: 700px) {
+            font-size: var(--font-size-14);
+        }
+    }
     
     & > div{
         display: flex;
@@ -43,4 +59,14 @@ export const StyledRegisterPage = styled.main`
         background-color:var(--color-green-90)
     }
 
+    @media (min-width: 700px) {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem 
+
+    }
 `

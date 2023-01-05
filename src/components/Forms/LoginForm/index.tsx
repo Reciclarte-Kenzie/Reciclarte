@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "../../Button";
-import { Input } from "../../input";
+import { Input } from "../../Input";
 import { StyledForm } from "../styles";
 import { loginSchema } from "./loginSchema";
 import { iLoginData, UserContext } from "../../../providers/UserProvider";

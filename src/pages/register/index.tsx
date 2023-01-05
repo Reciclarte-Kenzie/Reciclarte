@@ -4,7 +4,7 @@ import { registerSchema } from "./registerSchema"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { SubmitHandler ,useForm } from "react-hook-form";
 import { StyledForm } from "../../components/Forms/styles";
-import { Input } from "../../components/input";
+import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
