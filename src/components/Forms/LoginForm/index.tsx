@@ -4,7 +4,7 @@ import { Button } from "../../Button";
 import { Input } from "../../Input";
 import { StyledForm } from "../styles";
 import { loginSchema } from "./loginSchema";
-import { iLoginData, UserContext } from "../../../context/userContext";
+import { iLoginData, UserContext } from "../../../providers/UserProvider";
 import { useContext } from "react";
 
 export const LoginForm = () => {

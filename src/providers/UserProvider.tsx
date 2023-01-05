@@ -1,7 +1,9 @@
+import { AxiosResponse } from "axios";
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
+import { iIdeaData } from "./IdeasProvider";
 
 interface iUserProviderProps {
   children: React.ReactNode;
@@ -17,7 +19,6 @@ export interface iLoginData {
 }
 
 export interface iRegisterData {
-  //se der erro na typagem do login, ou register, talvez estamos typando duas vezes.
   email: string;
   password: string;
   name: string;
@@ -26,8 +27,18 @@ export interface iRegisterData {
 }
 
 interface iUserId {
-  body: string;
   userId: number;
+}
+
+interface iUserData extends iRegisterData {
+  social_media: {
+    instagram: string;
+    linkedin: string;
+  };
+}
+
+interface iUserIdeasData extends iUserData {
+  ideas: iIdeaData[];
 }
 
 interface iUserContextProvider {
@@ -36,11 +47,15 @@ interface iUserContextProvider {
   loginSubmit: (data: iLoginData) => void;
   registerSubmit: (data: iRegisterData) => void;
   logout: () => void;
-  editUser: ({ body, userId }: iUserId) => void;
-  deleteUser: ({ userId }: iUserId) => void;
-  getAllUsers: () => void;
-  getSpecificUser: (userId: iUserId) => void;
-  getSpecificUserIdea: (userId: iUserId) => void;
+  editUser: (userId: number, userEditedData: iUserData) => void;
+  deleteUser: (userId: number) => void;
+  getAllUsers: () => Promise<AxiosResponse<string[]> | undefined>;
+  getSpecificUser: (
+    userId: iUserId
+  ) => Promise<AxiosResponse<iUserData> | undefined>;
+  getSpecificUserIdea: (
+    userId: iUserId
+  ) => Promise<AxiosResponse<iUserIdeasData> | undefined>;
 }
 
 export const UserContext = createContext<iUserContextProvider>(
@@ -51,16 +66,16 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const [user, setUser] = useState<iUser | null>(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const token = localStorage.getItem("@TOKEN");
+  const headers = {
+    headers: {
+      authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
+    },
+  };
 
   const loginSubmit = async (data: iLoginData) => {
     try {
       setLoading(true);
-      const response = await api.post("/login", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await api.post("/login", data);
       toast.success("Login efetuado!");
       setUser({ token: response.data.accessToken });
 
@@ -89,28 +104,17 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     }
   };
 
-  const editUser = async ({ body, userId }: iUserId) => {
+  const editUser = async (userId: number, userEditedData: iUserData) => {
     try {
-      await api.patch(`/users/${userId}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(body),
-      });
+      await api.patch(`/users/${userId}`, userEditedData, headers);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const deleteUser = async ({ userId }: iUserId) => {
+  const deleteUser = async (userId: number) => {
     try {
-      await api.delete(`/users/${userId}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await api.delete(`/users/${userId}`, headers);
     } catch (error) {
       console.log(error);
     }
@@ -118,25 +122,21 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   const getAllUsers = async () => {
     try {
-      await api.get("/users", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      setLoading(true);
+      const response = await api.get("/users", headers);
+      return response;
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const getSpecificUser = async (userId: iUserId) => {
     try {
-      await api.get(`/users/${userId}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      setLoading(true);
+      const response = await api.get(`/users/${userId}`, headers);
+      return response;
     } catch (error) {
       console.log(error);
     }
@@ -144,12 +144,9 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   const getSpecificUserIdea = async (userId: iUserId) => {
     try {
-      await api.get(`/users/${userId}?_embed=ideas`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      setLoading(true);
+      const response = await api.get(`/users/${userId}?_embed=ideas`, headers);
+      return response;
     } catch (error) {
       console.log(error);
     }
