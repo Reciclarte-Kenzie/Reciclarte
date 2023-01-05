@@ -7,7 +7,7 @@ import { StyledLoginContainer, StyledLoginPage } from "./styles";
 export const LoginPage = () => {
   return (
     <>
-      <ModalBase />
+      <ModalBase modalTitle="Criar ideia" />
       <StyledLoginContainer>
         <StyledLoginPage>
           <section>
