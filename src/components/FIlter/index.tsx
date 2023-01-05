@@ -51,24 +51,18 @@ export const FilterBox = () => {
 
   const onSubmit: SubmitHandler<iFilter> = (data) => {
     let body = [
-      `${data.titleFilter ? `title=${data.titleFilter}` : ""} `,
-      `${data.categoriesFilter ? `categories=${data.categoriesFilter}` : ""} `,
-      `${data.materialsFilter ? `materials=${data.materialsFilter}` : ""} `,
+      `${data.titleFilter ? `title=${data.titleFilter}` : ""}`,
+      `${data.categoriesFilter ? `categories=${data.categoriesFilter}` : ""}`,
+      `${data.materialsFilter ? `materials=${data.materialsFilter}` : ""}`,
       `${
         data.difficultySelector
           ? `difficulty_level=${data.difficultySelector}`
           : ""
-      } `,
-      `${data.costFilter ? `maximum_cost=${data.costFilter}` : ""} `,
+      }`,
+      `${data.costFilter ? `maximum_cost=${data.costFilter}` : ""}`,
     ];
     console.log(body);
-
-    //     titleFilter: string;
-    //   categoriesFilter: string;
-    //   materialsFilter: string;
-    //   difficultySelector: string;
-    //   costFilter: string;
-    // console.log(searchIdeas([""]));
+    console.log(searchIdeas(body));
   };
 
   return (
