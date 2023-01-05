@@ -32,7 +32,7 @@ export const ModalBaseStyled = styled.div`
     }
   }
 
-  article {
+  & > article {
     animation: slide-bottom 0.7s ease;
     background-color: var(--color-white);
     border-radius: var(--radius-1);
