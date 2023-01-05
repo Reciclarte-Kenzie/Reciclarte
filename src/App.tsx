@@ -1,8 +1,8 @@
 import React from "react";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { UserProvider } from "./context/userContext";
+import { UserProvider } from "./providers/UserProvider";
 import { RoutesApp } from "./routes/routes";
 import { GlobalStyles } from "./styles/GlobalStyles";
 
