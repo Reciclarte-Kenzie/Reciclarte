@@ -1,15 +1,18 @@
 import React from "react";
-import { Navigate, Route, Routes} from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { LoginPage } from "../pages/login";
+import { IdeasProvider } from "../providers/IdeasProvider";
 
 export const RoutesApp = () => {
-    return (
-      <Routes>
+  return (
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      {/* <Route path="/register" element={<Register />} /> */}
+      <Route element={<IdeasProvider />}>
         {/* <Route path="/" element={<Home/>}> */}
-        {/* <Route path="/login" element={<Login />} /> */}
-        {/* <Route path="/register" element={<Register />} /> */}
         {/* <Route path="/profile" element={<Profile />} />  */}
-        {/* <Route path="*" element={<Navigate to="/" />}/> */}
-      </Routes>
-    );
-  };
-  
+      </Route>
+      {/* <Route path="*" element={<Navigate to="/" />}/> */}
+    </Routes>
+  );
+};
