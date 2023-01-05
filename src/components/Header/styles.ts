@@ -9,9 +9,20 @@ export const Header = styled.header`
 
 export const Content = styled.div`
   width: 100%;
-  max-width: 400px;
+  max-width: 1240px;
   padding: 0 8px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+`;
+
+export const Actions = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 44px;
+
+  img {
+    width: 30px;
+  }
 `;

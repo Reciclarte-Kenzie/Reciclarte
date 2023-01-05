@@ -1,13 +1,17 @@
+import React from "react";
 import logo from "../../assets/imgs/logo2.svg";
-import menu from "../../assets/imgs/menu.svg";
-import { Header as Container, Content } from "./styles";
+import { Header as Container, Content, Actions } from "./styles";
 
-const Header = () => {
+interface IHeaderProps {
+  children: JSX.Element | null;
+}
+
+const Header = ({ children }: IHeaderProps) => {
   return (
     <Container>
       <Content>
         <img src={logo} alt="" />
-        <img src={menu} alt="" />
+        <Actions>{children}</Actions>
       </Content>
     </Container>
   );
