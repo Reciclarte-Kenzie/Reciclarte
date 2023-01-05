@@ -77,20 +77,6 @@ export const StyledLoginPage = styled.section`
     }
   }
 
-  figure {
-    @media (min-height: 725px) {
-      height: 280px;
-      width: clamp(280px, 100%, 400px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-
-  img {
-    height: 100%;
-  }
-
   h2 {
     font-weight: 600;
     font-size: var(--font-size-25);
