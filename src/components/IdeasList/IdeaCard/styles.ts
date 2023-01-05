@@ -56,9 +56,22 @@ export const StyleIdeaCard = styled.li`
       width: 147px;
       height: 100%;
     }
-    
+
     div {
       gap: 1.3rem;
     }
+  }
+`;
+
+export const StyledContentButton = styled.div`
+  margin-top: 1rem;
+  max-height: 15px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-between;
+
+  @media(min-width: 700px){
+    align-content: flex-start;
+    margin-top: 0;
   }
 `;
