@@ -1,6 +1,6 @@
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { createContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
 import { iIdeaData } from "./IdeasProvider";
@@ -41,6 +41,12 @@ interface iUserIdeasData extends iUserData {
   ideas: iIdeaData[];
 }
 
+export interface iApiError {
+  response: {
+    data: string;
+  };
+}
+
 interface iUserContextProvider {
   user: iUser | null;
   loading: boolean;
@@ -77,14 +83,23 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       setLoading(true);
       const response = await api.post("/login", data);
       toast.success("Login efetuado!");
-      setUser({ token: response.data.accessToken });
-
+      setUser(response.data.user);
       localStorage.setItem("@TOKEN", response.data.accessToken);
-
       navigate("/");
     } catch (error) {
+      const apiError = error as AxiosError<iApiError>;
+      let message = apiError.response?.data || "";
+      let toastErrorMessage = "";
+
       console.log(error);
-      toast.error("Algo deu errado!");
+      if (message === "Incorrect password") {
+        toastErrorMessage = "Senha incorreta";
+      } else if (message === "Cannot find user") {
+        toastErrorMessage = "Usuário não encontrado";
+      } else {
+        toastErrorMessage = "Não foi possível efetuar o login.";
+      }
+      toast.error(toastErrorMessage);
     } finally {
       setLoading(false);
     }
@@ -97,8 +112,10 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       toast.success("Cadastro feito com sucesso!");
       navigate("/login");
     } catch (error) {
+      const apiError = error as AxiosError<iApiError>;
+      let message = apiError.response?.data;
       console.log(error);
-      toast.error("Desculpe, algo deu errado!");
+      toast.error(`Desculpe, algo deu errado! ${message}`);
     } finally {
       setLoading(false);
     }
@@ -107,6 +124,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const editUser = async (userId: number, userEditedData: iUserData) => {
     try {
       await api.patch(`/users/${userId}`, userEditedData, headers);
+      toast.warn("Dados do usuário atualizados.");
     } catch (error) {
       console.log(error);
     }
@@ -115,6 +133,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const deleteUser = async (userId: number) => {
     try {
       await api.delete(`/users/${userId}`, headers);
+      toast.warn("Usuário deletado com sucesso.");
+      logout();
     } catch (error) {
       console.log(error);
     }
@@ -155,6 +175,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const logout = () => {
     localStorage.removeItem("@TOKEN");
     setUser(null);
+    <Navigate to="/" />;
   };
 
   return (
