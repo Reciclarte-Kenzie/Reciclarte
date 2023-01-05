@@ -26,7 +26,6 @@ export const StyledLoginPage = styled.section`
   align-items: center;
 
   padding-bottom: 2%;
-
   width: 90%;
   transition: 300ms;
 
