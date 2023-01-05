@@ -11,12 +11,36 @@ export const ModalBaseStyled = styled.div`
   width: 100%;
 
   article {
+    animation: slide-bottom 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     background-color: var(--color-white);
     border-radius: var(--radius-1);
     max-width: 798px;
     margin: 20px;
     min-height: 318px;
+    -webkit-animation: slide-bottom 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     width: 100%;
+
+    @-webkit-keyframes slide-bottom {
+      0% {
+        transform: translateY(-100px);
+        -webkit-transform: translateY(-100px);
+      }
+      100% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+      }
+    }
+
+    @keyframes slide-bottom {
+      0% {
+        transform: translateY(-100px);
+        -webkit-transform: translateY(-100px);
+      }
+      100% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+      }
+    }
   }
 
   header {
