@@ -3,17 +3,17 @@ import styled from "styled-components";
 export const StyleCards = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
 
   li {
     height: 324px;
     border: 1px solid var(--color-grey-60);
     border-radius: var(--radius-1);
-    padding: 15px;
+    padding: 1rem;
     background-color: var(--color-white);
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 1.875rem;
 
     img {
       width: 100%;
@@ -27,16 +27,16 @@ export const StyleCards = styled.ul`
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 10px;
+      gap: 0.625rem;
 
       h3 {
         font-style: normal;
         font-weight: 500;
-        font-size: 18px;
+        font-size: var(--font-size-18);
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        line-height: 16px; 
+        line-height: 1rem; 
         -webkit-line-clamp: 2; 
         -webkit-box-orient: vertical;
       }
@@ -44,11 +44,11 @@ export const StyleCards = styled.ul`
       p {
         color: var(--color-grey-100);
         font-weight: 400;
-        font-size: 16px;
+        font-size: var(--font-size-16);
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        line-height: 16px; 
+        line-height: 1rem; 
         -webkit-line-clamp: 2; 
         -webkit-box-orient: vertical;
       }
@@ -59,11 +59,11 @@ export const StyleCards = styled.ul`
         flex-direction: row;
 
         button {
-          padding: 5px 20px;
+          padding: 0.313rem 1.25rem;
           color: var(--color-white);
           font-weight: 600;
-          font-size: 16px;
-          line-height: 20px;
+          font-size: var(--font-size-16);
+          line-height: 1.25rem;
           background-color: var(--color-orange-80);
           transition: 300ms;
           border-radius: var(--radius-1);
@@ -77,7 +77,7 @@ export const StyleCards = styled.ul`
   }
 
   @media(min-width: 700px) {
-    max-width: 666px;
+    max-width: 41.625rem;
     
     li {
       height: 213px;
