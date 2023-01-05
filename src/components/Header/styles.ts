@@ -26,3 +26,29 @@ export const Actions = styled.div`
     width: 30px;
   }
 `;
+
+export const LoginButton = styled.button`
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 9px 25px;
+  /* text-2 */
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #f7941d;
+`;
+
+export const RegisterButton = styled.button`
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  padding: 9px 25px;
+  /* text-2 */
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+`;
