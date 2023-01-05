@@ -22,7 +22,11 @@ export const Select = ({
     <StyledSelect name={id} id={id} width={width} {...register}>
       <option value="">{placeholder}</option>
       {options.map((opt) => {
-        return <option value={opt.value}>{opt.text}</option>;
+        return (
+          <option value={opt.value} key={opt.value}>
+            {opt.text}
+          </option>
+        );
       })}
     </StyledSelect>
   );
