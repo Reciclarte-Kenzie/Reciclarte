@@ -1,5 +1,4 @@
 import React from "react";
-
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
