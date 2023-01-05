@@ -56,5 +56,9 @@ export const StyleIdeaCard = styled.li`
       width: 147px;
       height: 100%;
     }
+    
+    div {
+      gap: 1rem;
+    }
   }
 `;
