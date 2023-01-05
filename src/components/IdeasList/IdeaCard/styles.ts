@@ -8,7 +8,7 @@ export const StyleIdeaCard = styled.li`
   background-color: var(--color-white);
   display: flex;
   flex-direction: column;
-  gap: 1.875rem;
+  gap: 2rem;
 
   img {
     width: 100%;
@@ -21,7 +21,7 @@ export const StyleIdeaCard = styled.li`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    gap: 0.625rem;
+    gap: 1.5rem;
 
     h3 {
       font-style: normal;
