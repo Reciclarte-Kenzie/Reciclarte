@@ -21,7 +21,7 @@ export const StyleIdeaCard = styled.li`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    gap: 1.5rem;
+    gap: 1rem;
 
     h3 {
       font-style: normal;
@@ -58,7 +58,7 @@ export const StyleIdeaCard = styled.li`
     }
     
     div {
-      gap: 1rem;
+      gap: 1.3rem;
     }
   }
 `;
