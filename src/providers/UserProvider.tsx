@@ -59,10 +59,10 @@ interface iUserContextProvider {
   deleteUser: (userId: number) => void;
   getAllUsers: () => Promise<AxiosResponse<string[]> | undefined>;
   getSpecificUser: (
-    userId: iUserId
+    userId: number
   ) => Promise<AxiosResponse<iUserData> | undefined>;
   getSpecificUserIdea: (
-    userId: iUserId
+    userId: number
   ) => Promise<AxiosResponse<iUserIdeasData> | undefined>;
 }
 
@@ -154,7 +154,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     }
   };
 
-  const getSpecificUser = async (userId: iUserId) => {
+  const getSpecificUser = async (userId: number) => {
     try {
       setLoading(true);
       const response = await api.get(`/users/${userId}`, headers);
@@ -164,7 +164,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     }
   };
 
-  const getSpecificUserIdea = async (userId: iUserId) => {
+  const getSpecificUserIdea = async (userId: number) => {
     try {
       setLoading(true);
       const response = await api.get(`/users/${userId}?_embed=ideas`, headers);
