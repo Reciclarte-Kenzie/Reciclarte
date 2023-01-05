@@ -16,6 +16,7 @@ export const GlobalStyles = createGlobalStyle`
     :root {
         --color-green-100: #011B0C;
         --color-green-90: #022E15;
+        --color-green-80: #015F28;
         --color-grey-100: #7A7A7A;
         --color-grey-90: #969696;
         --color-grey-70: #848484;
@@ -55,4 +56,4 @@ export const GlobalStyles = createGlobalStyle`
     ul {
         list-style-type: none;
     }
-`
+`;

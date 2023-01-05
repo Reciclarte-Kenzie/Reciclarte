@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-export {}
-=======
 import styled from "styled-components";
 
 export const StyledInput = styled.input`
@@ -25,4 +22,3 @@ export const StyledLabel = styled.label`
   font-size: var(--font-size-18);
   color: var(--color-green-100);
 `;
->>>>>>> feat/cards

@@ -1,7 +1,20 @@
 import { StyledHome } from "./styles";
-import { Cards } from "../../components/Cards";
+import { IdeasList } from "../../components/IdeasList";
+import { useContext, useEffect, useState } from "react";
+import { IdeasContext, iIdeaData } from "../../providers/IdeasProvider";
 
 export const Home = () => {
+  const { searchIdeas } = useContext(IdeasContext);
+  const [allIdeasList, setAllIdeasList] = useState([] as iIdeaData[]);
+  console.log(searchIdeas);
+  useEffect(() => {
+    const getAllIdeasList = async () => {
+      const ideasListResponse = await searchIdeas([]);
+      setAllIdeasList(ideasListResponse?.data || []);
+    };
+    getAllIdeasList();
+  }, []);
+
   return (
     <StyledHome>
       <header>
@@ -19,7 +32,7 @@ export const Home = () => {
       </header>
       <main>
         <section>
-          <Cards />
+          <IdeasList ideasList={allIdeasList} />
         </section>
       </main>
     </StyledHome>
