@@ -169,4 +169,4 @@ export const StyledLoginPage = styled.section`
     }
   }
 `;
->>>>>>> develop
+
