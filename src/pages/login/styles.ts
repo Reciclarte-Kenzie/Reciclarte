@@ -27,6 +27,7 @@ export const StyledLoginPage = styled.section`
 
   padding-bottom: 2%;
 
+  height: 100%;
   width: 90%;
   transition: 300ms;
 
@@ -127,13 +128,15 @@ export const StyledLoginPage = styled.section`
       font-weight: 400;
       font-size: var(--font-size-16);
       color: var(--color-green-100);
+      max-width: 90%;
+      text-align: center;
     }
 
     a {
       font-weight: 400;
       font-size: var(--font-size-18);
-      color: var(--color-white);
       text-align: center;
+      color: var(--color-white);
       background-color: var(--color-orange-80);
       border: 1px solid var(--color-orange-80);
       border-radius: calc(3 * var(--radius-1));
@@ -144,6 +147,17 @@ export const StyledLoginPage = styled.section`
       :hover {
         border: 1px solid var(--color-orange-70);
         background-color: var(--color-orange-70);
+      }
+    }
+    .homePage {
+      color: var(--color-green-100);
+      background-color: var(--color-grey-60);
+      border: 1px solid var(--color-green-100);
+
+      :hover {
+        border: 1px solid var(--color-green-80);
+        background-color: var(--color-grey-60);
+        color: var(--color-green-80);
       }
     }
 

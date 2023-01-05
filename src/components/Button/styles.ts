@@ -51,7 +51,7 @@ export const StyledButton = styled.button<iStyledButton>`
         return css`
           background-color: var(--color-grey-60);
           border: 2px solid var(--color-grey-60);
-          color: var(--grey-100);
+          color: var(--color-grey-100);
 
           :hover,
           :focus {
@@ -60,6 +60,20 @@ export const StyledButton = styled.button<iStyledButton>`
             color: var(--color-grey-70);
           }
         `;
+
+      case "green":
+        return css`
+          background-color: var(--color-green-80);
+          border: 2px solid var(--color-green-80);
+          color: var(--color-white);
+
+          :hover,
+          :focus {
+            border: 2px solid var(--color-green-90);
+            background-color: var(--color-green-90);
+          }
+        `;
+
       default:
         return css`
           background-color: var(--color-orange-80);
