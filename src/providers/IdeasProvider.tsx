@@ -88,13 +88,13 @@ export const IdeasProvider = () => {
     }
   };
 
-  const searchIdeas = async (queryParams: string[]): Promise<AxiosResponse<iIdeaData[]> | undefined> => {
+  const searchIdeas = async (queryParams?: string[]): Promise<AxiosResponse<iIdeaData[]> | undefined> => {
     try {
       setLoading(true);
 
       let ideasRequestRoute = "/ideas";
 
-      queryParams.forEach((queryParam, index) => {
+      queryParams?.forEach((queryParam, index) => {
         if (index == 0) {
           ideasRequestRoute += "?";
         } else {
