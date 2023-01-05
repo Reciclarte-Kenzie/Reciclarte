@@ -5,7 +5,7 @@ import { StyledLogo } from "./styles";
 export const BlackNameLogo = () => {
   const navigate = useNavigate();
   return (
-    <StyledLogo onClick={() => navigate("/homepage")}>
+    <StyledLogo onClick={() => navigate("/")}>
       <img src={blackNameLogo} alt="Reciclarte" />
       <figcaption>Reciclarte</figcaption>
     </StyledLogo>
