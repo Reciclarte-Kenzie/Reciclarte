@@ -28,6 +28,11 @@ export const ModalBaseStyled = styled.div`
     padding: 1.25rem;
     width: 100%;
 
+    @media(min-width: 530px) {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
     h2 {
       color: var(--color-white);
       font-size: var(--font-size-25);

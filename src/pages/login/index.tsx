@@ -1,13 +1,16 @@
 // import { Link } from "react-router-dom";
+import { useState } from "react";
 import { LoginForm } from "../../components/Forms/LoginForm";
 import { BlackNameLogo } from "../../components/Logo";
 import { ModalBase } from "../../components/Modals/ModalBase";
 import { StyledLoginContainer, StyledLoginPage } from "./styles";
 
 export const LoginPage = () => {
+  const [modalVisibility, setModalVisibility] = useState(true);
+
   return (
     <>
-      <ModalBase modalTitle="Criar ideia" />
+      {modalVisibility && <ModalBase modalTitle="Criar ideia" hideModal={() => setModalVisibility(false)} />}
       <StyledLoginContainer>
         <StyledLoginPage>
           <section>
