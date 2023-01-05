@@ -1,11 +1,16 @@
 import styled from "styled-components";
 
-export const StyledInput = styled.input`
+interface iStyledInput {
+  width?: string;
+}
+
+export const StyledInput = styled.input<iStyledInput>`
   outline: none;
   border: 1px solid var(--color-grey-90);
   border-radius: var(--radius-1);
   padding: 0.9rem 1rem;
   height: 50px;
+  width: ${(props) => (props.width ? props.width : "100%")};
 
   ::placeholder {
     font-weight: 400;
