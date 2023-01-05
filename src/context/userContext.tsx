@@ -12,7 +12,6 @@ interface iUser {
 }
 
 export interface iLoginData {
-  //se der erro na typagem do login, ou register, talvez estamos typando duas vezes.
   email: string;
   password: string;
 }
@@ -50,7 +49,7 @@ export const UserContext = createContext<iUserContextProvider>(
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
   const [user, setUser] = useState<iUser | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const token = localStorage.getItem("@TOKEN");
 

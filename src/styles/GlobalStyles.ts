@@ -26,9 +26,11 @@ export const GlobalStyles = createGlobalStyle`
         --color-orange-70: #FEAB48;
         --color-white: #FFFFFF;
 
+        --font-size-36: 2.25rem;
         --font-size-25: 1.563rem;
         --font-size-18: 1.125rem;
         --font-size-16: 1rem;
+        --font-size-14: 0.875rem;
         --font-size-12: 0.75rem;
 
         --radius-1: 8px;
@@ -53,4 +55,4 @@ export const GlobalStyles = createGlobalStyle`
     ul {
         list-style-type: none;
     }
-`
+`;
