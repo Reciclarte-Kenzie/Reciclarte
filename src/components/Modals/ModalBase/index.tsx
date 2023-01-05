@@ -16,6 +16,9 @@ export const ModalBase = ({ modalTitle, hideModal }: iModalBaseProps) => {
             <img src={closeIcon} alt="ícone branco com um 'x' no meio" />
           </button>
         </header>
+        <main>
+          
+        </main>
       </article>
     </ModalBaseStyled>
   );

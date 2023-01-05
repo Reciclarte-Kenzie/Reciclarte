@@ -25,13 +25,8 @@ export const ModalBaseStyled = styled.div`
     border-radius: var(--radius-1) var(--radius-1) 0 0;
     display: flex;
     justify-content: space-between;
-    padding: 1.25rem;
+    padding: 1rem 1.25rem;
     width: 100%;
-
-    @media(min-width: 530px) {
-      padding-left: 40px;
-      padding-right: 40px;
-    }
 
     h2 {
       color: var(--color-white);
@@ -39,4 +34,17 @@ export const ModalBaseStyled = styled.div`
       font-weight: 600;
     }
   }
-`
+
+  main {
+    max-height: 500px;
+    overflow: auto;
+    padding: 40px 1.25rem;
+  }
+
+  @media (min-width: 530px) {
+    header, main {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+`;
