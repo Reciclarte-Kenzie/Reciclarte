@@ -75,4 +75,18 @@ export const StyleCards = styled.ul`
       }
     }
   }
+
+  @media(min-width: 700px) {
+    max-width: 666px;
+    
+    li {
+      height: 213px;
+      flex-direction: row;
+
+      img {
+        width: 147px;
+        height: 100%;
+      }
+    }
+  }
 `;

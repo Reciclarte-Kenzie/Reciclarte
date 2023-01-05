@@ -23,6 +23,6 @@
     "include": [
         "src"
     ],
-    "typeRoots": ["./src/assets/@types"]
+    "typeRoots": ["../../src/assets/@types"]
 }          
       
