@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ModalBaseStyled = styled.div`
   align-items: center;
+  animation: show-background 0.8s ease;
   background-color: rgba(0, 0, 0, 0.76);
   display: flex;
   height: 100%;
@@ -9,15 +10,36 @@ export const ModalBaseStyled = styled.div`
   position: fixed;
   z-index: 1;
   width: 100%;
+  -webkit-animation: show-background 0.8s ease;
+  
+  @-webkit-keyframes show-background {
+    0% {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    
+    100% {
+      background-color: rgba(0, 0, 0, 0.76);
+    }
+  }
+
+  @keyframes show-background {
+    0% {
+      background-color: rgba(0, 0, 0, 0);
+    }
+
+    100% {
+      background-color: rgba(0, 0, 0, 0.76);
+    }
+  }
 
   article {
-    animation: slide-bottom 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-bottom 0.7s ease;
     background-color: var(--color-white);
     border-radius: var(--radius-1);
     max-width: 798px;
     margin: 20px;
     min-height: 318px;
-    -webkit-animation: slide-bottom 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: slide-bottom 0.7s ease;
     width: 100%;
 
     @-webkit-keyframes slide-bottom {
@@ -25,6 +47,7 @@ export const ModalBaseStyled = styled.div`
         transform: translateY(-100px);
         -webkit-transform: translateY(-100px);
       }
+      
       100% {
         transform: translateY(0);
         -webkit-transform: translateY(0);
@@ -36,6 +59,7 @@ export const ModalBaseStyled = styled.div`
         transform: translateY(-100px);
         -webkit-transform: translateY(-100px);
       }
+
       100% {
         transform: translateY(0);
         -webkit-transform: translateY(0);
