@@ -1,7 +1,8 @@
-import { StyledHome } from "./styles";
+import {StyledContentMain, StyledHeader } from "./styles";
 import { IdeasList } from "../../components/IdeasList";
 import { useContext, useEffect, useState } from "react";
 import { IdeasContext, iIdeaData } from "../../providers/IdeasProvider";
+import { ContainerStyled } from "../../styles/Container/styles";
 
 export const Home = () => {
   const { searchIdeas } = useContext(IdeasContext);
@@ -16,8 +17,8 @@ export const Home = () => {
   }, []);
 
   return (
-    <StyledHome>
-      <header>
+    <div>
+      <StyledHeader>
         <div>
           <img src="" alt="Logo" />
           <div>
@@ -29,12 +30,12 @@ export const Home = () => {
             </button>
           </div>
         </div>
-      </header>
-      <main>
-        <section>
+      </StyledHeader>
+      <ContainerStyled>
+        <StyledContentMain>
           <IdeasList ideasList={allIdeasList} />
-        </section>
-      </main>
-    </StyledHome>
+        </StyledContentMain>
+      </ContainerStyled>
+    </div>
   );
 };
