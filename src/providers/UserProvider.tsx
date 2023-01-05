@@ -10,7 +10,8 @@ interface iUserProviderProps {
 }
 
 interface iUser {
-  token: string | null;
+  accessToken: string | null;
+  user: iUserData;
 }
 
 export interface iLoginData {
@@ -23,7 +24,8 @@ export interface iRegisterData {
   password: string;
   name: string;
   bio: string;
-  profile_pic: string;
+  profilePic: string;
+  id: number;
 }
 
 interface iUserId {
@@ -31,7 +33,7 @@ interface iUserId {
 }
 
 interface iUserData extends iRegisterData {
-  social_media: {
+  socialMedia: {
     instagram: string;
     linkedin: string;
   };
