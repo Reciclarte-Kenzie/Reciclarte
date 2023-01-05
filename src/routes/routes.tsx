@@ -1,6 +1,7 @@
 import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { LoginPage } from "../pages/login";
+import Profile from "../pages/profile";
 import { IdeasProvider } from "../providers/IdeasProvider";
 
 export const RoutesApp = () => {
@@ -10,9 +11,8 @@ export const RoutesApp = () => {
       {/* <Route path="/register" element={<Register />} /> */}
       <Route element={<IdeasProvider />}>
         {/* <Route path="/" element={<Home/>}> */}
-        {/* <Route path="/profile" element={<Profile />} />  */}
+        <Route path="/profile" element={<Profile />} />
       </Route>
-      {/* <Route path="*" element={<Navigate to="/" />}/> */}
     </Routes>
   );
 };
