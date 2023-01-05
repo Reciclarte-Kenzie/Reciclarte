@@ -11,12 +11,12 @@ export const ModalBaseStyled = styled.div`
   z-index: 1;
   width: 100%;
   -webkit-animation: show-background 0.8s ease;
-  
+
   @-webkit-keyframes show-background {
     0% {
       background-color: rgba(0, 0, 0, 0);
     }
-    
+
     100% {
       background-color: rgba(0, 0, 0, 0.76);
     }
@@ -47,7 +47,7 @@ export const ModalBaseStyled = styled.div`
         transform: translateY(-100px);
         -webkit-transform: translateY(-100px);
       }
-      
+
       100% {
         transform: translateY(0);
         -webkit-transform: translateY(0);
@@ -90,7 +90,8 @@ export const ModalBaseStyled = styled.div`
   }
 
   @media (min-width: 530px) {
-    header, main {
+    header,
+    main {
       padding-left: 40px;
       padding-right: 40px;
     }

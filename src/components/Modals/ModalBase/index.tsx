@@ -4,9 +4,14 @@ import closeIcon from "../../../assets/imgs/close-icon.svg";
 interface iModalBaseProps {
   modalTitle: string;
   hideModal: () => void;
+  ModalBody: () => JSX.Element;
 }
 
-export const ModalBase = ({ modalTitle, hideModal }: iModalBaseProps) => {
+export const ModalBase = ({
+  modalTitle,
+  hideModal,
+  ModalBody,
+}: iModalBaseProps) => {
   return (
     <ModalBaseStyled>
       <article>
@@ -17,7 +22,7 @@ export const ModalBase = ({ modalTitle, hideModal }: iModalBaseProps) => {
           </button>
         </header>
         <main>
-          
+          <ModalBody />
         </main>
       </article>
     </ModalBaseStyled>
