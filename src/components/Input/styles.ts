@@ -5,6 +5,7 @@ export const StyledInput = styled.input`
   border: 1px solid var(--color-grey-90);
   border-radius: var(--radius-1);
   padding: 0.9rem 1rem;
+  height: 50px;
 
   ::placeholder {
     font-weight: 400;

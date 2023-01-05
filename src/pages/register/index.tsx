@@ -28,6 +28,9 @@ export function RegisterPage(){
             <BlackNameLogo />
             <div>
                 <h1>Cadastro</h1>
+                <Link to="/">
+                    <button>Home</button>
+                </Link>
                 <Link to="/Login">
                     <button> Voltar </button>
                 </Link>

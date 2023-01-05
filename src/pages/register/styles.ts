@@ -17,7 +17,18 @@ export const StyledRegisterPage = styled.main`
         max-width: 100%;
     }
 
-    & > div button{
+    & > div button:nth-child(1){
+        border-radius: var(--radius-1);
+        background-color: var(--color-orange-80);
+        width: 4.12;
+        height: 1.87;
+        color: var(--color-white);
+        box-sizing: border-box;
+        padding:0.25rem 0.5rem 0.25rem;
+        transition: 300ms;
+    }
+
+    & > div button:nth-child(2){
         border-radius: var(--radius-1);
         background-color: var(--color-orange-80);
         width: 4.12;
