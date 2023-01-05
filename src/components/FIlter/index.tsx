@@ -9,24 +9,26 @@ import { Select } from "../Input/Select";
 import { filterSchema } from "./filterSchema";
 import { StyledFilter } from "./styles";
 
+interface iFilter {
+  titleFilter: string;
+  categoriesFilter: string;
+  materialsFilter: string;
+  difficultySelector: string;
+  costFilter: string;
+}
+
 export const FilterBox = () => {
-  const { getIdeasMaterials, getIdeasCategories } = useContext(IdeasContext);
+  const { getIdeasMaterials, getIdeasCategories, searchIdeas } =
+    useContext(IdeasContext);
   //   let categoriesGroup;
   //   let materialsGroup;
   //   useEffect(() => {
-  //     materialsGroup = getIdeasMaterials();
-  //     categoriesGroup = getIdeasCategories();
-
+  //   materialsGroup = getIdeasMaterials();
+  // categoriesGroup = getIdeasCategories();
   //     console.log(materialsGroup);
   //     // eslint-disable-next-line react-hooks/exhaustive-deps
   //   }, []);
-  interface iFilter {
-    titleFilter: string;
-    categoriesFilter: string;
-    materialsFilter: string;
-    difficultySelector: string;
-    costFilter: string;
-  }
+
   const { register, handleSubmit } = useForm<iFilter>({
     mode: "onBlur",
     resolver: yupResolver(filterSchema),
@@ -34,6 +36,7 @@ export const FilterBox = () => {
       difficultySelector: "",
     },
   });
+
   let materialsTreated = [
     "Móveis",
     "Rústico",
@@ -46,7 +49,27 @@ export const FilterBox = () => {
     return { value: mat, text: mat };
   });
 
-  const onSubmit: SubmitHandler<iFilter> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<iFilter> = (data) => {
+    let body = [
+      `${data.titleFilter ? `title=${data.titleFilter}` : ""} `,
+      `${data.categoriesFilter ? `categories=${data.categoriesFilter}` : ""} `,
+      `${data.materialsFilter ? `materials=${data.materialsFilter}` : ""} `,
+      `${
+        data.difficultySelector
+          ? `difficulty_level=${data.difficultySelector}`
+          : ""
+      } `,
+      `${data.costFilter ? `maximum_cost=${data.costFilter}` : ""} `,
+    ];
+    console.log(body);
+
+    //     titleFilter: string;
+    //   categoriesFilter: string;
+    //   materialsFilter: string;
+    //   difficultySelector: string;
+    //   costFilter: string;
+    // console.log(searchIdeas([""]));
+  };
 
   return (
     <StyledFilter>
@@ -66,7 +89,7 @@ export const FilterBox = () => {
               placeholder="Categorias"
               options={materialsTreated}
               register={register("categoriesFilter")}
-              width="45%"
+              width="48%"
             />
           }
           {
@@ -75,14 +98,14 @@ export const FilterBox = () => {
               placeholder="Materiais"
               options={materialsTreated}
               register={register("materialsFilter")}
-              width="45%"
+              width="48%"
             />
           }
         </section>
         <Input
           type="range"
           id="difficultySelector"
-          label="Nível de dificuldade"
+          label={`Nível de dificuldade`}
           placeholder=""
           range={{ min: 1, max: 5, step: 1 }}
           register={register("difficultySelector")}
@@ -93,6 +116,7 @@ export const FilterBox = () => {
           label="Custo estimado em reais"
           id="costFilter"
           register={register("costFilter")}
+          range={{ min: 10, max: 500 }}
         />
         <Button text="Pesquisar" label="Pesquisar" />
       </StyledForm>

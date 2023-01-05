@@ -1,7 +1,8 @@
+import React from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import { StyledInput, StyledLabel } from "./styles";
 
-interface iInput {
+interface iInput extends React.HTMLProps<HTMLInputElement> {
   type: string;
   placeholder: string;
   label: string;
@@ -11,7 +12,7 @@ interface iInput {
   range?: {
     min: number;
     max: number;
-    step: number;
+    step?: number;
   };
 }
 

@@ -7,7 +7,7 @@ interface iStyledSelect {
 export const StyledSelect = styled.select<iStyledSelect>`
   border: 1px solid var(--color-grey-90);
   border-radius: var(--radius-1);
-  padding: 0.9rem 1rem;
+  padding: 0.7rem 0.9rem 0.9rem;
 
   height: 50px;
   width: ${(props) => (props.width ? props.width : "100%")};

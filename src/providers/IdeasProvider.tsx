@@ -7,7 +7,6 @@ import { api } from "../services/api";
 export interface iIdeaData {
   title: string;
   imgs: string[];
-  description: string;
   steps: string;
   materials: string[];
   categories: string[];
@@ -96,14 +95,14 @@ export const IdeasProvider = () => {
   };
 
   const searchIdeas = async (
-    queryParams?: string[]
+    queryParams: string[]
   ): Promise<AxiosResponse<iIdeaData[]> | undefined> => {
     try {
       setLoading(true);
 
       let ideasRequestRoute = "/ideas";
 
-      queryParams?.forEach((queryParam, index) => {
+      queryParams.forEach((queryParam, index) => {
         if (index == 0) {
           ideasRequestRoute += "?";
         } else {
