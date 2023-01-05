@@ -36,8 +36,8 @@ export const StyleCards = styled.ul`
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        line-height: 1rem; 
-        -webkit-line-clamp: 2; 
+        line-height: 1rem;
+        -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
       }
 
@@ -48,8 +48,8 @@ export const StyleCards = styled.ul`
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        line-height: 1rem; 
-        -webkit-line-clamp: 2; 
+        line-height: 1rem;
+        -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
       }
 
@@ -76,9 +76,9 @@ export const StyleCards = styled.ul`
     }
   }
 
-  @media(min-width: 700px) {
-    max-width: 41.625rem;
+  @media (min-width: 700px) {
     
+
     li {
       height: 213px;
       flex-direction: row;
@@ -88,5 +88,9 @@ export const StyleCards = styled.ul`
         height: 100%;
       }
     }
+  }
+
+  @media (min-width: 1000px) {
+    max-width: 41.625rem;
   }
 `;
