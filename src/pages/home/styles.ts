@@ -18,13 +18,13 @@ export const StyledHome = styled.div`
 
       div {
         justify-content: end;
-        gap: 20px;
+        gap: 1.25rem;
       }
     }
   }
 
   main {
     width: 90%;
-    margin: 16px auto;
+    margin: 1rem auto;
   }
 `;
