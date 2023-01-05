@@ -22,7 +22,6 @@ export const Cards = () => {
           </p>
           <div>
             <button>Ver ideia</button>
-            <button>Excluir ideia</button>
           </div>
         </div>
       </li>
@@ -39,7 +38,6 @@ export const Cards = () => {
           </p>
           <div>
             <button>Ver ideia</button>
-            <button>Excluir ideia</button>
           </div>
         </div>
       </li>
