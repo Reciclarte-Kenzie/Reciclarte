@@ -6,7 +6,7 @@ import { SliderStyled } from "./styles";
 export interface iSliderProps {
   register?: UseFormRegisterReturn;
   disabled?: boolean;
-  value?: number;
+  defaultValue?: number;
   min: number;
   max: number;
 }
@@ -14,13 +14,11 @@ export interface iSliderProps {
 export const Slider = ({
   register,
   disabled,
-  value,
+  defaultValue,
   min,
   max,
 }: iSliderProps) => {
-  const [valueCssVariable, setvalueCssVariable] = useState(
-    (value || max / 2) + ""
-  );
+  const [valueCssVariable, setvalueCssVariable] = useState(defaultValue + "");
 
   return (
     <SliderStyled>
@@ -30,7 +28,7 @@ export const Slider = ({
       </div>
       <SliderInput
         disabled={disabled}
-        value={value}
+        defaultValue={defaultValue}
         min={min}
         max={max}
         register={register}

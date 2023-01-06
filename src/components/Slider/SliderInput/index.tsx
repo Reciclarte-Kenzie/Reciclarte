@@ -10,7 +10,7 @@ export interface iSliderInputProps extends iSliderProps {
 export const SliderInput = ({
   register,
   disabled,
-  value,
+  defaultValue,
   min,
   max,
   valueCssVariable,
@@ -27,7 +27,7 @@ export const SliderInput = ({
     <SliderInputStyled
       type="range"
       disabled={disabled}
-      value={value}
+      defaultValue={defaultValue}
       min={min}
       max={max}
       valueCssVariable={valueCssVariable}
