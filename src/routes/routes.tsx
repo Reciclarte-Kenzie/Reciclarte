@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { Slider } from "../components/Slider";
 import { LoginPage } from "../pages/login";
 import { IdeasProvider } from "../providers/IdeasProvider";
 
@@ -13,6 +14,7 @@ export const RoutesApp = () => {
         {/* <Route path="/profile" element={<Profile />} />  */}
       </Route>
       {/* <Route path="*" element={<Navigate to="/" />}/> */}
+      <Route path="/slider" element={<Slider />} />
     </Routes>
   );
 };
