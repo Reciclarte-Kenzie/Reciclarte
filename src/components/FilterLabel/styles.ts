@@ -5,11 +5,11 @@ export const FilterLabelStyled = styled.article`
   background-color: var(--color-grey-90);
   border-radius: var(--radius-1);
   display: flex;
-  gap: 10px;
+  gap: 0.625rem;
   justify-content: space-between;
-  width: fit-content;
   padding: 0.2rem 0.5rem;
   transition: 0.5s;
+  width: fit-content;
 
   &:hover {
     background-color: var(--color-grey-70);
