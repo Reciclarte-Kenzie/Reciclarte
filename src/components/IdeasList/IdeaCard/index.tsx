@@ -4,16 +4,16 @@ import { StyledContentButton, StyleIdeaCard } from "./styles";
 interface iIdeaCardProps {
   img: string;
   title: string;
-  steps: string;
+  description: string;
 }
 
-export const IdeaCard = ({ img, title, steps }: iIdeaCardProps) => {
+export const IdeaCard = ({ img, title, description }: iIdeaCardProps) => {
   return (
     <StyleIdeaCard>
       <img src={img} alt="ideia" />
       <div>
         <h3>{title}</h3>
-        <p>{steps}</p>
+        <p>{description}</p>
 
         {window.location.href.includes("profile") ? (
           <StyledContentButton>
