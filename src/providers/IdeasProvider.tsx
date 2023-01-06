@@ -7,6 +7,7 @@ import { api } from "../services/api";
 export interface iIdeaData {
   title: string;
   imgs: string[];
+  description: string;
   steps: string;
   materials: string[];
   categories: string[];
@@ -16,13 +17,13 @@ export interface iIdeaData {
 }
 
 interface iIdeasContextProvider {
-  loading: boolean,
-  createIdea: (newIdeaData: iIdeaData, closeModal: () => void) => Promise<void>,
-  editIdea: (editedIdeaData: iIdeaData, closeModal: () => void) => Promise<void>,
-  deleteIdea: (deletedIdeaId: number, closeModal: () => void) => Promise<void>,
-  searchIdeas: (queryParams: string[]) => Promise<AxiosResponse<iIdeaData[]> | undefined>,
-  getIdeasMaterials: () => Promise<AxiosResponse<string[]> | undefined>,
-  getIdeasCategories: () => Promise<AxiosResponse<string[]> | undefined>
+  loading: boolean;
+  createIdea: (newIdeaData: iIdeaData, closeModal: () => void) => Promise<void>;
+  editIdea: (editedIdeaData: iIdeaData, closeModal: () => void) => Promise<void>;
+  deleteIdea: (deletedIdeaId: number, closeModal: () => void) => Promise<void>;
+  searchIdeas: (queryParams: string[]) => Promise<AxiosResponse<iIdeaData[]> | undefined>;
+  getIdeasMaterials: () => Promise<AxiosResponse<string[]> | undefined>;
+  getIdeasCategories: () => Promise<AxiosResponse<string[]> | undefined>;
 }
 
 export const IdeasContext = createContext<iIdeasContextProvider>({} as iIdeasContextProvider);
@@ -87,13 +88,13 @@ export const IdeasProvider = () => {
     }
   };
 
-  const searchIdeas = async (queryParams: string[]): Promise<AxiosResponse<iIdeaData[]> | undefined> => {
+  const searchIdeas = async (queryParams?: string[]): Promise<AxiosResponse<iIdeaData[]> | undefined> => {
     try {
       setLoading(true);
 
       let ideasRequestRoute = "/ideas";
 
-      queryParams.forEach((queryParam, index) => {
+      queryParams?.forEach((queryParam, index) => {
         if (index == 0) {
           ideasRequestRoute += "?";
         } else {
