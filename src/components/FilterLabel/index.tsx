@@ -1,15 +1,31 @@
 import { FilterLabelStyled } from "./styles";
-import closeIcon from "../../assets/imgs/close-icon-nunito.svg";
 import { useState } from "react";
+import closeIcon from "../../assets/imgs/close-icon-nunito.svg";
 
 interface iFilterLabelProps {
   title: string;
+  labelList: string[];
+  setLabelList: React.Dispatch<React.SetStateAction<string[]>>;
+  addedLabelIndex: number;
 }
 
-export const FilterLabel = ({ title }: iFilterLabelProps) => {
+export const FilterLabel = ({
+  title,
+  labelList,
+  setLabelList,
+  addedLabelIndex,
+}: iFilterLabelProps) => {
   const [toggleFilterLabel, setToggleFilterLabel] = useState(true);
 
-  const removeFilterLabel = () => setToggleFilterLabel(false);
+  const removeFilterLabel = () => {
+    setToggleFilterLabel(false);
+
+    const labelListWithoutRemovedLabel = labelList.filter(
+      (_, index) => index !== addedLabelIndex
+    );
+
+    setLabelList(labelListWithoutRemovedLabel);
+  };
 
   return (
     <>
