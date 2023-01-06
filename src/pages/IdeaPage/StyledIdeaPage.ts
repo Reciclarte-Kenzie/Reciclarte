@@ -1,19 +1,26 @@
 import styled from "styled-components";
 
 export const StyledIdeaPage = styled.main`
-  width: 90%;
-  border: 1px solid var(--color-grey-60);
-  border-radius: var(--radius-1);
-  padding: 24px 20px;
   display: flex;
-  flex-direction: column;
-  gap: 30px;
-
+  align-items: center;
+  justify-content: center;
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 90%;
+    border: 1px solid var(--color-grey-60);
+    border-radius: var(--radius-1);
+    padding: 24px 20px;
+  }
   .imgwrapper {
+    
     max-width: 100%;
     max-height: 142px;
     height: 100%;
     border-radius: var(--radius-1);
+    width: 90%;
 
     img {
       object-fit: cover;
@@ -23,8 +30,10 @@ export const StyledIdeaPage = styled.main`
   .headerPost {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 30px;
-    h2 {
+    width: 90%;
+    div > h2 {
       font-size: var(--font-size-25);
       font-weight: 600;
       color: var(--color-orange-80);
@@ -46,6 +55,7 @@ export const StyledIdeaPage = styled.main`
   .steps {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 30px;
 
     h3 {
@@ -61,11 +71,14 @@ export const StyledIdeaPage = styled.main`
     }
   }
 
-  && > a {
-    padding: 16px 20px;
+  article > a {
+    padding: 12px 20px;
+    max-width: 200px;
     background-color: var(--color-orange-80);
     border: 1px solid var(--color-orange-80);
     border-radius: 8px;
     color: var(--color-white);
+    display: flex;
+    justify-content: center;
   }
 `;

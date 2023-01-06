@@ -1,4 +1,4 @@
-import {StyledContentMain, StyledHeader } from "./styles";
+import { StyledContentMain, StyledHeader } from "./styles";
 import { IdeasList } from "../../components/IdeasList";
 import { useContext, useEffect, useState } from "react";
 import { IdeasContext, iIdeaData } from "../../providers/IdeasProvider";
