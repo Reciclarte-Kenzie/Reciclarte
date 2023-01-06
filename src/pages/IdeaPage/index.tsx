@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
 import { StyledIdeaPage } from "./StyledIdeaPage";
 
-export const index = () => {
+export const IdeaPage = () => {
   return (
     <>
       <h2>HEADER</h2>
       <StyledIdeaPage>
-        <figure>
+        <figure className="imgWrapper">
           <img src="" alt="Imagem da API" />
         </figure>
         <div className="headerPost">
@@ -24,8 +25,10 @@ export const index = () => {
           </p>
         </div>
         <div className="steps">
-            <h3></h3>
+          <h3>Passo a passo</h3>
+          <p>Texto do passo a passo</p>
         </div>
+        <Link to="/">Voltar para a Home</Link>
       </StyledIdeaPage>
     </>
   );
