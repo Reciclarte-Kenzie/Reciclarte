@@ -80,7 +80,7 @@ export const FilterBox = () => {
       }`,
       `${data.costFilter ? `maximum_cost=${data.costFilter}` : ""}`,
     ];
-    console.log(searchIdeas(body));
+    searchIdeas(body);
   };
 
   const onChangeMat = () => {
@@ -149,14 +149,6 @@ export const FilterBox = () => {
         />
         <Button text="Pesquisar" label="Pesquisar" />
       </StyledForm>
-      <button
-        onClick={() => {
-          console.log(selCategories);
-          console.log(selMaterials);
-        }}
-      >
-        MOSTRAR
-      </button>
     </StyledFilter>
   );
 };
