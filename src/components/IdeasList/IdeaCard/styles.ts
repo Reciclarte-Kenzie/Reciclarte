@@ -8,7 +8,7 @@ export const StyleIdeaCard = styled.li`
   background-color: var(--color-white);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 
   img {
     width: 100%;
@@ -42,9 +42,13 @@ export const StyleIdeaCard = styled.li`
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
-      line-height: 1rem;
-      -webkit-line-clamp: 2;
+      line-height: 1.5rem;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
+    }
+
+    button {
+      font-size: var(--font-size-16);
     }
   }
 
@@ -58,19 +62,26 @@ export const StyleIdeaCard = styled.li`
     }
 
     div {
-      gap: 1.3rem;
+      gap: 0.8rem;
     }
   }
 `;
 
 export const StyledContentButton = styled.div`
   margin-top: 1rem;
-  max-height: 15px;
+  max-height: 5px;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: space-between;
+  gap: 0;
+ 
 
-  @media(min-width: 700px){
+  button {
+    width: 45%;
+    text-align: center;
+  }
+
+  @media (min-width: 700px) {
     align-content: flex-start;
     margin-top: 0;
   }
