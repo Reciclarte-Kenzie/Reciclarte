@@ -14,6 +14,7 @@ export const SliderInputStyled = styled.input<iSliderInputStyled>`
 
   height: 8px;
   -webkit-appearance: none;
+  width: 100%;
 
   &::-webkit-slider-thumb {
     background: #ffffff;

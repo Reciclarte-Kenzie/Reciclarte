@@ -1,9 +1,14 @@
 import styled from "styled-components";
 
 export const SliderStyled = styled.fieldset`
-  display: flex;
-  justify-content: space-between;
+  border: none;
   width: 100%;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
 
   label {
     color: var(--color-green-100);
@@ -13,7 +18,8 @@ export const SliderStyled = styled.fieldset`
     color: var(--color-grey-100);
   }
 
-  label, span {
+  label,
+  span {
     font-size: var(--font-size-18);
   }
-`
+`;
