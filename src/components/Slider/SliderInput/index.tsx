@@ -1,24 +1,26 @@
 import { FormEvent, useState } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
-import { SliderStyled } from "./styles";
+import { SliderInputStyled } from "./styles";
 
-interface iSliderProps {
+export interface iSliderInputProps {
   register?: UseFormRegisterReturn;
   disabled?: boolean;
   value?: number;
   min: number;
   max: number;
+  valueCssVariable: string;
+  setvalueCssVariable: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const Slider = ({
+export const SliderInput = ({
   register,
   disabled,
   value,
   min,
   max,
-}: iSliderProps) => {
-  const [valueCssVariable, setvalueCssVariable] = useState((value || max / 2) + "");
-
+  valueCssVariable,
+  setvalueCssVariable,
+}: iSliderInputProps) => {
   const updateValueCssVariable = (event: FormEvent<HTMLInputElement>) => {
     const inputSlider: HTMLInputElement = event.target as HTMLInputElement;
     const inputSliderValue = inputSlider.value;
@@ -27,7 +29,7 @@ export const Slider = ({
   };
 
   return (
-    <SliderStyled
+    <SliderInputStyled
       type="range"
       disabled={disabled}
       value={value}

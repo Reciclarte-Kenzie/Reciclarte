@@ -1,10 +1,10 @@
 import styled, { ThemedStyledFunction } from "styled-components";
 
-interface iSliderStyled {
+interface iSliderInputStyled {
   valueCssVariable: string;
 }
 
-export const SliderStyled = styled.input<iSliderStyled>`
+export const SliderInputStyled = styled.input<iSliderInputStyled>`
   --value: ${({ valueCssVariable, value }) => valueCssVariable || value};
   --min: ${({ min }) => min};
   --max: ${({ max }) => max};
