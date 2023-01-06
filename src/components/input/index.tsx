@@ -1,13 +1,19 @@
+import React from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import { StyledInput, StyledLabel } from "./styles";
 
-interface iInput {
+interface iInput extends React.HTMLProps<HTMLInputElement> {
   type: string;
   placeholder: string;
   label: string;
   id: string;
   register?: UseFormRegisterReturn;
   disabled?: boolean;
+  range?: {
+    min: number;
+    max: number;
+    step?: number;
+  };
 }
 
 export const Input = ({
@@ -17,6 +23,7 @@ export const Input = ({
   id,
   register,
   disabled,
+  range,
 }: iInput) => {
   return (
     <fieldset>
@@ -29,6 +36,9 @@ export const Input = ({
         aria-label={placeholder}
         {...register}
         disabled={disabled}
+        min={range?.min}
+        max={range?.max}
+        step={range?.step}
       />
     </fieldset>
   );
