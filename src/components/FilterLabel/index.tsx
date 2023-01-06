@@ -1,13 +1,24 @@
 import { FilterLabelStyled } from "./styles";
-import closeIcon from "../../assets/imgs/close-icon-nunito.svg"
+import closeIcon from "../../assets/imgs/close-icon-nunito.svg";
+import { useState } from "react";
 
-export const FilterLabel = () => {
-  return (
-    <FilterLabelStyled>
-      <p>Label</p>
-      <button aria-label="Remover">
-        <img src={closeIcon} alt="ícone de 'x'" />
-      </button>
-    </FilterLabelStyled>
-  );
+interface iFilterLabelProps {
+  title: string;
 }
+
+export const FilterLabel = ({ title }: iFilterLabelProps) => {
+  const [toggleFilterLabel, setToggleFilterLabel] = useState(true);
+
+  return (
+    <>
+      {toggleFilterLabel && (
+        <FilterLabelStyled>
+          <p>{title}</p>
+          <button aria-label="Remover">
+            <img src={closeIcon} alt="ícone de 'x'" />
+          </button>
+        </FilterLabelStyled>
+      )}
+    </>
+  );
+};

@@ -10,7 +10,7 @@ export const RoutesApp = () => {
     <Routes>
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/label" element={<FilterLabel />} />
+      <Route path="/label" element={<FilterLabel title="Calça" />} />
       <Route element={<IdeasProvider />}>
         {/* <Route path="/" element={<Home />} /> */}
         {/* <Route path="/profile" element={<Profile />} /> */}

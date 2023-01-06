@@ -12,14 +12,15 @@ export const FilterLabelStyled = styled.article`
   transition: 0.5s;
 
   &:hover {
-    background-color: var(--color-grey-70);    
+    background-color: var(--color-grey-70);
   }
 
   p {
     font-size: var(--font-size-12);
   }
-  
-  p, button {
+
+  p,
+  button {
     color: var(--color-white);
   }
-`
+`;
