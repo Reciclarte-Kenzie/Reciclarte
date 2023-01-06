@@ -29,6 +29,10 @@ export const StyledInput = styled.input<iStyledInput>`
   &[type="number"]::-ms-inner-spin-button {
     -webkit-appearance: none;
   }
+
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
 `;
 
 export const StyledLabel = styled.label`
