@@ -7,7 +7,6 @@ export const BlackNameLogo = () => {
   return (
     <StyledLogo onClick={() => navigate("/")}>
       <img src={blackNameLogo} alt="Reciclarte" />
-      <figcaption>Reciclarte</figcaption>
     </StyledLogo>
   );
 };
