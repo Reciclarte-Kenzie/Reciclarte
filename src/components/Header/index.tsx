@@ -10,7 +10,8 @@ import {
 } from "./styles";
 
 import plusIcon from "../../assets/imgs/plus-solid.svg";
-import menuIcon from "../../assets/imgs/menu.svg";
+import openMenuIcon from "../../assets/imgs/menu.svg";
+import closeMenuIcon from "../../assets/imgs/xmark-solid.svg";
 import homeIcon from "../../assets/imgs/home.svg";
 import logoutIcon from "../../assets/imgs/logout.svg";
 import { UserContext } from "../../providers/UserProvider";
@@ -52,7 +53,7 @@ const Header = () => {
               title="Abrir Menu"
               onClick={() => setShowActions(!showActions)}
             >
-              <img src={menuIcon} alt="" />
+              <img src={showActions ? closeMenuIcon : openMenuIcon} alt="" />
             </button>
           </div>
         </MainContent>

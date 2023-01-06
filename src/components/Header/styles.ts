@@ -15,7 +15,7 @@ export const Content = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 25px;
 
   @media screen and (min-width: 968px) {
     flex-direction: row;
@@ -26,18 +26,31 @@ export const Content = styled.div`
 export const MainContent = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 25px;
 
   & > img {
     height: 38px;
   }
 
-  button {
+  div {
     display: flex;
-    align-items: center;
+    gap: 25px;
+
+    button {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
   }
 
   @media screen and (min-width: 968px) {
-    button {
+    width: 100%;
+
+    button:last-child {
       display: none;
     }
   }
@@ -55,10 +68,23 @@ export const Actions = styled.div<IActionsProps>`
 
   button {
     width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 6px;
+    padding: 9px;
   }
 
   img {
     width: 30px;
+  }
+
+  @media screen and (min-width: 968px) {
+    button {
+      border: none;
+    }
   }
 `;
 
