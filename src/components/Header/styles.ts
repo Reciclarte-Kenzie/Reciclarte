@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Header = styled.header`
   background-color: var(--color-orange-80);
-  height: 67px;
+  min-height: 67px;
+  max-height: 140px;
   display: flex;
   align-items: center;
 `;
@@ -10,17 +11,51 @@ export const Header = styled.header`
 export const Content = styled.div`
   width: 100%;
   max-width: 1240px;
-  padding: 0 8px;
+  padding: 13px 16px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+
+  @media screen and (min-width: 968px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
-export const Actions = styled.div`
+export const MainContent = styled.div`
   display: flex;
   justify-content: space-between;
+
+  & > img {
+    height: 38px;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 968px) {
+    button {
+      display: none;
+    }
+  }
+`;
+
+interface IActionsProps {
+  toggle: boolean;
+}
+
+export const Actions = styled.div<IActionsProps>`
+  display: ${(props) => (props.toggle ? "flex" : "none")};
+  justify-content: space-between;
   align-items: center;
-  gap: 44px;
+  gap: 25px;
+
+  button {
+    width: 100%;
+  }
 
   img {
     width: 30px;
@@ -28,6 +63,7 @@ export const Actions = styled.div`
 `;
 
 export const LoginButton = styled.button`
+  border: 2px solid #ffffff;
   background: #ffffff;
   border-radius: 8px;
   padding: 9px 25px;
@@ -38,6 +74,10 @@ export const LoginButton = styled.button`
   font-size: 16px;
   line-height: 20px;
   color: #f7941d;
+
+  @media screen and (min-width: 968px) {
+    border: none;
+  }
 `;
 
 export const RegisterButton = styled.button`
