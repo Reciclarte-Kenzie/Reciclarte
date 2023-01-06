@@ -1,11 +1,10 @@
 import { FilterLabelStyled } from "./styles";
 import { useState } from "react";
 import closeIcon from "../../assets/imgs/close-icon-nunito.svg";
+import { iFilterLabelListProps } from "..";
 
-interface iFilterLabelProps {
+interface iFilterLabelProps extends iFilterLabelListProps {
   title: string;
-  labelList: string[];
-  setLabelList: React.Dispatch<React.SetStateAction<string[]>>;
   addedLabelIndex: number;
 }
 

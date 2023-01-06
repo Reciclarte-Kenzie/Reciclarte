@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FilterLabelStyled = styled.article`
+export const FilterLabelStyled = styled.li`
   align-items: center;
   background-color: var(--color-grey-90);
   border-radius: var(--radius-1);
