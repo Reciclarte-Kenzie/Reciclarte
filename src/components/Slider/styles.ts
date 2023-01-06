@@ -7,6 +7,7 @@ export const SliderStyled = styled.fieldset`
   div {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 0.5rem;
     width: 100%;
   }
 

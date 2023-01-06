@@ -19,7 +19,9 @@ export const Slider = ({
   max,
 }: iSliderProps) => {
   const averageDifficultyLevel = parseInt(max / 2 + "");
-  const [valueCssVariable, setvalueCssVariable] = useState(defaultValue || averageDifficultyLevel);
+  const [valueCssVariable, setvalueCssVariable] = useState(
+    defaultValue || averageDifficultyLevel
+  );
 
   return (
     <SliderStyled>
