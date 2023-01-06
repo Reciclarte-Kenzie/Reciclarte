@@ -24,6 +24,8 @@ export const FilterBox = () => {
 
   const [ideasMaterials, setIdeasMaterials] = useState([] as string[]);
   const [ideasCategories, setIdeasCategories] = useState([] as string[]);
+  const [selMaterials, setSelMaterials] = useState([] as string[]);
+  const [selCategories, setSelCategories] = useState([] as string[]);
 
   useEffect(() => {
     const getIdeasMaterialsResponse = async () => {
@@ -46,10 +48,9 @@ export const FilterBox = () => {
 
     getIdeasMaterialsResponse();
     getIdeasCategoriesResponse();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { register, handleSubmit } = useForm<iFilter>({
+  const { register, handleSubmit, getValues } = useForm<iFilter>({
     mode: "onBlur",
     resolver: yupResolver(filterSchema),
     defaultValues: {
@@ -66,10 +67,12 @@ export const FilterBox = () => {
   });
 
   const onSubmit: SubmitHandler<iFilter> = (data) => {
+    let catParams = selCategories.map((cat) => `categories=${cat}`).join("&");
+    let matParams = selMaterials.map((mat) => `materials=${mat}`).join("&");
     let body = [
       `${data.titleFilter ? `title=${data.titleFilter}` : ""}`,
-      `${data.categoriesFilter ? `categories=${data.categoriesFilter}` : ""}`,
-      `${data.materialsFilter ? `materials=${data.materialsFilter}` : ""}`,
+      `${selCategories ? catParams : ""}`,
+      `${selMaterials ? matParams : ""}`,
       `${
         data.difficultySelector
           ? `difficulty_level=${data.difficultySelector}`
@@ -77,9 +80,22 @@ export const FilterBox = () => {
       }`,
       `${data.costFilter ? `maximum_cost=${data.costFilter}` : ""}`,
     ];
-    searchIdeas(body);
+    console.log(searchIdeas(body));
   };
 
+  const onChangeMat = () => {
+    let value = getValues("materialsFilter");
+    if (value !== "" && !selMaterials.includes(value)) {
+      setSelMaterials([...selMaterials, value]);
+    }
+  };
+
+  const onChangeCat = () => {
+    let value = getValues("categoriesFilter");
+    if (value !== "" && !selCategories.includes(value)) {
+      setSelCategories([...selCategories, value]);
+    }
+  };
   return (
     <StyledFilter>
       <h3>Buscar ideias</h3>
@@ -101,6 +117,7 @@ export const FilterBox = () => {
               register={register("categoriesFilter")}
               width="48%"
               disabled={loading}
+              onChange={() => onChangeCat()}
             />
           }
           {
@@ -111,6 +128,7 @@ export const FilterBox = () => {
               register={register("materialsFilter")}
               width="48%"
               disabled={loading}
+              onChange={() => onChangeMat()}
             />
           }
         </section>
@@ -131,6 +149,14 @@ export const FilterBox = () => {
         />
         <Button text="Pesquisar" label="Pesquisar" />
       </StyledForm>
+      <button
+        onClick={() => {
+          console.log(selCategories);
+          console.log(selMaterials);
+        }}
+      >
+        MOSTRAR
+      </button>
     </StyledFilter>
   );
 };

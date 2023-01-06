@@ -11,6 +11,7 @@ interface iSelect {
   width?: string;
   register?: UseFormRegisterReturn;
   disabled?: boolean;
+  onChange?: () => void;
 }
 export const Select = ({
   options,
@@ -19,6 +20,7 @@ export const Select = ({
   width,
   register,
   disabled,
+  onChange,
 }: iSelect) => {
   return (
     <StyledSelect
@@ -27,6 +29,7 @@ export const Select = ({
       width={width}
       {...register}
       disabled={disabled}
+      onBlur={onChange}
     >
       <option value="">{placeholder}</option>
       {options.map((opt) => {

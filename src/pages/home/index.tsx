@@ -1,8 +1,9 @@
-import {StyledContentMain, StyledHeader } from "./styles";
+import { StyledContentMain, StyledHeader } from "./styles";
 import { IdeasList } from "../../components/IdeasList";
 import { useContext, useEffect, useState } from "react";
 import { IdeasContext, iIdeaData } from "../../providers/IdeasProvider";
 import { ContainerStyled } from "../../styles/Container/styles";
+import { FilterBox } from "../../components/FIlter";
 
 export const Home = () => {
   const { searchIdeas } = useContext(IdeasContext);
@@ -14,6 +15,7 @@ export const Home = () => {
       setAllIdeasList(ideasListResponse?.data || []);
     };
     getAllIdeasList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -36,6 +38,7 @@ export const Home = () => {
           <IdeasList ideasList={allIdeasList} />
         </StyledContentMain>
       </ContainerStyled>
+      <FilterBox />
     </div>
   );
 };
