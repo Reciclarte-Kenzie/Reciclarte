@@ -14,7 +14,7 @@ export const RoutesApp = () => {
         {/* <Route path="/profile" element={<Profile />} />  */}
       </Route>
       {/* <Route path="*" element={<Navigate to="/" />}/> */}
-      <Route path="/slider" element={<Slider />} />
+      <Route path="/slider" element={<Slider min={1} max={5} />} />
     </Routes>
   );
 };

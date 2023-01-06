@@ -1,9 +1,13 @@
-import styled from "styled-components";
+import styled, { ThemedStyledFunction } from "styled-components";
 
-export const SliderStyled = styled.input`
-  --value: ${({value}) => value};
-  --min: ${({min}) => min};
-  --max: ${({max}) => max};
+interface iSliderStyled {
+  valueCssVariable: string;
+}
+
+export const SliderStyled = styled.input<iSliderStyled>`
+  --value: ${({ valueCssVariable, value }) => valueCssVariable || value};
+  --min: ${({ min }) => min};
+  --max: ${({ max }) => max};
   --range: calc(var(--max) - var(--min));
   --ratio: calc((var(--value) - var(--min)) / var(--range));
   --sx: calc(0.5 * 2em + var(--ratio) * (100% - 2em));
@@ -35,12 +39,14 @@ export const SliderStyled = styled.input`
   }
 
   &::-webkit-slider-runnable-track {
-    background: linear-gradient(var(--color-orange-80), var(--color-orange-80)) 0 / var(--sx) 100% no-repeat,
+    background: linear-gradient(var(--color-orange-80), var(--color-orange-80))
+        0 / var(--sx) 100% no-repeat,
       var(--color-grey-60);
   }
 
   &:hover::-webkit-slider-runnable-track {
-    background: linear-gradient(var(--color-orange-70), var(--color-orange-70)) 0 / var(--sx) 100% no-repeat,
+    background: linear-gradient(var(--color-orange-70), var(--color-orange-70))
+        0 / var(--sx) 100% no-repeat,
       var(--color-grey-60);
   }
 
@@ -66,12 +72,14 @@ export const SliderStyled = styled.input`
   }
 
   &::-moz-range-track {
-    background: linear-gradient(var(--color-orange-80), var(--color-orange-80)) 0 / var(--sx) 100% no-repeat,
+    background: linear-gradient(var(--color-orange-80), var(--color-orange-80))
+        0 / var(--sx) 100% no-repeat,
       var(--color-grey-60);
   }
 
   &:hover::-moz-range-track {
-    background: linear-gradient(var(--color-orange-70), var(--color-orange-70)) 0 / var(--sx) 100% no-repeat,
+    background: linear-gradient(var(--color-orange-70), var(--color-orange-70))
+        0 / var(--sx) 100% no-repeat,
       var(--color-grey-60);
   }
 
