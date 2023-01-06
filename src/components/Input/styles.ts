@@ -1,10 +1,17 @@
 import styled from "styled-components";
 
-export const StyledInput = styled.input`
+interface iStyledInput {
+  width?: string;
+}
+
+export const StyledInput = styled.input<iStyledInput>`
   outline: none;
   border: 1px solid var(--color-grey-90);
   border-radius: var(--radius-1);
   padding: 0.9rem 1rem;
+  height: 50px;
+  width: ${(props) => (props.width ? props.width : "100%")};
+
   ::placeholder {
     font-weight: 400;
     font-size: var(--font-size-16);
@@ -13,6 +20,14 @@ export const StyledInput = styled.input`
   :focus {
     border: 1px solid var(--color-green-100);
     outline: none;
+  }
+
+  &[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  &[type="number"]::-ms-inner-spin-button {
+    -webkit-appearance: none;
   }
 `;
 
