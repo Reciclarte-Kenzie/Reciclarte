@@ -14,14 +14,9 @@ export const LoginPage = () => {
         <LoginForm />
         <section className="referRegister">
           <h3>Novo por aqui?</h3>
-          {/* <Link to={Register}/> */}
-          <a href="https://linktr.ee/reciclarteg1">Cadastre-se</a>
-          {/* <Link to={HomePage}/> */}
-
+          <Link to="/register">Cadastre-se</Link>
           <h3>Não quer usar sua conta?</h3>
-          <a href="https://linktr.ee/reciclarteg1" className="homePage">
-            Voltar para a home
-          </a>
+          <Link className="homePage" to="/">Voltar para a home</Link>
         </section>
       </StyledLoginPage>
     </StyledLoginContainer>
