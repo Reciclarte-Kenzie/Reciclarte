@@ -25,7 +25,6 @@ export const LoginPage = () => {
           </a>
         </section>
       </StyledLoginPage>
-      <FilterBox />
     </StyledLoginContainer>
   );
 };
