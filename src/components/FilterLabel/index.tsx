@@ -9,12 +9,14 @@ interface iFilterLabelProps {
 export const FilterLabel = ({ title }: iFilterLabelProps) => {
   const [toggleFilterLabel, setToggleFilterLabel] = useState(true);
 
+  const removeFilterLabel = () => setToggleFilterLabel(false);
+
   return (
     <>
       {toggleFilterLabel && (
         <FilterLabelStyled>
           <p>{title}</p>
-          <button aria-label="Remover">
+          <button aria-label="Remover" onClick={removeFilterLabel}>
             <img src={closeIcon} alt="ícone de 'x'" />
           </button>
         </FilterLabelStyled>
