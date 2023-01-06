@@ -8,7 +8,7 @@ export const StyleIdeaCard = styled.li`
   background-color: var(--color-white);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.7rem;
 
   img {
     width: 100%;
@@ -68,7 +68,7 @@ export const StyleIdeaCard = styled.li`
 `;
 
 export const StyledContentButton = styled.div`
-  margin-top: 1rem;
+  margin-top: 1.3rem;
   max-height: 5px;
   flex-direction: row;
   flex-wrap: wrap;
