@@ -1,5 +1,4 @@
 // import { Link } from "react-router-dom";
-import { FilterBox } from "../../components/FIlter";
 import { LoginForm } from "../../components/Forms/LoginForm";
 import { BlackNameLogo } from "../../components/Logo";
 import { StyledLoginContainer, StyledLoginPage } from "./styles";
@@ -28,4 +27,3 @@ export const LoginPage = () => {
     </StyledLoginContainer>
   );
 };
-
