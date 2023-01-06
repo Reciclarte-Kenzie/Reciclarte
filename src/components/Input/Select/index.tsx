@@ -10,6 +10,7 @@ interface iSelect {
   id: string;
   width?: string;
   register?: UseFormRegisterReturn;
+  disabled?: boolean;
 }
 export const Select = ({
   options,
@@ -17,9 +18,16 @@ export const Select = ({
   id,
   width,
   register,
+  disabled,
 }: iSelect) => {
   return (
-    <StyledSelect name={id} id={id} width={width} {...register}>
+    <StyledSelect
+      name={id}
+      id={id}
+      width={width}
+      {...register}
+      disabled={disabled}
+    >
       <option value="">{placeholder}</option>
       {options.map((opt) => {
         return (

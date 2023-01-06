@@ -1,11 +1,12 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IdeasContext } from "../../providers/IdeasProvider";
 import { Button } from "../Button";
 import { StyledForm } from "../Forms/styles";
 import { Input } from "../Input";
 import { Select } from "../Input/Select";
+import { Slider } from "../Slider";
 import { filterSchema } from "./filterSchema";
 import { StyledFilter } from "./styles";
 
@@ -18,16 +19,35 @@ interface iFilter {
 }
 
 export const FilterBox = () => {
-  const { getIdeasMaterials, getIdeasCategories, searchIdeas } =
+  const { getIdeasMaterials, getIdeasCategories, searchIdeas, loading } =
     useContext(IdeasContext);
-  //   let categoriesGroup;
-  //   let materialsGroup;
-  //   useEffect(() => {
-  //   materialsGroup = getIdeasMaterials();
-  // categoriesGroup = getIdeasCategories();
-  //     console.log(materialsGroup);
-  //     // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   }, []);
+
+  const [ideasMaterials, setIdeasMaterials] = useState([] as string[]);
+  const [ideasCategories, setIdeasCategories] = useState([] as string[]);
+
+  useEffect(() => {
+    const getIdeasMaterialsResponse = async () => {
+      const ideasMaterialsResponse = await getIdeasMaterials();
+      setIdeasMaterials(
+        ideasMaterialsResponse?.data || [
+          "Não foi possível recuperar os materiais",
+        ]
+      );
+    };
+
+    const getIdeasCategoriesResponse = async () => {
+      const ideasCategoriesResponse = await getIdeasCategories();
+      setIdeasCategories(
+        ideasCategoriesResponse?.data || [
+          "Não foi possível recuperar as categorias",
+        ]
+      );
+    };
+
+    getIdeasMaterialsResponse();
+    getIdeasCategoriesResponse();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const { register, handleSubmit } = useForm<iFilter>({
     mode: "onBlur",
@@ -37,15 +57,11 @@ export const FilterBox = () => {
     },
   });
 
-  let materialsTreated = [
-    "Móveis",
-    "Rústico",
-    "Bolsa",
-    "Reciclagem",
-    "Roupa",
-    "Jarro",
-    "Fofo",
-  ].map((mat) => {
+  let categoriesTreated = ideasCategories.map((mat) => {
+    return { value: mat, text: mat };
+  });
+
+  let materialsTreated = ideasMaterials.map((mat) => {
     return { value: mat, text: mat };
   });
 
@@ -61,7 +77,6 @@ export const FilterBox = () => {
       }`,
       `${data.costFilter ? `maximum_cost=${data.costFilter}` : ""}`,
     ];
-    console.log(body);
     console.log(searchIdeas(body));
   };
 
@@ -75,15 +90,17 @@ export const FilterBox = () => {
           label=""
           id="titleFilter"
           register={register("titleFilter")}
+          disabled={loading}
         />
         <section className="select">
           {
             <Select
               id="categoriesFilter"
               placeholder="Categorias"
-              options={materialsTreated}
+              options={categoriesTreated}
               register={register("categoriesFilter")}
               width="48%"
+              disabled={loading}
             />
           }
           {
@@ -93,16 +110,16 @@ export const FilterBox = () => {
               options={materialsTreated}
               register={register("materialsFilter")}
               width="48%"
+              disabled={loading}
             />
           }
         </section>
-        <Input
-          type="range"
-          id="difficultySelector"
-          label={`Nível de dificuldade`}
-          placeholder=""
-          range={{ min: 1, max: 5, step: 1 }}
+        <Slider
+          min={1}
+          max={5}
           register={register("difficultySelector")}
+          disabled={loading}
+          defaultValue={3}
         />
         <Input
           type="number"
@@ -110,7 +127,7 @@ export const FilterBox = () => {
           label="Custo estimado em reais"
           id="costFilter"
           register={register("costFilter")}
-          range={{ min: 10, max: 500 }}
+          disabled={loading}
         />
         <Button text="Pesquisar" label="Pesquisar" />
       </StyledForm>

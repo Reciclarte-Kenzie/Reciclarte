@@ -35,7 +35,7 @@ export const IdeasContext = createContext<iIdeasContextProvider>(
 );
 
 export const IdeasProvider = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const headers = {
     headers: {
