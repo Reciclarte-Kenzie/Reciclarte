@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const SliderStyled = styled.input`
+  --value: ${({value}) => value};
+  --min: ${({min}) => min};
+  --max: ${({max}) => max};
   --range: calc(var(--max) - var(--min));
   --ratio: calc((var(--value) - var(--min)) / var(--range));
   --sx: calc(0.5 * 2em + var(--ratio) * (100% - 2em));
