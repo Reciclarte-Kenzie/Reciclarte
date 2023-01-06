@@ -3,8 +3,8 @@ import { iSliderProps } from "..";
 import { SliderInputStyled } from "./styles";
 
 export interface iSliderInputProps extends iSliderProps {
-  valueCssVariable: string;
-  setvalueCssVariable: React.Dispatch<React.SetStateAction<string>>;
+  valueCssVariable: number;
+  setvalueCssVariable: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const SliderInput = ({
@@ -20,7 +20,7 @@ export const SliderInput = ({
     const inputSlider: HTMLInputElement = event.target as HTMLInputElement;
     const inputSliderValue = inputSlider.value;
 
-    setvalueCssVariable(inputSliderValue);
+    setvalueCssVariable(parseInt(inputSliderValue));
   };
 
   return (

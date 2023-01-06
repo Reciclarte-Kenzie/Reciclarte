@@ -18,7 +18,8 @@ export const Slider = ({
   min,
   max,
 }: iSliderProps) => {
-  const [valueCssVariable, setvalueCssVariable] = useState(defaultValue + "");
+  const averageDifficultyLevel = parseInt(max / 2 + "");
+  const [valueCssVariable, setvalueCssVariable] = useState(defaultValue || averageDifficultyLevel);
 
   return (
     <SliderStyled>
@@ -28,7 +29,7 @@ export const Slider = ({
       </div>
       <SliderInput
         disabled={disabled}
-        defaultValue={defaultValue}
+        defaultValue={defaultValue || averageDifficultyLevel}
         min={min}
         max={max}
         register={register}

@@ -1,7 +1,7 @@
-import styled, { ThemedStyledFunction } from "styled-components";
+import styled from "styled-components";
 
 interface iSliderInputStyled {
-  valueCssVariable: string;
+  valueCssVariable: number;
 }
 
 export const SliderInputStyled = styled.input<iSliderInputStyled>`
