@@ -5,7 +5,7 @@ export const FilterLabelStyled = styled.article`
   background-color: var(--color-grey-90);
   border-radius: var(--radius-1);
   justify-content: space-between;
-  padding: 5px 7px;
+  padding: 0.313rem 0.438rem;
   
   p, button {
     color: var(--color-white);
