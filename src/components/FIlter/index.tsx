@@ -77,7 +77,7 @@ export const FilterBox = () => {
       }`,
       `${data.costFilter ? `maximum_cost=${data.costFilter}` : ""}`,
     ];
-    console.log(searchIdeas(body));
+    searchIdeas(body);
   };
 
   return (
