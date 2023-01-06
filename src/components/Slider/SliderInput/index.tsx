@@ -1,13 +1,8 @@
-import { FormEvent, useState } from "react";
-import { UseFormRegisterReturn } from "react-hook-form";
+import { FormEvent } from "react";
+import { iSliderProps } from "..";
 import { SliderInputStyled } from "./styles";
 
-export interface iSliderInputProps {
-  register?: UseFormRegisterReturn;
-  disabled?: boolean;
-  value?: number;
-  min: number;
-  max: number;
+export interface iSliderInputProps extends iSliderProps {
   valueCssVariable: string;
   setvalueCssVariable: React.Dispatch<React.SetStateAction<string>>;
 }
