@@ -103,7 +103,7 @@ export const IdeasProvider = () => {
 
       let ideasRequestRoute = "/ideas";
 
-      queryParams.forEach((queryParam, index) => {
+      queryParams?.forEach((queryParam, index) => {
         if (index == 0) {
           ideasRequestRoute += "?";
         } else {
