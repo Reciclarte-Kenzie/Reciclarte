@@ -1,6 +1,5 @@
 import { FilterLabelStyled } from "./styles";
-import { useState } from "react";
-import closeIcon from "../../assets/imgs/close-icon-nunito.svg";
+import closeIcon from "../../../assets/imgs/close-icon-nunito.svg";
 import { iFilterLabelListProps } from "..";
 
 interface iFilterLabelProps extends iFilterLabelListProps {
@@ -14,28 +13,24 @@ export const FilterLabel = ({
   setLabelList,
   addedLabelIndex,
 }: iFilterLabelProps) => {
-  const [toggleFilterLabel, setToggleFilterLabel] = useState(true);
-
   const removeFilterLabel = () => {
-    setToggleFilterLabel(false);
-
     const labelListWithoutRemovedLabel = labelList.filter(
       (_, index) => index !== addedLabelIndex
     );
 
-    setLabelList(labelListWithoutRemovedLabel);
+    setLabelList([...labelListWithoutRemovedLabel]);
   };
 
   return (
     <>
-      {toggleFilterLabel && (
+      {
         <FilterLabelStyled>
           <p>{title}</p>
           <button aria-label="Remover" onClick={removeFilterLabel}>
             <img src={closeIcon} alt="ícone de 'x'" />
           </button>
         </FilterLabelStyled>
-      )}
+      }
     </>
   );
 };

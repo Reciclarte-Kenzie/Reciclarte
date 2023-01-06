@@ -1,4 +1,3 @@
-import { SetStateAction } from "react";
 import { FilterLabel } from "./FilterLabel";
 import { FilterLabelListStyled } from "./styles";
 
@@ -15,6 +14,7 @@ export const FilterLabelList = ({
     <FilterLabelListStyled>
       {labelList.map((label, index) => (
         <FilterLabel
+          key={index}
           title={label}
           addedLabelIndex={index}
           labelList={labelList}
