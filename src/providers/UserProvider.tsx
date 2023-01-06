@@ -24,7 +24,7 @@ export interface iRegisterData {
   password: string;
   name: string;
   bio: string;
-  profilePic: string;
+  profile_pic: string;
   id: number;
 }
 

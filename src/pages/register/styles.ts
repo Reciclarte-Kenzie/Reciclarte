@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const StyledRegisterPage = styled.main`
     background-color: var(--color-grey-50);
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,8 +29,10 @@ export const StyledRegisterPage = styled.main`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 22.8125rem;
+        width: 23.2125rem;
         max-width: 100%;
+        gap: 1rem;
+        margin-bottom:1rem;
     }
 
     & > div button:nth-child(1){
@@ -56,7 +58,7 @@ export const StyledRegisterPage = styled.main`
     }
 
     & > div button:hover{
-        background-color:var(--color-green-90)
+        background-color: var(--color-orange-70);
     }
 
     @media (min-width: 700px) {

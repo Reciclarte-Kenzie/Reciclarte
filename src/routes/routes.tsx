@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { Slider } from "../components/Slider";
 import { LoginPage } from "../pages/login";
 import { RegisterPage } from "../pages/register";
 import { IdeasProvider } from "../providers/IdeasProvider";
