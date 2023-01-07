@@ -8,4 +8,5 @@ export interface iFieldProps {
   register?: UseFormRegisterReturn;
   disabled?: boolean;
   textarea?: boolean;
+  className?: string;
 }

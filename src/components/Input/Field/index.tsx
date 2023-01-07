@@ -7,6 +7,7 @@ export const Field = ({
   register,
   disabled,
   textarea,
+  className
 }: iFieldProps) => {
   return (
     <>
@@ -18,6 +19,7 @@ export const Field = ({
           aria-label={placeholder}
           {...register}
           disabled={disabled}
+          className={className}
         />
       ) : (
         <input
@@ -28,6 +30,7 @@ export const Field = ({
           aria-label={placeholder}
           {...register}
           disabled={disabled}
+          className={className}
         />
       )}
     </>

@@ -38,14 +38,6 @@ export const LoginForm = () => {
         disabled={loading}
         register={register("password")}
       />
-      <Input
-        placeholder="Insira sua senha"
-        id="password"
-        label="Senha"
-        disabled={loading}
-        register={register("password")}
-        textarea={true}
-      />
       {errors.password?.message && <p>{errors.password.message}</p>}
       <Button text="Logar" label="Botão de login" disabled={loading} />
     </StyledForm>
