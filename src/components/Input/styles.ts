@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const FieldsetStyled = styled.fieldset`
+  border: none;
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
+  gap: 2vh;
+  width: 100%;
 
   input, textarea {
     border: 1px solid var(--color-grey-90);
