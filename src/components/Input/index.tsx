@@ -1,20 +1,6 @@
-import React from "react";
-import { UseFormRegisterReturn } from "react-hook-form";
-import { StyledInput, StyledLabel } from "./styles";
-
-interface iInput extends React.HTMLProps<HTMLInputElement> {
-  type: string;
-  placeholder: string;
-  label: string;
-  id: string;
-  register?: UseFormRegisterReturn;
-  disabled?: boolean;
-  range?: {
-    min: number;
-    max: number;
-    step?: number;
-  };
-}
+import { Field } from "./Field";
+import { iFieldProps } from "./Field/iField";
+import { FieldsetStyled } from "./styles";
 
 export const Input = ({
   type = "text",
@@ -23,23 +9,22 @@ export const Input = ({
   id,
   register,
   disabled,
-  range,
-}: iInput) => {
+  textarea,
+}: iFieldProps) => {
   return (
-    <fieldset>
-      <StyledLabel htmlFor={id}>{label}</StyledLabel>
-      <StyledInput
+    <FieldsetStyled>
+      <label htmlFor={id}>{label}</label>
+      <Field
         type={type}
         placeholder={placeholder}
+        label={label}
         id={id}
         name={id}
         aria-label={placeholder}
         {...register}
         disabled={disabled}
-        min={range?.min}
-        max={range?.max}
-        step={range?.step}
+        textarea={textarea}
       />
-    </fieldset>
+    </FieldsetStyled>
   );
 };

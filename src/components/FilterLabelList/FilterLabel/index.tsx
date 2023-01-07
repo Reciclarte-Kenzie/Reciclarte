@@ -26,7 +26,7 @@ export const FilterLabel = ({
       {
         <FilterLabelStyled>
           <p>{title}</p>
-          <button aria-label="Remover" onClick={removeFilterLabel}>
+          <button type="button" aria-label="Remover" onClick={removeFilterLabel}>
             <img src={closeIcon} alt="ícone de 'x'" />
           </button>
         </FilterLabelStyled>
