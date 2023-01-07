@@ -16,16 +16,6 @@ export const StyledForm = styled.form`
     padding-bottom: 20px;
   }
 
-  fieldset {
-    border: none;
-    display: flex;
-    flex-direction: column;
-    gap: 2vh;
-    padding: 0px;
-    margin: 0;
-    width: 100%;
-  }
-
   button {
     width: 100%;
   }

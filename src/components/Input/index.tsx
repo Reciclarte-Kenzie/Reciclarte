@@ -1,5 +1,6 @@
+import { Field } from "./Field";
 import { iFieldProps } from "./Field/iField";
-import { StyledInput, StyledLabel } from "./styles";
+import { FieldsetStyled } from "./styles";
 
 export const Input = ({
   type = "text",
@@ -11,9 +12,9 @@ export const Input = ({
   textarea,
 }: iFieldProps) => {
   return (
-    <fieldset>
-      <StyledLabel htmlFor={id}>{label}</StyledLabel>
-      <StyledInput
+    <FieldsetStyled>
+      <label htmlFor={id}>{label}</label>
+      <Field
         type={type}
         placeholder={placeholder}
         label={label}
@@ -24,6 +25,6 @@ export const Input = ({
         disabled={disabled}
         textarea={textarea}
       />
-    </fieldset>
+    </FieldsetStyled>
   );
 };
