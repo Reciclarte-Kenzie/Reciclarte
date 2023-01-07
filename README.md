@@ -133,6 +133,6 @@ Tais materiais podem ser comumente reutilizados por meio do artesanato, no entan
 </a>
  
 <a href="https://github.com/CarolinaOlivaCruz">
-  <img width="120px" src="https://avatars.githubusercontent.com/u/37356058?v=4">
+  <img width="120px" src="https://avatars.githubusercontent.com/u/78989471?v=4">
 </a>
 
