@@ -7,7 +7,7 @@ interface iButtonProps
     HTMLButtonElement
   > {
   text: string | React.ReactNode;
-  type?: "submit" | "button" | "reset" | undefined;
+  type?: "submit" | "button" | "reset";
   className?: string;
   label: string;
   action?: () => void;

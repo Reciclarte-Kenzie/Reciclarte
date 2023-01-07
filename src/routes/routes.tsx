@@ -2,6 +2,7 @@ import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { ModalCreateIdea } from "../components/Modals/ModalCreateIdea";
 import { LoginPage } from "../pages/login";
+import Profile from "../pages/profile";
 import { RegisterPage } from "../pages/register";
 import { IdeasProvider } from "../providers/IdeasProvider";
 
@@ -15,7 +16,7 @@ export const RoutesApp = () => {
         {/* <Route path="/" element={<Home />} /> */}
         {/* <Route path="/profile" element={<Profile />} /> */}
       </Route>
-      <Route path="*" element={<Navigate to="/" />}/>
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };
