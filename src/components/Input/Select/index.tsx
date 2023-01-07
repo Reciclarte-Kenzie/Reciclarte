@@ -1,7 +1,8 @@
+import React from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import { StyledSelect } from "./style";
 
-interface iSelect {
+interface iSelect extends React.HTMLProps<HTMLSelectElement> {
   options: {
     value: string;
     text: string;
@@ -29,7 +30,7 @@ export const Select = ({
       width={width}
       {...register}
       disabled={disabled}
-      onInput={onChange}
+      onBlur={onChange}
     >
       <option value="">{placeholder}</option>
       {options.map((opt) => {

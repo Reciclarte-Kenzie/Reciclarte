@@ -73,8 +73,8 @@ export const FilterBox = () => {
     let matParams = selMaterials.map((mat) => `materials=${mat}`).join("&");
     let body = [
       `${data.titleFilter ? `title=${data.titleFilter}` : ""}`,
-      `${selCategories ? catParams : ""}`,
-      `${selMaterials ? matParams : ""}`,
+      `${selCategories ? catParams.replaceAll(" ", "%20") : ""}`,
+      `${selMaterials ? matParams.replaceAll(" ", "%20") : ""}`,
       `${
         data.difficultySelector
           ? `difficulty_level=${data.difficultySelector}`
@@ -82,6 +82,7 @@ export const FilterBox = () => {
       }`,
       `${data.costFilter ? `maximum_cost=${data.costFilter}` : ""}`,
     ];
+    console.log(body);
     searchIdeas(body);
   };
 
@@ -119,7 +120,7 @@ export const FilterBox = () => {
                 options={categoriesTreated}
                 register={register("categoriesFilter")}
                 disabled={loading}
-                onChange={() => onChangeCat()}
+                onChange={onChangeCat}
               />
               {selCategories.length > 0 && (
                 <FilterLabelList

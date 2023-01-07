@@ -58,6 +58,23 @@ export const StyledFilter = styled.aside<iFilter>`
     height: ${({ catList, matList }) =>
       catList?.length > 2 || matList.length > 2 ? "58px" : "27px"};
     overflow: auto;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-orange-80) var(--color-white);
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--color-white);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-orange-80);
+      border-radius: 8px;
+      border: 2px solid var(--color-orange-80);
+    }
   }
 
   .select ul li {
