@@ -1,14 +1,5 @@
-import { UseFormRegisterReturn } from "react-hook-form";
+import { iFieldProps } from "./Field/iField";
 import { StyledInput, StyledLabel } from "./styles";
-
-interface iInput {
-  type: string;
-  placeholder: string;
-  label: string;
-  id: string;
-  register?: UseFormRegisterReturn;
-  disabled?: boolean;
-}
 
 export const Input = ({
   type = "text",
@@ -17,18 +8,21 @@ export const Input = ({
   id,
   register,
   disabled,
-}: iInput) => {
+  textarea,
+}: iFieldProps) => {
   return (
     <fieldset>
       <StyledLabel htmlFor={id}>{label}</StyledLabel>
       <StyledInput
         type={type}
         placeholder={placeholder}
+        label={label}
         id={id}
         name={id}
         aria-label={placeholder}
         {...register}
         disabled={disabled}
+        textarea={textarea}
       />
     </fieldset>
   );
