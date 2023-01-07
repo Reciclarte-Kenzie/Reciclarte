@@ -1,7 +1,7 @@
 import { UseFormRegisterReturn } from "react-hook-form";
 
 export interface iFieldProps {
-  type: string;
+  type?: string;
   placeholder: string;
   label: string;
   id: string;
