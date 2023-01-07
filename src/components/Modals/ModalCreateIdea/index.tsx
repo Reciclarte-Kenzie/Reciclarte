@@ -13,7 +13,7 @@ const ModalCreateIdeaBody = () => {
     <ModalCreateIdeaBodyStyled>
       <section>
         <Input placeholder="Insira o título da ideia" label="Título" id="title" />
-        <Input placeholder="Insira o passo a passo" label="Passo a passo" id="steps" />
+        <Input placeholder="Insira o passo a passo" label="Passo a passo" id="steps" textarea />
         <Input type="number" placeholder="R$ 0.00" label="Custo estimado" id="estimatedCost" />
       </section>
       <section>

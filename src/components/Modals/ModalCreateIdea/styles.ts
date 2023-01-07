@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ModalCreateIdeaBodyStyled = styled.form`
   display: flex;
-  gap: 30px;
+  gap: 1.875rem;
   width: 100%;
 
   section {
@@ -16,6 +16,11 @@ export const ModalCreateIdeaBodyStyled = styled.form`
   fieldset, section {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.625rem;
+  }
+
+  textarea {
+    height: 115px;
+    resize: none;
   }
 `
