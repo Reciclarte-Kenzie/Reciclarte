@@ -24,4 +24,10 @@ export const FieldsetStyled = styled.fieldset`
       outline: none;
     }
   `}
+
+  label {
+    font-weight: 400;
+    font-size: var(--font-size-18);
+    color: var(--color-green-100);
+  }
 `;
