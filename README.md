@@ -1,5 +1,5 @@
 <div align="center">
-<img alt="Ecommerce" src="https://github.com/JeffersonLuizCruz/api-restful-gestaodepedidos/blob/main/src/main/resources/tamplate/logo3.png" />
+<img alt="Artesanato" src="https://github.com/Reciclarte-Kenzie/reciclarte/blob/develop/src/assets/imgs/logoHeader.png" />
 </div>
 
 <div align="center">
@@ -8,8 +8,6 @@
 </h3>
 <p>Uma aplicação web onde é possível criar e buscar ideias de projeto DIY (Do it Yourself) a partir dos materiais recicláveis.</p>
 </div>
-
-![GitHub repo size](https://img.shields.io/github/repo-size/JeffersonLuizCruz/financial)  ![Packagist License](https://img.shields.io/packagist/l/JeffersonLuizCruz/financial)  ![GitHub top language](https://img.shields.io/github/languages/top/JeffersonLuizCruz/financial)  ![GitHub language count](https://img.shields.io/github/languages/count/JeffersonLuizCruz/financial?label=Linguagem%20de%20Programa%C3%A7%C3%A3o)  ![GitHub followers](https://img.shields.io/github/followers/JeffersonLuizCruz?style=social)
 
 <p align="center">
   <a href="#-sobre">Problema</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
