@@ -12,7 +12,8 @@ interface iSelect extends React.HTMLProps<HTMLSelectElement> {
   width?: string;
   register?: UseFormRegisterReturn;
   disabled?: boolean;
-  onChange?: () => void;
+  className?: string;
+  label: string;
 }
 export const Select = ({
   options,
@@ -21,7 +22,8 @@ export const Select = ({
   width,
   register,
   disabled,
-  onChange,
+  className,
+  label,
 }: iSelect) => {
   return (
     <StyledSelect
@@ -30,12 +32,17 @@ export const Select = ({
       width={width}
       {...register}
       disabled={disabled}
-      onBlur={onChange}
+      className={className}
+      aria-label={label}
     >
       <option value="">{placeholder}</option>
       {options.map((opt) => {
         return (
-          <option value={opt.value} key={opt.value}>
+          <option
+            value={opt.value}
+            key={opt.value}
+            aria-label={`Opção: ${opt.text}`}
+          >
             {opt.text}
           </option>
         );

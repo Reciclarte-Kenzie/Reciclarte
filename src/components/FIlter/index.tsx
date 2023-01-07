@@ -52,7 +52,29 @@ export const FilterBox = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { register, handleSubmit, getValues } = useForm<iFilter>({
+  useEffect(() => {
+    document.addEventListener("input", (event) => {
+      const eventTargetElement = event.target as HTMLSelectElement;
+
+      if (eventTargetElement.name === "categoriesFilter") {
+        let value = eventTargetElement.value;
+        return value !== "" &&
+          !selCategories.includes(value) &&
+          !value.includes("Não")
+          ? setSelCategories([...selCategories, value])
+          : setSelCategories([...selCategories]);
+      } else if (eventTargetElement.name === "materialsFilter") {
+        let value = eventTargetElement.value;
+        return value !== "" &&
+          !selMaterials.includes(value) &&
+          !value.includes("Não")
+          ? setSelMaterials([...selMaterials, value])
+          : setSelMaterials([...selMaterials]);
+      }
+    });
+  }, [selCategories, selMaterials]);
+
+  const { register, handleSubmit } = useForm<iFilter>({
     mode: "onBlur",
     resolver: yupResolver(filterSchema),
     defaultValues: {
@@ -82,23 +104,9 @@ export const FilterBox = () => {
       }`,
       `${data.costFilter ? `maximum_cost=${data.costFilter}` : ""}`,
     ];
-    console.log(body);
     searchIdeas(body);
   };
 
-  const onChangeMat = () => {
-    let value = getValues("materialsFilter");
-    if (value !== "" && !selMaterials.includes(value)) {
-      setSelMaterials([...selMaterials, value]);
-    }
-  };
-
-  const onChangeCat = () => {
-    let value = getValues("categoriesFilter");
-    if (value !== "" && !selCategories.includes(value)) {
-      setSelCategories([...selCategories, value]);
-    }
-  };
   return (
     <StyledFilter catList={selCategories} matList={selMaterials}>
       <h3>Buscar ideias</h3>
@@ -120,7 +128,8 @@ export const FilterBox = () => {
                 options={categoriesTreated}
                 register={register("categoriesFilter")}
                 disabled={loading}
-                onChange={onChangeCat}
+                className="categories"
+                label="Seleção de categorias"
               />
               {selCategories.length > 0 && (
                 <FilterLabelList
@@ -138,7 +147,8 @@ export const FilterBox = () => {
                 options={materialsTreated}
                 register={register("materialsFilter")}
                 disabled={loading}
-                onChange={() => onChangeMat()}
+                className="materials"
+                label="Seleção de materiais"
               />
 
               {selMaterials.length > 0 && (

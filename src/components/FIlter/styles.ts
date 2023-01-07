@@ -43,51 +43,48 @@ export const StyledFilter = styled.aside<iFilter>`
     display: flex;
     justify-content: space-between;
     width: 100%;
-  }
 
-  .select section {
-    width: 48%;
-    display: flex;
-    flex-direction: column;
-    gap: 2vh;
-  }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      height: ${({ catList, matList }) =>
+        catList?.length > 2 || matList.length > 2 ? "58px" : "27px"};
+      overflow: auto;
 
-  .select ul {
-    display: flex;
-    flex-wrap: wrap;
-    height: ${({ catList, matList }) =>
-      catList?.length > 2 || matList.length > 2 ? "58px" : "27px"};
-    overflow: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-orange-80) var(--color-white);
 
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-orange-80) var(--color-white);
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
 
-    &::-webkit-scrollbar {
-      width: 8px;
+      &::-webkit-scrollbar-track {
+        background: var(--color-white);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--color-orange-80);
+        border-radius: 8px;
+        border: 2px solid var(--color-orange-80);
+      }
+
+      li {
+        gap: 0.25rem;
+        height: 26.5px;
+      }
+
+      button,
+      button img {
+        height: 20px;
+        width: 10px;
+      }
     }
 
-    &::-webkit-scrollbar-track {
-      background: var(--color-white);
+    section {
+      width: 48%;
+      display: flex;
+      flex-direction: column;
+      gap: 2vh;
     }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--color-orange-80);
-      border-radius: 8px;
-      border: 2px solid var(--color-orange-80);
-    }
-  }
-
-  .select ul li {
-    gap: 0.25rem;
-    height: 26.5px;
-  }
-
-  .select ul button {
-    height: 20px;
-    width: 10px;
-  }
-  .select ul button img {
-    height: 20px;
-    width: 10px;
   }
 `;
