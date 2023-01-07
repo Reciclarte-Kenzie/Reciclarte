@@ -19,9 +19,8 @@ export const Input = ({
         placeholder={placeholder}
         label={label}
         id={id}
-        name={id}
         aria-label={placeholder}
-        {...register}
+        register={register}
         disabled={disabled}
         textarea={textarea}
       />
