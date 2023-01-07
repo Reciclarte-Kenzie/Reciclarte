@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Field } from "./Field";
 
-export const StyledInput = styled.input`
+export const StyledInput = styled(Field)`
   outline: none;
   border: 1px solid var(--color-grey-90);
   border-radius: var(--radius-1);

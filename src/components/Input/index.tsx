@@ -17,11 +17,13 @@ export const Input = ({
       <StyledInput
         type={type}
         placeholder={placeholder}
+        label={label}
         id={id}
         name={id}
         aria-label={placeholder}
         {...register}
         disabled={disabled}
+        textarea={textarea}
       />
     </fieldset>
   );
