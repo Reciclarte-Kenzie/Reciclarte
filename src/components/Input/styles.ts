@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import { Field } from "./Field";
 
 export const FieldsetStyled = styled.fieldset`
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
 
-  ${styled(Field)`
+  input, textarea {
     border: 1px solid var(--color-grey-90);
     border-radius: var(--radius-1);
     font-weight: 400;
@@ -23,7 +22,7 @@ export const FieldsetStyled = styled.fieldset`
       border: 1px solid var(--color-green-100);
       outline: none;
     }
-  `}
+  }
 
   label {
     font-weight: 400;
