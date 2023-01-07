@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IdeasContext } from "../../providers/IdeasProvider";
 import { Button } from "../Button";
+import { FilterLabelList } from "../FilterLabelList";
 import { StyledForm } from "../Forms/styles";
 import { Input } from "../Input";
 import { Select } from "../Input/Select";
@@ -48,6 +49,7 @@ export const FilterBox = () => {
 
     getIdeasMaterialsResponse();
     getIdeasCategoriesResponse();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { register, handleSubmit, getValues } = useForm<iFilter>({
@@ -97,7 +99,7 @@ export const FilterBox = () => {
     }
   };
   return (
-    <StyledFilter>
+    <StyledFilter catList={selCategories} matList={selMaterials}>
       <h3>Buscar ideias</h3>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <Input
@@ -110,26 +112,41 @@ export const FilterBox = () => {
         />
         <section className="select">
           {
-            <Select
-              id="categoriesFilter"
-              placeholder="Categorias"
-              options={categoriesTreated}
-              register={register("categoriesFilter")}
-              width="48%"
-              disabled={loading}
-              onChange={() => onChangeCat()}
-            />
+            <section>
+              <Select
+                id="categoriesFilter"
+                placeholder="Categorias"
+                options={categoriesTreated}
+                register={register("categoriesFilter")}
+                disabled={loading}
+                onChange={() => onChangeCat()}
+              />
+              {selCategories.length > 0 && (
+                <FilterLabelList
+                  labelList={selCategories}
+                  setLabelList={setSelCategories}
+                />
+              )}
+            </section>
           }
           {
-            <Select
-              id="materialsFilter"
-              placeholder="Materiais"
-              options={materialsTreated}
-              register={register("materialsFilter")}
-              width="48%"
-              disabled={loading}
-              onChange={() => onChangeMat()}
-            />
+            <section>
+              <Select
+                id="materialsFilter"
+                placeholder="Materiais"
+                options={materialsTreated}
+                register={register("materialsFilter")}
+                disabled={loading}
+                onChange={() => onChangeMat()}
+              />
+
+              {selMaterials.length > 0 && (
+                <FilterLabelList
+                  labelList={selMaterials}
+                  setLabelList={setSelMaterials}
+                />
+              )}
+            </section>
           }
         </section>
         <Slider

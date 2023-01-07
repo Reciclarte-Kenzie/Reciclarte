@@ -29,7 +29,7 @@ export const Select = ({
       width={width}
       {...register}
       disabled={disabled}
-      onBlur={onChange}
+      onInput={onChange}
     >
       <option value="">{placeholder}</option>
       {options.map((opt) => {
