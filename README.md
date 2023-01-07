@@ -44,3 +44,6 @@ Tais materiais podem ser comumente reutilizados por meio do artesanato, no entan
 - [x] JSON-Server-Auth
 - [x] Typescript
 
+## Pessoas contribuidoras:
+[<img src="https://avatars.githubusercontent.com/u/109801407?v=4" width=115>](https://github.com/freitassneto)   [<img src="https://avatars.githubusercontent.com/u/108496850?v=4" width=115>](https://github.com/CToH10)   [<img src="https://avatars.githubusercontent.com/u/99164019?v=4" width=115>](https://github.com/Danielle-Luz)   [<img src="https://avatars.githubusercontent.com/u/109983481?v=4" width=115>](https://github.com/ThiagoBettinRamos)   [<img src="https://avatars.githubusercontent.com/u/1772190?v=4" width=115>](https://github.com/tulio-albuquerque)   [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115>](https://github.com/CarolinaOlivaCruz)
+
