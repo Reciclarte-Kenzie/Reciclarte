@@ -73,7 +73,7 @@ export const ModalBaseStyled = styled.div`
     border-radius: var(--radius-1) var(--radius-1) 0 0;
     display: flex;
     justify-content: space-between;
-    padding: 1rem 1.25rem;
+    padding: 0.6rem 1.25rem;
     width: 100%;
 
     h2 {
@@ -86,7 +86,7 @@ export const ModalBaseStyled = styled.div`
   main {
     max-height: 560px;
     overflow-y: auto;
-    padding: 2.5rem 1.25rem;
+    padding: 2.2rem 1.25rem;
   }
 
   @media (min-width: 530px) {

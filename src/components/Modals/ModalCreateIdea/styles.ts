@@ -2,8 +2,14 @@ import styled from "styled-components";
 
 export const ModalCreateIdeaBodyStyled = styled.form`
   display: flex;
+  flex-direction: column;
   gap: 1.875rem;
   width: 100%;
+  
+  article {
+    display: flex;
+    gap: 1.875rem;
+  }
 
   section {
     flex-grow: 1;
@@ -22,5 +28,9 @@ export const ModalCreateIdeaBodyStyled = styled.form`
   textarea {
     height: 115px;
     resize: none;
+  }
+
+  button {
+    margin: 0 auto;
   }
 `
