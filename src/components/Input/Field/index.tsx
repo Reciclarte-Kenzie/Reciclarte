@@ -7,7 +7,7 @@ export const Field = ({
   register,
   disabled,
   textarea,
-  className
+  className,
 }: iFieldProps) => {
   return (
     <>
