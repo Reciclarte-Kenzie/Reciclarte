@@ -40,4 +40,9 @@ export const ModalCreateIdeaBodyStyled = styled.form`
     object-fit: cover;
     width: 69px;
   }
+
+  .added-images ul {
+    display: flex;
+    gap: 0.375rem;
+  }
 `;

@@ -136,9 +136,13 @@ export const ModalCreateIdeaBody = () => {
               label="Foto"
               id="img"
             />
-            {addedImages.map((addedImage) => (
-              <img src={addedImage} alt="" />
-            ))}
+            <ul>
+              {addedImages.map((addedImage) => (
+                <li>
+                  <img src={addedImage} alt="" />
+                </li>
+              ))}
+            </ul>
           </article>
         </section>
       </article>
