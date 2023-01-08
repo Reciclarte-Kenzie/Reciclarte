@@ -137,7 +137,7 @@ export const ModalCreateIdeaBody = () => {
               id="img"
             />
             {addedImages.map((addedImage) => (
-              <img className="added-image" src={addedImage} alt="" />
+              <img src={addedImage} alt="" />
             ))}
           </article>
         </section>

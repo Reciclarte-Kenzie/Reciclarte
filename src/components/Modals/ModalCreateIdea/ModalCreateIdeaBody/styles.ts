@@ -6,7 +6,7 @@ export const ModalCreateIdeaBodyStyled = styled.form`
   gap: 1.875rem;
   width: 100%;
 
-  article {
+  article:nth-child(1) {
     display: flex;
     flex-direction: column;
     gap: 0.625rem 1.875rem;
@@ -20,11 +20,7 @@ export const ModalCreateIdeaBodyStyled = styled.form`
     flex-grow: 1;
   }
 
-  fieldset {
-    border: none;
-  }
-
-  section {
+  section, .added-images {
     display: flex;
     flex-direction: column;
     gap: 0.625rem;
@@ -32,10 +28,16 @@ export const ModalCreateIdeaBodyStyled = styled.form`
 
   textarea {
     height: 115px;
-    resize: none;
   }
 
   button {
     margin: 0 auto;
+  }
+
+  .added-image img {
+    border-radius: var(--radius-1);
+    height: 77px;
+    object-fit: cover;
+    width: 69px;
   }
 `;
