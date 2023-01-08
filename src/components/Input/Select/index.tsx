@@ -1,5 +1,7 @@
 import React from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
+import { FilterLabelList } from "../../FilterLabelList";
+import { FieldsetStyled } from "../Fieldset/styles";
 import { LabelStyled } from "../Label/styles";
 import { StyledSelect } from "./style";
 
@@ -15,6 +17,8 @@ interface iSelect extends React.HTMLProps<HTMLSelectElement> {
   disabled?: boolean;
   className?: string;
   label: string;
+  selOptions?: string[];
+  setSelOptions: React.Dispatch<React.SetStateAction<string[]>>;
 }
 export const Select = ({
   options,
@@ -25,9 +29,11 @@ export const Select = ({
   disabled,
   className,
   label,
+  selOptions,
+  setSelOptions,
 }: iSelect) => {
   return (
-    <>
+    <FieldsetStyled>
       <LabelStyled htmlFor={id}>{placeholder}</LabelStyled>
       <StyledSelect
         name={id}
@@ -51,6 +57,9 @@ export const Select = ({
           );
         })}
       </StyledSelect>
-    </>
+      {selOptions && selOptions.length > 0 && (
+        <FilterLabelList labelList={selOptions} setLabelList={setSelOptions} />
+      )}
+    </FieldsetStyled>
   );
 };

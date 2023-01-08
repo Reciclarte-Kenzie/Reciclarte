@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IdeasContext } from "../../providers/IdeasProvider";
 import { Button } from "../Button";
-import { FilterLabelList } from "../FilterLabelList";
 import { StyledForm } from "../Forms/styles";
 import { Input } from "../Input";
 import { Select } from "../Input/Select";
@@ -130,13 +129,9 @@ export const FilterBox = () => {
                 disabled={loading}
                 className="categories"
                 label="Seleção de categorias"
+                selOptions={selCategories}
+                setSelOptions={setSelCategories}
               />
-              {selCategories.length > 0 && (
-                <FilterLabelList
-                  labelList={selCategories}
-                  setLabelList={setSelCategories}
-                />
-              )}
             </section>
           }
           {
@@ -149,14 +144,9 @@ export const FilterBox = () => {
                 disabled={loading}
                 className="materials"
                 label="Seleção de materiais"
+                selOptions={selMaterials}
+                setSelOptions={setSelMaterials}
               />
-
-              {selMaterials.length > 0 && (
-                <FilterLabelList
-                  labelList={selMaterials}
-                  setLabelList={setSelMaterials}
-                />
-              )}
             </section>
           }
         </section>
