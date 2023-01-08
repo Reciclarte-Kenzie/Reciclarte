@@ -4,8 +4,11 @@ export const FieldsetStyled = styled.fieldset`
   border: none;
   display: flex;
   flex-direction: column;
-  gap: 2vh;
   width: 100%;
+
+  label {
+    margin-bottom: 2vh;
+  }
 
   p {
     font-weight: 400;
