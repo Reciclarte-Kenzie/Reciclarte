@@ -19,17 +19,24 @@ export interface iIdeaData {
 interface iIdeasContextProvider {
   loading: boolean;
   createIdea: (newIdeaData: iIdeaData, closeModal: () => void) => Promise<void>;
-  editIdea: (editedIdeaData: iIdeaData, closeModal: () => void) => Promise<void>;
+  editIdea: (
+    editedIdeaData: iIdeaData,
+    closeModal: () => void
+  ) => Promise<void>;
   deleteIdea: (deletedIdeaId: number, closeModal: () => void) => Promise<void>;
-  searchIdeas: (queryParams: string[]) => Promise<AxiosResponse<iIdeaData[]> | undefined>;
+  searchIdeas: (queryParams: string[]) => void;
   getIdeasMaterials: () => Promise<AxiosResponse<string[]> | undefined>;
   getIdeasCategories: () => Promise<AxiosResponse<string[]> | undefined>;
+  foundIdeas: iIdeaData[];
 }
 
-export const IdeasContext = createContext<iIdeasContextProvider>({} as iIdeasContextProvider);
+export const IdeasContext = createContext<iIdeasContextProvider>(
+  {} as iIdeasContextProvider
+);
 
 export const IdeasProvider = () => {
   const [loading, setLoading] = useState(false);
+  const [foundIdeas, setFoundIdeas] = useState([] as iIdeaData[]);
 
   const headers = {
     headers: {
@@ -88,33 +95,35 @@ export const IdeasProvider = () => {
     }
   };
 
-  const searchIdeas = async (queryParams?: string[]): Promise<AxiosResponse<iIdeaData[]> | undefined> => {
+  const searchIdeas = async (queryParams?: string[]) => {
     try {
       setLoading(true);
 
       let ideasRequestRoute = "/ideas";
 
       queryParams?.forEach((queryParam, index) => {
-        if (index == 0) {
+        if (index === 0) {
           ideasRequestRoute += "?";
         } else {
           ideasRequestRoute += "&";
         }
 
         ideasRequestRoute += queryParam;
-      })
+      });
 
-      const foundIdeas = await api.get(ideasRequestRoute);
+      const foundIdeasResponse = (await api.get(ideasRequestRoute)).data;
 
-      return foundIdeas;
+      setFoundIdeas(foundIdeasResponse);
     } catch (error) {
       toast.error("Não foi possível buscar pelas ideias.");
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  const getIdeasMaterials = async (): Promise<AxiosResponse<string[]> | undefined> => {
+  const getIdeasMaterials = async (): Promise<
+    AxiosResponse<string[]> | undefined
+  > => {
     try {
       setLoading(true);
 
@@ -126,9 +135,11 @@ export const IdeasProvider = () => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  const getIdeasCategories = async (): Promise<AxiosResponse<string[]> | undefined> => {
+  const getIdeasCategories = async (): Promise<
+    AxiosResponse<string[]> | undefined
+  > => {
     try {
       setLoading(true);
 
@@ -140,10 +151,21 @@ export const IdeasProvider = () => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
-    <IdeasContext.Provider value={{loading, createIdea, editIdea, deleteIdea, searchIdeas, getIdeasMaterials, getIdeasCategories}}>
+    <IdeasContext.Provider
+      value={{
+        loading,
+        createIdea,
+        editIdea,
+        deleteIdea,
+        searchIdeas,
+        getIdeasMaterials,
+        getIdeasCategories,
+        foundIdeas,
+      }}
+    >
       <Outlet />
     </IdeasContext.Provider>
   );

@@ -28,8 +28,8 @@ export const LoginForm = () => {
         label="E-mail"
         disabled={loading}
         register={register("email")}
+        error={errors.email?.message}
       />
-      {errors.email?.message && <p>{errors.email.message}</p>}
       <Input
         type="password"
         placeholder="Insira sua senha"
@@ -37,8 +37,8 @@ export const LoginForm = () => {
         label="Senha"
         disabled={loading}
         register={register("password")}
+        error={errors.password?.message}
       />
-      {errors.password?.message && <p>{errors.password.message}</p>}
       <Button text="Logar" label="Botão de login" disabled={loading} />
     </StyledForm>
   );
