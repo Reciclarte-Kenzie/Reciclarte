@@ -18,6 +18,8 @@ export const ModalCreateIdeaBody = () => {
 
   const [materialsList, setMaterialsList] = useState([] as iSelectOption[]);
   const [categoriesList, setCategoriesList] = useState([] as iSelectOption[]);
+  const [selectedMaterials, setSelectedMaterials] = useState([] as string[]);
+  const [selectedCategories, setSelectedCategories] = useState([] as string[]);
 
   useEffect(() => {
     const getIdeasMaterialsResponse = async () => {
