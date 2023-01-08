@@ -1,4 +1,3 @@
-import { Field } from "./Field";
 import { iFieldProps } from "./Field/iField";
 import { FieldStyled } from "./Field/styles";
 import { FieldsetStyled } from "./Fieldset/styles";
@@ -12,6 +11,7 @@ export const Input = ({
   register,
   disabled,
   textarea,
+  error,
 }: iFieldProps) => {
   return (
     <FieldsetStyled>
@@ -26,6 +26,7 @@ export const Input = ({
         disabled={disabled}
         textarea={textarea}
       />
+      {error && <p>{error}</p>}
     </FieldsetStyled>
   );
 };

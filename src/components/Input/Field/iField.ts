@@ -9,4 +9,5 @@ export interface iFieldProps {
   disabled?: boolean;
   textarea?: boolean;
   className?: string;
+  error?: string;
 }

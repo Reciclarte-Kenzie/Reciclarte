@@ -49,48 +49,48 @@ export function RegisterPage() {
           id="name"
           label="Nome"
           register={register("name")}
+          error={errors.name?.message}
         />
-        {errors.name?.message && <p>{errors.name.message}</p>}
         <Input
           type="email"
           placeholder="Insira sua email"
           id="email"
           label="E-mail"
           register={register("email")}
+          error={errors.email?.message}
         />
-        {errors.email?.message && <p>{errors.email.message}</p>}
         <Input
           type="password"
           placeholder="Insira sua senha"
           id="password"
           label="Senha"
           register={register("password")}
+          error={errors.password?.message}
         />
-        {errors.password?.message && <p>{errors.password.message}</p>}
         <Input
           type="password"
           placeholder="Insira sua senha"
           id="confirmation"
           label="Confirme sua senha"
           register={register("confirmation")}
+          error={errors.confirmation?.message}
         />
-        {errors.confirmation?.message && <p>{errors.confirmation.message}</p>}
         <Input
           type="profile_pic"
           placeholder="Insira seu avatar"
           id="profile_pic"
           label="Avatar"
           register={register("profile_pic")}
+          error={errors.profile_pic?.message}
         />
-        {errors.profile_pic?.message && <p>{errors.profile_pic.message}</p>}
         <Input
           type="bio"
           placeholder="Escreva sobre você"
           id="bio"
           label="Bio"
           register={register("bio")}
+          error={errors.bio?.message}
         />
-        {errors.bio?.message && <p>{errors.bio.message}</p>}
         <Button text="Cadastrar" label="Botão de login" disabled={loading} />
       </StyledForm>
     </StyledRegisterPage>
