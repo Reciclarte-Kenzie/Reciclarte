@@ -39,6 +39,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
     register,
     formState: { errors },
   } = useForm<iIdeaData>({
+    mode: "onBlur",
     resolver: yupResolver(createIdeaSchema),
   });
 
