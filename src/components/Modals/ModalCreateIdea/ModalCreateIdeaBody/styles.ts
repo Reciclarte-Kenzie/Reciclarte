@@ -34,13 +34,6 @@ export const ModalCreateIdeaBodyStyled = styled.form`
     margin: 0 auto;
   }
 
-  .added-image img {
-    border-radius: var(--radius-1);
-    height: 77px;
-    object-fit: cover;
-    width: 69px;
-  }
-
   .added-images ul {
     display: flex;
     gap: 0.375rem;

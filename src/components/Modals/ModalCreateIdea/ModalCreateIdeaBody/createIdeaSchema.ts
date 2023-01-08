@@ -3,7 +3,10 @@ import * as yup from "yup";
 export const createIdeaSchema = yup.object().shape({
   title: yup.string().required("O título é obrigatório"),
   steps: yup.string().required("O passo a passo é obrigatório"),
-  estimatedCost: yup.string().required("O custo estimado é obrigatório"),
+  estimatedCost: yup
+    .number()
+    .typeError("Insira um número válido")
+    .required("O custo estimado é obrigatório"),
   materials: yup.string().required("Selecione ao menos um material"),
   categories: yup.string().required("Selecione ao menos uma categoria"),
   imgs: yup

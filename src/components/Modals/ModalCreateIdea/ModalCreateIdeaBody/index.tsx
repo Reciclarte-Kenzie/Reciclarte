@@ -5,12 +5,11 @@ import { iModalCreateIdeaProps } from "..";
 import { IdeasContext, iIdeaData } from "../../../../providers/IdeasProvider";
 import { Button } from "../../../Button";
 import { FilterLabelList } from "../../../FilterLabelList";
+import { IdeaImage } from "../../../IdeaImage";
 import { Input } from "../../../Input";
-import { FieldsetStyled } from "../../../Input/Fieldset/styles";
-import { LabelStyled } from "../../../Input/Label/styles";
 import { Select } from "../../../Input/Select";
 import { Slider } from "../../../Slider";
-import { createIdeaSchema } from "./CreateIdeaSchema";
+import { createIdeaSchema } from "./createIdeaSchema";
 import { ModalCreateIdeaBodyStyled } from "./styles";
 
 interface iSelectOption {
@@ -95,7 +94,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
         if (!categoryWasSelected) {
           setSelectedCategories([...selectedCategories, selectedValue]);
         }
-      } else if (targetFormElement.name === "images") {
+      } else if (targetFormElement.name === "imgs") {
         setAddedImages([...addedImages, targetFormElement.value]);
       }
     };
@@ -181,9 +180,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
             />
             <ul>
               {addedImages.map((addedImage) => (
-                <li>
-                  <img src={addedImage} alt="" />
-                </li>
+                <IdeaImage addedImage={addedImage} />
               ))}
             </ul>
           </article>
