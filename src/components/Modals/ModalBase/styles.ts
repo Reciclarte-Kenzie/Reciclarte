@@ -86,7 +86,7 @@ export const ModalBaseStyled = styled.div`
   main {
     max-height: 560px;
     overflow-y: auto;
-    padding: 2.2rem 1.25rem;
+    padding: 1rem 1.25rem;
   }
 
   @media (min-width: 530px) {

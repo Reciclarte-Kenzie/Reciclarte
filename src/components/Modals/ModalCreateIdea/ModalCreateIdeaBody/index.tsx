@@ -179,6 +179,14 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
               setLabelList={setSelectedCategories}
             />
           </div>
+          <Input
+            placeholder="Insira a descrição"
+            label="Descrição"
+            id="description"
+            register={register("description")}
+            error={errors.description?.message}
+            textarea
+          />
           <article className="added-images">
             <div>
               <Input

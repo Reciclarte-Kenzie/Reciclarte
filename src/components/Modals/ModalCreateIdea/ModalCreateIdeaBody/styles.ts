@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ModalCreateIdeaBodyStyled = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1.875rem;
+  gap: 1rem;
   width: 100%;
 
   article:nth-child(1) {
@@ -27,12 +27,17 @@ export const ModalCreateIdeaBodyStyled = styled.form`
   }
 
   textarea {
-    height: 115px;
+    height: 90px;
+  }
+
+  textarea[name="steps"] {
+    height: 135px;
   }
 
   button {
     margin: 0 auto;
   }
+
   .added-images {
     ul, div {
       display: flex;
