@@ -1,5 +1,6 @@
 import { Field } from "./Field";
 import { iFieldProps } from "./Field/iField";
+import { LabelStyled } from "./Label/styles";
 import { FieldsetStyled } from "./styles";
 
 export const Input = ({
@@ -13,7 +14,7 @@ export const Input = ({
 }: iFieldProps) => {
   return (
     <FieldsetStyled>
-      <label htmlFor={id}>{label}</label>
+      <LabelStyled htmlFor={id}>{label}</LabelStyled>
       <Field
         type={type}
         placeholder={placeholder}
