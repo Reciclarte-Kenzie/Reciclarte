@@ -28,7 +28,6 @@ interface iIdeasContextProvider {
   getIdeasMaterials: () => Promise<AxiosResponse<string[]> | undefined>;
   getIdeasCategories: () => Promise<AxiosResponse<string[]> | undefined>;
   foundIdeas: iIdeaData[];
-  setFoundIdeas: React.Dispatch<React.SetStateAction<iIdeaData[]>>;
 }
 
 export const IdeasContext = createContext<iIdeasContextProvider>(
@@ -165,7 +164,6 @@ export const IdeasProvider = () => {
         getIdeasMaterials,
         getIdeasCategories,
         foundIdeas,
-        setFoundIdeas,
       }}
     >
       <Outlet />
