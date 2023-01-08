@@ -1,4 +1,3 @@
-import { Field } from "./Field";
 import { iFieldProps } from "./Field/iField";
 import { FieldStyled } from "./Field/styles";
 import { FieldsetStyled } from "./Fieldset/styles";

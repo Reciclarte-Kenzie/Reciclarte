@@ -54,6 +54,7 @@ export const Select = ({
           );
         })}
       </StyledSelect>
+      {error && <p>{error}</p>}
     </FieldsetStyled>
   );
 };
