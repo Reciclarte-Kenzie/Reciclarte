@@ -5,10 +5,15 @@ export const ModalCreateIdeaBodyStyled = styled.form`
   flex-direction: column;
   gap: 1.875rem;
   width: 100%;
-  
+
   article {
     display: flex;
-    gap: 1.875rem;
+    flex-direction: column;
+    gap: 0.625rem 1.875rem;
+
+    @media (min-width: 600px) {
+      flex-direction: row;
+    }
   }
 
   section {
@@ -18,8 +23,8 @@ export const ModalCreateIdeaBodyStyled = styled.form`
   fieldset {
     border: none;
   }
-  
-  fieldset, section {
+
+  section {
     display: flex;
     flex-direction: column;
     gap: 0.625rem;
@@ -33,4 +38,4 @@ export const ModalCreateIdeaBodyStyled = styled.form`
   button {
     margin: 0 auto;
   }
-`
+`;
