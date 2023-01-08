@@ -15,4 +15,10 @@ export const IdeaImageStyled = styled.li`
     right: 4px;
     top: 4px;
   }
+  
+  button img {
+    height: 21px;
+    object-fit: contain;
+    width: 21px;
+  }
 `;
