@@ -28,7 +28,7 @@ export interface iCreateIdeaFormFields {
 }
 
 export const ModalCreateIdeaBody = () => {
-  const { getIdeasMaterials, getIdeasCategories } = useContext(IdeasContext);
+  const { createIdea, getIdeasMaterials, getIdeasCategories } = useContext(IdeasContext);
 
   const { handleSubmit, register, formState: { errors } } = useForm<iIdeaData>();
 
@@ -97,7 +97,7 @@ export const ModalCreateIdeaBody = () => {
   }, [selectedMaterials, selectedCategories]);
 
   return (
-    <ModalCreateIdeaBodyStyled>
+    <ModalCreateIdeaBodyStyled onSubmit={handleSubmit(async (data) => await createIdea(data, () => undefined))}>
       <article>
         <section>
           <Input
