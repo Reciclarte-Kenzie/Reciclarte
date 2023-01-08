@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { IdeasContext } from "../../../providers/IdeasProvider";
 import { Button } from "../../Button";
 import { Input } from "../../Input";
 import { Select } from "../../Input/Select";
@@ -22,10 +23,13 @@ export const ModalCreateIdea = () => {
 };
 
 const ModalCreateIdeaBody = () => {
+  const { getIdeasMaterials, getIdeasCategories } = useContext(IdeasContext);
+
   const [materialsList, setMaterialsList] = useState([] as iSelectOption[]);
   const [categoriesList, setCategoriesList] = useState([] as iSelectOption[]);
 
-  
+  useEffect(() => {}, []);
+
   return (
     <ModalCreateIdeaBodyStyled>
       <article>
