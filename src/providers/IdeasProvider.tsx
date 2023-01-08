@@ -19,14 +19,21 @@ export interface iIdeaData {
 interface iIdeasContextProvider {
   loading: boolean;
   createIdea: (newIdeaData: iIdeaData, closeModal: () => void) => Promise<void>;
-  editIdea: (editedIdeaData: iIdeaData, closeModal: () => void) => Promise<void>;
+  editIdea: (
+    editedIdeaData: iIdeaData,
+    closeModal: () => void
+  ) => Promise<void>;
   deleteIdea: (deletedIdeaId: number, closeModal: () => void) => Promise<void>;
   searchIdeas: (queryParams: string[]) => void;
   getIdeasMaterials: () => Promise<AxiosResponse<string[]> | undefined>;
   getIdeasCategories: () => Promise<AxiosResponse<string[]> | undefined>;
+  foundIdeas: iIdeaData[];
+  setFoundIdeas: React.Dispatch<React.SetStateAction<iIdeaData[]>>;
 }
 
-export const IdeasContext = createContext<iIdeasContextProvider>({} as iIdeasContextProvider);
+export const IdeasContext = createContext<iIdeasContextProvider>(
+  {} as iIdeasContextProvider
+);
 
 export const IdeasProvider = () => {
   const [loading, setLoading] = useState(false);
@@ -103,7 +110,7 @@ export const IdeasProvider = () => {
         }
 
         ideasRequestRoute += queryParam;
-      })
+      });
 
       const foundIdeasResponse = (await api.get(ideasRequestRoute)).data;
 
@@ -113,9 +120,11 @@ export const IdeasProvider = () => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  const getIdeasMaterials = async (): Promise<AxiosResponse<string[]> | undefined> => {
+  const getIdeasMaterials = async (): Promise<
+    AxiosResponse<string[]> | undefined
+  > => {
     try {
       setLoading(true);
 
@@ -127,9 +136,11 @@ export const IdeasProvider = () => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  const getIdeasCategories = async (): Promise<AxiosResponse<string[]> | undefined> => {
+  const getIdeasCategories = async (): Promise<
+    AxiosResponse<string[]> | undefined
+  > => {
     try {
       setLoading(true);
 
@@ -141,10 +152,22 @@ export const IdeasProvider = () => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
-    <IdeasContext.Provider value={{loading, createIdea, editIdea, deleteIdea, searchIdeas, getIdeasMaterials, getIdeasCategories}}>
+    <IdeasContext.Provider
+      value={{
+        loading,
+        createIdea,
+        editIdea,
+        deleteIdea,
+        searchIdeas,
+        getIdeasMaterials,
+        getIdeasCategories,
+        foundIdeas,
+        setFoundIdeas,
+      }}
+    >
       <Outlet />
     </IdeasContext.Provider>
   );
