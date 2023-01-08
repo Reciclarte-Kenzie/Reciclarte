@@ -19,7 +19,7 @@ interface iSelectOption {
 
 export interface iCreateIdeaFormFields {
   title: string;
-  imgs: string;
+  imgs: string[];
   description: string;
   steps: string;
   materials: string[];
@@ -105,21 +105,33 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
   }, [selectedMaterials, selectedCategories]);
 
   const addImageIntoList = async () => {
-    const insertedImage = getValues().imgs;
+    const insertedImage = getValues().imgs.toString();
     const insertedImageIsValid = await createIdeaSchema.validateAt("imgs", {
       imgs: insertedImage,
     });
-    console.log(insertedImageIsValid);
 
     if (insertedImageIsValid) {
+      console.log(insertedImage);
       setAddedImagesList([...addedImagesList, insertedImage]);
-      reset({ imgs: "" });
+      reset({ imgs: [] });
     }
   };
 
   return (
     <ModalCreateIdeaBodyStyled
       onSubmit={handleSubmit(async (data) => {
+        const categoriesValues = categoriesList.map(
+          (categorie) => categorie.value
+        );
+        const materialsValues = materialsList.map((material) => material.value);
+
+        data = {
+          ...data,
+          categories: [...categoriesValues],
+          materials: [...materialsValues],
+        };
+
+        console.log(data);
         //await createIdea(data, hideModal);
       })}
     >
@@ -213,8 +225,9 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
             </div>
             {addedImagesList.length !== 0 && (
               <ul>
-                {addedImagesList.map((addedImage) => (
+                {addedImagesList.map((addedImage, index) => (
                   <IdeaImage
+                    key={index}
                     addedImage={addedImage}
                     addedImagesList={addedImagesList}
                     setAddedImagesList={setAddedImagesList}
