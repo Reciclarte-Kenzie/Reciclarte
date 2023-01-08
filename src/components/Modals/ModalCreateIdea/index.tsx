@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { IdeasContext } from "../../../providers/IdeasProvider";
 import { Button } from "../../Button";
 import { Input } from "../../Input";
+import { FieldsetStyled } from "../../Input/Fieldset/styles";
+import { LabelStyled } from "../../Input/Label/styles";
 import { Select } from "../../Input/Select";
 import { Slider } from "../../Slider";
 import { ModalBase } from "../ModalBase";
@@ -75,16 +77,22 @@ const ModalCreateIdeaBody = () => {
           />
         </section>
         <section>
-          <Select
-            options={materialsList}
-            placeholder="Selecione um material"
-            id="materials"
-          />
-          <Select
-            options={categoriesList}
-            placeholder="Selecione uma categoria"
-            id="categorias"
-          />
+          <FieldsetStyled>
+            <LabelStyled>Materiais</LabelStyled>
+            <Select
+              options={materialsList}
+              placeholder="Selecione um material"
+              id="materials"
+            />
+          </FieldsetStyled>
+          <FieldsetStyled>
+            <LabelStyled>Categorias</LabelStyled>
+            <Select
+              options={categoriesList}
+              placeholder="Selecione uma categoria"
+              id="categorias"
+            />
+          </FieldsetStyled>
           <Input
             type="url"
             placeholder="Insira a URL da foto"
