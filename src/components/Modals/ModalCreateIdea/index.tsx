@@ -4,12 +4,16 @@ import { Button } from "../../Button";
 import { ModalBase } from "../ModalBase";
 import { ModalCreateIdeaBody } from "./ModalCreateIdeaBody";
 
-export const ModalCreateIdea = () => {
+export interface iModalCreateIdeaProps {
+  hideModal: () => void;
+}
+
+export const ModalCreateIdea = ({ hideModal }: iModalCreateIdeaProps) => {
   return (
     <ModalBase
       modalTitle="Criar ideia"
-      hideModal={() => undefined}
-      ModalBody={ModalCreateIdeaBody}
+      hideModal={hideModal}
+      ModalBody={() => <ModalCreateIdeaBody hideModal={hideModal} />}
     />
   );
 };

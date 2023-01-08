@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { iModalCreateIdeaProps } from "..";
 import { IdeasContext, iIdeaData } from "../../../../providers/IdeasProvider";
 import { Button } from "../../../Button";
 import { FilterLabelList } from "../../../FilterLabelList";
@@ -27,10 +28,15 @@ export interface iCreateIdeaFormFields {
   userId: string;
 }
 
-export const ModalCreateIdeaBody = () => {
-  const { createIdea, getIdeasMaterials, getIdeasCategories } = useContext(IdeasContext);
+export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
+  const { createIdea, getIdeasMaterials, getIdeasCategories } =
+    useContext(IdeasContext);
 
-  const { handleSubmit, register, formState: { errors } } = useForm<iIdeaData>();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<iIdeaData>();
 
   const [materialsList, setMaterialsList] = useState([] as iSelectOption[]);
   const [categoriesList, setCategoriesList] = useState([] as iSelectOption[]);
@@ -97,7 +103,12 @@ export const ModalCreateIdeaBody = () => {
   }, [selectedMaterials, selectedCategories]);
 
   return (
-    <ModalCreateIdeaBodyStyled onSubmit={handleSubmit(async (data) => await createIdea(data, () => undefined))}>
+    <ModalCreateIdeaBodyStyled
+      onSubmit={handleSubmit(async (data) => {
+        console.log(data);
+        //await createIdea(data, hideModal);
+      })}
+    >
       <article>
         <section>
           <Input
