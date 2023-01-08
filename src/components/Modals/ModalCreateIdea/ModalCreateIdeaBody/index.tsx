@@ -37,6 +37,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
     handleSubmit,
     register,
     getValues,
+    reset,
     formState: { errors },
   } = useForm<iCreateIdeaFormFields>({
     mode: "onBlur",
@@ -112,6 +113,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
 
     if (insertedImageIsValid) {
       setAddedImagesList([...addedImagesList, insertedImage]);
+      reset({ imgs: "" });
     }
   };
 
