@@ -33,9 +33,22 @@ export const ModalCreateIdeaBodyStyled = styled.form`
   button {
     margin: 0 auto;
   }
+  .added-images {
+    ul, div {
+      display: flex;
+      gap: 0.375rem;
+    }
 
-  .added-images ul {
-    display: flex;
-    gap: 0.375rem;
+    div {
+      position: relative;
+
+      button {
+        max-width: 50px;
+        height: 55.78px;
+        position: relative;
+        top: calc(27px + 2vh);
+        width: 100%;
+      }
+    }
   }
 `;

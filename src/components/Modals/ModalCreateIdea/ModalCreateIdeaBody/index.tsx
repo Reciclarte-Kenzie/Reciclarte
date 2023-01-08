@@ -19,7 +19,7 @@ interface iSelectOption {
 
 export interface iCreateIdeaFormFields {
   title: string;
-  imgs: string[];
+  imgs: string;
   description: string;
   steps: string;
   materials: string[];
@@ -36,8 +36,9 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
   const {
     handleSubmit,
     register,
+    getValues,
     formState: { errors },
-  } = useForm<iIdeaData>({
+  } = useForm<iCreateIdeaFormFields>({
     mode: "onBlur",
     resolver: yupResolver(createIdeaSchema),
   });
@@ -73,9 +74,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
 
   useEffect(() => {
     const addSelectedValueIntoList = (event: Event) => {
-      const targetFormElement = event.target as
-        | HTMLSelectElement
-        | HTMLInputElement;
+      const targetFormElement = event.target as HTMLSelectElement;
       const selectedValue = targetFormElement.value;
 
       if (targetFormElement.name === "materials") {
@@ -86,16 +85,6 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
         if (!materialWasSelected) {
           setSelectedMaterials([...selectedMaterials, selectedValue]);
         }
-      } else if (targetFormElement.name === "categories") {
-        const categoryWasSelected = selectedCategories.find(
-          (selectedCategory) => selectedValue === selectedCategory
-        );
-
-        if (!categoryWasSelected) {
-          setSelectedCategories([...selectedCategories, selectedValue]);
-        }
-      } else if (targetFormElement.name === "imgs") {
-        setAddedImages([...addedImages, targetFormElement.value]);
       }
     };
 
@@ -109,7 +98,6 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
   return (
     <ModalCreateIdeaBodyStyled
       onSubmit={handleSubmit(async (data) => {
-        console.log(data);
         //await createIdea(data, hideModal);
       })}
     >
@@ -170,14 +158,25 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
             />
           </div>
           <article className="added-images">
-            <Input
-              type="url"
-              placeholder="Insira a URL da foto"
-              label="Foto"
-              id="img"
-              register={register("imgs")}
-              error={errors.imgs?.message}
-            />
+            <div>
+              <Input
+                type="url"
+                placeholder="Insira a URL da foto"
+                label="Foto"
+                id="img"
+                register={register("imgs")}
+                error={errors.imgs?.message}
+              />
+              <Button
+                type="button"
+                action={() =>
+                  setAddedImages([...addedImages, getValues().imgs])
+                }
+                text="+"
+                label="adicionar imagem"
+                disabled={!!errors.imgs?.message}
+              />
+            </div>
             <ul>
               {addedImages.map((addedImage) => (
                 <IdeaImage addedImage={addedImage} />
