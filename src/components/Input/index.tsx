@@ -10,7 +10,7 @@ export const Input = ({
   register,
   disabled,
   textarea,
-  error
+  error,
 }: iFieldProps) => {
   return (
     <FieldsetStyled>

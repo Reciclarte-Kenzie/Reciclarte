@@ -7,7 +7,8 @@ export const FieldsetStyled = styled.fieldset`
   gap: 2vh;
   width: 100%;
 
-  input, textarea {
+  input,
+  textarea {
     border: 1px solid var(--color-grey-90);
     border-radius: var(--radius-1);
     font-weight: 400;
@@ -30,5 +31,20 @@ export const FieldsetStyled = styled.fieldset`
     font-weight: 400;
     font-size: var(--font-size-18);
     color: var(--color-green-100);
+  }
+
+  p {
+    position: relative;
+    top: -12px;
+    display: flex;
+    align-self: baseline;
+    height: 0px;
+    font-weight: 400;
+    font-size: var(--font-size-12);
+    color: var(--color-orange-80);
+
+    @media (min-width: 700px) {
+      font-size: var(--font-size-14);
+    }
   }
 `;
