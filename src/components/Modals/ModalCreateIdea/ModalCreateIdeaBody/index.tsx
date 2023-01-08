@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react";
-import { IdeasContext } from "../../../../providers/IdeasProvider";
+import { useForm } from "react-hook-form";
+import { IdeasContext, iIdeaData } from "../../../../providers/IdeasProvider";
 import { Button } from "../../../Button";
 import { FilterLabelList } from "../../../FilterLabelList";
 import { Input } from "../../../Input";
@@ -14,8 +15,22 @@ interface iSelectOption {
   text: string;
 }
 
+export interface iCreateIdeaFormFields {
+  title: string;
+  imgs: string[];
+  description: string;
+  steps: string;
+  materials: string[];
+  categories: string[];
+  estimatedCost: string;
+  difficultyLevel: string;
+  userId: string;
+}
+
 export const ModalCreateIdeaBody = () => {
   const { getIdeasMaterials, getIdeasCategories } = useContext(IdeasContext);
+
+  const { handleSubmit, register, formState: { errors } } = useForm<iIdeaData>();
 
   const [materialsList, setMaterialsList] = useState([] as iSelectOption[]);
   const [categoriesList, setCategoriesList] = useState([] as iSelectOption[]);
@@ -89,11 +104,13 @@ export const ModalCreateIdeaBody = () => {
             placeholder="Insira o título da ideia"
             label="Título"
             id="title"
+            register={register("title")}
           />
           <Input
             placeholder="Insira o passo a passo"
             label="Passo a passo"
             id="steps"
+            register={register("steps")}
             textarea
           />
           <Slider defaultValue={2} min={1} max={5} />
@@ -102,6 +119,7 @@ export const ModalCreateIdeaBody = () => {
             placeholder="R$ 0.00"
             label="Custo estimado"
             id="estimatedCost"
+            register={register("estimatedCost")}
           />
         </section>
         <section>
@@ -111,6 +129,7 @@ export const ModalCreateIdeaBody = () => {
               options={materialsList}
               placeholder="Selecione um material"
               id="materials"
+              register={register("materials")}
             />
             <FilterLabelList
               labelList={selectedMaterials}
@@ -123,6 +142,7 @@ export const ModalCreateIdeaBody = () => {
               options={categoriesList}
               placeholder="Selecione uma categoria"
               id="categories"
+              register={register("categories")}
             />
             <FilterLabelList
               labelList={selectedCategories}
@@ -135,6 +155,7 @@ export const ModalCreateIdeaBody = () => {
               placeholder="Insira a URL da foto"
               label="Foto"
               id="img"
+              register={register("imgs")}
             />
             <ul>
               {addedImages.map((addedImage) => (
