@@ -21,6 +21,7 @@ export const ModalCreateIdeaBody = () => {
   const [categoriesList, setCategoriesList] = useState([] as iSelectOption[]);
   const [selectedMaterials, setSelectedMaterials] = useState([] as string[]);
   const [selectedCategories, setSelectedCategories] = useState([] as string[]);
+  const [addedImages, setAddedImages] = useState([] as string[]);
 
   useEffect(() => {
     const getIdeasMaterialsResponse = async () => {
@@ -47,10 +48,10 @@ export const ModalCreateIdeaBody = () => {
 
   useEffect(() => {
     const addSelectedValueIntoList = (event: Event) => {
-      const selectTarget = event.target as HTMLSelectElement;
-      const selectedValue = selectTarget.value;
+      const targetFormElement = event.target as HTMLSelectElement | HTMLInputElement;
+      const selectedValue = targetFormElement.value;
 
-      if (selectTarget.name === "materials") {
+      if (targetFormElement.name === "materials") {
         const materialWasSelected = selectedMaterials.find(
           (selectedMaterial) => selectedValue === selectedMaterial
         );
@@ -58,7 +59,7 @@ export const ModalCreateIdeaBody = () => {
         if (!materialWasSelected) {
           setSelectedMaterials([...selectedMaterials, selectedValue]);
         }
-      } else if (selectTarget.name === "categories") {
+      } else if (targetFormElement.name === "categories") {
         const categoryWasSelected = selectedCategories.find(
           (selectedCategory) => selectedValue === selectedCategory
         );
@@ -66,6 +67,8 @@ export const ModalCreateIdeaBody = () => {
         if (!categoryWasSelected) {
           setSelectedCategories([...selectedCategories, selectedValue]);
         }
+      } else if (targetFormElement.name === "images") {
+        setAddedImages([...addedImages, targetFormElement.value]);
       }
     };
 
