@@ -1,4 +1,5 @@
-import deleteButton from "../../../../assets/imgs/delete-button.svg";
+import deleteButton from "../../assets/imgs/delete-button.svg";
+import { IdeaImageStyled } from "./styles";
 
 interface iIdeaImageProps {
   addedImage: string;
@@ -6,11 +7,11 @@ interface iIdeaImageProps {
 
 export const IdeaImage = ({ addedImage }: iIdeaImageProps) => {
   return (
-    <li>
+    <IdeaImageStyled>
       <button aria-label="Excluir imagem">
         <img src={deleteButton} alt="Ícone de exclusão" />
       </button>
       <img src={addedImage} alt="" />
-    </li>
+    </IdeaImageStyled>
   );
 };
