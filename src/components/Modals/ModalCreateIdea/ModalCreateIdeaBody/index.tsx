@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { IdeasContext } from "../../../../providers/IdeasProvider";
 import { Button } from "../../../Button";
+import { FilterLabelList } from "../../../FilterLabelList";
 import { Input } from "../../../Input";
 import { FieldsetStyled } from "../../../Input/Fieldset/styles";
 import { LabelStyled } from "../../../Input/Label/styles";
@@ -106,13 +107,21 @@ export const ModalCreateIdeaBody = () => {
               placeholder="Selecione um material"
               id="materials"
             />
+            <FilterLabelList
+              labelList={selectedMaterials}
+              setLabelList={setSelectedMaterials}
+            />
           </FieldsetStyled>
           <FieldsetStyled>
             <LabelStyled>Categorias</LabelStyled>
             <Select
               options={categoriesList}
               placeholder="Selecione uma categoria"
-              id="categorias"
+              id="categories"
+            />
+            <FilterLabelList
+              labelList={selectedCategories}
+              setLabelList={setSelectedCategories}
             />
           </FieldsetStyled>
           <Input
