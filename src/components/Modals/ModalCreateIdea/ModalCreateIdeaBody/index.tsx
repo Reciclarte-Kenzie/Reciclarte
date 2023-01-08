@@ -48,7 +48,9 @@ export const ModalCreateIdeaBody = () => {
 
   useEffect(() => {
     const addSelectedValueIntoList = (event: Event) => {
-      const targetFormElement = event.target as HTMLSelectElement | HTMLInputElement;
+      const targetFormElement = event.target as
+        | HTMLSelectElement
+        | HTMLInputElement;
       const selectedValue = targetFormElement.value;
 
       if (targetFormElement.name === "materials") {
@@ -127,12 +129,17 @@ export const ModalCreateIdeaBody = () => {
               setLabelList={setSelectedCategories}
             />
           </FieldsetStyled>
-          <Input
-            type="url"
-            placeholder="Insira a URL da foto"
-            label="Foto"
-            id="img"
-          />
+          <article className="added-images">
+            <Input
+              type="url"
+              placeholder="Insira a URL da foto"
+              label="Foto"
+              id="img"
+            />
+            {addedImages.map((addedImage) => (
+              <img className="added-image" src={addedImage} alt="" />
+            ))}
+          </article>
         </section>
       </article>
       <Button text="Criar" label="Criar ideia" />
