@@ -17,6 +17,7 @@ export const StyledFilter = styled.aside<iFilter>`
 
   h3 {
     width: 100%;
+    height: 40px;
     color: var(--color-white);
     background-color: var(--color-orange-80);
     padding: 5px 8px;
