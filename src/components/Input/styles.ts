@@ -4,7 +4,6 @@ export const FieldsetStyled = styled.fieldset`
   border: none;
   display: flex;
   flex-direction: column;
-  gap: 2vh;
   width: 100%;
 
   input,
@@ -31,17 +30,14 @@ export const FieldsetStyled = styled.fieldset`
     font-weight: 400;
     font-size: var(--font-size-18);
     color: var(--color-green-100);
+    margin-bottom: 2vh;
   }
 
   p {
-    position: relative;
-    top: -12px;
-    display: flex;
-    align-self: baseline;
-    height: 0px;
     font-weight: 400;
     font-size: var(--font-size-12);
     color: var(--color-orange-80);
+    margin-top: 0.375rem;
 
     @media (min-width: 700px) {
       font-size: var(--font-size-14);
