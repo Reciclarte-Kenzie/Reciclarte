@@ -1,3 +1,4 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { iModalCreateIdeaProps } from "..";
@@ -9,6 +10,7 @@ import { FieldsetStyled } from "../../../Input/Fieldset/styles";
 import { LabelStyled } from "../../../Input/Label/styles";
 import { Select } from "../../../Input/Select";
 import { Slider } from "../../../Slider";
+import { createIdeaSchema } from "./CreateIdeaSchema";
 import { ModalCreateIdeaBodyStyled } from "./styles";
 
 interface iSelectOption {
@@ -36,7 +38,9 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<iIdeaData>();
+  } = useForm<iIdeaData>({
+    resolver: yupResolver(createIdeaSchema),
+  });
 
   const [materialsList, setMaterialsList] = useState([] as iSelectOption[]);
   const [categoriesList, setCategoriesList] = useState([] as iSelectOption[]);
