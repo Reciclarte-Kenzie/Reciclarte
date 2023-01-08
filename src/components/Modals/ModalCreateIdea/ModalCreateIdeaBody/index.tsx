@@ -85,6 +85,14 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
         if (!materialWasSelected) {
           setSelectedMaterials([...selectedMaterials, selectedValue]);
         }
+      } else if (targetFormElement.name === "categories") {
+        const categoryWasSelected = selectedCategories.find(
+          (selectedCategory) => selectedValue === selectedCategory
+        );
+
+        if (!categoryWasSelected) {
+          setSelectedCategories([...selectedCategories, selectedValue]);
+        }
       }
     };
 
@@ -94,6 +102,16 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
       document.removeEventListener("input", addSelectedValueIntoList);
     };
   }, [selectedMaterials, selectedCategories]);
+
+  const addImageIntoList = async () => {
+    const insertedImage = getValues().imgs;
+    const insertedImageIsValid = await createIdeaSchema.validateAt("imgs", { imgs: insertedImage});
+    console.log(insertedImageIsValid)
+
+    if (insertedImageIsValid) {
+      setAddedImages([...addedImages, insertedImage]);
+    }
+  };
 
   return (
     <ModalCreateIdeaBodyStyled
@@ -169,9 +187,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
               />
               <Button
                 type="button"
-                action={() =>
-                  setAddedImages([...addedImages, getValues().imgs])
-                }
+                action={addImageIntoList}
                 text="+"
                 label="adicionar imagem"
                 disabled={!!errors.imgs?.message}

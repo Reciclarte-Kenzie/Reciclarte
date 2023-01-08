@@ -17,7 +17,7 @@ export const ModalCreateIdeaBodyStyled = styled.form`
   }
 
   section {
-    width: 50%;
+    width: 100%;
   }
 
   section, .added-images, .select-group {
