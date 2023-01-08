@@ -1,5 +1,6 @@
 import React from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
+import { FieldsetStyled } from "../Fieldset/styles";
 import { LabelStyled } from "../Label/styles";
 import { StyledSelect } from "./style";
 
@@ -29,7 +30,7 @@ export const Select = ({
   error
 }: iSelect) => {
   return (
-    <>
+    <FieldsetStyled>
       <LabelStyled htmlFor={id}>{placeholder}</LabelStyled>
       <StyledSelect
         name={id}
@@ -53,6 +54,6 @@ export const Select = ({
           );
         })}
       </StyledSelect>
-    </>
+    </FieldsetStyled>
   );
 };
