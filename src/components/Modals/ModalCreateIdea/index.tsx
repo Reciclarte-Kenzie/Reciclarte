@@ -78,13 +78,12 @@ const ModalCreateIdeaBody = () => {
           <Select
             options={materialsList}
             placeholder="Selecione um material"
-            label="Materiais"
             id="materials"
           />
-          <Input
-            placeholder="Insira o título da ideia"
-            label="Título"
-            id="title"
+          <Select
+            options={categoriesList}
+            placeholder="Selecione uma categoria"
+            id="categorias"
           />
           <Input
             type="url"
