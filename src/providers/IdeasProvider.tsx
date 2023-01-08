@@ -21,7 +21,7 @@ interface iIdeasContextProvider {
   createIdea: (newIdeaData: iIdeaData, closeModal: () => void) => Promise<void>;
   editIdea: (editedIdeaData: iIdeaData, closeModal: () => void) => Promise<void>;
   deleteIdea: (deletedIdeaId: number, closeModal: () => void) => Promise<void>;
-  searchIdeas: (queryParams: string[]) => Promise<AxiosResponse<iIdeaData[]> | undefined>;
+  searchIdeas: (queryParams: string[]) => void;
   getIdeasMaterials: () => Promise<AxiosResponse<string[]> | undefined>;
   getIdeasCategories: () => Promise<AxiosResponse<string[]> | undefined>;
 }
@@ -30,6 +30,7 @@ export const IdeasContext = createContext<iIdeasContextProvider>({} as iIdeasCon
 
 export const IdeasProvider = () => {
   const [loading, setLoading] = useState(false);
+  const [foundIdeas, setFoundIdeas] = useState([] as iIdeaData[]);
 
   const headers = {
     headers: {
@@ -88,14 +89,14 @@ export const IdeasProvider = () => {
     }
   };
 
-  const searchIdeas = async (queryParams?: string[]): Promise<AxiosResponse<iIdeaData[]> | undefined> => {
+  const searchIdeas = async (queryParams?: string[]) => {
     try {
       setLoading(true);
 
       let ideasRequestRoute = "/ideas";
 
       queryParams?.forEach((queryParam, index) => {
-        if (index == 0) {
+        if (index === 0) {
           ideasRequestRoute += "?";
         } else {
           ideasRequestRoute += "&";
@@ -104,9 +105,9 @@ export const IdeasProvider = () => {
         ideasRequestRoute += queryParam;
       })
 
-      const foundIdeas = await api.get(ideasRequestRoute);
+      const foundIdeasResponse = (await api.get(ideasRequestRoute)).data;
 
-      return foundIdeas;
+      setFoundIdeas(foundIdeasResponse);
     } catch (error) {
       toast.error("Não foi possível buscar pelas ideias.");
     } finally {
