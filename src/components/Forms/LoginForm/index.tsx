@@ -28,7 +28,7 @@ export const LoginForm = () => {
         label="E-mail"
         disabled={loading}
         register={register("email")}
-        error={errors.email}
+        error={errors.email?.message}
       />
       <Input
         type="password"
@@ -37,7 +37,7 @@ export const LoginForm = () => {
         label="Senha"
         disabled={loading}
         register={register("password")}
-        error={errors.password}
+        error={errors.password?.message}
       />
       <Button text="Logar" label="Botão de login" disabled={loading} />
     </StyledForm>

@@ -25,7 +25,7 @@ export const Input = ({
         disabled={disabled}
         textarea={textarea}
       />
-      <p>{error}</p>
+      {error && <p>{error}</p>}
     </FieldsetStyled>
   );
 };
