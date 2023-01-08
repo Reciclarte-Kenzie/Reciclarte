@@ -17,6 +17,7 @@ interface iSelect extends React.HTMLProps<HTMLSelectElement> {
   disabled?: boolean;
   className?: string;
   label: string;
+  error: string;
   selOptions?: string[];
   setSelOptions: React.Dispatch<React.SetStateAction<string[]>>;
 }
@@ -29,6 +30,7 @@ export const Select = ({
   disabled,
   className,
   label,
+  error,
   selOptions,
   setSelOptions,
 }: iSelect) => {
@@ -57,6 +59,7 @@ export const Select = ({
           );
         })}
       </StyledSelect>
+      {error && <p>{error}</p>}
       {selOptions && selOptions.length > 0 && (
         <FilterLabelList labelList={selOptions} setLabelList={setSelOptions} />
       )}
