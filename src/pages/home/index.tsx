@@ -9,14 +9,14 @@ export const Home = () => {
   const { searchIdeas } = useContext(IdeasContext);
   const [allIdeasList, setAllIdeasList] = useState([] as iIdeaData[]);
   console.log(searchIdeas);
-  useEffect(() => {
-    const getAllIdeasList = async () => {
-      const ideasListResponse = await searchIdeas([]);
-      setAllIdeasList(ideasListResponse?.data || []);
-    };
-    getAllIdeasList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   const getAllIdeasList = async () => {
+  //     const ideasListResponse = await searchIdeas([]);
+  //     setAllIdeasList(ideasListResponse?.data || []);
+  //   };
+  //   getAllIdeasList();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <div>

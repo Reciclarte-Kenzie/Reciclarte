@@ -17,7 +17,7 @@ interface iSelect extends React.HTMLProps<HTMLSelectElement> {
   disabled?: boolean;
   className?: string;
   label: string;
-  error: string;
+  error?: string;
   selOptions?: string[];
   setSelOptions: React.Dispatch<React.SetStateAction<string[]>>;
 }
