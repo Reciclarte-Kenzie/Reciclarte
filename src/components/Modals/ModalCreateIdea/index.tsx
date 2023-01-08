@@ -28,7 +28,28 @@ const ModalCreateIdeaBody = () => {
   const [materialsList, setMaterialsList] = useState([] as iSelectOption[]);
   const [categoriesList, setCategoriesList] = useState([] as iSelectOption[]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const getIdeasMaterialsResponse = async () => {
+      const materialsListResponse = (await getIdeasMaterials())?.data;
+      const materialsTreated = materialsListResponse?.map((material) => {
+        return { value: material, text: material };
+      });
+
+      setMaterialsList(materialsTreated || []);
+    };
+
+    const getIdeasCategoriesResponse = async () => {
+      const categoriesListResponse = (await getIdeasCategories())?.data;
+      const categoriesTreated = categoriesListResponse?.map((category) => {
+        return { value: category, text: category };
+      });
+
+      setCategoriesList(categoriesTreated || []);
+    };
+
+    getIdeasMaterialsResponse();
+    getIdeasCategoriesResponse();
+  }, []);
 
   return (
     <ModalCreateIdeaBodyStyled>
@@ -55,7 +76,7 @@ const ModalCreateIdeaBody = () => {
         </section>
         <section>
           <Select
-            options={}
+            options={materialsList}
             placeholder="Selecione um material"
             label="Materiais"
             id="materials"
