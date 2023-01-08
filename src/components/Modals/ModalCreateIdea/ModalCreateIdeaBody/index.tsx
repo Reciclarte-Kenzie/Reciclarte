@@ -138,32 +138,34 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
           />
         </section>
         <section>
-          <FieldsetStyled>
-            <LabelStyled>Materiais</LabelStyled>
+          <div className="select-group">
             <Select
               options={materialsList}
               placeholder="Selecione um material"
               id="materials"
               register={register("materials")}
+              label="Materiais"
+              error={errors.materials?.message || ""}
             />
             <FilterLabelList
               labelList={selectedMaterials}
               setLabelList={setSelectedMaterials}
             />
-          </FieldsetStyled>
-          <FieldsetStyled>
-            <LabelStyled>Categorias</LabelStyled>
+          </div>
+          <div className="select-group">
             <Select
               options={categoriesList}
               placeholder="Selecione uma categoria"
               id="categories"
               register={register("categories")}
+              label="Categorias"
+              error={errors.categories?.message || ""}
             />
             <FilterLabelList
               labelList={selectedCategories}
               setLabelList={setSelectedCategories}
             />
-          </FieldsetStyled>
+          </div>
           <article className="added-images">
             <Input
               type="url"

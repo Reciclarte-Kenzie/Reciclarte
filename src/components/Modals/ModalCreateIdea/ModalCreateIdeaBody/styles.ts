@@ -20,7 +20,7 @@ export const ModalCreateIdeaBodyStyled = styled.form`
     flex-grow: 1;
   }
 
-  section, .added-images {
+  section, .added-images, .select-group {
     display: flex;
     flex-direction: column;
     gap: 0.625rem;
