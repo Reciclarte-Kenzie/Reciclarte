@@ -44,6 +44,31 @@ export const ModalCreateIdeaBody = () => {
     getIdeasCategoriesResponse();
   }, []);
 
+  useEffect(() => {
+    document.addEventListener("input", (event) => {
+      const selectTarget = event.target as HTMLSelectElement;
+      const selectedValue = selectTarget.value;
+
+      if (selectTarget.name === "materials") {
+        const materialWasSelected = selectedMaterials.find(
+          (selectedMaterial) => selectedValue === selectedMaterial
+        );
+
+        if(!materialWasSelected) {
+          setSelectedMaterials([...selectedMaterials, selectedValue]);
+        }
+      } else if (selectTarget.name === "categories") {
+        const categoryWasSelected = selectedCategories.find(
+          (selectedCategory) => selectedValue === selectedCategory
+        );
+
+        if(!categoryWasSelected) {
+          setSelectedCategories([...selectedCategories, selectedValue]);
+        }
+      }
+    });
+  }, [selectedMaterials, selectedCategories]);
+
   return (
     <ModalCreateIdeaBodyStyled>
       <article>
