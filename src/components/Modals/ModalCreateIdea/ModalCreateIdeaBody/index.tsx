@@ -45,7 +45,7 @@ export const ModalCreateIdeaBody = () => {
   }, []);
 
   useEffect(() => {
-    document.addEventListener("input", (event) => {
+    const addSelectedValueIntoList = (event) => {
       const selectTarget = event.target as HTMLSelectElement;
       const selectedValue = selectTarget.value;
 
@@ -54,7 +54,7 @@ export const ModalCreateIdeaBody = () => {
           (selectedMaterial) => selectedValue === selectedMaterial
         );
 
-        if(!materialWasSelected) {
+        if (!materialWasSelected) {
           setSelectedMaterials([...selectedMaterials, selectedValue]);
         }
       } else if (selectTarget.name === "categories") {
@@ -62,11 +62,17 @@ export const ModalCreateIdeaBody = () => {
           (selectedCategory) => selectedValue === selectedCategory
         );
 
-        if(!categoryWasSelected) {
+        if (!categoryWasSelected) {
           setSelectedCategories([...selectedCategories, selectedValue]);
         }
       }
-    });
+    };
+
+    document.addEventListener("input", addSelectedValueIntoList);
+
+    return () => {
+      document.removeEventListener("input", addSelectedValueIntoList);
+    };
   }, [selectedMaterials, selectedCategories]);
 
   return (
