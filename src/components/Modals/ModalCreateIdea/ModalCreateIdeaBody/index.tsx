@@ -45,7 +45,7 @@ export const ModalCreateIdeaBody = () => {
   }, []);
 
   useEffect(() => {
-    const addSelectedValueIntoList = (event) => {
+    const addSelectedValueIntoList = (event: Event) => {
       const selectTarget = event.target as HTMLSelectElement;
       const selectedValue = selectTarget.value;
 
