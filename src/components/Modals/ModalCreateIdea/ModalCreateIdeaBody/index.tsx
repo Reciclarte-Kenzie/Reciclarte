@@ -47,7 +47,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
   const [categoriesList, setCategoriesList] = useState([] as iSelectOption[]);
   const [selectedMaterials, setSelectedMaterials] = useState([] as string[]);
   const [selectedCategories, setSelectedCategories] = useState([] as string[]);
-  const [addedImages, setAddedImages] = useState([] as string[]);
+  const [addedImagesList, setAddedImagesList] = useState([] as string[]);
 
   useEffect(() => {
     const getIdeasMaterialsResponse = async () => {
@@ -105,11 +105,13 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
 
   const addImageIntoList = async () => {
     const insertedImage = getValues().imgs;
-    const insertedImageIsValid = await createIdeaSchema.validateAt("imgs", { imgs: insertedImage});
-    console.log(insertedImageIsValid)
+    const insertedImageIsValid = await createIdeaSchema.validateAt("imgs", {
+      imgs: insertedImage,
+    });
+    console.log(insertedImageIsValid);
 
     if (insertedImageIsValid) {
-      setAddedImages([...addedImages, insertedImage]);
+      setAddedImagesList([...addedImagesList, insertedImage]);
     }
   };
 
@@ -194,8 +196,12 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
               />
             </div>
             <ul>
-              {addedImages.map((addedImage) => (
-                <IdeaImage addedImage={addedImage} />
+              {addedImagesList.map((addedImage) => (
+                <IdeaImage
+                  addedImage={addedImage}
+                  addedImagesList={addedImagesList}
+                  setAddedImagesList={setAddedImagesList}
+                />
               ))}
             </ul>
           </article>
