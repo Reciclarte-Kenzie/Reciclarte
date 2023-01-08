@@ -120,6 +120,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
             label="Título"
             id="title"
             register={register("title")}
+            error={errors.title?.message}
           />
           <Input
             placeholder="Insira o passo a passo"
@@ -127,6 +128,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
             id="steps"
             register={register("steps")}
             textarea
+            error={errors.steps?.message}
           />
           <Slider defaultValue={2} min={1} max={5} />
           <Input
@@ -135,6 +137,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
             label="Custo estimado"
             id="estimatedCost"
             register={register("estimatedCost")}
+            error={errors.estimatedCost?.message}
           />
         </section>
         <section>
@@ -173,6 +176,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
               label="Foto"
               id="img"
               register={register("imgs")}
+              error={errors.imgs?.message}
             />
             <ul>
               {addedImages.map((addedImage) => (
