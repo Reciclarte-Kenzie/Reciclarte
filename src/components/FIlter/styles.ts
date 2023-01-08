@@ -30,10 +30,22 @@ export const StyledFilter = styled.aside<iFilter>`
   }
 
   form {
-    padding: 0 1vw 1.2vh;
+    padding: 1.2vh 1vw;
     border: 1px solid var(--color-grey-60);
     border-radius: 0 0 var(--radius-1) var(--radius-1);
     border-top: none;
+
+    input {
+      height: 50px;
+
+      &[type="range"] {
+        height: 8px;
+      }
+    }
+
+    button {
+      width: clamp(130px, 35%, 150px);
+    }
 
     @media (min-width: 700px) {
       width: 100%;

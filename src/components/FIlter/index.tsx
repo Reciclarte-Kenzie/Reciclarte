@@ -114,7 +114,7 @@ export const FilterBox = () => {
         <Input
           type="text"
           placeholder="Título"
-          label=""
+          label="Título da ideia"
           id="titleFilter"
           register={register("titleFilter")}
           disabled={loading}
