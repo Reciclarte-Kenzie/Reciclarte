@@ -26,12 +26,16 @@ export const ModalCreateIdeaBodyStyled = styled.form`
     gap: 0.625rem;
   }
 
-  textarea {
-    height: 90px;
+  fieldset:nth-of-type(2), fieldset:nth-of-type(7) {
+    height: 100%;
   }
 
-  textarea[name="steps"] {
-    height: 135px;
+  textarea {
+    height: 100%;
+  }
+
+  select {
+    height: 55.78px;
   }
 
   button {

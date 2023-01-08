@@ -133,6 +133,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
             error={errors.title?.message}
           />
           <Input
+            className="steps"
             placeholder="Insira o passo a passo"
             label="Passo a passo"
             id="steps"
@@ -160,10 +161,12 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
               label="Materiais"
               error={errors.materials?.message || ""}
             />
-            <FilterLabelList
-              labelList={selectedMaterials}
-              setLabelList={setSelectedMaterials}
-            />
+            {selectedMaterials.length !== 0 && (
+              <FilterLabelList
+                labelList={selectedMaterials}
+                setLabelList={setSelectedMaterials}
+              />
+            )}
           </div>
           <div className="select-group">
             <Select
@@ -174,12 +177,15 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
               label="Categorias"
               error={errors.categories?.message || ""}
             />
-            <FilterLabelList
-              labelList={selectedCategories}
-              setLabelList={setSelectedCategories}
-            />
+            {selectedCategories.length !== 0 && (
+              <FilterLabelList
+                labelList={selectedCategories}
+                setLabelList={setSelectedCategories}
+              />
+            )}
           </div>
           <Input
+            className="description"
             placeholder="Insira a descrição"
             label="Descrição"
             id="description"
@@ -205,15 +211,17 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
                 disabled={!!errors.imgs?.message}
               />
             </div>
-            <ul>
-              {addedImagesList.map((addedImage) => (
-                <IdeaImage
-                  addedImage={addedImage}
-                  addedImagesList={addedImagesList}
-                  setAddedImagesList={setAddedImagesList}
-                />
-              ))}
-            </ul>
+            {addedImagesList.length !== 0 && (
+              <ul>
+                {addedImagesList.map((addedImage) => (
+                  <IdeaImage
+                    addedImage={addedImage}
+                    addedImagesList={addedImagesList}
+                    setAddedImagesList={setAddedImagesList}
+                  />
+                ))}
+              </ul>
+            )}
           </article>
         </section>
       </article>
