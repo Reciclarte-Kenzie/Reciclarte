@@ -20,6 +20,7 @@ interface iIdeasContextProvider {
   loading: boolean;
   createIdea: (newIdeaData: iIdeaData, closeModal: () => void) => Promise<void>;
   editIdea: (
+    editedIdeaId: number,
     editedIdeaData: iIdeaData,
     closeModal: () => void
   ) => Promise<void>;
@@ -61,13 +62,14 @@ export const IdeasProvider = () => {
   };
 
   const editIdea = async (
+    editedIdeaId: number,
     editedIdeaData: iIdeaData,
     closeModal: () => void
   ) => {
     try {
       setLoading(true);
 
-      await api.patch("/ideas", editedIdeaData, headers);
+      await api.patch(`/ideas/${editedIdeaId}`, editedIdeaData, headers);
 
       toast.success("Ideia editada com sucesso.");
 
