@@ -1,23 +1,24 @@
 import styled from "styled-components";
 
-export const StyledHeader = styled.header`
-  background-color: var(--color-orange-80);
+export const StyledContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column-reverse;
+  
 
-  div {
+  aside {
     width: 90%;
-    height: 67px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
+    margin: 25px auto;
+    background-color: var(--color-white);
+  }
+
+  @media (min-width: 1000px) {
+    flex-direction: row;
     justify-content: space-between;
 
-    div {
-      justify-content: end;
-      gap: 1.25rem;
+    aside {
+      max-width: 401px;
     }
   }
-`;
-
-export const StyledContentMain = styled.section`
-  margin: 0 auto;
 `;

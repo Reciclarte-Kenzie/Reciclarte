@@ -7,9 +7,10 @@ interface iIdeasListProps {
 }
 
 export const IdeasList = ({ ideasList }: iIdeasListProps) => {
+  
   return (
     <StyledIdeasList>
-      {ideasList.map((idea) => {
+      {ideasList?.map((idea) => {
         return (
           <IdeaCard img={idea.imgs[0]} title={idea.title} description={idea.description} />
         );
