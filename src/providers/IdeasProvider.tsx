@@ -11,8 +11,8 @@ export interface iIdeaData {
   steps: string;
   materials: string[];
   categories: string[];
-  estimatedCost: number;
-  difficultyLevel: number;
+  estimated_cost: number;
+  difficulty_level: number;
   userId: number;
 }
 
