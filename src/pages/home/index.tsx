@@ -11,7 +11,7 @@ export const Home = () => {
   useEffect(() => {
     const getAllIdeasList = async () => {
       const ideasListResponse = await searchIdeas([]);
-      setAllIdeasList(ideasListResponse?.data || []);
+      // setAllIdeasList(ideasListResponse?.data || []);
     };
     getAllIdeasList();
   }, []);

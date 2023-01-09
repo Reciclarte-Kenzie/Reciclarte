@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { iIdeaData } from "../../providers/IdeasProvider";
 import { api } from "../../services/api";
 import { ContainerStyled } from "../../styles/Container/styles";
-import { StyledIdeaPage } from "./StyledIdeaPage";
-
+import { StyledIdeaContainer, StyledIdeaPage } from "./StyledIdeaPage";
+import Header from "../../components/Header";
+import { useNavigate } from "react-router-dom";
 
 export const IdeaPage = () => {
   const [idea, setIdea] = useState<iIdeaData | null>(null);
+  const navigate = useNavigate();
+
+  const backToHome = () => {
+    localStorage.setItem("@reciclarte:id", "");
+    navigate("/");
+  };
 
   useEffect(() => {
     const idPostLocalStorage = localStorage.getItem("@reciclarte:id");
@@ -25,14 +31,23 @@ export const IdeaPage = () => {
   console.log(idea);
 
   return (
-    <div>
-      <h2>HEADER</h2>
+    <StyledIdeaContainer>
+      <Header />
       <ContainerStyled>
         <StyledIdeaPage>
           <article>
-            <figure className="imgWrapper">
-              <img src={idea?.imgs[1]} alt="Imagem da API" />
-            </figure>
+            <div className="images">
+              <img
+                className="imagePost"
+                src={idea?.imgs[0]}
+                alt="Imagem da API"
+              />
+              <img
+                className="imagePost"
+                src={idea?.imgs[1]}
+                alt="Imagem da API"
+              />
+            </div>
             <div className="headerPost">
               <h2>{idea?.title}</h2>
               <div>
@@ -46,7 +61,7 @@ export const IdeaPage = () => {
                   Nível de dificuldade: <span>{idea?.difficulty_level}/5</span>
                 </p>
                 <p>
-                  Materiais: {idea?.materials}
+                  Materiais: <span>{idea?.materials}</span>
                 </p>
               </div>
             </div>
@@ -54,10 +69,10 @@ export const IdeaPage = () => {
               <h3>Passo a passo</h3>
               <p>{idea?.steps}</p>
             </div>
-            <Link to="/">Voltar para a Home</Link>
+            <button onClick={backToHome}>Voltar para a Home</button>
           </article>
         </StyledIdeaPage>
       </ContainerStyled>
-    </div>
+    </StyledIdeaContainer>
   );
 };
