@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { iModalCreateIdeaProps } from "..";
 import { IdeasContext, iIdeaData } from "../../../../providers/IdeasProvider";
+import { UserContext } from "../../../../providers/UserProvider";
 import { Button } from "../../../Button";
 import { FilterLabelList } from "../../../FilterLabelList";
 import { IdeaImage } from "../../../IdeaImage";
@@ -17,21 +18,10 @@ interface iSelectOption {
   text: string;
 }
 
-export interface iCreateIdeaFormFields {
-  title: string;
-  imgs: string[] | string;
-  description: string;
-  steps: string;
-  materials: string[];
-  categories: string[];
-  estimatedCost: string;
-  difficultyLevel: string;
-  userId: string;
-}
-
 export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
   const { createIdea, getIdeasMaterials, getIdeasCategories } =
     useContext(IdeasContext);
+  const { user } = useContext(UserContext);
 
   const {
     handleSubmit,
@@ -39,7 +29,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
     getValues,
     reset,
     formState: { errors },
-  } = useForm<iCreateIdeaFormFields>({
+  } = useForm<iIdeaData>({
     mode: "onBlur",
     resolver: yupResolver(createIdeaSchema),
   });
@@ -119,18 +109,14 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
   return (
     <ModalCreateIdeaBodyStyled
       onSubmit={handleSubmit(async (data) => {
-        const categoriesValues = categoriesList.map(
-          (categorie) => categorie.value
-        );
-        const materialsValues = materialsList.map((material) => material.value);
-
         data = {
           ...data,
           imgs: [...addedImagesList],
-          categories: [...categoriesValues],
-          materials: [...materialsValues],
+          categories: [...selectedCategories],
+          materials: [...selectedMaterials],
+          userId: user?.user.id,
         };
-
+        console.log(data);
         //await createIdea(data, hideModal);
       })}
     >

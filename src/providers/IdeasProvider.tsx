@@ -6,14 +6,14 @@ import { api } from "../services/api";
 
 export interface iIdeaData {
   title: string;
-  imgs: string[];
+  imgs: string[] | string;
   description: string;
   steps: string;
   materials: string[];
   categories: string[];
   estimatedCost: number;
   difficultyLevel: number;
-  userId: number;
+  userId: number | undefined;
 }
 
 interface iIdeasContextProvider {
