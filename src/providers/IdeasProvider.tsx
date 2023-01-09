@@ -121,6 +121,20 @@ export const IdeasProvider = () => {
     }
   };
 
+  const getSpecificIdea = async (ideaId: number) => {
+    try {
+      setLoading(true);
+
+      const foundIdea = (await api.get(`/ideas/${ideaId}`)).data;
+
+      return foundIdea;
+    } catch (error) {
+      toast.error("Ideia não encontrada");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   const getIdeasMaterials = async (): Promise<
     AxiosResponse<string[]> | undefined
   > => {
