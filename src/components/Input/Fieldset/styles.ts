@@ -20,4 +20,4 @@ export const FieldsetStyled = styled.fieldset`
       font-size: var(--font-size-14);
     }
   }
-`
+`;
