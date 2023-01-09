@@ -19,7 +19,7 @@ interface iSelectOption {
 }
 
 export const ModalCreateIdeaBody = ({ hideModal, editedIdeaId }: iModalCreateIdeaProps) => {
-  const { createIdea, getIdeasMaterials, getIdeasCategories } =
+  const { createIdea, getSpecificIdea, getIdeasMaterials, getIdeasCategories } =
     useContext(IdeasContext);
   const { user } = useContext(UserContext);
 
@@ -39,6 +39,7 @@ export const ModalCreateIdeaBody = ({ hideModal, editedIdeaId }: iModalCreateIde
   const [selectedMaterials, setSelectedMaterials] = useState([] as string[]);
   const [selectedCategories, setSelectedCategories] = useState([] as string[]);
   const [addedImagesList, setAddedImagesList] = useState([] as string[]);
+  const [editedIdea, setEditedIdea] = useState({} as iIdeaData);
 
   useEffect(() => {
     const getIdeasMaterialsResponse = async () => {
@@ -93,6 +94,18 @@ export const ModalCreateIdeaBody = ({ hideModal, editedIdeaId }: iModalCreateIde
       document.removeEventListener("input", addSelectedValueIntoList);
     };
   }, [selectedMaterials, selectedCategories]);
+
+  useEffect(() => {
+    if (editedIdeaId) {
+      const getEditedIdea = async () => {
+        const editedIdeaResponse = await getSpecificIdea(editedIdeaId);
+        
+        setEditedIdea(editedIdeaResponse || {} as iIdeaData);
+      }
+
+      getEditedIdea();
+    }
+  }, []);
 
   const addImageIntoList = async () => {
     const insertedImage = getValues().imgs.toString();
