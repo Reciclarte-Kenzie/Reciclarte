@@ -19,7 +19,7 @@ interface iSelectOption {
 }
 
 export const ModalCreateIdeaBody = ({ hideModal, editedIdeaId }: iModalCreateIdeaProps) => {
-  const { createIdea, getSpecificIdea, getIdeasMaterials, getIdeasCategories } =
+  const { createIdea, editIdea, getSpecificIdea, getIdeasMaterials, getIdeasCategories } =
     useContext(IdeasContext);
   const { user } = useContext(UserContext);
 
@@ -134,7 +134,11 @@ export const ModalCreateIdeaBody = ({ hideModal, editedIdeaId }: iModalCreateIde
           userId: user?.user.id,
         };
         
-        await createIdea(data, hideModal);
+        if(editedIdeaId) {
+          await editIdea(editedIdeaId, data, hideModal);
+        } else {
+          await createIdea(data, hideModal);
+        }
       })}
     >
       <article>
