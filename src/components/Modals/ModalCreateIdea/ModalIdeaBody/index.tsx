@@ -18,7 +18,7 @@ interface iSelectOption {
   text: string;
 }
 
-export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
+export const ModalCreateIdeaBody = ({ hideModal, editedIdeaId }: iModalCreateIdeaProps) => {
   const { createIdea, getIdeasMaterials, getIdeasCategories } =
     useContext(IdeasContext);
   const { user } = useContext(UserContext);
