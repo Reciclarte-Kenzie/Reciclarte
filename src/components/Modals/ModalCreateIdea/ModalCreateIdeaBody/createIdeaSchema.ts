@@ -11,7 +11,6 @@ export const createIdeaSchema = yup.object().shape({
   categories: yup.string().required("Selecione ao menos uma categoria"),
   imgs: yup
     .string()
-    .required("Insira ao menos a URL de uma foto")
     .test(
       "test-image",
       "A URL deve terminar em: .png, .jpg ou .gif",
@@ -19,6 +18,6 @@ export const createIdeaSchema = yup.object().shape({
         value?.endsWith(".png") ||
         value?.endsWith(".jpg") ||
         value?.endsWith(".gif") ||
-        false
+        value === ""
     ),
 });

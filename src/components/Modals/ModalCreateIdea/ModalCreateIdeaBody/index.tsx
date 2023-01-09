@@ -19,7 +19,7 @@ interface iSelectOption {
 
 export interface iCreateIdeaFormFields {
   title: string;
-  imgs: string[];
+  imgs: string[] | string;
   description: string;
   steps: string;
   materials: string[];
@@ -110,10 +110,9 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
       imgs: insertedImage,
     });
 
-    if (insertedImageIsValid) {
-      console.log(insertedImage);
+    if (insertedImageIsValid && insertedImage !== "") {
       setAddedImagesList([...addedImagesList, insertedImage]);
-      reset({ imgs: [] });
+      reset({ imgs: "" });
     }
   };
 
@@ -127,11 +126,11 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
 
         data = {
           ...data,
+          imgs: [...addedImagesList],
           categories: [...categoriesValues],
           materials: [...materialsValues],
         };
 
-        console.log(data);
         //await createIdea(data, hideModal);
       })}
     >
