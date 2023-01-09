@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ModalCreateIdeaBodyStyled = styled.form`
+export const ModalBodyStyled = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1rem;

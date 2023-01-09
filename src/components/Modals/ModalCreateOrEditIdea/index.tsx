@@ -2,23 +2,23 @@ import { useContext, useEffect, useState } from "react";
 import { IdeasContext } from "../../../providers/IdeasProvider";
 import { Button } from "../../Button";
 import { ModalBase } from "../ModalBase";
-import { ModalCreateIdeaBody } from "./ModalIdeaBody";
+import { ModalBody } from "./ModalBody";
 
-export interface iModalCreateIdeaProps {
+export interface iModalCreateOrEditIdeaProps {
   hideModal: () => void;
   editedIdeaId?: number;
 }
 
-export const ModalCreateIdea = ({
+export const ModalCreateOrEditIdea = ({
   hideModal,
   editedIdeaId,
-}: iModalCreateIdeaProps) => {
+}: iModalCreateOrEditIdeaProps) => {
   return (
     <ModalBase
       modalTitle={editedIdeaId ? "Editar ideia" : "Criar ideia"}
       hideModal={hideModal}
       ModalBody={() => (
-        <ModalCreateIdeaBody
+        <ModalBody
           hideModal={hideModal}
           editedIdeaId={editedIdeaId}
         />

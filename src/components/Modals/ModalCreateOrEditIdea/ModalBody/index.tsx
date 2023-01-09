@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { iModalCreateIdeaProps } from "..";
+import { iModalCreateOrEditIdeaProps } from "..";
 import { IdeasContext, iIdeaData } from "../../../../providers/IdeasProvider";
 import { UserContext } from "../../../../providers/UserProvider";
 import { Button } from "../../../Button";
@@ -10,18 +10,18 @@ import { IdeaImage } from "../../../IdeaImage";
 import { Input } from "../../../Input";
 import { Select } from "../../../Input/Select";
 import { Slider } from "../../../Slider";
-import { createIdeaSchema } from "./createIdeaSchema";
-import { ModalCreateIdeaBodyStyled } from "./styles";
+import { createOrEditIdeaSchema } from "./createOrEditIdeaSchema";
+import { ModalBodyStyled } from "./styles";
 
 interface iSelectOption {
   value: string;
   text: string;
 }
 
-export const ModalCreateIdeaBody = ({
+export const ModalBody = ({
   hideModal,
   editedIdeaId,
-}: iModalCreateIdeaProps) => {
+}: iModalCreateOrEditIdeaProps) => {
   const {
     loading,
     createIdea,
@@ -40,7 +40,7 @@ export const ModalCreateIdeaBody = ({
     formState: { errors },
   } = useForm<iIdeaData>({
     mode: "onBlur",
-    resolver: yupResolver(createIdeaSchema),
+    resolver: yupResolver(createOrEditIdeaSchema),
   });
 
   const [materialsList, setMaterialsList] = useState([] as iSelectOption[]);
@@ -129,7 +129,7 @@ export const ModalCreateIdeaBody = ({
 
   const addImageIntoList = async () => {
     const insertedImage = getValues().imgs.toString();
-    const insertedImageIsValid = await createIdeaSchema.validateAt("imgs", {
+    const insertedImageIsValid = await createOrEditIdeaSchema.validateAt("imgs", {
       imgs: insertedImage,
     });
 
@@ -140,7 +140,7 @@ export const ModalCreateIdeaBody = ({
   };
 
   return (
-    <ModalCreateIdeaBodyStyled
+    <ModalBodyStyled
       noValidate
       onSubmit={handleSubmit(async (data) => {
         data = {
@@ -274,7 +274,11 @@ export const ModalCreateIdeaBody = ({
           </article>
         </section>
       </article>
-      <Button text="Criar" label="Criar ideia" disabled={loading} />
-    </ModalCreateIdeaBodyStyled>
+      <Button
+        text={editedIdeaId ? "Editar" : "Criar"}
+        label="Criar ideia"
+        disabled={loading}
+      />
+    </ModalBodyStyled>
   );
 };
