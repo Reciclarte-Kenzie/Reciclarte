@@ -205,13 +205,9 @@ export const ModalBody = ({
               label="Materiais"
               error={errors.materials?.message || ""}
               disabled={loading}
+              selOptions={selectedMaterials}
+              setSelOptions={setSelectedMaterials}
             />
-            {selectedMaterials.length !== 0 && (
-              <FilterLabelList
-                labelList={selectedMaterials}
-                setLabelList={setSelectedMaterials}
-              />
-            )}
           </div>
           <div className="select-group">
             <Select
@@ -222,13 +218,9 @@ export const ModalBody = ({
               label="Categorias"
               error={errors.categories?.message || ""}
               disabled={loading}
+              selOptions={selectedCategories}
+              setSelOptions={setSelectedCategories}
             />
-            {selectedCategories.length !== 0 && (
-              <FilterLabelList
-                labelList={selectedCategories}
-                setLabelList={setSelectedCategories}
-              />
-            )}
           </div>
           <Input
             className="description"
