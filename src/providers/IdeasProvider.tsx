@@ -20,6 +20,7 @@ interface iIdeasContextProvider {
   loading: boolean;
   createIdea: (newIdeaData: iIdeaData, closeModal: () => void) => Promise<void>;
   editIdea: (
+    editedIdeaId: number,
     editedIdeaData: iIdeaData,
     closeModal: () => void
   ) => Promise<void>;
