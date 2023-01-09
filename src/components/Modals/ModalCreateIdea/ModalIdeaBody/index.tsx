@@ -101,6 +101,9 @@ export const ModalCreateIdeaBody = ({ hideModal, editedIdeaId }: iModalCreateIde
         const editedIdeaResponse = await getSpecificIdea(editedIdeaId);
         
         setEditedIdea(editedIdeaResponse || {} as iIdeaData);
+        setAddedImagesList([...editedIdea.imgs as string[]]);
+        setSelectedMaterials([...editedIdea.materials]);
+        setSelectedCategories([...editedIdea.categories]);
       }
 
       getEditedIdea();
