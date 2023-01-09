@@ -5,7 +5,7 @@ export const FieldsetStyled = styled.fieldset`
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 10px;
+  gap: 0.625rem;
 
   p {
     font-weight: 400;
