@@ -23,6 +23,7 @@ export const ModalCreateIdeaBody = ({
   editedIdeaId,
 }: iModalCreateIdeaProps) => {
   const {
+    loading,
     createIdea,
     editIdea,
     getSpecificIdea,
@@ -165,6 +166,7 @@ export const ModalCreateIdeaBody = ({
             id="title"
             register={register("title")}
             error={errors.title?.message}
+            disabled={loading}
           />
           <Input
             className="steps"
@@ -174,12 +176,14 @@ export const ModalCreateIdeaBody = ({
             register={register("steps")}
             textarea
             error={errors.steps?.message}
+            disabled={loading}
           />
           <Slider
             register={register("difficultyLevel")}
             defaultValue={2}
             min={1}
             max={5}
+            disabled={loading}
           />
           <Input
             type="number"
@@ -188,6 +192,7 @@ export const ModalCreateIdeaBody = ({
             id="estimatedCost"
             register={register("estimatedCost")}
             error={errors.estimatedCost?.message}
+            disabled={loading}
           />
         </section>
         <section>
@@ -199,6 +204,7 @@ export const ModalCreateIdeaBody = ({
               register={register("materials")}
               label="Materiais"
               error={errors.materials?.message || ""}
+              disabled={loading}
             />
             {selectedMaterials.length !== 0 && (
               <FilterLabelList
@@ -215,6 +221,7 @@ export const ModalCreateIdeaBody = ({
               register={register("categories")}
               label="Categorias"
               error={errors.categories?.message || ""}
+              disabled={loading}
             />
             {selectedCategories.length !== 0 && (
               <FilterLabelList
@@ -230,6 +237,7 @@ export const ModalCreateIdeaBody = ({
             id="description"
             register={register("description")}
             error={errors.description?.message}
+            disabled={loading}
             textarea
           />
           <article className="added-images">
@@ -241,13 +249,14 @@ export const ModalCreateIdeaBody = ({
                 id="img"
                 register={register("imgs")}
                 error={errors.imgs?.message}
+                disabled={loading}
               />
               <Button
                 type="button"
                 action={addImageIntoList}
                 text="+"
                 label="adicionar imagem"
-                disabled={!!errors.imgs?.message}
+                disabled={!!errors.imgs?.message || loading}
               />
             </div>
             {addedImagesList.length !== 0 && (
@@ -265,7 +274,7 @@ export const ModalCreateIdeaBody = ({
           </article>
         </section>
       </article>
-      <Button text="Criar" label="Criar ideia" />
+      <Button text="Criar" label="Criar ideia" disabled={loading} />
     </ModalCreateIdeaBodyStyled>
   );
 };
