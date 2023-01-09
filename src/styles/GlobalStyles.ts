@@ -27,6 +27,11 @@ export const GlobalStyles = createGlobalStyle`
         --color-orange-70: #FEAB48;
         --color-white: #FFFFFF;
 
+        --font-color-white:#FFFFFF;
+        --font-color-orange-80: #F7941D;
+        --font-color-green-100: #011B0C;
+        --font-color-grey-100: #7A7A7A;
+
         --font-size-36: 2.25rem;
         --font-size-25: 1.563rem;
         --font-size-18: 1.125rem;
