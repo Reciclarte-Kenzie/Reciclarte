@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Header = styled.header`
-  background-color: var(--color-orange-80);
+  background-color: var(--color-brown-70);
   min-height: 67px;
   max-height: 140px;
   display: flex;
@@ -89,8 +89,8 @@ export const Actions = styled.div<IActionsProps>`
 `;
 
 export const LoginButton = styled.button`
-  border: 2px solid #ffffff;
-  background: #ffffff;
+  border: 2px solid var(--color-white);
+  background: var(--color-white);
   border-radius: 8px;
   padding: 9px 25px;
   /* text-2 */
@@ -99,7 +99,7 @@ export const LoginButton = styled.button`
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
-  color: #f7941d;
+  color: var(--color-brown-70);
 
   @media screen and (min-width: 968px) {
     border: none;
@@ -107,7 +107,7 @@ export const LoginButton = styled.button`
 `;
 
 export const RegisterButton = styled.button`
-  border: 2px solid #ffffff;
+  border: 2px solid var(--color-white);
   border-radius: 8px;
   padding: 9px 25px;
   /* text-2 */
@@ -116,5 +116,5 @@ export const RegisterButton = styled.button`
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
-  color: #ffffff;
+  color: var(--font-color-white);
 `;

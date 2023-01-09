@@ -18,7 +18,7 @@ export const StyledRegisterPage = styled.main`
     height: 0px;
     font-weight: 400;
     font-size: var(--font-size-12);
-    color: var(--color-orange-80);
+    color: var(--font-color-brown-70);
 
     @media (min-width: 700px) {
       font-size: var(--font-size-14);
@@ -37,10 +37,10 @@ export const StyledRegisterPage = styled.main`
 
   & > div button:nth-child(1) {
     border-radius: var(--radius-1);
-    background-color: var(--color-orange-80);
+    background-color: var(--color-brown-70);
     width: 4.12;
     height: 1.87;
-    color: var(--color-white);
+    color: var(--font-color-white);
     box-sizing: border-box;
     padding: 0.25rem 0.5rem 0.25rem;
     transition: 300ms;
@@ -48,17 +48,17 @@ export const StyledRegisterPage = styled.main`
 
   & > div button:nth-child(2) {
     border-radius: var(--radius-1);
-    background-color: var(--color-orange-80);
+    background-color: var(--color-brown-70);
     width: 4.12;
     height: 1.87;
-    color: var(--color-white);
+    color: var(--font-color-white);
     box-sizing: border-box;
     padding: 0.25rem 0.5rem 0.25rem;
     transition: 300ms;
   }
 
   & > div button:hover {
-    background-color: var(--color-orange-70);
+    background-color: var(--color-brown-80);
   }
 
   @media (min-width: 700px) {

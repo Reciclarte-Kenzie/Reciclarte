@@ -7,7 +7,8 @@ export const FieldsetStyled = styled.fieldset`
   gap: 2vh;
   width: 100%;
 
-  input, textarea {
+  input,
+  textarea {
     border: 1px solid var(--color-grey-90);
     border-radius: var(--radius-1);
     font-weight: 400;
@@ -17,7 +18,7 @@ export const FieldsetStyled = styled.fieldset`
     resize: none;
 
     ::placeholder {
-      color: var(--color-grey-100);
+      color: var(--font-color-grey-100);
     }
 
     :focus {
@@ -29,6 +30,6 @@ export const FieldsetStyled = styled.fieldset`
   label {
     font-weight: 400;
     font-size: var(--font-size-18);
-    color: var(--color-green-100);
+    color: var(--font-color-green-100);
   }
 `;

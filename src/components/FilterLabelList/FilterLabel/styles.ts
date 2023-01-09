@@ -21,6 +21,6 @@ export const FilterLabelStyled = styled.li`
 
   p,
   button {
-    color: var(--color-white);
+    color: var(--font-color-white);
   }
 `;

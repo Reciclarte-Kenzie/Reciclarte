@@ -19,7 +19,7 @@ export const SliderInputStyled = styled.input<iSliderInputStyled>`
   &::-webkit-slider-thumb {
     background: #ffffff;
     border-radius: 1em;
-    border: 7px solid var(--color-orange-80);
+    border: 7px solid var(--color-brown-70);
     box-shadow: none;
     height: 2em;
     margin-top: calc(10px * 0.5 - max(2em * 0.5, 7px));
@@ -36,25 +36,25 @@ export const SliderInputStyled = styled.input<iSliderInputStyled>`
   }
 
   &:hover::-webkit-slider-thumb:hover {
-    border-color: var(--color-orange-70);
+    border-color: var(--color-brown-80);
   }
 
   &::-webkit-slider-runnable-track {
-    background: linear-gradient(var(--color-orange-80), var(--color-orange-80))
-        0 / var(--sx) 100% no-repeat,
+    background: linear-gradient(var(--color-brown-70), var(--color-brown-70)) 0 /
+        var(--sx) 100% no-repeat,
       var(--color-grey-60);
   }
 
   &:hover::-webkit-slider-runnable-track {
-    background: linear-gradient(var(--color-orange-70), var(--color-orange-70))
-        0 / var(--sx) 100% no-repeat,
+    background: linear-gradient(var(--color-brown-80), var(--color-brown-80)) 0 /
+        var(--sx) 100% no-repeat,
       var(--color-grey-60);
   }
 
   &::-moz-range-thumb {
     background: #ffffff;
     border-radius: 1em;
-    border: 7px solid var(--color-orange-80);
+    border: 7px solid var(--color-brown-70);
     box-shadow: none;
     height: max(calc(2em - 7px - 7px), 0px);
     width: max(calc(2em - 7px - 7px), 0px);
@@ -69,18 +69,18 @@ export const SliderInputStyled = styled.input<iSliderInputStyled>`
   }
 
   &:hover::-moz-range-thumb {
-    border-color: var(--color-orange-70);
+    border-color: var(--color-brown-80);
   }
 
   &::-moz-range-track {
-    background: linear-gradient(var(--color-orange-80), var(--color-orange-80))
-        0 / var(--sx) 100% no-repeat,
+    background: linear-gradient(var(--color-brown-70), var(--color-brown-70)) 0 /
+        var(--sx) 100% no-repeat,
       var(--color-grey-60);
   }
 
   &:hover::-moz-range-track {
-    background: linear-gradient(var(--color-orange-70), var(--color-orange-70))
-        0 / var(--sx) 100% no-repeat,
+    background: linear-gradient(var(--color-brown-80), var(--color-brown-80)) 0 /
+        var(--sx) 100% no-repeat,
       var(--color-grey-60);
   }
 
@@ -97,7 +97,7 @@ export const SliderInputStyled = styled.input<iSliderInputStyled>`
   &::-ms-thumb {
     background: #ffffff;
     border-radius: 1em;
-    border: 7px solid var(--color-orange-80);
+    border: 7px solid var(--color-brown-70);
     box-sizing: border-box;
     box-shadow: none;
     height: 2em;
@@ -115,11 +115,11 @@ export const SliderInputStyled = styled.input<iSliderInputStyled>`
   }
 
   &:hover::-ms-thumb {
-    border-color: var(--color-orange-70);
+    border-color: var(--color-brown-80);
   }
 
   &::-ms-fill-lower {
-    background: var(--color-orange-80);
+    background: var(--color-brown-70);
     border-radius: 0.5em 0 0 0.5em;
     border: none;
     border-right-width: 0;
@@ -128,6 +128,6 @@ export const SliderInputStyled = styled.input<iSliderInputStyled>`
   }
 
   &:hover::-ms-fill-lower {
-    background: var(--color-orange-70);
+    background: var(--color-brown-80);
   }
 `;

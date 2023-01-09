@@ -27,7 +27,7 @@ export const StyledButton = styled.button<iStyledButton>`
         return css`
           background-color: var(--color-white);
           border: 2px solid var(--color-white);
-          color: var(--color-orange-80);
+          color: var(--font-color-brown-70);
 
           :hover,
           :focus {
@@ -37,13 +37,13 @@ export const StyledButton = styled.button<iStyledButton>`
         `;
       case "whiteBorder":
         return css`
-          background-color: var(--color-orange-80);
+          background-color: var(--color-brown-70);
           border: 2px solid var(--color-white);
-          color: var(--color-white);
+          color: var(--font-color-white);
 
           :hover,
           :focus {
-            background-color: var(--color-orange-70);
+            background-color: var(--color-brown-80);
           }
         `;
 
@@ -51,13 +51,13 @@ export const StyledButton = styled.button<iStyledButton>`
         return css`
           background-color: var(--color-grey-60);
           border: 2px solid var(--color-grey-60);
-          color: var(--color-grey-100);
+          color: var(--font-color-grey-100);
 
           :hover,
           :focus {
-            border: 2px solid var(--color-orange-70);
-            background-color: var(--color-orange-70);
-            color: var(--color-grey-70);
+            border: 2px solid var(--color-brown-80);
+            background-color: var(--color-brown-80);
+            color: var(--font-color-grey-70);
           }
         `;
 
@@ -65,7 +65,7 @@ export const StyledButton = styled.button<iStyledButton>`
         return css`
           background-color: var(--color-green-80);
           border: 2px solid var(--color-green-80);
-          color: var(--color-white);
+          color: var(--font-color-white);
 
           :hover,
           :focus {
@@ -76,14 +76,14 @@ export const StyledButton = styled.button<iStyledButton>`
 
       default:
         return css`
-          background-color: var(--color-orange-80);
-          border: 2px solid var(--color-orange-80);
-          color: var(--color-white);
+          background-color: var(--color-brown-70);
+          border: 2px solid var(--color-brown-70);
+          color: var(--font-color-white);
 
           :hover,
           :focus {
-            border: 2px solid var(--color-orange-70);
-            background-color: var(--color-orange-70);
+            border: 2px solid var(--color-brown-80);
+            background-color: var(--color-brown-80);
           }
         `;
     }

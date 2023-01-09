@@ -69,7 +69,7 @@ export const ModalBaseStyled = styled.div`
 
   header {
     align-items: center;
-    background-color: var(--color-orange-80);
+    background-color: var(--color-brown-70);
     border-radius: var(--radius-1) var(--radius-1) 0 0;
     display: flex;
     justify-content: space-between;

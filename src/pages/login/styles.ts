@@ -95,7 +95,7 @@ export const StyledLoginPage = styled.section`
     height: 0px;
     font-weight: 400;
     font-size: var(--font-size-12);
-    color: var(--color-orange-80);
+    color: var(--font-color-brown-70);
 
     @media (min-width: 700px) {
       font-size: var(--font-size-14);
@@ -113,7 +113,7 @@ export const StyledLoginPage = styled.section`
     h3 {
       font-weight: 400;
       font-size: var(--font-size-16);
-      color: var(--color-green-100);
+      color: var(--font-color-green-100);
       max-width: 90%;
       text-align: center;
     }
@@ -122,28 +122,28 @@ export const StyledLoginPage = styled.section`
       font-weight: 400;
       font-size: var(--font-size-18);
       text-align: center;
-      color: var(--color-white);
-      background-color: var(--color-orange-80);
-      border: 1px solid var(--color-orange-80);
+      color: var(--font-color-white);
+      background-color: var(--color-brown-70);
+      border: 1px solid var(--color-brown-70);
       border-radius: calc(3 * var(--radius-1));
       padding: 0.5rem 1.5rem;
       width: clamp(288px, 100%, 300px);
       transition: 300ms;
 
       :hover {
-        border: 1px solid var(--color-orange-70);
-        background-color: var(--color-orange-70);
+        border: 1px solid var(--color-brown-80);
+        background-color: var(--color-brown-80);
       }
     }
     .homePage {
-      color: var(--color-green-100);
+      color: var(--font-color-brown-80);
       background-color: var(--color-grey-60);
-      border: 1px solid var(--color-green-100);
+      border: 1px solid var(--color-brown-80);
 
       :hover {
-        border: 1px solid var(--color-green-80);
+        border: 1px solid var(--color-brown-70);
         background-color: var(--color-grey-60);
-        color: var(--color-green-80);
+        color: var(--font-color-brown-70);
       }
     }
 
@@ -160,7 +160,7 @@ export const StyledLoginPage = styled.section`
 
       h3 {
         font-size: var(--font-size-25);
-        color: var(--color-white);
+        color: var(--font-color-white);
       }
 
       a {
