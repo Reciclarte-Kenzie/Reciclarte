@@ -48,6 +48,10 @@ export const ModalCreateIdeaBodyStyled = styled.form`
       gap: 0.375rem;
     }
 
+    ul {
+      flex-wrap: wrap;
+    }
+
     div {
       position: relative;
 
