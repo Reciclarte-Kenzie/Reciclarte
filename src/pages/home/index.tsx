@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { IdeasContext, iIdeaData } from "../../providers/IdeasProvider";
 import { ContainerStyled } from "../../styles/Container/styles";
 import { FilterBox } from "../../components/FIlter";
+import { Footer } from "../../components/Footer";
 
 export const Home = () => {
   const { searchIdeas } = useContext(IdeasContext);
@@ -39,6 +40,7 @@ export const Home = () => {
         </StyledContentMain>
       </ContainerStyled>
       <FilterBox />
+      <Footer />
     </div>
   );
 };
