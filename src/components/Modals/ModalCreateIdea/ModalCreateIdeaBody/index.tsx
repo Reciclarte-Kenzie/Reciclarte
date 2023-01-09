@@ -118,7 +118,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
           userId: user?.user.id,
         };
         
-        //await createIdea(data, hideModal);
+        await createIdea(data, hideModal);
       })}
     >
       <article>
