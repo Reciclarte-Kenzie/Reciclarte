@@ -52,16 +52,16 @@ export const IdeaPage = () => {
               <h2>{idea?.title}</h2>
               <div>
                 <p>
-                  Categoria: <span>{idea?.categories}</span>
+                  Categoria: <span>{(idea?.categories)?.join(", ")}</span>
                 </p>
                 <p>
-                  Custo estimado: R$<span>{idea?.estimated_cost}</span>
+                  Custo estimado: <span>R${idea?.estimated_cost}</span>
                 </p>
                 <p>
                   Nível de dificuldade: <span>{idea?.difficulty_level}/5</span>
                 </p>
                 <p>
-                  Materiais: <span>{idea?.materials}</span>
+                  Materiais: <span>{idea?.materials.join(", ")}</span>
                 </p>
               </div>
             </div>
