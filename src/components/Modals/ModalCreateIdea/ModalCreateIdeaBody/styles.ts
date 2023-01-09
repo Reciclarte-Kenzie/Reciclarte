@@ -11,7 +11,7 @@ export const ModalCreateIdeaBodyStyled = styled.form`
     flex-direction: column;
     gap: 0.625rem 1.875rem;
 
-    @media (min-width: 600px) {
+    @media (min-width: 700px) {
       flex-direction: row;
     }
   }
