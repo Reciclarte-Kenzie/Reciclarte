@@ -175,7 +175,12 @@ export const ModalCreateIdeaBody = ({
             textarea
             error={errors.steps?.message}
           />
-          <Slider defaultValue={2} min={1} max={5} />
+          <Slider
+            register={register("difficultyLevel")}
+            defaultValue={2}
+            min={1}
+            max={5}
+          />
           <Input
             type="number"
             placeholder="R$ 0.00"
