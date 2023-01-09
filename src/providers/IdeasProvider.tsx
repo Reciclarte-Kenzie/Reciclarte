@@ -20,11 +20,13 @@ interface iIdeasContextProvider {
   loading: boolean;
   createIdea: (newIdeaData: iIdeaData, closeModal: () => void) => Promise<void>;
   editIdea: (
+    editedIdeaId: number,
     editedIdeaData: iIdeaData,
     closeModal: () => void
   ) => Promise<void>;
   deleteIdea: (deletedIdeaId: number, closeModal: () => void) => Promise<void>;
   searchIdeas: (queryParams: string[]) => void;
+  getSpecificIdea: (ideaId: number) => Promise<iIdeaData | undefined>;
   getIdeasMaterials: () => Promise<AxiosResponse<string[]> | undefined>;
   getIdeasCategories: () => Promise<AxiosResponse<string[]> | undefined>;
   foundIdeas: iIdeaData[];
@@ -61,13 +63,14 @@ export const IdeasProvider = () => {
   };
 
   const editIdea = async (
+    editedIdeaId: number,
     editedIdeaData: iIdeaData,
     closeModal: () => void
   ) => {
     try {
       setLoading(true);
 
-      await api.patch("/ideas", editedIdeaData, headers);
+      await api.patch(`/ideas/${editedIdeaId}`, editedIdeaData, headers);
 
       toast.success("Ideia editada com sucesso.");
 
@@ -121,9 +124,21 @@ export const IdeasProvider = () => {
     }
   };
 
-  const getIdeasMaterials = async (): Promise<
-    AxiosResponse<string[]> | undefined
-  > => {
+  const getSpecificIdea = async (ideaId: number) => {
+    try {
+      setLoading(true);
+
+      const foundIdea = (await api.get(`/ideas/${ideaId}`)).data;
+
+      return foundIdea;
+    } catch (error) {
+      toast.error("Ideia não encontrada");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getIdeasMaterials = async () => {
     try {
       setLoading(true);
 
@@ -137,9 +152,7 @@ export const IdeasProvider = () => {
     }
   };
 
-  const getIdeasCategories = async (): Promise<
-    AxiosResponse<string[]> | undefined
-  > => {
+  const getIdeasCategories = async () => {
     try {
       setLoading(true);
 
@@ -161,6 +174,7 @@ export const IdeasProvider = () => {
         editIdea,
         deleteIdea,
         searchIdeas,
+        getSpecificIdea,
         getIdeasMaterials,
         getIdeasCategories,
         foundIdeas,
