@@ -108,6 +108,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
 
   return (
     <ModalCreateIdeaBodyStyled
+      noValidate
       onSubmit={handleSubmit(async (data) => {
         data = {
           ...data,
@@ -116,7 +117,7 @@ export const ModalCreateIdeaBody = ({ hideModal }: iModalCreateIdeaProps) => {
           materials: [...selectedMaterials],
           userId: user?.user.id,
         };
-        console.log(data);
+        
         //await createIdea(data, hideModal);
       })}
     >

@@ -5,6 +5,7 @@ export const createIdeaSchema = yup.object().shape({
   steps: yup.string().required("O passo a passo é obrigatório"),
   estimatedCost: yup
     .number()
+    .positive("O valor deve ser positivo")
     .typeError("Insira um número válido")
     .required("O custo estimado é obrigatório"),
   materials: yup.string().required("Selecione ao menos um material"),
