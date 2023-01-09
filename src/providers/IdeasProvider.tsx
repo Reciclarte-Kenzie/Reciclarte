@@ -19,14 +19,22 @@ export interface iIdeaData {
 interface iIdeasContextProvider {
   loading: boolean;
   createIdea: (newIdeaData: iIdeaData, closeModal: () => void) => Promise<void>;
-  editIdea: (editedIdeaData: iIdeaData, closeModal: () => void) => Promise<void>;
+  editIdea: (
+    editedIdeaData: iIdeaData,
+    closeModal: () => void
+  ) => Promise<void>;
   deleteIdea: (deletedIdeaId: number, closeModal: () => void) => Promise<void>;
-  searchIdeas: (queryParams: string[]) => Promise<AxiosResponse<iIdeaData[]> | undefined>;
+  searchIdeas: (
+    queryParams: string[]
+  ) => Promise<AxiosResponse<iIdeaData[]> | undefined>;
   getIdeasMaterials: () => Promise<AxiosResponse<string[]> | undefined>;
   getIdeasCategories: () => Promise<AxiosResponse<string[]> | undefined>;
+  getIdeaById: (ideaId: number) => void;
 }
 
-export const IdeasContext = createContext<iIdeasContextProvider>({} as iIdeasContextProvider);
+export const IdeasContext = createContext<iIdeasContextProvider>(
+  {} as iIdeasContextProvider
+);
 
 export const IdeasProvider = () => {
   const [loading, setLoading] = useState(false);
@@ -88,7 +96,9 @@ export const IdeasProvider = () => {
     }
   };
 
-  const searchIdeas = async (queryParams?: string[]): Promise<AxiosResponse<iIdeaData[]> | undefined> => {
+  const searchIdeas = async (
+    queryParams?: string[]
+  ): Promise<AxiosResponse<iIdeaData[]> | undefined> => {
     try {
       setLoading(true);
 
@@ -102,7 +112,7 @@ export const IdeasProvider = () => {
         }
 
         ideasRequestRoute += queryParam;
-      })
+      });
 
       const foundIdeas = await api.get(ideasRequestRoute);
 
@@ -112,9 +122,11 @@ export const IdeasProvider = () => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  const getIdeasMaterials = async (): Promise<AxiosResponse<string[]> | undefined> => {
+  const getIdeasMaterials = async (): Promise<
+    AxiosResponse<string[]> | undefined
+  > => {
     try {
       setLoading(true);
 
@@ -126,9 +138,11 @@ export const IdeasProvider = () => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  const getIdeasCategories = async (): Promise<AxiosResponse<string[]> | undefined> => {
+  const getIdeasCategories = async (): Promise<
+    AxiosResponse<string[]> | undefined
+  > => {
     try {
       setLoading(true);
 
@@ -140,10 +154,29 @@ export const IdeasProvider = () => {
     } finally {
       setLoading(false);
     }
-  }
+  };
+
+  const getIdeaById = async (ideaId: number) => {
+    try {
+      await api.get(`/ideas/${ideaId}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <IdeasContext.Provider value={{loading, createIdea, editIdea, deleteIdea, searchIdeas, getIdeasMaterials, getIdeasCategories}}>
+    <IdeasContext.Provider
+      value={{
+        loading,
+        createIdea,
+        editIdea,
+        deleteIdea,
+        searchIdeas,
+        getIdeasMaterials,
+        getIdeasCategories,
+        getIdeaById,
+      }}
+    >
       <Outlet />
     </IdeasContext.Provider>
   );
