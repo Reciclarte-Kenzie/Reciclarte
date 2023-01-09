@@ -112,9 +112,15 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       navigate("/login");
     } catch (error) {
       const apiError = error as AxiosError<iApiError>;
-      let message = apiError.response?.data;
+      let message = apiError.response?.data || "";
+      let toastErrorMessage = "";
       console.log(error);
-      toast.error(`Desculpe, algo deu errado! ${message}`);
+      if(message === "Email already exists") {
+        toastErrorMessage = "O e-mail já está sendo usado."
+      } else {
+        toastErrorMessage = "Desculpe, algo deu errado."
+      }
+      toast.error(`${toastErrorMessage}`);
     } finally {
       setLoading(false);
     }
