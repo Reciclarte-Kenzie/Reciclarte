@@ -11,8 +11,8 @@ export interface iIdeaData {
   steps: string;
   materials: string[];
   categories: string[];
-  estimatedCost: number;
-  difficultyLevel: number;
+  estimated_cost: number;
+  difficulty_level: number;
   userId: number;
 }
 
@@ -29,7 +29,6 @@ interface iIdeasContextProvider {
   ) => Promise<AxiosResponse<iIdeaData[]> | undefined>;
   getIdeasMaterials: () => Promise<AxiosResponse<string[]> | undefined>;
   getIdeasCategories: () => Promise<AxiosResponse<string[]> | undefined>;
-  getIdeaById: (ideaId: number) => void;
 }
 
 export const IdeasContext = createContext<iIdeasContextProvider>(
@@ -155,14 +154,7 @@ export const IdeasProvider = () => {
       setLoading(false);
     }
   };
-
-  const getIdeaById = async (ideaId: number) => {
-    try {
-      await api.get(`/ideas/${ideaId}`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  
 
   return (
     <IdeasContext.Provider
@@ -174,7 +166,6 @@ export const IdeasProvider = () => {
         searchIdeas,
         getIdeasMaterials,
         getIdeasCategories,
-        getIdeaById,
       }}
     >
       <Outlet />
