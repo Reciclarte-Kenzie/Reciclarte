@@ -65,6 +65,10 @@ export const StyleIdeaCard = styled.li`
       gap: 0.8rem;
     }
   }
+
+  @media (min-width: 1400px) {
+    width: 800px;
+  }
 `;
 
 export const StyledContentButton = styled.div`
