@@ -25,6 +25,7 @@ interface iIdeasContextProvider {
   ) => Promise<void>;
   deleteIdea: (deletedIdeaId: number, closeModal: () => void) => Promise<void>;
   searchIdeas: (queryParams: string[]) => void;
+  getSpecificIdea: (ideaId: number) => Promise<iIdeaData | undefined>;
   getIdeasMaterials: () => Promise<AxiosResponse<string[]> | undefined>;
   getIdeasCategories: () => Promise<AxiosResponse<string[]> | undefined>;
   foundIdeas: iIdeaData[];
@@ -133,11 +134,9 @@ export const IdeasProvider = () => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  const getIdeasMaterials = async (): Promise<
-    AxiosResponse<string[]> | undefined
-  > => {
+  const getIdeasMaterials = async () => {
     try {
       setLoading(true);
 
@@ -151,9 +150,7 @@ export const IdeasProvider = () => {
     }
   };
 
-  const getIdeasCategories = async (): Promise<
-    AxiosResponse<string[]> | undefined
-  > => {
+  const getIdeasCategories = async () => {
     try {
       setLoading(true);
 
@@ -175,6 +172,7 @@ export const IdeasProvider = () => {
         editIdea,
         deleteIdea,
         searchIdeas,
+        getSpecificIdea,
         getIdeasMaterials,
         getIdeasCategories,
         foundIdeas,
