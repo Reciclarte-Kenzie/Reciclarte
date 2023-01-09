@@ -18,7 +18,11 @@ export const Home = () => {
       <Header />
       <StyledContainer>
         <section>
-          <IdeasList ideasList={foundIdeas} />
+          {foundIdeas.length > 0 ? (
+            <IdeasList ideasList={foundIdeas} />
+          ) : (
+            <p>Nenhuma ideia encontrada</p>
+          )}
         </section>
         <FilterBox />
       </StyledContainer>

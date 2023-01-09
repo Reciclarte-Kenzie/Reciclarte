@@ -13,7 +13,7 @@ export const IdeaCard = ({ img, title, description }: iIdeaCardProps) => {
       <img src={img} alt="ideia" />
       <div>
         <h3>{title}</h3>
-        <p>{description}</p>
+        <span>{description}</span>
 
         {window.location.href.includes("profile") ? (
           <StyledContentButton>

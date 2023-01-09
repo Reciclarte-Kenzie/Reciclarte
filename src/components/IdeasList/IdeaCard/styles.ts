@@ -35,7 +35,7 @@ export const StyleIdeaCard = styled.li`
       -webkit-box-orient: vertical;
     }
 
-    p {
+    span {
       color: var(--color-grey-100);
       font-weight: 400;
       font-size: var(--font-size-16);

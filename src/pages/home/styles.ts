@@ -6,6 +6,13 @@ export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
 
+  p {
+    margin: 20px auto;
+    text-align: center;
+    height: 80px;
+    font-size: var(--font-size-18);
+  }
+
   @media (min-width: 1000px) {
     width: 95%;
     max-width: 1240px;
