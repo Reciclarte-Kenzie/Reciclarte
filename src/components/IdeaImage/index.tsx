@@ -9,9 +9,12 @@ interface iIdeaImageProps {
 
 export const IdeaImage = ({ addedImage, addedImagesList, setAddedImagesList }: iIdeaImageProps) => {
   const removeImageFromList = () => {
-    const newAddedImages = addedImagesList.filter(image => image !== addedImage);
+    const listWithoutRemovedImage = [...addedImagesList];
+    const removedImageIndex = listWithoutRemovedImage.findIndex(image => image === addedImage);
 
-    setAddedImagesList(newAddedImages);
+    listWithoutRemovedImage.splice(removedImageIndex, 1);
+
+    setAddedImagesList(listWithoutRemovedImage);
   }
 
   return (
