@@ -1,6 +1,3 @@
-import { useContext, useEffect, useState } from "react";
-import { IdeasContext } from "../../../providers/IdeasProvider";
-import { Button } from "../../Button";
 import { ModalBase } from "../ModalBase";
 import { ModalBody } from "./ModalBody";
 
