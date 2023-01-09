@@ -18,9 +18,17 @@ interface iSelectOption {
   text: string;
 }
 
-export const ModalCreateIdeaBody = ({ hideModal, editedIdeaId }: iModalCreateIdeaProps) => {
-  const { createIdea, editIdea, getSpecificIdea, getIdeasMaterials, getIdeasCategories } =
-    useContext(IdeasContext);
+export const ModalCreateIdeaBody = ({
+  hideModal,
+  editedIdeaId,
+}: iModalCreateIdeaProps) => {
+  const {
+    createIdea,
+    editIdea,
+    getSpecificIdea,
+    getIdeasMaterials,
+    getIdeasCategories,
+  } = useContext(IdeasContext);
   const { user } = useContext(UserContext);
 
   const {
@@ -99,12 +107,20 @@ export const ModalCreateIdeaBody = ({ hideModal, editedIdeaId }: iModalCreateIde
     if (editedIdeaId) {
       const getEditedIdea = async () => {
         const editedIdeaResponse = await getSpecificIdea(editedIdeaId);
-        
-        setEditedIdea(editedIdeaResponse || {} as iIdeaData);
-        setAddedImagesList([...editedIdea.imgs as string[]]);
+
+        setEditedIdea(editedIdeaResponse || ({} as iIdeaData));
+        setAddedImagesList([...(editedIdea.imgs as string[])]);
         setSelectedMaterials([...editedIdea.materials]);
         setSelectedCategories([...editedIdea.categories]);
-      }
+
+        reset({
+          title: editedIdea.title,
+          description: editedIdea.description,
+          steps: editedIdea.steps,
+          estimatedCost: editedIdea.estimatedCost,
+          difficultyLevel: editedIdea.difficultyLevel,
+        });
+      };
 
       getEditedIdea();
     }
@@ -133,8 +149,8 @@ export const ModalCreateIdeaBody = ({ hideModal, editedIdeaId }: iModalCreateIde
           materials: [...selectedMaterials],
           userId: user?.user.id,
         };
-        
-        if(editedIdeaId) {
+
+        if (editedIdeaId) {
           await editIdea(editedIdeaId, data, hideModal);
         } else {
           await createIdea(data, hideModal);
