@@ -8,13 +8,13 @@ export const Home = () => {
   const { searchIdeas } = useContext(IdeasContext);
   const [allIdeasList, setAllIdeasList] = useState([] as iIdeaData[]);
   console.log(searchIdeas);
-  useEffect(() => {
-    const getAllIdeasList = async () => {
-      const ideasListResponse = await searchIdeas([]);
-      setAllIdeasList(ideasListResponse?.data || []);
-    };
-    getAllIdeasList();
-  }, []);
+  // useEffect(() => {
+  //   const getAllIdeasList = async () => {
+  //     const ideasListResponse = await searchIdeas([]);
+  //     setAllIdeasList(ideasListResponse || []);
+  //   };
+  //   getAllIdeasList();
+  // }, []);
 
   return (
     <div>

@@ -87,21 +87,6 @@ export const StyledLoginPage = styled.section`
     }
   }
 
-  p {
-    position: relative;
-    top: -12px;
-    display: flex;
-    align-self: baseline;
-    height: 0px;
-    font-weight: 400;
-    font-size: var(--font-size-12);
-    color: var(--color-orange-80);
-
-    @media (min-width: 700px) {
-      font-size: var(--font-size-14);
-    }
-  }
-
   .referRegister {
     display: flex;
     flex-direction: column;

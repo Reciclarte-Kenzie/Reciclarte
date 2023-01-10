@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Header from "../../components/Header";
+import { IdeaCard } from "../../components/IdeasList/IdeaCard";
 import ProfileCard from "../../components/ProfileCard";
-import ProjectCard from "../../components/ProjectCard";
 import { iIdeaData } from "../../providers/IdeasProvider";
 import { UserContext } from "../../providers/UserProvider";
 import { Profile as Container } from "./styles";
@@ -34,7 +34,7 @@ const Profile = () => {
             {ideas ? (
               <>
                 {ideas.map((idea) => (
-                  <ProjectCard
+                  <IdeaCard
                     img="https://via.placeholder.com/291x133"
                     title="Itens decorativos feitos com palito..."
                     description="Porta retrato e apoio feitos com palito de picolé..."

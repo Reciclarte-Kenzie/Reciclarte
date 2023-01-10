@@ -13,5 +13,15 @@ export const Profile = styled.div`
       flex-direction: column;
       gap: 30px;
     }
+
+    @media screen and (min-width: 968px) {
+      align-items: center;
+
+      & ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(460px, 1fr));
+        gap: 20px;
+      }
+    }
   }
 `;

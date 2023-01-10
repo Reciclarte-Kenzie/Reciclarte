@@ -4,6 +4,12 @@ export const ProfileCard = styled.div`
   /* Branco */
   background: #ffffff;
   box-shadow: 0px 0px 5px rgba(78, 32, 150, 0.25);
+
+  @media screen and (min-width: 968px) {
+    max-width: 600px;
+    margin: 40px auto;
+    border-radius: 8px;
+  }
 `;
 
 export const Content = styled.div`
@@ -28,6 +34,11 @@ export const ContentText = styled.div`
 export const ContentActions = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media screen and (min-width: 968px) {
+    justify-content: flex-end;
+    gap: 16px;
+  }
 `;
 
 export const ProfileImage = styled.img`
