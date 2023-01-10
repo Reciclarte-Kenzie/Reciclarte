@@ -10,7 +10,6 @@ export const Home = () => {
 
   useEffect(() => {
     searchIdeas([]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
