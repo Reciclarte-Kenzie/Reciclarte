@@ -13,7 +13,6 @@ export const IdeaPage = () => {
   const navigate = useNavigate();
 
   const backToHome = () => {
-    localStorage.setItem("@reciclarte:id", "");
     navigate("/");
   };
 
@@ -64,7 +63,11 @@ export const IdeaPage = () => {
               </article>
               <article className="steps">
                 <h3>Passo a passo</h3>
-                <p>{idea?.steps}</p>
+                <ul>
+                  {idea?.steps.split("\n").map((step) => (
+                    <li>{step}</li>
+                  ))}
+                </ul>
               </article>
               <Button
                 text="Voltar para a Home"
