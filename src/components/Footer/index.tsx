@@ -1,15 +1,29 @@
 import { StyledFooter } from "./styles";
 import logo2 from "../../assets/imgs/logo2.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 export const Footer = () => {
+  const activePage = useLocation().pathname;
+  console.log(activePage);
   return (
     <StyledFooter>
       <section className="footerHeader">
         <h3>Reciclarte</h3>
         <section className="links">
-          <Link to={"/"}>Home</Link>
-          <Link to={"/login"}>Login</Link>
-          <Link to={"/register"}>Cadastro</Link>
+          <Link to={"/"} className={activePage === "/" ? "active" : ""}>
+            Home
+          </Link>
+          <Link
+            to={"/login"}
+            className={activePage === "/login" ? "active" : ""}
+          >
+            Login
+          </Link>
+          <Link
+            to={"/register"}
+            className={activePage === "/register" ? "active" : ""}
+          >
+            Cadastro
+          </Link>
         </section>
       </section>
       <section className="presentation">

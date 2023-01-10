@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
-  background-color: var(--color-orange-70);
+  background-color: var(--color-orange-80);
   padding: 4px;
-  border-top: 1px solid var(--color-orange-70);
+  border-top: 1px solid var(--color-orange-80);
 
   display: flex;
   flex-direction: column;
@@ -32,13 +32,13 @@ export const StyledFooter = styled.footer`
 
     hr {
       border: none;
-      border-top: 2px solid var(--color-orange-80);
+      border-top: 2px solid var(--color-orange-70);
       width: 80%;
     }
 
     @media (min-width: 700px) {
       justify-content: space-between;
-      width: 45%;
+      width: 35%;
     }
   }
 
@@ -56,9 +56,15 @@ export const StyledFooter = styled.footer`
       gap: 2.3vw;
     }
 
+    .active {
+      color: var(--color-green-80);
+      font-weight: 800;
+    }
+
     @media (min-width: 700px) {
       justify-content: space-between;
-      width: 100%;
+      width: 83%;
+      max-width: 1240px;
 
       section {
         width: 30%;
