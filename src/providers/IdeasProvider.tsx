@@ -13,7 +13,7 @@ export interface iIdeaData {
   categories: string[];
   estimatedCost: number;
   difficultyLevel: number;
-  userId: number;
+  id: number;
 }
 
 interface iIdeasContextProvider {

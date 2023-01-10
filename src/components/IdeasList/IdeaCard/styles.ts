@@ -47,8 +47,9 @@ export const StyleIdeaCard = styled.li`
       -webkit-box-orient: vertical;
     }
 
-    button {
+    a {
       font-size: var(--font-size-16);
+      color: var(--color-white);
     }
   }
 
@@ -78,7 +79,6 @@ export const StyledContentButton = styled.div`
   flex-wrap: wrap;
   align-content: space-between;
   gap: 0;
- 
 
   button {
     width: 45%;

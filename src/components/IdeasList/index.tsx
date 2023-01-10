@@ -12,7 +12,7 @@ export const IdeasList = ({ ideasList }: iIdeasListProps) => {
     <StyledIdeasList>
       {ideasList?.map((idea) => {
         return (
-          <IdeaCard img={idea.imgs[0]} title={idea.title} description={idea.description} />
+          <IdeaCard img={idea.imgs[0]} title={idea.title} description={idea.description} id={idea.id}/>
         );
       })}
     </StyledIdeasList>
