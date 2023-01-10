@@ -30,9 +30,9 @@ const Profile = () => {
         <ProfileCard />
         <section>
           <h1>Suas ideias</h1>
-          <ul>
+          <>
             {ideas ? (
-              <>
+              <ul>
                 {ideas.map((idea) => (
                   <IdeaCard
                     id={idea.id}
@@ -41,11 +41,13 @@ const Profile = () => {
                     description={idea.description}
                   />
                 ))}
-              </>
+              </ul>
             ) : (
-              <></>
+              <>
+                <h2>Nenhuma ideia encontrada</h2>
+              </>
             )}
-          </ul>
+          </>
         </section>
       </main>
     </Container>
