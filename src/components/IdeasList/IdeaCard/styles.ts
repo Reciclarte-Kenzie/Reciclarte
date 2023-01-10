@@ -35,7 +35,7 @@ export const StyleIdeaCard = styled.li`
       -webkit-box-orient: vertical;
     }
 
-    p {
+    span {
       color: var(--color-grey-100);
       font-weight: 400;
       font-size: var(--font-size-16);
@@ -47,8 +47,9 @@ export const StyleIdeaCard = styled.li`
       -webkit-box-orient: vertical;
     }
 
-    button {
+    a {
       font-size: var(--font-size-16);
+      color: var(--color-white);
     }
   }
 
@@ -65,6 +66,10 @@ export const StyleIdeaCard = styled.li`
       gap: 0.8rem;
     }
   }
+
+  @media (min-width: 1400px) {
+    width: 800px;
+  }
 `;
 
 export const StyledContentButton = styled.div`
@@ -74,7 +79,6 @@ export const StyledContentButton = styled.div`
   flex-wrap: wrap;
   align-content: space-between;
   gap: 0;
- 
 
   button {
     width: 45%;

@@ -13,6 +13,7 @@ interface iButtonProps
   action?: () => void;
   disabled?: boolean;
   buttonType?: string;
+  width?: string;
 }
 
 export function Button({
@@ -23,6 +24,7 @@ export function Button({
   label,
   disabled,
   buttonType,
+  width,
 }: iButtonProps) {
   return (
     <StyledButton
@@ -32,6 +34,7 @@ export function Button({
       className={className}
       disabled={disabled}
       buttonType={buttonType}
+      width={width}
     >
       {text}
     </StyledButton>
