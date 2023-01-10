@@ -29,6 +29,7 @@ export const StyledIdeaPage = styled.main`
 
   .imagePost {
     width: 300px;
+    min-width: 5%;
     max-width: 100%;
     height: 300px;
     max-height: 100%;

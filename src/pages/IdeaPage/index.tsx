@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { IdeasContext, iIdeaData } from "../../providers/IdeasProvider";
-import { api } from "../../services/api";
 import { ContainerStyled } from "../../styles/Container/styles";
 import { StyledIdeaContainer, StyledIdeaPage } from "./StyledIdeaPage";
 import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
+import { api } from "../../services/api";
 
 export const IdeaPage = () => {
   const [idea, setIdea] = useState<iIdeaData | null>(null);
@@ -18,7 +18,8 @@ export const IdeaPage = () => {
 
   useEffect(() => {
     const idPostLocalStorage = localStorage.getItem("@reciclarte:id");
-    console.log(idPostLocalStorage);
+
+    // getSpecificIdea(+idPostLocalStorage);
     const getIdeaById = async (ideaId: string | null) => {
       try {
         const response = await api.get(`/ideas/${ideaId}`);
@@ -29,7 +30,7 @@ export const IdeaPage = () => {
     };
     getIdeaById(idPostLocalStorage);
   }, []);
-  console.log(idea);
+console.log(idea?.imgs)
 
   return (
     <>
@@ -39,16 +40,11 @@ export const IdeaPage = () => {
           <StyledIdeaPage>
             <article>
               <div className="images">
-                <img
+                {idea?.imgs.map((element) => (<img key={element}
                   className="imagePost"
-                  src={idea?.imgs[0]}
-                  alt="Imagem da API"
-                />
-                <img
-                  className="imagePost"
-                  src={idea?.imgs[1]}
-                  alt="Imagem da API"
-                />
+                  src={element}
+                  alt="Imagem do Post"
+                />))}
               </div>
               <div className="headerPost">
                 <h2>{idea?.title}</h2>
