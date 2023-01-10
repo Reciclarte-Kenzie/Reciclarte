@@ -10,7 +10,6 @@ export const StyledFooter = styled.footer`
   gap: 1vh;
   @media (min-width: 700px) {
     padding: 8px;
-    /* gap: 5vw;   */
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
