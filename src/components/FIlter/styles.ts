@@ -64,8 +64,6 @@ export const StyledFilter = styled.aside<iFilter>`
       height: ${({ catList, matList }) =>
         catList?.length > 2 || matList.length > 2 ? "58px" : "27px"};
       overflow: auto;
-      margin-top: 2vh;
-
       scrollbar-width: thin;
       scrollbar-color: var(--color-orange-80) var(--color-white);
 
