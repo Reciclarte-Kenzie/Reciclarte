@@ -90,6 +90,7 @@ export const StyledFilter = styled.aside<iFilter>`
         font-size: var(--font-size-12);
         color: var(--color-white);
         margin: 0;
+        height: fit-content;
       }
 
       button,
