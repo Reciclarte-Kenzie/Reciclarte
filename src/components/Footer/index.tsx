@@ -13,7 +13,7 @@ export const Footer = () => {
         <hr />
         <span>Desde 2023 mudando o planeta um projeto de cada vez.</span>
       </section>
-      <hr />
+      {/* <hr /> */}
       <section className="founders">
         <h4>Quem somos?</h4>
         <p>

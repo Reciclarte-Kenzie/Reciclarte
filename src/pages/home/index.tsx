@@ -27,6 +27,7 @@ export const Home = () => {
         </section>
         <FilterBox />
       </StyledContainer>
+      <Footer />
     </div>
   );
 };
