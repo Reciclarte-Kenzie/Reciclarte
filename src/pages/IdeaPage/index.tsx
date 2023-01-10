@@ -5,6 +5,7 @@ import { StyledIdeaContainer, StyledIdeaPage } from "./StyledIdeaPage";
 import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
+import { Button } from "../../components/Button";
 
 export const IdeaPage = () => {
   const [idea, setIdea] = useState<iIdeaData | null>(null);
@@ -30,7 +31,6 @@ export const IdeaPage = () => {
     };
     getIdeaById(idPostLocalStorage);
   }, []);
-console.log(idea?.imgs)
 
   return (
     <>
@@ -38,7 +38,7 @@ console.log(idea?.imgs)
       <StyledIdeaContainer>
         <ContainerStyled>
           <StyledIdeaPage>
-            <article>
+            <section>
               <div className="images">
                 {idea?.imgs.map((element) => (<img key={element}
                   className="imagePost"
@@ -46,7 +46,7 @@ console.log(idea?.imgs)
                   alt="Imagem do Post"
                 />))}
               </div>
-              <div className="headerPost">
+              <article className="headerPost">
                 <h2>{idea?.title}</h2>
                 <div>
                   <p>
@@ -63,13 +63,14 @@ console.log(idea?.imgs)
                     Materiais: <span>{idea?.materials.join(", ")}</span>
                   </p>
                 </div>
-              </div>
-              <div className="steps">
+              </article>
+              <article className="steps">
                 <h3>Passo a passo</h3>
                 <p>{idea?.steps}</p>
-              </div>
-              <button onClick={backToHome}>Voltar para a Home</button>
-            </article>
+              </article>
+              <Button text="Voltar para a Home" label="Home" onClick={backToHome}/>
+
+            </section>
           </StyledIdeaPage>
         </ContainerStyled>
       </StyledIdeaContainer>

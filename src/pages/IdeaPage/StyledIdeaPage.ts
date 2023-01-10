@@ -11,7 +11,7 @@ export const StyledIdeaPage = styled.main`
   justify-content: center;
   margin-top: 40px;
   margin-bottom: 40px;
-  article {
+  section {
     display: flex;
     flex-direction: column;
     align-items: center;
