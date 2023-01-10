@@ -40,36 +40,37 @@ export const IdeaPage = () => {
           <StyledIdeaPage>
             <section>
               <div className="images">
-                {idea?.imgs.map((element) => (<img key={element}
-                  className="imagePost"
-                  src={element}
-                  alt="Imagem do Post"
-                />))}
+                {idea?.imgs.map((element) => (
+                  <img
+                    key={element}
+                    className="imagePost"
+                    src={element}
+                    alt="Imagem do Post"
+                  />
+                ))}
               </div>
               <article className="headerPost">
                 <h2>{idea?.title}</h2>
-                <div>
-                  <p>
-                    Categoria: <span>{idea?.categories?.join(", ")}</span>
-                  </p>
-                  <p>
-                    Custo estimado: <span>R${idea?.estimated_cost}</span>
-                  </p>
-                  <p>
-                    Nível de dificuldade:{" "}
-                    <span>{idea?.difficulty_level}/5</span>
-                  </p>
-                  <p>
-                    Materiais: <span>{idea?.materials.join(", ")}</span>
-                  </p>
-                </div>
+                <dl>
+                  <dt>Categoria:</dt>
+                  <dd>{idea?.categories?.join(", ")}</dd>
+                  <dt>Custo estimado:</dt>
+                  <dd>R${idea?.estimated_cost}</dd>
+                  <dt>Nível de dificuldade:</dt>
+                  <dd>{idea?.difficulty_level}/5</dd>
+                  <dt>Materiais:</dt>
+                  <dd>{idea?.materials.join(", ")}</dd>
+                </dl>
               </article>
               <article className="steps">
                 <h3>Passo a passo</h3>
                 <p>{idea?.steps}</p>
               </article>
-              <Button text="Voltar para a Home" label="Home" onClick={backToHome}/>
-
+              <Button
+                text="Voltar para a Home"
+                label="Home"
+                onClick={backToHome}
+              />
             </section>
           </StyledIdeaPage>
         </ContainerStyled>

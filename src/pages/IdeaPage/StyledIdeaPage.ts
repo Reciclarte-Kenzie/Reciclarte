@@ -49,19 +49,19 @@ export const StyledIdeaPage = styled.main`
       color: #bc5c2c;
     }
 
-    div {
+    dl {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 0px;
     }
 
-    p {
+    dt {
       font-size: var(--font-size-18);
       font-weight: 400;
       color: var(--color-green-100);
     }
 
-    span {
+    dd {
       font-size: var(--font-size-18);
       font-weight: 400;
       color: var(--color-grey-100);
