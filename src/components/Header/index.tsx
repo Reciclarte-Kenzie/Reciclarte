@@ -13,14 +13,16 @@ import plusIcon from "../../assets/imgs/plus-solid.svg";
 import openMenuIcon from "../../assets/imgs/menu.svg";
 import closeMenuIcon from "../../assets/imgs/xmark-solid.svg";
 import homeIcon from "../../assets/imgs/home.svg";
+import profileIcon from "../../assets/imgs/user-solid.svg";
 import logoutIcon from "../../assets/imgs/logout.svg";
 import { UserContext } from "../../providers/UserProvider";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 
 const Header = () => {
   const { user, logout } = useContext(UserContext);
   const [showActions, setShowActions] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 968);
+  const location = useLocation();
   const navigate = useNavigate();
 
   const detectMobile = () => {
@@ -29,6 +31,7 @@ const Header = () => {
 
   useEffect(() => {
     window.addEventListener("resize", detectMobile);
+    console.log(location);
 
     return () => {
       window.removeEventListener("resize", detectMobile);
@@ -60,13 +63,23 @@ const Header = () => {
         <Actions toggle={isMobile ? showActions : true}>
           {user ? (
             <>
-              <button
-                type="button"
-                title="Pagina inicial"
-                onClick={() => navigate("/")}
-              >
-                <img src={homeIcon} alt="" />
-              </button>
+              {location.pathname !== "/profile" ? (
+                <button
+                  type="button"
+                  title="Pagina de perfil"
+                  onClick={() => navigate("/profile")}
+                >
+                  <img src={profileIcon} alt="" />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  title="Pagina inicial"
+                  onClick={() => navigate("/")}
+                >
+                  <img src={homeIcon} alt="" />
+                </button>
+              )}
               <button type="button" title="Deslogar" onClick={logout}>
                 <img src={logoutIcon} alt="" />
               </button>

@@ -14,6 +14,7 @@ export interface iIdeaData {
   estimatedCost: number;
   difficultyLevel: number;
   userId: number | undefined;
+  id: number;
 }
 
 interface iIdeasContextProvider {

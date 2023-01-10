@@ -35,6 +35,7 @@ const Profile = () => {
               <>
                 {ideas.map((idea) => (
                   <IdeaCard
+                    id={idea.id}
                     img={idea.imgs[0]}
                     title={idea.title}
                     description={idea.description}

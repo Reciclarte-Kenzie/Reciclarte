@@ -9,6 +9,7 @@ export const Header = styled.header`
   align-items: center;
   position: sticky;
   top: 0;
+  z-index: 1;
 `;
 
 export const Content = styled.div`
@@ -52,6 +53,7 @@ export const MainContent = styled.div`
 
   @media screen and (min-width: 968px) {
     width: 100%;
+    align-items: center;
 
     button:last-child {
       display: none;
