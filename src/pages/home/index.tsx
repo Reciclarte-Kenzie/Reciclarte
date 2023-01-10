@@ -1,46 +1,32 @@
-import { StyledContentMain, StyledHeader } from "./styles";
+import { useContext, useEffect } from "react";
+import Header from "../../components/Header";
 import { IdeasList } from "../../components/IdeasList";
-import { useContext, useEffect, useState } from "react";
-import { IdeasContext, iIdeaData } from "../../providers/IdeasProvider";
-import { ContainerStyled } from "../../styles/Container/styles";
+import { StyledContainer } from "./styles";
+import { IdeasContext } from "../../providers/IdeasProvider";
 import { FilterBox } from "../../components/FIlter";
 import { Footer } from "../../components/Footer";
 
 export const Home = () => {
-  const { searchIdeas } = useContext(IdeasContext);
-  const [allIdeasList, setAllIdeasList] = useState([] as iIdeaData[]);
-  console.log(searchIdeas);
-  // useEffect(() => {
-  //   const getAllIdeasList = async () => {
-  //     const ideasListResponse = await searchIdeas([]);
-  //     setAllIdeasList(ideasListResponse?.data || []);
-  //   };
-  //   getAllIdeasList();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  const { foundIdeas, searchIdeas } = useContext(IdeasContext);
+
+  useEffect(() => {
+    searchIdeas([]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
-      <StyledHeader>
-        <div>
-          <img src="" alt="Logo" />
-          <div>
-            <button>
-              <img src="" alt="pesquisar" />
-            </button>
-            <button>
-              <img src="" alt="menu" />
-            </button>
-          </div>
-        </div>
-      </StyledHeader>
-      <ContainerStyled>
-        <StyledContentMain>
-          <IdeasList ideasList={allIdeasList} />
-        </StyledContentMain>
-      </ContainerStyled>
-      <FilterBox />
-      <Footer />
+      <Header />
+      <StyledContainer>
+        <section>
+          {foundIdeas.length > 0 ? (
+            <IdeasList ideasList={foundIdeas} />
+          ) : (
+            <p>Nenhuma ideia encontrada</p>
+          )}
+        </section>
+        <FilterBox />
+      </StyledContainer>
     </div>
   );
 };

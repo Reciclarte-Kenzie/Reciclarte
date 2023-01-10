@@ -7,12 +7,13 @@ interface iFilter {
 
 export const StyledFilter = styled.aside<iFilter>`
   position: sticky;
-  background-color: var(--color-grey-50);
-  width: clamp(280px, 90%, 300px);
+  width: 90%;
+  margin: 0 auto;
   border-radius: var(--radius-1);
 
-  @media (min-width: 700px) {
+  @media (min-width: 1000px) {
     width: clamp(300px, 40%, 402px);
+    margin: 0;
   }
 
   h3 {
