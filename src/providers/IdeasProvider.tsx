@@ -6,7 +6,7 @@ import { api } from "../services/api";
 
 export interface iIdeaData {
   title: string;
-  imgs: string[] | string;
+  imgs: string[];
   description: string;
   steps: string;
   materials: string[];
