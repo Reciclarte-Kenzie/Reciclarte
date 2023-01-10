@@ -35,9 +35,9 @@ const Profile = () => {
               <>
                 {ideas.map((idea) => (
                   <IdeaCard
-                    img="https://via.placeholder.com/291x133"
-                    title="Itens decorativos feitos com palito..."
-                    description="Porta retrato e apoio feitos com palito de picolé..."
+                    img={idea.imgs[0]}
+                    title={idea.title}
+                    description={idea.description}
                   />
                 ))}
               </>

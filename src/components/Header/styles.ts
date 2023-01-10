@@ -2,10 +2,13 @@ import styled from "styled-components";
 
 export const Header = styled.header`
   background-color: var(--color-orange-80);
+  width: 100%;
   min-height: 67px;
   max-height: 140px;
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
 `;
 
 export const Content = styled.div`

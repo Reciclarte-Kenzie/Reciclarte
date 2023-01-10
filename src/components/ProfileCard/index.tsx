@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserProvider";
 import {
   ProfileCard as Container,
   Content,
@@ -11,14 +13,16 @@ import {
 } from "./styles";
 
 const ProfileCard = () => {
+  const { user } = useContext(UserContext);
+
   return (
     <Container>
       <Content>
         <ContentInfo>
-          <ProfileImage src="https://via.placeholder.com/150" alt="" />
+          <ProfileImage src={user?.profile_pic} alt="" />
           <ContentText>
-            <Name>Maria dos Mares</Name>
-            <Bio>Nascida pra a arte, adoro fazer crochê.</Bio>
+            <Name>{user?.name}</Name>
+            <Bio>{user?.bio}</Bio>
           </ContentText>
         </ContentInfo>
         <ContentActions>

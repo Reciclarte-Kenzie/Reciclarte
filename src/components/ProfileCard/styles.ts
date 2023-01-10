@@ -28,6 +28,7 @@ export const ContentText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   gap: 16px;
 `;
 
@@ -36,12 +37,19 @@ export const ContentActions = styled.div`
   justify-content: space-between;
 
   @media screen and (min-width: 968px) {
-    justify-content: flex-end;
+    justify-content: center;
     gap: 16px;
+
+    button {
+      width: 170px;
+    }
   }
 `;
 
 export const ProfileImage = styled.img`
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
   border-radius: 100%;
   border: none;
 `;
@@ -62,9 +70,7 @@ export const Bio = styled.span`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  line-height: 20px;
-  /* or 125% */
-  text-align: center;
+  line-height: 20px; /* or 125% */
   /* grey-100 */
   color: #7a7a7a;
 `;

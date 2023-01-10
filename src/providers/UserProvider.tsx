@@ -11,6 +11,9 @@ interface iUserProviderProps {
 
 interface iUser {
   accessToken: string | null;
+  profile_pic: string;
+  name: string;
+  bio: string;
   user: iUserData;
   id: number;
 }

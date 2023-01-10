@@ -1,3 +1,4 @@
+import React from "react";
 import { StyledButton } from "../../Button/styles";
 import { StyledContentButton, StyleIdeaCard } from "./styles";
 
