@@ -46,7 +46,7 @@ export const StyledIdeaPage = styled.main`
       text-align: center;
       font-size: var(--font-size-25);
       font-weight: 600;
-      color: #bc5c2c;
+      color: var(--color-orange-80);
     }
 
     dl {
