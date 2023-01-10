@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
-  background-color: var(--color-orange-80);
+  background-color: var(--color-grey-50);
   padding: 4px;
-  border-top: 1px solid var(--color-orange-80);
+  border-top: 1px solid var(--color-grey-50);
 
   display: flex;
   flex-direction: column;
@@ -16,8 +16,8 @@ export const StyledFooter = styled.footer`
   }
 
   img {
-    width: clamp(75px, 100px, 275px);
-    height: clamp(75px, 100px, 250px);
+    width: clamp(75px, 285px, 300px);
+    height: 75px;
   }
 
   section {
@@ -80,7 +80,7 @@ export const StyledFooter = styled.footer`
 
     .objective {
       border: 1px transparent;
-      width: 60%;
+      width: 100%;
       text-align: justify;
       text-justify: inter-word;
       padding: 0;
@@ -88,7 +88,7 @@ export const StyledFooter = styled.footer`
     }
 
     @media (min-width: 700px) {
-      flex-direction: row-reverse;
+      flex-direction: row;
     }
   }
 

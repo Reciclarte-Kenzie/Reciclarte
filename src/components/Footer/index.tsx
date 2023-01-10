@@ -1,13 +1,13 @@
 import { StyledFooter } from "./styles";
-import logo2 from "../../assets/imgs/logo2.svg";
+import headerLogoGrey from "../../assets/imgs/headerLogoGrey.svg";
 import { Link, useLocation } from "react-router-dom";
 export const Footer = () => {
   const activePage = useLocation().pathname;
-  console.log(activePage);
   return (
     <StyledFooter>
       <section className="footerHeader">
-        <h3>Reciclarte</h3>
+        <img src={headerLogoGrey} alt="Reciclarte" />
+        {/* <h3>Reciclarte</h3> */}
         <section className="links">
           <Link to={"/"} className={activePage === "/" ? "active" : ""}>
             Home
@@ -27,7 +27,6 @@ export const Footer = () => {
         </section>
       </section>
       <section className="presentation">
-        <img src={logo2} alt="Reciclarte" />
         <section className="objective">
           <p>
             Descartamos, diariamente, materiais que poderiam ser reaproveitados.
