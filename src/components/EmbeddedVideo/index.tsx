@@ -2,16 +2,9 @@ import React from "react";
 import { StyledVideoBox } from "./styles";
 
 interface iEmbed {
-  url: string;
+  iframe: JSX.Element;
 }
 
-export const EmbeddedVideo = ({ url }: iEmbed) => (
-  <StyledVideoBox className="embedVideo">
-    <iframe
-      src={url}
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-      title="Vídeo demonstrativo"
-    />
-  </StyledVideoBox>
+export const EmbeddedVideo = ({ iframe }: iEmbed) => (
+  <StyledVideoBox className="embedVideo">{iframe}</StyledVideoBox>
 );

@@ -11,7 +11,7 @@ export const StyledVideoBox = styled.section`
 
     @media (min-width: 700px) {
       width: clamp(300px, 50vw, 800px);
-      height: 40vh;
+      height: 100%;
     }
   }
 `;

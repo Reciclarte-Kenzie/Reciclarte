@@ -61,7 +61,21 @@ export const IdeaPage = () => {
                   <dd>{idea?.materials.join(", ")}</dd>
                 </dl>
               </article>
-              <EmbeddedVideo url="https://www.youtube.com/embed/Ka7gMFUfTNI" />
+              <EmbeddedVideo
+                iframe={
+                  <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/Ka7gMFUfTNI"
+                    // pegar só a url da ideia
+                    // tentativa de solução pro problema de debugger do youtube
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                }
+              />
               <article className="steps">
                 <h3>Passo a passo</h3>
                 <ul>

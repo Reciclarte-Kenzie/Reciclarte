@@ -28,6 +28,7 @@ export const StyledIdeaPage = styled.main`
     border: none;
     border-radius: var(--radius-1);
     padding: 0;
+    height: 50vh;
   }
 
   .images {
