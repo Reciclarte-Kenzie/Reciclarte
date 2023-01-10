@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
-  background-color: var(--color-orange-80);
+  background-color: var(--color-orange-70);
   padding: 4px;
-  border-top: 1px solid var(--color-orange-80);
+  border-top: 1px solid var(--color-orange-70);
 
   display: flex;
   flex-direction: column;
@@ -12,15 +12,15 @@ export const StyledFooter = styled.footer`
     padding: 8px;
     /* gap: 5vw;   */
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
   }
   /* position: fixed;
-  bottom: 0;
+  bottom: 0; */
 
-  height: 100px; */
-
-  hr {
-    border: none;
-    border-left: 2px solid var(--color-green-80);
+  img {
+    width: clamp(75px, 100px, 275px);
+    height: clamp(75px, 100px, 250px);
   }
 
   section {
@@ -28,8 +28,9 @@ export const StyledFooter = styled.footer`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--color-green-80);
-    border-radius: var(--radius-1);
+
+    border-bottom: 1px solid var(--color-green-80);
+    border-radius: 0;
     background-color: var(--color-orange-70);
     padding: 0.25rem;
 
@@ -41,6 +42,51 @@ export const StyledFooter = styled.footer`
 
     @media (min-width: 700px) {
       justify-content: space-between;
+      width: 45%;
+    }
+  }
+
+  .footerHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-transform: uppercase;
+    color: var(--color-green-90);
+
+    section {
+      border: none;
+      display: flex;
+      flex-direction: row;
+      gap: 2.3vw;
+    }
+
+    @media (min-width: 700px) {
+      justify-content: space-between;
+      width: 100%;
+
+      section {
+        width: 30%;
+      }
+    }
+  }
+
+  .presentation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .objective {
+      border: 1px transparent;
+      width: 60%;
+      text-align: justify;
+      text-justify: inter-word;
+      padding: 0;
+      height: fit-content;
+    }
+
+    @media (min-width: 700px) {
+      flex-direction: row-reverse;
     }
   }
 
@@ -51,11 +97,17 @@ export const StyledFooter = styled.footer`
     font-size: var(--font-size-12);
     font-weight: 400;
     text-decoration: none;
-    text-align: center;
+    text-align: justify;
+    text-justify: inter-word;
   }
 
   a {
-    color: var(--color-green-80);
+    color: var(--color-green-70);
+    text-transform: uppercase;
+  }
+
+  span {
+    font-size: calc(var(--font-size-16) * 0.5);
   }
 
   h4 {
@@ -63,5 +115,6 @@ export const StyledFooter = styled.footer`
     font-size: var(--font-size-14);
     font-weight: 600;
     text-align: center;
+    text-transform: uppercase;
   }
 `;

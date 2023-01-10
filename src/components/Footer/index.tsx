@@ -1,19 +1,28 @@
 import { StyledFooter } from "./styles";
-
+import logo2 from "../../assets/imgs/logo2.svg";
+import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
     <StyledFooter>
-      <section className="objective">
-        <p>
-          Descartamos, diariamente, materiais que poderiam ser reaproveitados.
-          <br />
-          Propomos uma maneira buscar ideias de projetos DIY (Do It Yourself) a
-          partir desses materiais e diminuir o descarte de lixo.
-        </p>
-        <hr />
-        <span>Desde 2023 mudando o planeta um projeto de cada vez.</span>
+      <section className="footerHeader">
+        <h3>Reciclarte</h3>
+        <section className="links">
+          <Link to={"/"}>Home</Link>
+          <Link to={"/login"}>Login</Link>
+          <Link to={"/register"}>Cadastro</Link>
+        </section>
       </section>
-      {/* <hr /> */}
+      <section className="presentation">
+        <img src={logo2} alt="Reciclarte" />
+        <section className="objective">
+          <p>
+            Descartamos, diariamente, materiais que poderiam ser reaproveitados.
+            <br />
+            Propomos uma maneira buscar ideias de projetos DIY (Do It Yourself)
+            a partir desses materiais e diminuir o descarte de lixo.
+          </p>
+        </section>
+      </section>
       <section className="founders">
         <h4>Quem somos?</h4>
         <p>
@@ -26,6 +35,8 @@ export const Footer = () => {
             Conheça mais sobre nosso projeto
           </a>
         </span>
+        <hr />
+        <span>Desde 2023 mudando o planeta um projeto de cada vez.</span>
       </section>
     </StyledFooter>
   );
