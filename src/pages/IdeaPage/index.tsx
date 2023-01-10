@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { iIdeaData } from "../../providers/IdeasProvider";
+import { useContext, useEffect, useState } from "react";
+import { IdeasContext, iIdeaData } from "../../providers/IdeasProvider";
 import { api } from "../../services/api";
 import { ContainerStyled } from "../../styles/Container/styles";
 import { StyledIdeaContainer, StyledIdeaPage } from "./StyledIdeaPage";
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 export const IdeaPage = () => {
   const [idea, setIdea] = useState<iIdeaData | null>(null);
+  const { getSpecificIdea } = useContext(IdeasContext);
   const navigate = useNavigate();
 
   const backToHome = () => {
@@ -31,48 +32,51 @@ export const IdeaPage = () => {
   console.log(idea);
 
   return (
-    <StyledIdeaContainer>
+    <>
       <Header />
-      <ContainerStyled>
-        <StyledIdeaPage>
-          <article>
-            <div className="images">
-              <img
-                className="imagePost"
-                src={idea?.imgs[0]}
-                alt="Imagem da API"
-              />
-              <img
-                className="imagePost"
-                src={idea?.imgs[1]}
-                alt="Imagem da API"
-              />
-            </div>
-            <div className="headerPost">
-              <h2>{idea?.title}</h2>
-              <div>
-                <p>
-                  Categoria: <span>{(idea?.categories)?.join(", ")}</span>
-                </p>
-                <p>
-                  Custo estimado: <span>R${idea?.estimated_cost}</span>
-                </p>
-                <p>
-                  Nível de dificuldade: <span>{idea?.difficulty_level}/5</span>
-                </p>
-                <p>
-                  Materiais: <span>{idea?.materials.join(", ")}</span>
-                </p>
+      <StyledIdeaContainer>
+        <ContainerStyled>
+          <StyledIdeaPage>
+            <article>
+              <div className="images">
+                <img
+                  className="imagePost"
+                  src={idea?.imgs[0]}
+                  alt="Imagem da API"
+                />
+                <img
+                  className="imagePost"
+                  src={idea?.imgs[1]}
+                  alt="Imagem da API"
+                />
               </div>
-            </div>
-            <div className="steps">
-              <h3>Passo a passo</h3>
-              <p>{idea?.steps}</p>
-            </div>
-            <button onClick={backToHome}>Voltar para a Home</button>
-          </article>
-        </StyledIdeaPage>
-      </ContainerStyled>
-    </StyledIdeaContainer>
+              <div className="headerPost">
+                <h2>{idea?.title}</h2>
+                <div>
+                  <p>
+                    Categoria: <span>{idea?.categories?.join(", ")}</span>
+                  </p>
+                  <p>
+                    Custo estimado: <span>R${idea?.estimated_cost}</span>
+                  </p>
+                  <p>
+                    Nível de dificuldade:{" "}
+                    <span>{idea?.difficulty_level}/5</span>
+                  </p>
+                  <p>
+                    Materiais: <span>{idea?.materials.join(", ")}</span>
+                  </p>
+                </div>
+              </div>
+              <div className="steps">
+                <h3>Passo a passo</h3>
+                <p>{idea?.steps}</p>
+              </div>
+              <button onClick={backToHome}>Voltar para a Home</button>
+            </article>
+          </StyledIdeaPage>
+        </ContainerStyled>
+      </StyledIdeaContainer>
+    </>
   );
 };
