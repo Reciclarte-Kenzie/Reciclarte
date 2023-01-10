@@ -3,31 +3,26 @@ import { IdeasContext, iIdeaData } from "../../providers/IdeasProvider";
 import { ContainerStyled } from "../../styles/Container/styles";
 import { StyledIdeaContainer, StyledIdeaPage } from "./StyledIdeaPage";
 import Header from "../../components/Header";
-import { api } from "../../services/api";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
 
 export const IdeaPage = () => {
-  const [idea, setIdea] = useState<iIdeaData | null>(null);
-  // const { getSpecificIdea } = useContext(IdeasContext);
+  const [idea, setIdea] = useState<iIdeaData>({} as iIdeaData);
+  const { getSpecificIdea } = useContext(IdeasContext);
 
   useEffect(() => {
-    // let idPostLocalStorage = 0;
-    // if (localStorage.getItem("@reciclarte:id")) {
-    //   idPostLocalStorage = Number(localStorage.getItem("@reciclarte:id"));
-    // }
-    //   console.log(getSpecificIdea(idPostLocalStorage));
+    let idPostLocalStorage = 0;
+    if (localStorage.getItem("@reciclarte:id")) {
+      idPostLocalStorage = Number(localStorage.getItem("@reciclarte:id"));
+    }
 
-    const idPostLocalStorage = localStorage.getItem("@reciclarte:id");
-    const getIdeaById = async (ideaId: string | null) => {
-      try {
-        const response = await api.get(`/ideas/${ideaId}`);
-        setIdea(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getIdeaById(idPostLocalStorage);
+    const getIdea = async () => {
+      const idea = await getSpecificIdea(idPostLocalStorage);
+
+      setIdea(idea || {} as iIdeaData);
+    }
+
+    getIdea();
   }, []);
 
   return (
@@ -38,7 +33,7 @@ export const IdeaPage = () => {
           <StyledIdeaPage>
             <section>
               <div className="images">
-                {idea?.imgs.map((element: string) => (
+                {(idea?.imgs as string[]).map((element) => (
                   <img
                     key={element}
                     className="imagePost"
@@ -53,9 +48,9 @@ export const IdeaPage = () => {
                   <dt>Categoria:</dt>
                   <dd>{idea?.categories?.join(", ")}</dd>
                   <dt>Custo estimado:</dt>
-                  <dd>R${idea?.estimated_cost}</dd>
+                  <dd>R${idea?.estimatedCost}</dd>
                   <dt>Nível de dificuldade:</dt>
-                  <dd>{idea?.difficulty_level}/5</dd>
+                  <dd>{idea?.difficultyLevel}/5</dd>
                   <dt>Materiais:</dt>
                   <dd>{idea?.materials.join(", ")}</dd>
                 </dl>
