@@ -13,6 +13,7 @@ export interface iIdeaData {
   categories: string[];
   estimatedCost: number;
   difficultyLevel: number;
+  userId: number | undefined;
   id: number;
 }
 
