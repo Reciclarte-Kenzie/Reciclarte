@@ -2,22 +2,31 @@ import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
   background-color: var(--color-grey-50);
-  padding: 4px;
   border-top: 1px solid var(--color-grey-50);
 
-  display: flex;
-  flex-direction: column;
-  gap: 1vh;
-  @media (min-width: 700px) {
-    padding: 8px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  .content {
+    margin: 0 auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    padding: 4px;
+    max-width: 90%;
+
+    @media (min-width: 700px) {
+      width: clamp(310px, 100%, 1240px);
+      padding: 0;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
   }
 
   img {
     width: clamp(75px, 285px, 300px);
     height: 75px;
+    filter: invert(68%) sepia(94%) saturate(2241%) hue-rotate(347deg)
+      brightness(100%) contrast(94%);
   }
 
   section {
@@ -26,9 +35,10 @@ export const StyledFooter = styled.footer`
     align-items: center;
     justify-content: center;
 
-    border-bottom: 1px solid var(--color-green-80);
+    border-bottom: 1px solid var(--color-green-100);
     border-radius: 0;
     padding: 0.25rem;
+    width: 100%;
 
     hr {
       border: none;
@@ -45,9 +55,16 @@ export const StyledFooter = styled.footer`
   .footerHeader {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    flex-wrap: wrap;
     text-transform: uppercase;
     color: var(--color-green-90);
+    justify-content: center;
+    padding: 0;
+
+    @media (min-width: 700px) {
+      justify-content: space-between;
+      align-items: center;
+    }
 
     section {
       border: none;
@@ -95,7 +112,7 @@ export const StyledFooter = styled.footer`
   p,
   a,
   span {
-    color: var(--color-green-80);
+    color: var(--color-green-100);
     font-size: var(--font-size-12);
     font-weight: 400;
     text-decoration: none;
