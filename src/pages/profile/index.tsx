@@ -31,7 +31,7 @@ const Profile = () => {
         <section>
           <h1>Suas ideias</h1>
           <>
-            {ideas ? (
+            {ideas && ideas.length > 0 ? (
               <ul>
                 {ideas.map((idea) => (
                   <IdeaCard
