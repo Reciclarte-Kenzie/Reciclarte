@@ -46,6 +46,7 @@ Tais materiais podem ser comumente reutilizados por meio do artesanato, no entan
 
 <h2 id="Bibliotecas">:books: Bibliotecas utilizadas</h2>
 
+- [x] React
 - [x] Styled components
 - [x] Context API
 - [x] React-hook-form
