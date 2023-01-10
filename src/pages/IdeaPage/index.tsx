@@ -3,23 +3,22 @@ import { IdeasContext, iIdeaData } from "../../providers/IdeasProvider";
 import { ContainerStyled } from "../../styles/Container/styles";
 import { StyledIdeaContainer, StyledIdeaPage } from "./StyledIdeaPage";
 import Header from "../../components/Header";
-import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import { Button } from "../../components/Button";
+import { Link } from "react-router-dom";
 
 export const IdeaPage = () => {
   const [idea, setIdea] = useState<iIdeaData | null>(null);
-  const { getSpecificIdea } = useContext(IdeasContext);
-  const navigate = useNavigate();
-
-  const backToHome = () => {
-    navigate("/");
-  };
+  // const { getSpecificIdea } = useContext(IdeasContext);
 
   useEffect(() => {
-    const idPostLocalStorage = localStorage.getItem("@reciclarte:id");
+    // let idPostLocalStorage = 0;
+    // if (localStorage.getItem("@reciclarte:id")) {
+    //   idPostLocalStorage = Number(localStorage.getItem("@reciclarte:id"));
+    // }
+    //   console.log(getSpecificIdea(idPostLocalStorage));
 
-    // getSpecificIdea(+idPostLocalStorage);
+    const idPostLocalStorage = localStorage.getItem("@reciclarte:id");
     const getIdeaById = async (ideaId: string | null) => {
       try {
         const response = await api.get(`/ideas/${ideaId}`);
@@ -39,7 +38,7 @@ export const IdeaPage = () => {
           <StyledIdeaPage>
             <section>
               <div className="images">
-                {idea?.imgs.map((element) => (
+                {idea?.imgs.map((element: string) => (
                   <img
                     key={element}
                     className="imagePost"
@@ -65,15 +64,13 @@ export const IdeaPage = () => {
                 <h3>Passo a passo</h3>
                 <ul>
                   {idea?.steps.split("\n").map((step) => (
-                    <li>{step}</li>
+                    <li key={step}>{step}</li>
                   ))}
                 </ul>
               </article>
-              <Button
-                text="Voltar para a Home"
-                label="Home"
-                onClick={backToHome}
-              />
+              <Link to="/">
+                <Button text="Voltar para a Home" label="Home"></Button>
+              </Link>
             </section>
           </StyledIdeaPage>
         </ContainerStyled>
