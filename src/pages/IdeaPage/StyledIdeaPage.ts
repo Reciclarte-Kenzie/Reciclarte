@@ -11,7 +11,7 @@ export const StyledIdeaPage = styled.main`
   justify-content: center;
   margin-top: 40px;
   margin-bottom: 40px;
-  article {
+  section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,6 +29,7 @@ export const StyledIdeaPage = styled.main`
 
   .imagePost {
     width: 300px;
+    min-width: 5%;
     max-width: 100%;
     height: 300px;
     max-height: 100%;
@@ -45,22 +46,22 @@ export const StyledIdeaPage = styled.main`
       text-align: center;
       font-size: var(--font-size-25);
       font-weight: 600;
-      color: #bc5c2c;
+      color: var(--color-orange-80);
     }
 
-    div {
+    dl {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 0px;
     }
 
-    p {
+    dt {
       font-size: var(--font-size-18);
       font-weight: 400;
       color: var(--color-green-100);
     }
 
-    span {
+    dd {
       font-size: var(--font-size-18);
       font-weight: 400;
       color: var(--color-grey-100);

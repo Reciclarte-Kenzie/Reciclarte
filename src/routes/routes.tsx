@@ -1,5 +1,5 @@
-import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { Home } from "../pages/home";
 import { IdeaPage } from "../pages/IdeaPage";
 import { LoginPage } from "../pages/login";
 import Profile from "../pages/profile";
@@ -13,7 +13,7 @@ export const RoutesApp = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/idea" element={<IdeaPage />} />
       <Route element={<IdeasProvider />}>
-        <Route path="/" element={<Navigate to="/profile" />} />
+        <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
       </Route>
       <Route path="*" element={<Navigate to="/" />} />

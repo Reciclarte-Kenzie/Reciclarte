@@ -1,23 +1,26 @@
 import styled from "styled-components";
 
-export const StyledHeader = styled.header`
-  background-color: var(--color-orange-80);
+export const StyledContainer = styled.div`
+  width: 100%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column-reverse;
 
-  div {
-    width: 90%;
-    height: 67px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    div {
-      justify-content: end;
-      gap: 1.25rem;
-    }
+  p {
+    margin: 20px auto;
+    text-align: center;
+    height: 80px;
+    font-size: var(--font-size-18);
   }
-`;
 
-export const StyledContentMain = styled.section`
-  margin: 0 auto;
+  @media (min-width: 1000px) {
+    width: 95%;
+    max-width: 1240px;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  @media (min-width: 1400px) {
+    justify-content: space-between;
+  }
 `;

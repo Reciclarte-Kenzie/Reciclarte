@@ -1,23 +1,24 @@
-import { useEffect, useState } from "react";
-import { iIdeaData } from "../../providers/IdeasProvider";
-import { api } from "../../services/api";
+import { useContext, useEffect, useState } from "react";
+import { IdeasContext, iIdeaData } from "../../providers/IdeasProvider";
 import { ContainerStyled } from "../../styles/Container/styles";
 import { StyledIdeaContainer, StyledIdeaPage } from "./StyledIdeaPage";
 import Header from "../../components/Header";
-import { useNavigate } from "react-router-dom";
+import { api } from "../../services/api";
+import { Button } from "../../components/Button";
+import { Link } from "react-router-dom";
 
 export const IdeaPage = () => {
   const [idea, setIdea] = useState<iIdeaData | null>(null);
-  const navigate = useNavigate();
-
-  const backToHome = () => {
-    localStorage.setItem("@reciclarte:id", "");
-    navigate("/");
-  };
+  // const { getSpecificIdea } = useContext(IdeasContext);
 
   useEffect(() => {
+    // let idPostLocalStorage = 0;
+    // if (localStorage.getItem("@reciclarte:id")) {
+    //   idPostLocalStorage = Number(localStorage.getItem("@reciclarte:id"));
+    // }
+    //   console.log(getSpecificIdea(idPostLocalStorage));
+
     const idPostLocalStorage = localStorage.getItem("@reciclarte:id");
-    console.log(idPostLocalStorage);
     const getIdeaById = async (ideaId: string | null) => {
       try {
         const response = await api.get(`/ideas/${ideaId}`);
@@ -28,51 +29,52 @@ export const IdeaPage = () => {
     };
     getIdeaById(idPostLocalStorage);
   }, []);
-  console.log(idea);
 
   return (
-    <StyledIdeaContainer>
+    <>
       <Header />
-      <ContainerStyled>
-        <StyledIdeaPage>
-          <article>
-            <div className="images">
-              <img
-                className="imagePost"
-                src={idea?.imgs[0]}
-                alt="Imagem da API"
-              />
-              <img
-                className="imagePost"
-                src={idea?.imgs[1]}
-                alt="Imagem da API"
-              />
-            </div>
-            <div className="headerPost">
-              <h2>{idea?.title}</h2>
-              <div>
-                <p>
-                  Categoria: <span>{idea?.categories}</span>
-                </p>
-                <p>
-                  Custo estimado: R$<span>{idea?.estimated_cost}</span>
-                </p>
-                <p>
-                  Nível de dificuldade: <span>{idea?.difficulty_level}/5</span>
-                </p>
-                <p>
-                  Materiais: <span>{idea?.materials}</span>
-                </p>
+      <StyledIdeaContainer>
+        <ContainerStyled>
+          <StyledIdeaPage>
+            <section>
+              <div className="images">
+                {idea?.imgs.map((element: string) => (
+                  <img
+                    key={element}
+                    className="imagePost"
+                    src={element}
+                    alt="Imagem do Post"
+                  />
+                ))}
               </div>
-            </div>
-            <div className="steps">
-              <h3>Passo a passo</h3>
-              <p>{idea?.steps}</p>
-            </div>
-            <button onClick={backToHome}>Voltar para a Home</button>
-          </article>
-        </StyledIdeaPage>
-      </ContainerStyled>
-    </StyledIdeaContainer>
+              <article className="headerPost">
+                <h2>{idea?.title}</h2>
+                <dl>
+                  <dt>Categoria:</dt>
+                  <dd>{idea?.categories?.join(", ")}</dd>
+                  <dt>Custo estimado:</dt>
+                  <dd>R${idea?.estimated_cost}</dd>
+                  <dt>Nível de dificuldade:</dt>
+                  <dd>{idea?.difficulty_level}/5</dd>
+                  <dt>Materiais:</dt>
+                  <dd>{idea?.materials.join(", ")}</dd>
+                </dl>
+              </article>
+              <article className="steps">
+                <h3>Passo a passo</h3>
+                <ul>
+                  {idea?.steps.split("\n").map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ul>
+              </article>
+              <Link to="/">
+                <Button text="Voltar para a Home" label="Home"></Button>
+              </Link>
+            </section>
+          </StyledIdeaPage>
+        </ContainerStyled>
+      </StyledIdeaContainer>
+    </>
   );
 };
