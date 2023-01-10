@@ -22,6 +22,14 @@ export const StyledIdeaPage = styled.main`
     padding: 24px 20px;
   }
 
+  .embedVideo {
+    gap: 0;
+    width: 90%;
+    border: none;
+    border-radius: var(--radius-1);
+    padding: 0;
+  }
+
   .images {
     display: flex;
     gap: 10px;

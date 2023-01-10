@@ -6,6 +6,7 @@ import Header from "../../components/Header";
 import { api } from "../../services/api";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
+import { EmbeddedVideo } from "../../components/EmbeddedVideo";
 
 export const IdeaPage = () => {
   const [idea, setIdea] = useState<iIdeaData | null>(null);
@@ -60,6 +61,7 @@ export const IdeaPage = () => {
                   <dd>{idea?.materials.join(", ")}</dd>
                 </dl>
               </article>
+              <EmbeddedVideo url="https://www.youtube.com/embed/Ka7gMFUfTNI" />
               <article className="steps">
                 <h3>Passo a passo</h3>
                 <ul>

@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { api } from "../services/api";
 
 export interface iIdeaData {
+  id: number;
   title: string;
   imgs: string[];
   description: string;

@@ -5,7 +5,7 @@ interface iEmbed {
   url: string;
 }
 
-export const EmbeddedVIdeo = ({ url }: iEmbed) => (
+export const EmbeddedVideo = ({ url }: iEmbed) => (
   <StyledVideoBox className="embedVideo">
     <iframe
       src={url}
