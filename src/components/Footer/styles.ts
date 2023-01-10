@@ -15,8 +15,6 @@ export const StyledFooter = styled.footer`
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
-  /* position: fixed;
-  bottom: 0; */
 
   img {
     width: clamp(75px, 100px, 275px);
@@ -31,7 +29,6 @@ export const StyledFooter = styled.footer`
 
     border-bottom: 1px solid var(--color-green-80);
     border-radius: 0;
-    background-color: var(--color-orange-70);
     padding: 0.25rem;
 
     hr {
