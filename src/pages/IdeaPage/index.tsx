@@ -1,3 +1,4 @@
+import React from "react";
 import { useContext, useEffect, useState } from "react";
 import { IdeasContext, iIdeaData } from "../../providers/IdeasProvider";
 import { ContainerStyled } from "../../styles/Container/styles";
@@ -39,7 +40,7 @@ export const IdeaPage = () => {
                 autoPlay
                 emulateTouch
                 infiniteLoop
-                width={500}
+                width={280}
                 showThumbs={false}
                 showStatus={false}
               >
