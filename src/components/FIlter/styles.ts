@@ -7,12 +7,13 @@ interface iFilter {
 
 export const StyledFilter = styled.aside<iFilter>`
   position: sticky;
-  background-color: var(--color-grey-50);
-  width: clamp(280px, 90%, 300px);
+  width: 90%;
+  margin: 0 auto;
   border-radius: var(--radius-1);
 
-  @media (min-width: 700px) {
+  @media (min-width: 1000px) {
     width: clamp(300px, 40%, 402px);
+    margin: 0;
   }
 
   h3 {
@@ -63,8 +64,6 @@ export const StyledFilter = styled.aside<iFilter>`
       height: ${({ catList, matList }) =>
         catList?.length > 2 || matList.length > 2 ? "58px" : "27px"};
       overflow: auto;
-      margin-top: 2vh;
-
       scrollbar-width: thin;
       scrollbar-color: var(--color-orange-80) var(--color-white);
 
@@ -91,6 +90,7 @@ export const StyledFilter = styled.aside<iFilter>`
         font-size: var(--font-size-12);
         color: var(--color-white);
         margin: 0;
+        height: fit-content;
       }
 
       button,
