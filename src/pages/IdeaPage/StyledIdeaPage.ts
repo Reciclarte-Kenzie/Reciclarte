@@ -55,7 +55,7 @@ export const StyledIdeaPage = styled.main`
       text-align: center;
       font-size: var(--font-size-25);
       font-weight: 600;
-      color: #bc5c2c;
+      color: var(--color-orange-80);
     }
 
     dl {
@@ -89,11 +89,15 @@ export const StyledIdeaPage = styled.main`
       color: var(--color-green-100);
     }
 
-    p {
+    li {
       font-size: var(--font-size-18);
       font-weight: 400;
       color: var(--color-grey-100);
       line-height: 26px;
+    }
+
+    li + li {
+      margin-top: 0.625rem;
     }
   }
 

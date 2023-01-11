@@ -7,14 +7,15 @@ import { api } from "../services/api";
 export interface iIdeaData {
   id: number;
   title: string;
-  imgs: string[];
+  imgs: string[] | string;
   description: string;
   steps: string;
   materials: string[];
   categories: string[];
-  estimated_cost: number;
-  difficulty_level: number;
-  userId: number;
+  estimatedCost: number;
+  difficultyLevel: number;
+  userId: number | undefined;
+  id: number;
 }
 
 interface iIdeasContextProvider {
