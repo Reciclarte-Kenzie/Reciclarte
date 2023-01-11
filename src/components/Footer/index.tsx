@@ -2,10 +2,9 @@ import { StyledFooter } from "./styles";
 import headerLogoGrey from "../../assets/imgs/headerLogoGrey.svg";
 import { Link, useLocation } from "react-router-dom";
 import { useContext } from "react";
-import { UserContext } from "../../providers/UserProvider";
 import { ContainerStyled } from "../../styles/Container/styles";
+
 export const Footer = () => {
-  const { user } = useContext(UserContext);
   const activePage = useLocation().pathname;
   return (
     <StyledFooter>
@@ -34,7 +33,7 @@ export const Footer = () => {
             >
               Desenvolvedores
             </Link>
-            {user && (
+            {localStorage.getItem("@USERID") && (
               <Link
                 to={"/profile"}
                 className={activePage === "/profile" ? "active" : ""}
