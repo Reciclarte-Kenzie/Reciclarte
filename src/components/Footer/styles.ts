@@ -39,9 +39,10 @@ export const StyledFooter = styled.footer`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 0.625rem;
 
     border-radius: 0;
-    padding: 0.25rem;
+    padding: 1.5rem 0.25rem 0;
     width: 100%;
 
     @media (min-width: 700px) {
@@ -51,6 +52,7 @@ export const StyledFooter = styled.footer`
   }
 
   .footerHeader {
+    align-items: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -79,6 +81,10 @@ export const StyledFooter = styled.footer`
       justify-content: space-between;
       width: 83%;
       max-width: 1240px;
+
+      section {
+        width: fit-content;
+      }
     }
   }
 
