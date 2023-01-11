@@ -10,6 +10,8 @@ export const editUserSchema = yup.object().shape({
     .matches(/(?=.*?[0-9])/, "Precisa ter pelo menos 1 numero"),
   profilePic: yup.string(),
   bio: yup.string().required("Bio obrigatório"),
-  instagram: yup.string(),
-  linkedin: yup.string(),
+  socialMedia: yup.object({
+    instagram: yup.string(),
+    linkedin: yup.string(),
+  })    
 });

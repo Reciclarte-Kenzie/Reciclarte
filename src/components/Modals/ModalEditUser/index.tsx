@@ -43,8 +43,8 @@ const {
             placeholder="Insira seu instagram"
             label="instagram"
             id="instagram"
-            register={register("instagram")}
-            error={errors.socialMedia.instagram?.message}
+            register={register("socialMedia.instagram")}
+            error={errors.socialMedia?.instagram?.message}
             disabled={loading}
           />
           <Input
@@ -67,8 +67,8 @@ const {
             placeholder="Insira seu linkedin"
             label="linkedin"
             id="linkedin"
-            register={register("linkedin")}
-            error={errors.socialMedia.linkedin?.message}
+            register={register("socialMedia.linkedin")}
+            error={errors.socialMedia?.linkedin?.message}
             disabled={loading}
           />
     </form>
