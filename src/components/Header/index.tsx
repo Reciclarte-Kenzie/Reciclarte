@@ -60,7 +60,7 @@ const Header = () => {
         <MainContent>
           <img src={logo} alt="" />
           <div>
-            {user ? (
+            {user && user.id ? (
               <button type="button" title="Adicionar Ideia">
                 <img src={plusIcon} alt="" />
               </button>
@@ -77,7 +77,7 @@ const Header = () => {
           </div>
         </MainContent>
         <Actions toggle={isMobile ? showActions : true}>
-          {user ? (
+          {user && user.id ? (
             <>
               {location.pathname !== "/profile" ? (
                 <button
