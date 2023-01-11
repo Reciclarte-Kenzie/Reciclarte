@@ -15,11 +15,12 @@ import closeMenuIcon from "../../assets/imgs/xmark-solid.svg";
 import homeIcon from "../../assets/imgs/home.svg";
 import profileIcon from "../../assets/imgs/user-solid.svg";
 import logoutIcon from "../../assets/imgs/logout.svg";
-import { UserContext } from "../../providers/UserProvider";
+import { iUserData, UserContext } from "../../providers/UserProvider";
 import { useNavigate, useLocation } from "react-router";
 
 const Header = () => {
-  const { user, logout } = useContext(UserContext);
+  const { getSpecificUser, logout } = useContext(UserContext);
+  const [user, setUser] = useState<iUserData | null>(null);
   const [showActions, setShowActions] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 968);
   const location = useLocation();
@@ -28,6 +29,16 @@ const Header = () => {
   const detectMobile = () => {
     setIsMobile(window.innerWidth < 968);
   };
+
+  useEffect(() => {
+    const getUser = async () => {
+      const userId = localStorage.getItem("@USERID");
+      const response = await getSpecificUser(Number(userId));
+      setUser(response?.data || ({} as iUserData));
+    };
+
+    getUser();
+  }, []);
 
   useEffect(() => {
     window.addEventListener("resize", detectMobile);

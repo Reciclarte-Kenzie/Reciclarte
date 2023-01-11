@@ -9,15 +9,6 @@ interface iUserProviderProps {
   children: React.ReactNode;
 }
 
-interface iUser {
-  accessToken: string | null;
-  profile_pic: string;
-  name: string;
-  bio: string;
-  user: iUserData;
-  id: number;
-}
-
 export interface iLoginData {
   email: string;
   password: string;
@@ -32,11 +23,7 @@ export interface iRegisterData {
   id: number;
 }
 
-interface iUserId {
-  userId: number;
-}
-
-interface iUserData extends iRegisterData {
+export interface iUserData extends iRegisterData {
   socialMedia: {
     instagram: string;
     linkedin: string;
@@ -54,7 +41,6 @@ export interface iApiError {
 }
 
 interface iUserContextProvider {
-  user: iUser | null;
   loading: boolean;
   loginSubmit: (data: iLoginData) => void;
   registerSubmit: (data: iRegisterData) => void;
@@ -75,7 +61,6 @@ export const UserContext = createContext<iUserContextProvider>(
 );
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
-  const [user, setUser] = useState<iUser | null>(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const headers = {
@@ -89,15 +74,14 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       setLoading(true);
       const response = await api.post("/login", data);
       toast.success("Login efetuado!");
-      setUser(response.data.user);
       localStorage.setItem("@TOKEN", response.data.accessToken);
+      localStorage.setItem("@USERID", response.data.user.id);
       navigate("/");
     } catch (error) {
       const apiError = error as AxiosError<iApiError>;
       let message = apiError.response?.data || "";
       let toastErrorMessage = "";
 
-      console.log(error);
       if (message === "Incorrect password") {
         toastErrorMessage = "Senha incorreta";
       } else if (message === "Cannot find user") {
@@ -180,14 +164,12 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   const logout = () => {
     localStorage.removeItem("@TOKEN");
-    setUser(null);
     <Navigate to="/" />;
   };
 
   return (
     <UserContext.Provider
       value={{
-        user,
         loading,
         loginSubmit,
         registerSubmit,

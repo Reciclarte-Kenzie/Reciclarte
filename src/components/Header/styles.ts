@@ -94,9 +94,9 @@ export const Actions = styled.div<IActionsProps>`
 `;
 
 export const LoginButton = styled.button`
-  border: 2px solid #ffffff;
-  background: #ffffff;
-  border-radius: 8px;
+  border: 2px solid var(--color-white);
+  background: var(--color-white);
+  border-radius: var(--radius-1);
   padding: 9px 25px;
   /* text-2 */
   font-family: "Poppins";
@@ -104,7 +104,7 @@ export const LoginButton = styled.button`
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
-  color: #f7941d;
+  color: var(--color-orange-80);
 
   @media screen and (min-width: 968px) {
     border: none;
@@ -112,8 +112,8 @@ export const LoginButton = styled.button`
 `;
 
 export const RegisterButton = styled.button`
-  border: 2px solid #ffffff;
-  border-radius: 8px;
+  border: 2px solid var(--color-white);
+  border-radius: var(--radius-1);
   padding: 9px 25px;
   /* text-2 */
   font-family: "Poppins";
@@ -121,5 +121,5 @@ export const RegisterButton = styled.button`
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
-  color: #ffffff;
+  color: var(--color-white);
 `;

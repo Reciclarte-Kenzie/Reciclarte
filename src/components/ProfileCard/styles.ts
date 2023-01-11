@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const ProfileCard = styled.div`
-  /* Branco */
-  background: #ffffff;
+  background: var(--color-white);
   box-shadow: 0px 0px 5px rgba(78, 32, 150, 0.25);
 
   @media screen and (min-width: 968px) {
@@ -58,35 +57,29 @@ export const Name = styled.span`
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: var(--font-size-16);
   line-height: 20px;
-  /* or 125% */
-  /* green-100 */
-  color: #011b0c;
+  color: var(--color-green-100);
 `;
 
 export const Bio = styled.span`
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px; /* or 125% */
-  /* grey-100 */
-  color: #7a7a7a;
+  font-size: var(--font-size-16);
+  line-height: 20px;
+  color: var(--color-grey-100);
 `;
 
 export const Button = styled.button`
-  /* green-80 */
-  background: #015f28;
-  border-radius: 8px;
+  background: var(--color-grey-80);
+  border-radius: var(--radius-1);
   padding: 10px 16px;
   /* Text */
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--font-size-16);
   line-height: 20px;
-  /* identical to box height, or 125% */
-  /* Branco */
-  color: #ffffff;
+  color: var(--color-white);
 `;
