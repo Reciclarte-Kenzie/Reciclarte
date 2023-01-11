@@ -38,7 +38,6 @@ export const StyledFooter = styled.footer`
   section {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
 
     border-radius: 0;
@@ -62,7 +61,6 @@ export const StyledFooter = styled.footer`
 
     @media (min-width: 700px) {
       justify-content: space-between;
-      align-items: center;
     }
 
     section {
@@ -81,10 +79,6 @@ export const StyledFooter = styled.footer`
       justify-content: space-between;
       width: 83%;
       max-width: 1240px;
-
-      section {
-        width: 30%;
-      }
     }
   }
 
@@ -92,7 +86,6 @@ export const StyledFooter = styled.footer`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
 
     .objective {
       border: 1px transparent;
@@ -123,12 +116,11 @@ export const StyledFooter = styled.footer`
     color: var(--color-green-70);
     text-transform: uppercase;
   }
-
+  
   h4 {
     color: var(--color-green-90);
     font-size: var(--font-size-16);
     font-weight: 600;
-    text-align: center;
     text-transform: uppercase;
   }
 `;
