@@ -150,6 +150,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       return response;
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -160,6 +162,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       return response;
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
