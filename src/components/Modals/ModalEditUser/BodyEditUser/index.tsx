@@ -40,7 +40,7 @@ export const BodyModalEditUser = () => {
           />
           <Input
             placeholder="Insira sua senha"
-            label="password"
+            label="Senha"
             id="password"
             register={register("password")}
             error={errors.password?.message}
@@ -48,7 +48,7 @@ export const BodyModalEditUser = () => {
           />
           <Input
             placeholder="Insira seu instagram"
-            label="instagram"
+            label="Instagram"
             id="instagram"
             register={register("socialMedia.instagram")}
             error={errors.socialMedia?.instagram?.message}
@@ -59,14 +59,14 @@ export const BodyModalEditUser = () => {
           <Input
             placeholder="Insira sua bio"
             label="bio"
-            id="bio"
+            id="Bio"
             register={register("bio")}
             error={errors.bio?.message}
             disabled={loading}
           />
           <Input
             placeholder="Insira seu avatar"
-            label="profile_pic"
+            label="Avatar"
             id="profile_pic"
             register={register("profile_pic")}
             error={errors.profile_pic?.message}
@@ -75,7 +75,7 @@ export const BodyModalEditUser = () => {
           <Input
             placeholder="Insira seu linkedin"
             label="linkedin"
-            id="linkedin"
+            id="Linkedin"
             register={register("socialMedia.linkedin")}
             error={errors.socialMedia?.linkedin?.message}
             disabled={loading}
