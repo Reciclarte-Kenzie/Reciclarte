@@ -19,8 +19,8 @@ export const IdeaPage = () => {
     const getIdea = async () => {
       const idea = await getSpecificIdea(idPostLocalStorage);
 
-      setIdea(idea || {} as iIdeaData);
-    }
+      setIdea(idea || ({} as iIdeaData));
+    };
 
     getIdea();
   }, []);
@@ -33,7 +33,7 @@ export const IdeaPage = () => {
           <StyledIdeaPage>
             <section>
               <div className="images">
-                {(idea?.imgs as string[]).map((element) => (
+                {(idea.imgs as string[])?.map((element) => (
                   <img
                     key={element}
                     className="imagePost"
@@ -52,13 +52,13 @@ export const IdeaPage = () => {
                   <dt>Nível de dificuldade:</dt>
                   <dd>{idea?.difficultyLevel}/5</dd>
                   <dt>Materiais:</dt>
-                  <dd>{idea?.materials.join(", ")}</dd>
+                  <dd>{idea?.materials?.join(", ")}</dd>
                 </dl>
               </article>
               <article className="steps">
                 <h3>Passo a passo</h3>
                 <ul>
-                  {idea?.steps.split("\n").map((step) => (
+                  {idea?.steps?.split("\n").map((step) => (
                     <li key={step}>{step}</li>
                   ))}
                 </ul>
