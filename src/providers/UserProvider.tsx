@@ -23,7 +23,6 @@ export interface iRegisterData {
   id: number;
 }
 
-
 export interface iUserData extends iRegisterData {
   socialMedia: {
     instagram: string;
@@ -31,7 +30,7 @@ export interface iUserData extends iRegisterData {
   };
 }
 
-interface iUserIdeasData extends iUserData {
+export interface iUserIdeasData extends iUserData {
   ideas: iIdeaData[];
 }
 
@@ -150,6 +149,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       return response;
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -160,11 +161,13 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       return response;
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const logout = () => {
-    localStorage.removeItem("@TOKEN");
+    localStorage.clear();
     <Navigate to="/" />;
   };
 
