@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { Footer } from "../../components/Footer";
 import Header from "../../components/Header";
 import { IdeaCard } from "../../components/IdeasList/IdeaCard";
 import ProfileCard from "../../components/ProfileCard";
@@ -60,6 +61,7 @@ const Profile = () => {
           </>
         </section>
       </main>
+      <Footer />
     </Container>
   );
 };
