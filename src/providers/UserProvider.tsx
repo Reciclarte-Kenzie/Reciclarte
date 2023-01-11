@@ -164,7 +164,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   };
 
   const logout = () => {
-    localStorage.removeItem("@TOKEN");
+    localStorage.clear();
     <Navigate to="/" />;
   };
 
