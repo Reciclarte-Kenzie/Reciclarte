@@ -62,8 +62,6 @@ export const Footer = () => {
               Conheça mais sobre nosso projeto
             </a>
           </span>
-          <hr />
-          <span>Desde 2023 mudando o planeta um projeto de cada vez.</span>
         </section>
       </ContainerStyled>
     </StyledFooter>

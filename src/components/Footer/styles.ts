@@ -4,8 +4,8 @@ import { ContainerStyled } from "../../styles/Container/styles";
 export const StyledFooter = styled.footer`
   background-color: var(--color-grey-50);
   border-top: 1px solid var(--color-grey-50);
-  padding: 1.875rem 0;
   margin-top: 3.125rem;
+  padding: 1.875rem 0;
 
   ${ContainerStyled} {
     margin: 0 auto;
@@ -31,22 +31,19 @@ export const StyledFooter = styled.footer`
       brightness(100%) contrast(94%);
   }
 
+  section:nth-child(1) {
+    border-bottom: 1px solid var(--color-green-100);
+  }
+
   section {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    border-bottom: 1px solid var(--color-green-100);
     border-radius: 0;
     padding: 0.25rem;
     width: 100%;
-
-    hr {
-      border: none;
-      border-top: 2px solid var(--color-orange-70);
-      width: 80%;
-    }
 
     @media (min-width: 700px) {
       justify-content: space-between;
