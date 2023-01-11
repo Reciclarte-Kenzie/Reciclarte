@@ -28,9 +28,6 @@ export interface iRegisterData {
   id: number;
 }
 
-interface iUserId {
-  userId: number;
-}
 
 interface iUserData extends iRegisterData {
   socialMedia: {

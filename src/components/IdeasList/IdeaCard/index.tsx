@@ -30,7 +30,7 @@ export const IdeaCard = ({ img, title, description, id }: iIdeaCardProps) => {
           <StyledButton
             padding="0.313rem 1.25rem"
             width="135.5px"
-            onClick={() => localStorage.setItem("@RECICLARTE", `${id}`)}
+            onClick={() => localStorage.setItem("@reciclarte:id", `${id}`)}
           >
             <Link to="/idea">Ver ideia</Link>
           </StyledButton>
