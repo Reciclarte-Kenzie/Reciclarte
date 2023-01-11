@@ -30,11 +30,7 @@ export const StyledFooter = styled.footer`
     filter: invert(68%) sepia(94%) saturate(2241%) hue-rotate(347deg)
       brightness(100%) contrast(94%);
   }
-
-  section:nth-child(1) {
-    border-bottom: 1px solid var(--color-green-100);
-  }
-
+  
   section {
     display: flex;
     flex-direction: column;
@@ -44,24 +40,21 @@ export const StyledFooter = styled.footer`
     border-radius: 0;
     padding: 1.5rem 0.25rem 0;
     width: 100%;
-
-    @media (min-width: 700px) {
-      justify-content: space-between;
-      width: 35%;
-    }
   }
 
   .footerHeader {
     align-items: center;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-transform: uppercase;
-    color: var(--color-green-90);
+    flex-direction: column;
     justify-content: center;
     padding: 0;
-
-    @media (min-width: 700px) {
+    
+    border-bottom: 1px solid var(--color-green-100);
+    color: var(--color-green-90);
+    text-transform: uppercase;
+    
+    @media (min-width: 1030px) {
+      flex-direction: row;
       justify-content: space-between;
     }
 
@@ -70,6 +63,7 @@ export const StyledFooter = styled.footer`
       display: flex;
       flex-direction: row;
       gap: 2.3vw;
+      padding: 0;
     }
 
     .active {
@@ -79,8 +73,7 @@ export const StyledFooter = styled.footer`
 
     @media (min-width: 700px) {
       justify-content: space-between;
-      width: 83%;
-      max-width: 1240px;
+      width: 100%;
 
       section {
         width: fit-content;
@@ -90,20 +83,22 @@ export const StyledFooter = styled.footer`
 
   .presentation {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 30px 70px;
     justify-content: space-between;
+    width: 100%;
 
-    .objective {
-      border: 1px transparent;
+    section {
       width: 100%;
-      text-align: justify;
-      text-justify: inter-word;
-      padding: 0;
-      height: fit-content;
     }
-
+    
     @media (min-width: 700px) {
       flex-direction: row;
+      
+      section {
+        justify-content: flex-start;
+        width: 50%;
+      }
     }
   }
 

@@ -28,6 +28,12 @@ export const Footer = () => {
             >
               Cadastro
             </Link>
+            <Link
+              to={"/register"}
+              className={activePage === "/register" ? "active" : ""}
+            >
+              Desenvolvedores
+            </Link>
             {user && (
               <Link
                 to={"/profile"}
@@ -43,13 +49,10 @@ export const Footer = () => {
             <h4>Nosso objetivo</h4>
             <p>
               Descartamos, diariamente, materiais que poderiam ser
-              reaproveitados.
-              <br />
-              Propomos uma maneira buscar ideias de projetos DIY (Do It
+              reaproveitados. Propomos uma maneira buscar ideias de projetos DIY (Do It
               Yourself) a partir desses materiais e diminuir o descarte de lixo.
             </p>
           </section>
-        </section>
         <section className="founders">
           <h4>Quem somos?</h4>
           <p>
@@ -57,11 +60,7 @@ export const Footer = () => {
             Academy Brasil, pensamos numa maneira de conectar e contribuir com a
             criatividade das pessoas
           </p>
-          <span>
-            <a href="https://linktr.ee/reciclarteg1">
-              Conheça mais sobre nosso projeto
-            </a>
-          </span>
+        </section>
         </section>
       </ContainerStyled>
     </StyledFooter>
