@@ -24,17 +24,15 @@ export const StyledIdeaPage = styled.main`
 
   .images {
     display: flex;
+    flex-direction: column;
     gap: 10px;
-  }
 
-  .imagePost {
-    width: 300px;
-    min-width: 5%;
-    max-width: 100%;
-    height: 300px;
-    max-height: 100%;
-    border-radius: var(--radius-1);
-    object-fit: cover;
+    img {
+      border-radius: var(--radius-1);
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+    }
   }
 
   .headerPost {
