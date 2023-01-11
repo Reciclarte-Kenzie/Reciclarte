@@ -73,7 +73,7 @@ export const StyledFooter = styled.footer`
     }
 
     .active {
-      color: var(--color-green-80);
+      color: var(--color-orange-80);
       font-weight: 800;
     }
 
@@ -120,7 +120,12 @@ export const StyledFooter = styled.footer`
 
   a {
     color: var(--color-green-70);
+    font-weight: 600;
     text-transform: uppercase;
+  }
+
+  .links a {
+    color: var(--color-grey-90);
   }
   
   h4 {
