@@ -3,9 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { iModalCreateOrEditIdeaProps } from "..";
 import { IdeasContext, iIdeaData } from "../../../../providers/IdeasProvider";
-import { UserContext } from "../../../../providers/UserProvider";
 import { Button } from "../../../Button";
-import { FilterLabelList } from "../../../FilterLabelList";
 import { IdeaImage } from "../../../IdeaImage";
 import { Input } from "../../../Input";
 import { Select } from "../../../Input/Select";
@@ -30,7 +28,6 @@ export const ModalBody = ({
     getIdeasMaterials,
     getIdeasCategories,
   } = useContext(IdeasContext);
-  const { getSpecificUser } = useContext(UserContext);
 
   const {
     handleSubmit,
