@@ -42,6 +42,7 @@ export const BodyModalEditUser = () => {
             placeholder="Insira sua senha"
             label="Senha"
             id="password"
+            type="password"
             register={register("password")}
             error={errors.password?.message}
             disabled={loading}
