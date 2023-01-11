@@ -4,8 +4,8 @@ import { ContainerStyled } from "../../styles/Container/styles";
 export const StyledFooter = styled.footer`
   background-color: var(--color-grey-50);
   border-top: 1px solid var(--color-grey-50);
-  margin-top: 3.125rem;
-  padding: 1.875rem 0;
+  margin-top: 3rem;
+  padding: 1.5rem 0 1.8rem;
 
   ${ContainerStyled} {
     margin: 0 auto;
@@ -13,7 +13,7 @@ export const StyledFooter = styled.footer`
     display: flex;
     flex-direction: column;
     gap: 1vh;
-    padding: 4px;
+    padding: 0.25rem;
     max-width: 90%;
 
     @media (min-width: 700px) {
@@ -38,7 +38,7 @@ export const StyledFooter = styled.footer`
     gap: 0.625rem;
 
     border-radius: 0;
-    padding: 1.5rem 0.25rem 0;
+    padding: 1rem 0.25rem 0;
     width: 100%;
   }
 
@@ -47,7 +47,7 @@ export const StyledFooter = styled.footer`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0;
+    padding: 0 0 0.625rem;
     
     border-bottom: 1px solid var(--color-green-100);
     color: var(--color-green-90);
@@ -84,7 +84,7 @@ export const StyledFooter = styled.footer`
   .presentation {
     display: flex;
     flex-direction: column;
-    gap: 30px 70px;
+    gap: 1rem 4.375rem;
     justify-content: space-between;
     width: 100%;
 
@@ -119,8 +119,12 @@ export const StyledFooter = styled.footer`
     text-transform: uppercase;
   }
 
-  .links a {
-    color: var(--color-grey-90);
+  .links {
+    flex-wrap: wrap;
+
+    a {
+      color: var(--color-grey-90);
+    }
   }
   
   h4 {
