@@ -23,15 +23,14 @@ export interface iRegisterData {
   id: number;
 }
 
-
-interface iUserData extends iRegisterData {
+export interface iUserData extends iRegisterData {
   socialMedia: {
     instagram: string;
     linkedin: string;
   };
 }
 
-interface iUserIdeasData extends iUserData {
+export interface iUserIdeasData extends iUserData {
   ideas: iIdeaData[];
 }
 
