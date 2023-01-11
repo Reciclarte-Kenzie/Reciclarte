@@ -56,6 +56,11 @@ export const IdeaPage = () => {
                   <dd>{idea?.materials?.join(", ")}</dd>
                 </dl>
               </article>
+              {/* {
+                idea?.video && <EmbeddedVideo
+                url={idea?.video}
+              />
+              } */}
               <EmbeddedVideo
                 url={"https://www.youtube.com/embed/Ka7gMFUfTNI"}
               />

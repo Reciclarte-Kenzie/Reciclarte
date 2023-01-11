@@ -4,7 +4,6 @@ import { IdeasList } from "../../components/IdeasList";
 import { StyledContainer } from "./styles";
 import { IdeasContext } from "../../providers/IdeasProvider";
 import { FilterBox } from "../../components/FIlter";
-import { EmbeddedVIdeo } from "../../components/EmbeddedVideo";
 
 export const Home = () => {
   const { foundIdeas, searchIdeas } = useContext(IdeasContext);
