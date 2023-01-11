@@ -1,3 +1,4 @@
+import React from "react";
 import { useContext, useEffect, useState } from "react";
 import { IdeasContext, iIdeaData } from "../../providers/IdeasProvider";
 import { ContainerStyled } from "../../styles/Container/styles";
@@ -5,6 +6,8 @@ import { StyledIdeaContainer, StyledIdeaPage } from "./StyledIdeaPage";
 import Header from "../../components/Header";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
 export const IdeaPage = () => {
   const [idea, setIdea] = useState<iIdeaData>({} as iIdeaData);
@@ -32,16 +35,22 @@ export const IdeaPage = () => {
         <ContainerStyled>
           <StyledIdeaPage>
             <section>
-              <div className="images">
-                {(idea.imgs as string[])?.map((element) => (
-                  <img
-                    key={element}
-                    className="imagePost"
-                    src={element}
-                    alt="Imagem do Post"
-                  />
+              <Carousel
+                className="images"
+                autoPlay
+                emulateTouch
+                infiniteLoop
+                width={280}
+                showThumbs={false}
+                showStatus={false}
+              >
+                {(idea.imgs as string[])?.map((image) => (
+                  <div key={image}>
+                    <img src={image} alt="imagem" />
+                  </div>
                 ))}
-              </div>
+              </Carousel>
+              
               <article className="headerPost">
                 <h2>{idea?.title}</h2>
                 <dl>
