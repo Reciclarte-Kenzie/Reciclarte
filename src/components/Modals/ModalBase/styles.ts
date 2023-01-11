@@ -4,6 +4,7 @@ export const ModalBaseStyled = styled.div`
   align-items: center;
   animation: show-background 0.8s ease;
   background-color: rgba(0, 0, 0, 0.76);
+  backdrop-filter: blur(4px);
   display: flex;
   height: 100%;
   justify-content: center;
