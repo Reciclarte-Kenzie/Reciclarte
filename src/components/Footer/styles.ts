@@ -4,6 +4,8 @@ import { ContainerStyled } from "../../styles/Container/styles";
 export const StyledFooter = styled.footer`
   background-color: var(--color-grey-50);
   border-top: 1px solid var(--color-grey-50);
+  padding: 1.875rem 0;
+  margin-top: 3.125rem;
 
   ${ContainerStyled} {
     margin: 0 auto;
