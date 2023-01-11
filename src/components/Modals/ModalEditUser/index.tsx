@@ -1,25 +1,24 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
-import { useForm } from "react-hook-form/dist/useForm";
-import { iRegisterData, UserContext } from "../../../providers/UserProvider";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { iUserData, UserContext } from "../../../providers/UserProvider";
 import { Input } from "../../Input";
 import { editUserSchema } from "./editUserSchema";
 
 export const ModalEditUser = () => {
-const {editUser, loading} = useContext(UserContext);
+const {user, editUser, loading} = useContext(UserContext);
    
 const {
         handleSubmit,
         register,
         formState: { errors },
-      } = useForm<iRegisterData>({
+      } = useForm<iUserData>({
         mode: "onBlur",
         resolver: yupResolver(editUserSchema),
       });
 
-      const onSubmit: SubmitHandler<iRegisterData> = (data) => {
-        const { confirmation, ...body } = data;
-        editUser(body);
+      const onSubmit: SubmitHandler<iUserData> = (data) => {
+        editUser(user?.user.id, data);
       };
 
   return (
@@ -45,7 +44,7 @@ const {
             label="instagram"
             id="instagram"
             register={register("instagram")}
-            error={errors.instagram?.message}
+            error={errors.socialMedia.instagram?.message}
             disabled={loading}
           />
           <Input
@@ -69,7 +68,7 @@ const {
             label="linkedin"
             id="linkedin"
             register={register("linkedin")}
-            error={errors.linkedin?.message}
+            error={errors.socialMedia.linkedin?.message}
             disabled={loading}
           />
     </form>
