@@ -30,7 +30,7 @@ export const ModalBody = ({
     getIdeasMaterials,
     getIdeasCategories,
   } = useContext(IdeasContext);
-  const { user } = useContext(UserContext);
+  const { getSpecificUser } = useContext(UserContext);
 
   const {
     handleSubmit,
@@ -148,7 +148,7 @@ export const ModalBody = ({
           imgs: [...addedImagesList],
           categories: [...selectedCategories],
           materials: [...selectedMaterials],
-          userId: user?.user.id,
+          userId: Number(localStorage.getItem("@USERID")),
         };
 
         if (editedIdeaId) {
