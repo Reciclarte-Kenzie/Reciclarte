@@ -112,7 +112,7 @@ export const StyledFooter = styled.footer`
   a,
   span {
     color: var(--color-green-100);
-    font-size: var(--font-size-12);
+    font-size: var(--font-size-16);
     font-weight: 400;
     text-decoration: none;
     text-align: justify;
@@ -124,13 +124,9 @@ export const StyledFooter = styled.footer`
     text-transform: uppercase;
   }
 
-  span {
-    font-size: calc(var(--font-size-16) * 0.5);
-  }
-
   h4 {
     color: var(--color-green-90);
-    font-size: var(--font-size-14);
+    font-size: var(--font-size-16);
     font-weight: 600;
     text-align: center;
     text-transform: uppercase;
