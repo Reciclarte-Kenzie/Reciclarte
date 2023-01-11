@@ -1,20 +1,22 @@
 import styled from "styled-components";
+import { ContainerStyled } from "../../styles/Container/styles";
 
 export const StyledFooter = styled.footer`
   background-color: var(--color-grey-50);
   border-top: 1px solid var(--color-grey-50);
+  margin-top: 3rem;
+  padding: 1.5rem 0 1.8rem;
 
-  .content {
+  ${ContainerStyled} {
     margin: 0 auto;
     width: fit-content;
     display: flex;
     flex-direction: column;
     gap: 1vh;
-    padding: 4px;
+    padding: 0.25rem;
     max-width: 90%;
 
     @media (min-width: 700px) {
-      width: clamp(310px, 100%, 1240px);
       padding: 0;
       flex-direction: row;
       flex-wrap: wrap;
@@ -28,42 +30,32 @@ export const StyledFooter = styled.footer`
     filter: invert(68%) sepia(94%) saturate(2241%) hue-rotate(347deg)
       brightness(100%) contrast(94%);
   }
-
+  
   section {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    gap: 0.625rem;
 
-    border-bottom: 1px solid var(--color-green-100);
     border-radius: 0;
-    padding: 0.25rem;
+    padding: 1rem 0.25rem 0;
     width: 100%;
-
-    hr {
-      border: none;
-      border-top: 2px solid var(--color-orange-70);
-      width: 80%;
-    }
-
-    @media (min-width: 700px) {
-      justify-content: space-between;
-      width: 35%;
-    }
   }
 
   .footerHeader {
+    align-items: center;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-transform: uppercase;
-    color: var(--color-green-90);
+    flex-direction: column;
     justify-content: center;
-    padding: 0;
-
-    @media (min-width: 700px) {
+    padding: 0 0 0.625rem;
+    
+    border-bottom: 1px solid var(--color-green-100);
+    color: var(--color-green-90);
+    text-transform: uppercase;
+    
+    @media (min-width: 1030px) {
+      flex-direction: row;
       justify-content: space-between;
-      align-items: center;
     }
 
     section {
@@ -71,41 +63,42 @@ export const StyledFooter = styled.footer`
       display: flex;
       flex-direction: row;
       gap: 2.3vw;
+      padding: 0;
     }
 
     .active {
-      color: var(--color-green-80);
+      color: var(--color-orange-80);
       font-weight: 800;
     }
 
     @media (min-width: 700px) {
       justify-content: space-between;
-      width: 83%;
-      max-width: 1240px;
+      width: 100%;
 
       section {
-        width: 30%;
+        width: fit-content;
       }
     }
   }
 
   .presentation {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 1rem 4.375rem;
     justify-content: space-between;
-    align-items: center;
+    width: 100%;
 
-    .objective {
-      border: 1px transparent;
+    section {
       width: 100%;
-      text-align: justify;
-      text-justify: inter-word;
-      padding: 0;
-      height: fit-content;
     }
-
+    
     @media (min-width: 700px) {
       flex-direction: row;
+      
+      section {
+        justify-content: flex-start;
+        width: 50%;
+      }
     }
   }
 
@@ -113,7 +106,7 @@ export const StyledFooter = styled.footer`
   a,
   span {
     color: var(--color-green-100);
-    font-size: var(--font-size-12);
+    font-size: var(--font-size-16);
     font-weight: 400;
     text-decoration: none;
     text-align: justify;
@@ -122,18 +115,22 @@ export const StyledFooter = styled.footer`
 
   a {
     color: var(--color-green-70);
+    font-weight: 600;
     text-transform: uppercase;
   }
 
-  span {
-    font-size: calc(var(--font-size-16) * 0.5);
-  }
+  .links {
+    flex-wrap: wrap;
 
+    a {
+      color: var(--color-grey-90);
+    }
+  }
+  
   h4 {
     color: var(--color-green-90);
-    font-size: var(--font-size-14);
+    font-size: var(--font-size-16);
     font-weight: 600;
-    text-align: center;
     text-transform: uppercase;
   }
 `;

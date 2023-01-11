@@ -3,12 +3,13 @@ import headerLogoGrey from "../../assets/imgs/headerLogoGrey.svg";
 import { Link, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserProvider";
+import { ContainerStyled } from "../../styles/Container/styles";
 export const Footer = () => {
   const { user } = useContext(UserContext);
   const activePage = useLocation().pathname;
   return (
     <StyledFooter>
-      <section className="content">
+      <ContainerStyled>
         <section className="footerHeader">
           <img src={headerLogoGrey} alt="Reciclarte" />
           <section className="links">
@@ -27,6 +28,12 @@ export const Footer = () => {
             >
               Cadastro
             </Link>
+            <Link
+              to={"/register"}
+              className={activePage === "/register" ? "active" : ""}
+            >
+              Desenvolvedores
+            </Link>
             {user && (
               <Link
                 to={"/profile"}
@@ -42,13 +49,10 @@ export const Footer = () => {
             <h4>Nosso objetivo</h4>
             <p>
               Descartamos, diariamente, materiais que poderiam ser
-              reaproveitados.
-              <br />
-              Propomos uma maneira buscar ideias de projetos DIY (Do It
+              reaproveitados. Propomos uma maneira buscar ideias de projetos DIY (Do It
               Yourself) a partir desses materiais e diminuir o descarte de lixo.
             </p>
           </section>
-        </section>
         <section className="founders">
           <h4>Quem somos?</h4>
           <p>
@@ -56,15 +60,9 @@ export const Footer = () => {
             Academy Brasil, pensamos numa maneira de conectar e contribuir com a
             criatividade das pessoas
           </p>
-          <span>
-            <a href="https://linktr.ee/reciclarteg1">
-              Conheça mais sobre nosso projeto
-            </a>
-          </span>
-          <hr />
-          <span>Desde 2023 mudando o planeta um projeto de cada vez.</span>
         </section>
-      </section>
+        </section>
+      </ContainerStyled>
     </StyledFooter>
   );
 };
