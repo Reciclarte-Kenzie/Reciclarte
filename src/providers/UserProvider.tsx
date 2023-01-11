@@ -85,15 +85,14 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       setLoading(true);
       const response = await api.post("/login", data);
       toast.success("Login efetuado!");
-      setUser(response.data.user);
       localStorage.setItem("@TOKEN", response.data.accessToken);
+      localStorage.setItem("@USERID", response.data.user.id);
       navigate("/");
     } catch (error) {
       const apiError = error as AxiosError<iApiError>;
       let message = apiError.response?.data || "";
       let toastErrorMessage = "";
-
-      console.log(error);
+      
       if (message === "Incorrect password") {
         toastErrorMessage = "Senha incorreta";
       } else if (message === "Cannot find user") {
