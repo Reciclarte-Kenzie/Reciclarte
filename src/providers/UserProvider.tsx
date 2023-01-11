@@ -9,11 +9,6 @@ interface iUserProviderProps {
   children: React.ReactNode;
 }
 
-interface iUser {
-  accessToken: string | null;
-  user: iUserData;
-}
-
 export interface iLoginData {
   email: string;
   password: string;
@@ -50,7 +45,6 @@ export interface iApiError {
 }
 
 interface iUserContextProvider {
-  user: iUser | null;
   loading: boolean;
   loginSubmit: (data: iLoginData) => void;
   registerSubmit: (data: iRegisterData) => void;
@@ -71,7 +65,6 @@ export const UserContext = createContext<iUserContextProvider>(
 );
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
-  const [user, setUser] = useState<iUser | null>(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const headers = {
@@ -92,7 +85,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       const apiError = error as AxiosError<iApiError>;
       let message = apiError.response?.data || "";
       let toastErrorMessage = "";
-      
+
       if (message === "Incorrect password") {
         toastErrorMessage = "Senha incorreta";
       } else if (message === "Cannot find user") {
@@ -175,14 +168,12 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   const logout = () => {
     localStorage.removeItem("@TOKEN");
-    setUser(null);
     <Navigate to="/" />;
   };
 
   return (
     <UserContext.Provider
       value={{
-        user,
         loading,
         loginSubmit,
         registerSubmit,
