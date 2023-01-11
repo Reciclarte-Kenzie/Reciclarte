@@ -72,7 +72,7 @@ export const Bio = styled.span`
 `;
 
 export const Button = styled.button`
-  background: var(--color-grey-80);
+  background: var(--color-green-80);
   border-radius: var(--radius-1);
   padding: 10px 16px;
   /* Text */

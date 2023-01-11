@@ -102,7 +102,7 @@ export const LoginButton = styled.button`
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--font-size-16);
   line-height: 20px;
   color: var(--color-orange-80);
 
@@ -119,7 +119,7 @@ export const RegisterButton = styled.button`
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--font-size-16);
   line-height: 20px;
   color: var(--color-white);
 `;
