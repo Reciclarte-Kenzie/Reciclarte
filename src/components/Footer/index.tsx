@@ -3,12 +3,13 @@ import headerLogoGrey from "../../assets/imgs/headerLogoGrey.svg";
 import { Link, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserProvider";
+import { ContainerStyled } from "../../styles/Container/styles";
 export const Footer = () => {
   const { user } = useContext(UserContext);
   const activePage = useLocation().pathname;
   return (
     <StyledFooter>
-      <section className="content">
+      <ContainerStyled>
         <section className="footerHeader">
           <img src={headerLogoGrey} alt="Reciclarte" />
           <section className="links">
@@ -64,7 +65,7 @@ export const Footer = () => {
           <hr />
           <span>Desde 2023 mudando o planeta um projeto de cada vez.</span>
         </section>
-      </section>
+      </ContainerStyled>
     </StyledFooter>
   );
 };

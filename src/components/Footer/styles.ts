@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { ContainerStyled } from "../../styles/Container/styles";
 
 export const StyledFooter = styled.footer`
   background-color: var(--color-grey-50);
   border-top: 1px solid var(--color-grey-50);
 
-  .content {
+  ${ContainerStyled} {
     margin: 0 auto;
     width: fit-content;
     display: flex;
@@ -14,7 +15,6 @@ export const StyledFooter = styled.footer`
     max-width: 90%;
 
     @media (min-width: 700px) {
-      width: clamp(310px, 100%, 1240px);
       padding: 0;
       flex-direction: row;
       flex-wrap: wrap;
