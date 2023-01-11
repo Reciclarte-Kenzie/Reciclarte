@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { iUserData, UserContext } from "../../providers/UserProvider";
+import { iUserData } from "../../providers/UserProvider";
 import {
   ProfileCard as Container,
   Content,
