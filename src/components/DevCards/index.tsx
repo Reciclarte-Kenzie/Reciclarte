@@ -32,10 +32,10 @@ export const DevCard = ({ dev }: iDevCard) => {
         <section className="externalLinks">
           <StyledButton>
             <a href={dev.html_url} rel="noopener noreferer" target="blank">
-              {dev.login}
+              Github
             </a>
           </StyledButton>
-          <StyledButton>
+          <StyledButton buttonType="grey">
             <a href={dev.blog} rel="noopener noreferer" target="blank">
               Linkedin
             </a>
