@@ -114,8 +114,7 @@ export const ModalBody = ({
           title: editedIdeaData.title,
           description: editedIdeaData.description,
           steps: editedIdeaData.steps,
-          estimatedCost: editedIdeaData.estimatedCost,
-          difficultyLevel: editedIdeaData.difficultyLevel,
+          estimatedCost: editedIdeaData.estimatedCost
         });
       };
 
@@ -180,7 +179,7 @@ export const ModalBody = ({
           />
           <Slider
             register={register("difficultyLevel")}
-            defaultValue={2}
+            defaultValue={editedIdeaData ? editedIdeaData.difficultyLevel : 2}
             min={1}
             max={5}
           />
