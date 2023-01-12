@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
 export const DevCardStyled = styled.li`
+  max-width: 185px;
   gap: 1.25rem;
   
   &, section {
+    align-items: center;
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   img {
@@ -20,5 +23,9 @@ export const DevCardStyled = styled.li`
 
   a {
     color: inherit;
+  }
+
+  button, a {
+    width: 100%;
   }
 `
