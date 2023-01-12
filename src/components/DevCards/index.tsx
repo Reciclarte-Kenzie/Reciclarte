@@ -5,11 +5,7 @@ interface iDevCard {
   dev: {
     avatar_url: string;
     name: string;
-    login: string;
     html_url: string;
-    company?: string;
-    bio?: string;
-    location?: string;
     blog?: string;
     position: string;
   };
