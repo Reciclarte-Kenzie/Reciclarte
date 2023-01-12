@@ -1,6 +1,6 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { createContext, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
 import { iIdeaData } from "./IdeasProvider";
@@ -168,7 +168,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   const logout = () => {
     localStorage.clear();
-    <Navigate to="/" />;
+    navigate("/");
   };
 
   return (
