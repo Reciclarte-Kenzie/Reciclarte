@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const createOrEditIdeaSchema = yup.object().shape({
+export const createIdeaSchema = yup.object().shape({
   title: yup.string().required("O título é obrigatório"),
   steps: yup.string().required("O passo a passo é obrigatório"),
   difficultyLevel: yup.number(),

@@ -8,7 +8,8 @@ import { IdeaImage } from "../../../IdeaImage";
 import { Input } from "../../../Input";
 import { Select } from "../../../Input/Select";
 import { Slider } from "../../../Slider";
-import { createOrEditIdeaSchema } from "./createOrEditIdeaSchema";
+import { createIdeaSchema } from "./createIdeaSchema";
+import { editIdeaSchema } from "./editIdeaSchema";
 import { ModalBodyStyled } from "./styles";
 
 interface iSelectOption {
@@ -22,8 +23,9 @@ export const ModalBody = ({
   editedIdeaData,
   setUpdateIdeas,
 }: iModalCreateOrEditIdeaProps) => {
+  const usedSchema = editedIdeaData ? editIdeaSchema : createIdeaSchema;
+
   const {
-    loading,
     createIdea,
     editIdea,
     getIdeasMaterials,
@@ -38,7 +40,7 @@ export const ModalBody = ({
     formState: { errors },
   } = useForm<iIdeaData>({
     mode: "onBlur",
-    resolver: yupResolver(createOrEditIdeaSchema),
+    resolver: yupResolver(usedSchema),
   });
 
   const [materialsList, setMaterialsList] = useState([] as iSelectOption[]);
@@ -123,7 +125,7 @@ export const ModalBody = ({
 
   const addImageIntoList = async () => {
     const insertedImage = getValues().imgs.toString();
-    const insertedImageIsValid = await createOrEditIdeaSchema.validateAt(
+    const insertedImageIsValid = await usedSchema.validateAt(
       "imgs",
       {
         imgs: insertedImage,
