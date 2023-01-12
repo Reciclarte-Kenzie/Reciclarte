@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { Footer } from "../../components/Footer";
 import Header from "../../components/Header";
 import { IdeaCard } from "../../components/IdeasList/IdeaCard";
-import { ModalEditUser } from "../../components/Modals/ModalEditUser";
 import ProfileCard from "../../components/ProfileCard";
 import { iIdeaData } from "../../providers/IdeasProvider";
 import { iUserData, UserContext } from "../../providers/UserProvider";
@@ -37,7 +36,6 @@ const Profile = () => {
 
   return (
     <Container>
-      <ModalEditUser hideModal={() => console.log("Oi")} user={user} />
       <Header />
       <main>
         <ProfileCard user={user} />
