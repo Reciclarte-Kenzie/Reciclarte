@@ -35,6 +35,11 @@ export const ContentActions = styled.div`
   display: flex;
   justify-content: space-between;
 
+  @media (min-width: 580px) {
+    align-self: center;
+    gap: 50px;
+  }
+
   @media screen and (min-width: 968px) {
     justify-content: center;
     gap: 16px;
