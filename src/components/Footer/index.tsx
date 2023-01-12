@@ -28,8 +28,8 @@ export const Footer = () => {
               Cadastro
             </Link>
             <Link
-              to={"/register"}
-              className={activePage === "/register" ? "active" : ""}
+              to={"/devs"}
+              className={activePage === "/devs" ? "active" : ""}
             >
               Desenvolvedores
             </Link>
