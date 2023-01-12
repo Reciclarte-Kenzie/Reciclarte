@@ -1,7 +1,7 @@
 export const devsData = [
   {
     avatar_url: "https://avatars.githubusercontent.com/u/78989471?v=4",
-    blog: "https://www.linkedin.com/in/ana-carolina-cruz-957a42229/",
+    blog: "www.linkedin.com/in/carolina-oliva-cruz",
     html_url: "https://github.com/CarolinaOlivaCruz",
     name: "Ana Carolina",
     position: "Quality Assurance",
