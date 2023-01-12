@@ -8,11 +8,11 @@ export const DevelopersListStyled = styled.ul`
   padding: 50px 20px;
   width: fit-content;
 
-  @media (min-width: 700px) {
-    grid-template-columns: repeat(3, 185px);
-  }
-
   @media (min-width: 472px) {
     grid-template-columns: repeat(2, 185px);
+  }
+
+  @media (min-width: 700px) {
+    grid-template-columns: repeat(3, 185px);
   }
 `

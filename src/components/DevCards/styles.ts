@@ -20,7 +20,11 @@ export const DevCardStyled = styled.li`
     width: 100%;
   }
 
-  .info, .links {
+  .info {
+    gap: 0.2rem;
+  }
+
+  .links {
     gap: 0.625rem;
   }
 
