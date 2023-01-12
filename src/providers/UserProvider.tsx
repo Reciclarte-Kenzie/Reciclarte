@@ -23,7 +23,7 @@ export interface iRegisterData {
   id: number;
 }
 
-interface iUserData extends iRegisterData {
+export interface iUserData extends iRegisterData {
   socialMedia: {
     instagram: string;
     linkedin: string;
