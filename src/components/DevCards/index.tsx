@@ -23,24 +23,22 @@ export const DevCard = ({ dev }: iDevCard) => {
         <figcaption style={{ display: "none" }}>Foto de perfil</figcaption>
       </figure>
       <section className="info">
-        <div>
-          <h3>
-            {dev.name}
-          </h3>
-          <p>{dev.position}</p>
-        </div>
-        <section className="externalLinks">
-          <StyledButton>
-            <a href={dev.html_url} rel="noopener noreferer" target="blank">
-              Github
-            </a>
-          </StyledButton>
-          <StyledButton buttonType="grey">
-            <a href={dev.blog} rel="noopener noreferer" target="blank">
-              Linkedin
-            </a>
-          </StyledButton>
-        </section>
+        <h3>
+          {dev.name}
+        </h3>
+        <p>{dev.position}</p>
+      </section>
+      <section className="links">
+        <StyledButton>
+          <a href={dev.html_url} rel="noopener noreferer" target="blank">
+            Github
+          </a>
+        </StyledButton>
+        <StyledButton buttonType="grey">
+          <a href={dev.blog} rel="noopener noreferer" target="blank">
+            Linkedin
+          </a>
+        </StyledButton>
       </section>
     </DevCardStyled>
   );

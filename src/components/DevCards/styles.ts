@@ -1,13 +1,24 @@
 import styled from "styled-components";
 
 export const DevCardStyled = styled.li`
-  .externalLinks {
+  gap: 1.25rem;
+  
+  &, section {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+  }
 
-    a {
-      color: inherit;
-    }
+  img {
+    max-width: 150px;
+    border-radius: 100%;
+    width: 100%;
+  }
+
+  .info, .links {
+    gap: 0.625rem;
+  }
+
+  a {
+    color: inherit;
   }
 `
