@@ -72,8 +72,8 @@ export const BodyModalEditUser = ({ user }: iUserBody) => {
         <div>
           <Input
             placeholder="Insira sua bio"
-            label="bio"
-            id="Bio"
+            label="Bio"
+            id="bio"
             register={register("bio")}
             error={errors.bio?.message}
             disabled={loading}
