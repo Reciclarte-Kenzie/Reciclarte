@@ -38,13 +38,18 @@ const Header = () => {
     };
   }, []);
 
+  const logoutUser = () => {
+    setUser(null);
+    logout();
+  };
+
   return (
     <Container>
       <Content>
         <MainContent>
           <img src={logo} alt="" />
           <div>
-            {user ? (
+            {user && user.id ? (
               <button type="button" title="Adicionar Ideia">
                 <img src={plusIcon} alt="" />
               </button>
@@ -61,7 +66,7 @@ const Header = () => {
           </div>
         </MainContent>
         <Actions toggle={isMobile ? showActions : true}>
-          {user ? (
+          {user && user.id ? (
             <>
               {location.pathname !== "/profile" ? (
                 <button
@@ -80,7 +85,7 @@ const Header = () => {
                   <img src={homeIcon} alt="" />
                 </button>
               )}
-              <button type="button" title="Deslogar" onClick={logout}>
+              <button type="button" title="Deslogar" onClick={logoutUser}>
                 <img src={logoutIcon} alt="" />
               </button>
             </>

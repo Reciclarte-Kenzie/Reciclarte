@@ -172,6 +172,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       return response;
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -182,13 +184,15 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       return response;
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const logout = () => {
     localStorage.clear();
     setUser(null);
-    <Navigate to="/" />;
+    nativate("/");
   };
 
   return (

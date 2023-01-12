@@ -22,19 +22,22 @@ export const StyledIdeaPage = styled.main`
     padding: 24px 20px;
   }
 
-  .images {
+  section > a {
     display: flex;
-    gap: 10px;
   }
 
-  .imagePost {
-    width: 300px;
-    min-width: 5%;
-    max-width: 100%;
-    height: 300px;
-    max-height: 100%;
-    border-radius: var(--radius-1);
-    object-fit: cover;
+  .images {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    img {
+      border-radius: var(--radius-1);
+      width: 280px;
+      min-width: 200px;
+      height: 400px;
+      object-fit: cover;
+    }
   }
 
   .headerPost {
@@ -90,16 +93,5 @@ export const StyledIdeaPage = styled.main`
     li + li {
       margin-top: 0.625rem;
     }
-  }
-
-  article > button {
-    padding: 12px 20px;
-    max-width: 200px;
-    background-color: var(--color-orange-80);
-    border: 1px solid var(--color-orange-80);
-    border-radius: 8px;
-    color: var(--color-white);
-    display: flex;
-    justify-content: center;
   }
 `;
