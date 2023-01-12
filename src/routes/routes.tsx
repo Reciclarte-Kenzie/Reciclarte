@@ -15,6 +15,7 @@ export const RoutesApp = () => {
       <Route path="/devs" element={<DevelopersPage />} />
       <Route element={<IdeasProvider />}>
         <Route path="/" element={<Home />} />
+        <Route path="/idea" element={<IdeaPage />} />
         <Route path="/profile" element={<Profile />} />
       </Route>
       <Route path="*" element={<Navigate to="/" />} />
