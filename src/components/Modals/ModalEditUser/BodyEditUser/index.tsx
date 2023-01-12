@@ -7,11 +7,13 @@ import { Input } from "../../../Input";
 import { editUserSchema } from "./editUserSchema";
 import { ModalBodyStyled } from "./styles";
 
+interface iUserBody {
+  user: iUserData | null;
+}
 
-
-export const BodyModalEditUser = () => {
+export const BodyModalEditUser = ({ user }: iUserBody) => {
   const { editUser, loading } = useContext(UserContext);
-  
+
   const {
     handleSubmit,
     register,
@@ -19,6 +21,17 @@ export const BodyModalEditUser = () => {
   } = useForm<iUserData>({
     mode: "onBlur",
     resolver: yupResolver(editUserSchema),
+    defaultValues: {
+      name: user?.name,
+      email: user?.email,
+      password: user?.password,
+      bio: user?.bio,
+      profile_pic: user?.profile_pic,
+      socialMedia: {
+        instagram: user?.socialMedia?.instagram,
+        linkedin: user?.socialMedia?.linkedin,
+      },
+    },
   });
 
   const onSubmit: SubmitHandler<iUserData> = (data) => {
@@ -59,8 +72,8 @@ export const BodyModalEditUser = () => {
         <div>
           <Input
             placeholder="Insira sua bio"
-            label="bio"
-            id="Bio"
+            label="Bio"
+            id="bio"
             register={register("bio")}
             error={errors.bio?.message}
             disabled={loading}
