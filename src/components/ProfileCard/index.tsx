@@ -1,4 +1,5 @@
-import { iUserData } from "../../providers/UserProvider";
+import { useContext } from "react"
+import { UserContext } from "../../providers/UserProvider";
 import {
   ProfileCard as Container,
   Content,
@@ -11,7 +12,7 @@ import {
   Bio,
 } from "./styles";
 
-interface Props {
+interface iProfileCardProps {
   user: iUserData | null;
   toggleShowEditUserModal: () => void;
   toggleShowDeleteUserModal: () => void;
@@ -21,7 +22,7 @@ const ProfileCard = ({
   user,
   toggleShowEditUserModal,
   toggleShowDeleteUserModal,
-}: Props) => {
+}: iProfileCardProps) => {
   return (
     <Container>
       <Content>

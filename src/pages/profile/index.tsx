@@ -7,7 +7,7 @@ import { ModalDelete } from "../../components/Modals/ModalDelete";
 import { ModalEditUser } from "../../components/Modals/ModalEditUser";
 import ProfileCard from "../../components/ProfileCard";
 import { iIdeaData } from "../../providers/IdeasProvider";
-import { iUserData, UserContext } from "../../providers/UserProvider";
+import { UserContext } from "../../providers/UserProvider";
 import { Profile as Container } from "./styles";
 
 const Profile = () => {

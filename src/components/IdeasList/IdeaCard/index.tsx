@@ -61,12 +61,12 @@ export const IdeaCard = ({
           </StyledContentButton>
         ) : (
           <StyledButton
-            padding="0.313rem 1.25rem"
-            width="135.5px"
-            onClick={() => localStorage.setItem("@reciclarte:id", `${id}`)}
-          >
-            <Link to="/idea">Ver ideia</Link>
-          </StyledButton>
+          padding="0.313rem 1.25rem"
+          width="135.5px"
+          onClick={() => localStorage.setItem("@reciclarte:id", `${id}`)}
+        >
+          <Link to="/idea">Ver ideia</Link>
+        </StyledButton>
         )}
       </div>
     </StyleIdeaCard>
