@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const DevCardStyled = styled.li`
-  max-width: 185px;
   gap: 1.25rem;
   
   &, section {
