@@ -1,5 +1,5 @@
 import { AxiosError, AxiosResponse } from "axios";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
@@ -41,6 +41,7 @@ export interface iApiError {
 }
 
 interface iUserContextProvider {
+  user: iUserData | null;
   loading: boolean;
   loginSubmit: (data: iLoginData) => void;
   registerSubmit: (data: iRegisterData) => void;
@@ -61,6 +62,7 @@ export const UserContext = createContext<iUserContextProvider>(
 );
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
+  const [user, setUser] = useState<iUserData | null>(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const headers = {
@@ -69,6 +71,26 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     },
   };
 
+  useEffect(() => {
+    const getUser = async (userId: number) => {
+      try {
+        setLoading(true);
+        const { data: newUser } = await api.get(`/users/${userId}`, headers);
+        if (newUser.id) {
+          setUser(newUser);
+          navigate("/");
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const userId = Number(localStorage.getItem("@USERID"));
+    getUser(userId);
+  }, []);
+
   const loginSubmit = async (data: iLoginData) => {
     try {
       setLoading(true);
@@ -76,6 +98,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       toast.success("Login efetuado!");
       localStorage.setItem("@TOKEN", response.data.accessToken);
       localStorage.setItem("@USERID", response.data.user.id);
+      setUser(response.data.user);
       navigate("/");
     } catch (error) {
       const apiError = error as AxiosError<iApiError>;
@@ -168,12 +191,14 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   const logout = () => {
     localStorage.clear();
+    setUser(null);
     navigate("/");
   };
 
   return (
     <UserContext.Provider
       value={{
+        user,
         loading,
         loginSubmit,
         registerSubmit,

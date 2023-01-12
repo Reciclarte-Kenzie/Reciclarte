@@ -1,4 +1,5 @@
-import { iUserData } from "../../providers/UserProvider";
+import { useContext } from "react"
+import { UserContext } from "../../providers/UserProvider";
 import {
   ProfileCard as Container,
   Content,
@@ -11,11 +12,9 @@ import {
   Bio,
 } from "./styles";
 
-interface Props {
-  user: iUserData | null;
-}
+const ProfileCard = () => {
+  const { user } = useContext(UserContext);
 
-const ProfileCard = ({ user }: Props) => {
   return (
     <Container>
       <Content>
