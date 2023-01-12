@@ -1,12 +1,11 @@
+import { StyledButton } from "../Button/styles";
+import { DevCardStyled } from "./styles";
+
 interface iDevCard {
   dev: {
     avatar_url: string;
     name: string;
-    login: string;
     html_url: string;
-    company?: string;
-    bio?: string;
-    location?: string;
     blog?: string;
     position: string;
   };
@@ -14,32 +13,29 @@ interface iDevCard {
 
 export const DevCard = ({ dev }: iDevCard) => {
   return (
-    <section>
+    <DevCardStyled>
       <figure>
         <img src={dev.avatar_url} alt={dev.name} />
         <figcaption style={{ display: "none" }}>Foto de perfil</figcaption>
       </figure>
-
       <section className="info">
         <h3>
-          {dev.name} - {dev.position}
+          {dev.name}
         </h3>
-        <section className="subInfo">
-          <p>{dev.location}</p>
-          <p>{dev.company}</p>
-        </section>
-        <section className="externalLinks">
+        <p>{dev.position}</p>
+      </section>
+      <section className="links">
+        <StyledButton>
           <a href={dev.html_url} rel="noopener noreferer" target="blank">
-            {dev.login}
+            Github
           </a>
-          <br />
+        </StyledButton>
+        <StyledButton buttonType="grey">
           <a href={dev.blog} rel="noopener noreferer" target="blank">
             Linkedin
           </a>
-        </section>
+        </StyledButton>
       </section>
-
-      <p>{dev.bio}</p>
-    </section>
+    </DevCardStyled>
   );
 };

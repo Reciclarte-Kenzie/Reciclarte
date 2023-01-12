@@ -31,7 +31,6 @@ const Header = () => {
 
   useEffect(() => {
     window.addEventListener("resize", detectMobile);
-    console.log(location);
 
     return () => {
       window.removeEventListener("resize", detectMobile);

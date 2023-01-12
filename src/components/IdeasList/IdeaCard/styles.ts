@@ -18,6 +18,7 @@ export const StyleIdeaCard = styled.li`
   }
 
   div {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
