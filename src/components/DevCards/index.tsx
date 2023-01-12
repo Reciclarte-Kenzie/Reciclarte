@@ -1,3 +1,5 @@
+import { DevCardStyled } from "./styles";
+
 interface iDevCard {
   dev: {
     avatar_url: string;
@@ -14,7 +16,7 @@ interface iDevCard {
 
 export const DevCard = ({ dev }: iDevCard) => {
   return (
-    <section>
+    <DevCardStyled>
       <figure>
         <img src={dev.avatar_url} alt={dev.name} />
         <figcaption style={{ display: "none" }}>Foto de perfil</figcaption>
@@ -40,6 +42,6 @@ export const DevCard = ({ dev }: iDevCard) => {
       </section>
 
       <p>{dev.bio}</p>
-    </section>
+    </DevCardStyled>
   );
 };

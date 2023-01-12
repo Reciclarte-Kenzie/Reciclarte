@@ -1,6 +1,7 @@
 import { DevCard } from "../../components/DevCards";
 import { Footer } from "../../components/Footer";
 import Header from "../../components/Header";
+import { DevelopersListStyled } from "./styles";
 
 export const DevelopersPage = () => {
   const devs = [
@@ -76,9 +77,11 @@ export const DevelopersPage = () => {
   return (
     <>
       <Header />
-      {devs.map((dev) => (
-        <DevCard dev={dev} key={dev.login} />
-      ))}
+      <DevelopersListStyled>
+        {devs.map((dev) => (
+          <DevCard dev={dev} key={dev.login} />
+        ))}
+      </DevelopersListStyled>
       <Footer />
     </>
   );
