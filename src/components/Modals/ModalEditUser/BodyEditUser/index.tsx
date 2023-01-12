@@ -8,7 +8,7 @@ import { editUserSchema } from "./editUserSchema";
 import { ModalBodyStyled } from "./styles";
 
 interface iUserBody {
-  user: iUserData;
+  user: iUserData | null;
 }
 
 export const BodyModalEditUser = ({ user }: iUserBody) => {
@@ -22,14 +22,14 @@ export const BodyModalEditUser = ({ user }: iUserBody) => {
     mode: "onBlur",
     resolver: yupResolver(editUserSchema),
     defaultValues: {
-      name: user.name,
-      email: user.email,
-      password: user.password,
-      bio: user.bio,
-      profile_pic: user.profile_pic,
+      name: user?.name,
+      email: user?.email,
+      password: user?.password,
+      bio: user?.bio,
+      profile_pic: user?.profile_pic,
       socialMedia: {
-        instagram: user.socialMedia.instagram,
-        linkedin: user.socialMedia.linkedin,
+        instagram: user?.socialMedia.instagram,
+        linkedin: user?.socialMedia.linkedin,
       },
     },
   });

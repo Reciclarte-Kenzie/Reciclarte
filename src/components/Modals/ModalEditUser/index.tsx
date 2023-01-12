@@ -4,7 +4,7 @@ import { BodyModalEditUser } from "./BodyEditUser";
 
 export interface iEditUser {
   hideModal: () => void;
-  user: iUserData;
+  user: iUserData | null;
 }
 
 export const ModalEditUser = ({ hideModal, user }: iEditUser) => {
