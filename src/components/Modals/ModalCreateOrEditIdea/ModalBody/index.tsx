@@ -171,7 +171,6 @@ export const ModalBody = ({
             id="title"
             register={register("title")}
             error={errors.title?.message}
-            disabled={loading}
           />
           <Input
             className="steps"
@@ -181,14 +180,12 @@ export const ModalBody = ({
             register={register("steps")}
             textarea
             error={errors.steps?.message}
-            disabled={loading}
           />
           <Slider
             register={register("difficultyLevel")}
             defaultValue={2}
             min={1}
             max={5}
-            disabled={loading}
           />
           <Input
             type="number"
@@ -197,7 +194,6 @@ export const ModalBody = ({
             id="estimatedCost"
             register={register("estimatedCost")}
             error={errors.estimatedCost?.message}
-            disabled={loading}
           />
         </section>
         <section>
@@ -209,7 +205,6 @@ export const ModalBody = ({
               register={register("materials")}
               label="Materiais"
               error={errors.materials?.message || ""}
-              disabled={loading}
               selOptions={selectedMaterials}
               setSelOptions={setSelectedMaterials}
             />
@@ -222,7 +217,6 @@ export const ModalBody = ({
               register={register("categories")}
               label="Categorias"
               error={errors.categories?.message || ""}
-              disabled={loading}
               selOptions={selectedCategories}
               setSelOptions={setSelectedCategories}
             />
@@ -234,7 +228,6 @@ export const ModalBody = ({
             id="description"
             register={register("description")}
             error={errors.description?.message}
-            disabled={loading}
             textarea
           />
           <article className="added-images">
@@ -246,14 +239,13 @@ export const ModalBody = ({
                 id="img"
                 register={register("imgs")}
                 error={errors.imgs?.message}
-                disabled={loading}
               />
               <Button
                 type="button"
                 action={addImageIntoList}
                 text="+"
                 label="adicionar imagem"
-                disabled={!!errors.imgs?.message || loading}
+                disabled={!!errors.imgs?.message}
               />
             </div>
             {addedImagesList.length !== 0 && (
@@ -274,7 +266,6 @@ export const ModalBody = ({
       <Button
         text={editedIdeaId ? "Editar" : "Criar"}
         label="Criar ideia"
-        disabled={loading}
       />
     </ModalBodyStyled>
   );
