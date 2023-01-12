@@ -28,8 +28,8 @@ export const BodyModalEditUser = ({ user }: iUserBody) => {
       bio: user?.bio,
       profile_pic: user?.profile_pic,
       socialMedia: {
-        instagram: user?.socialMedia.instagram,
-        linkedin: user?.socialMedia.linkedin,
+        instagram: user?.socialMedia?.instagram,
+        linkedin: user?.socialMedia?.linkedin,
       },
     },
   });
