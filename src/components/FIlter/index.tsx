@@ -19,37 +19,11 @@ interface iFilter {
 }
 
 export const FilterBox = () => {
-  const { getIdeasMaterials, getIdeasCategories, searchIdeas, loading } =
+  const { searchIdeas, loading, ideasMaterials, ideasCategories } =
     useContext(IdeasContext);
 
-  const [ideasMaterials, setIdeasMaterials] = useState([] as string[]);
-  const [ideasCategories, setIdeasCategories] = useState([] as string[]);
   const [selMaterials, setSelMaterials] = useState([] as string[]);
   const [selCategories, setSelCategories] = useState([] as string[]);
-
-  useEffect(() => {
-    const getIdeasMaterialsResponse = async () => {
-      const ideasMaterialsResponse = await getIdeasMaterials();
-      setIdeasMaterials(
-        ideasMaterialsResponse?.data || [
-          "Não foi possível recuperar os materiais",
-        ]
-      );
-    };
-
-    const getIdeasCategoriesResponse = async () => {
-      const ideasCategoriesResponse = await getIdeasCategories();
-      setIdeasCategories(
-        ideasCategoriesResponse?.data || [
-          "Não foi possível recuperar as categorias",
-        ]
-      );
-    };
-
-    getIdeasMaterialsResponse();
-    getIdeasCategoriesResponse();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     document.addEventListener("input", (event) => {
@@ -98,10 +72,10 @@ export const FilterBox = () => {
       `${selMaterials ? matParams.replaceAll(" ", "%20") : ""}`,
       `${
         data.difficultySelector
-          ? `difficulty_level=${data.difficultySelector}`
+          ? `difficultyLevel=${data.difficultySelector}`
           : ""
       }`,
-      `${data.costFilter ? `maximum_cost=${data.costFilter}` : ""}`,
+      `${data.costFilter ? `maximumCost=${data.costFilter}` : ""}`,
     ];
     searchIdeas(body);
   };
