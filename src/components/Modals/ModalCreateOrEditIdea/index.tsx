@@ -1,25 +1,26 @@
+import { iIdeaData } from "../../../providers/IdeasProvider";
 import { ModalBase } from "../ModalBase";
 import { ModalBody } from "./ModalBody";
 
 export interface iModalCreateOrEditIdeaProps {
   hideModal: () => void;
   setUpdateIdeas?: React.Dispatch<React.SetStateAction<boolean>>;
-  editedIdeaId?: number;
+  editedIdeaData?: iIdeaData;
 }
 
 export const ModalCreateOrEditIdea = ({
   hideModal,
   setUpdateIdeas,
-  editedIdeaId,
+  editedIdeaData,
 }: iModalCreateOrEditIdeaProps) => {
   return (
     <ModalBase
-      modalTitle={editedIdeaId ? "Editar ideia" : "Criar ideia"}
+      modalTitle={editedIdeaData ? "Editar ideia" : "Criar ideia"}
       hideModal={hideModal}
       ModalBody={() => (
         <ModalBody
           hideModal={hideModal}
-          editedIdeaId={editedIdeaId}
+          editedIdeaData={editedIdeaData}
           setUpdateIdeas={setUpdateIdeas}
         />
       )}

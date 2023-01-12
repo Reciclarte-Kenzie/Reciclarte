@@ -11,7 +11,7 @@ import { UserContext } from "../../providers/UserProvider";
 import { Profile as Container } from "./styles";
 
 const Profile = () => {
-  const [ideaId, setIdeaId] = useState(0);
+  const [idea, setIdea] = useState({} as iIdeaData);
   const [updateIdeas, setUpdateIdeas] = useState(true);
   const [showEditUserModal, setShowEditUserModal] = useState(false);
   const [showDeleteUserModal, setShowDeleteUserModal] = useState(false);
@@ -24,7 +24,6 @@ const Profile = () => {
     const getIdeas = async () => {
       if (user) {
         const response = await getSpecificUserIdea(user.id);
-        console.log(response);
         setIdeas(response?.data.ideas);
       }
     };
@@ -80,7 +79,7 @@ const Profile = () => {
         <ModalCreateOrEditIdea
           hideModal={toggleShowEditIdeaModal}
           setUpdateIdeas={setUpdateIdeas}
-          editedIdeaId={ideaId}
+          editedIdeaData={idea}
         />
       ) : (
         <></>
@@ -90,7 +89,7 @@ const Profile = () => {
           hideModal={toggleShowDeleteIdeaModal}
           setUpdateIdeas={setUpdateIdeas}
           user={false}
-          id={ideaId}
+          id={idea.id}
         />
       ) : (
         <></>
@@ -110,11 +109,12 @@ const Profile = () => {
                 <ul>
                   {ideas.map((idea) => (
                     <IdeaCard
+                      idea={idea}
                       id={idea.id}
                       img={idea.imgs[0]}
                       title={idea.title}
                       description={idea.description}
-                      setIdeaId={setIdeaId}
+                      setIdea={setIdea}
                       toggleShowEditIdeaModal={toggleShowEditIdeaModal}
                       toggleShowDeleteIdeaModal={toggleShowDeleteIdeaModal}
                     />

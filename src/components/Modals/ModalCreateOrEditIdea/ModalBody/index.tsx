@@ -19,14 +19,13 @@ interface iSelectOption {
 
 export const ModalBody = ({
   hideModal,
-  editedIdeaId,
+  editedIdeaData,
   setUpdateIdeas,
 }: iModalCreateOrEditIdeaProps) => {
   const {
     loading,
     createIdea,
     editIdea,
-    getSpecificIdea,
     getIdeasMaterials,
     getIdeasCategories,
   } = useContext(IdeasContext);
@@ -47,7 +46,6 @@ export const ModalBody = ({
   const [selectedMaterials, setSelectedMaterials] = useState([] as string[]);
   const [selectedCategories, setSelectedCategories] = useState([] as string[]);
   const [addedImagesList, setAddedImagesList] = useState([] as string[]);
-  const [editedIdea, setEditedIdea] = useState({} as iIdeaData);
 
   useEffect(() => {
     const getIdeasMaterialsResponse = async () => {
@@ -104,21 +102,18 @@ export const ModalBody = ({
   }, [selectedMaterials, selectedCategories]);
 
   useEffect(() => {
-    if (editedIdeaId) {
+    if (editedIdeaData) {
       const getEditedIdea = async () => {
-        const editedIdeaResponse = await getSpecificIdea(editedIdeaId);
-
-        setEditedIdea(editedIdeaResponse || ({} as iIdeaData));
-        setAddedImagesList([...(editedIdea.imgs as string[])]);
-        setSelectedMaterials([...editedIdea.materials]);
-        setSelectedCategories([...editedIdea.categories]);
+        setAddedImagesList([...(editedIdeaData.imgs as string[])]);
+        setSelectedMaterials([...editedIdeaData.materials]);
+        setSelectedCategories([...editedIdeaData.categories]);
 
         reset({
-          title: editedIdea.title,
-          description: editedIdea.description,
-          steps: editedIdea.steps,
-          estimatedCost: editedIdea.estimatedCost,
-          difficultyLevel: editedIdea.difficultyLevel,
+          title: editedIdeaData.title,
+          description: editedIdeaData.description,
+          steps: editedIdeaData.steps,
+          estimatedCost: editedIdeaData.estimatedCost,
+          difficultyLevel: editedIdeaData.difficultyLevel,
         });
       };
 
@@ -153,8 +148,8 @@ export const ModalBody = ({
           userId: Number(localStorage.getItem("@USERID")),
         };
 
-        if (editedIdeaId) {
-          await editIdea(editedIdeaId, data, hideModal);
+        if (editedIdeaData) {
+          await editIdea(editedIdeaData.id, data, hideModal);
         } else {
           await createIdea(data, hideModal);
         }
@@ -264,7 +259,7 @@ export const ModalBody = ({
         </section>
       </article>
       <Button
-        text={editedIdeaId ? "Editar" : "Criar"}
+        text={editedIdeaData ? "Editar" : "Criar"}
         label="Criar ideia"
       />
     </ModalBodyStyled>

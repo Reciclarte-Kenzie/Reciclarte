@@ -1,35 +1,38 @@
 import { Link } from "react-router-dom";
+import { iIdeaData } from "../../../providers/IdeasProvider";
 import { StyledButton } from "../../Button/styles";
 import { StyledContentButton, StyleIdeaCard } from "./styles";
 
 interface iIdeaCardProps {
+  idea?: iIdeaData;
   img: string;
   title: string;
   description: string;
   id: number;
-  setIdeaId?: React.Dispatch<React.SetStateAction<number>>;
+  setIdea?: React.Dispatch<React.SetStateAction<iIdeaData>>
   toggleShowEditIdeaModal?: () => void;
   toggleShowDeleteIdeaModal?: () => void;
 }
 
 export const IdeaCard = ({
+  idea,
   img,
   title,
   description,
   id,
-  setIdeaId,
+  setIdea,
   toggleShowEditIdeaModal,
   toggleShowDeleteIdeaModal,
 }: iIdeaCardProps) => {
-  const toggleShowEditModal = (id: number) => {
-    if (setIdeaId && toggleShowEditIdeaModal) {
-      setIdeaId(id);
+  const toggleShowEditModal = (idea: iIdeaData) => {
+    if (setIdea && toggleShowEditIdeaModal) {
+      setIdea(idea);
       toggleShowEditIdeaModal();
     }
   };
-  const toggleShowDeleteModal = (id: number) => {
-    if (setIdeaId && toggleShowDeleteIdeaModal) {
-      setIdeaId(id);
+  const toggleShowDeleteModal = (idea: iIdeaData) => {
+    if (setIdea && toggleShowDeleteIdeaModal) {
+      setIdea(idea);
       toggleShowDeleteIdeaModal();
     }
   };
@@ -46,7 +49,7 @@ export const IdeaCard = ({
             <StyledButton
               padding="0"
               width="135.5px"
-              onClick={() => toggleShowEditModal(id)}
+              onClick={() => toggleShowEditModal(idea || {} as iIdeaData)}
             >
               Editar ideia
             </StyledButton>
@@ -54,7 +57,7 @@ export const IdeaCard = ({
               buttonType="grey"
               padding="0"
               width="135.5px"
-              onClick={() => toggleShowDeleteModal(id)}
+              onClick={() => toggleShowDeleteModal(idea || {} as iIdeaData)}
             >
               Excluir ideia
             </StyledButton>
