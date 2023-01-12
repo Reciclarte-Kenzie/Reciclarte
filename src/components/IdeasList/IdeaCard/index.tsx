@@ -18,22 +18,22 @@ export const IdeaCard = ({ img, title, description, id }: iIdeaCardProps) => {
         <span>{description}</span>
 
         {window.location.href.includes("profile") ? (
-          <StyledContentButton>
-            <StyledButton padding="0" width="135.5px">
-              Editar ideia
-            </StyledButton>
-            <StyledButton buttonType="grey" padding="0" width="135.5px">
-              Excluir ideia
-            </StyledButton>
-          </StyledContentButton>
+         <StyledContentButton>
+         <StyledButton padding="0" width="135.5px">
+           Editar ideia
+         </StyledButton>
+         <StyledButton buttonType="grey" padding="0" width="135.5px">
+           Excluir ideia
+         </StyledButton>
+       </StyledContentButton>
         ) : (
           <StyledButton
-            padding="0.313rem 1.25rem"
-            width="135.5px"
-            onClick={() => localStorage.setItem("@reciclarte:id", `${id}`)}
-          >
-            <Link to="/idea">Ver ideia</Link>
-          </StyledButton>
+          padding="0.313rem 1.25rem"
+          width="135.5px"
+          onClick={() => localStorage.setItem("@reciclarte:id", `${id}`)}
+        >
+          <Link to="/idea">Ver ideia</Link>
+        </StyledButton>
         )}
       </div>
     </StyleIdeaCard>
