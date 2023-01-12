@@ -11,6 +11,10 @@ export const DevCardStyled = styled.li`
     width: 100%;
   }
 
+  h3 {
+    color: var(--color-green-100);
+  }
+
   img {
     max-width: 150px;
     border-radius: 100%;
@@ -26,6 +30,7 @@ export const DevCardStyled = styled.li`
   }
 
   button, a {
+    font-weight: 600;
     width: 100%;
   }
 `
