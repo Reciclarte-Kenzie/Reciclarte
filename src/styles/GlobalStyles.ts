@@ -27,6 +27,11 @@ export const GlobalStyles = createGlobalStyle`
         --color-orange-70: #FEAB48;
         --color-white: #FFFFFF;
 
+        --toastify-color-light: var(--color-grey-50);
+        --toastify-color-error: var(--color-orange-80);
+        --toastify-color-success: var(--color-green-80);
+        --toastify-text-color-light: var(--color-green-100);
+
         --font-size-36: 2.25rem;
         --font-size-25: 1.563rem;
         --font-size-18: 1.125rem;
