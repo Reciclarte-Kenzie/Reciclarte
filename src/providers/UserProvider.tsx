@@ -136,8 +136,13 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   const editUser = async (userId: number, userEditedData: iUserData) => {
     try {
-      await api.patch(`/users/${userId}`, userEditedData, headers);
-      toast.warn("Dados do usuário atualizados.");
+      const response = await api.patch(
+        `/users/${userId}`,
+        userEditedData,
+        headers
+      );
+      setUser(response.data);
+      toast.success("Dados do usuário atualizados.");
     } catch (error) {
       console.log(error);
     }
@@ -146,7 +151,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const deleteUser = async (userId: number) => {
     try {
       await api.delete(`/users/${userId}`, headers);
-      toast.warn("Usuário deletado com sucesso.");
+      toast.success("Usuário deletado com sucesso.");
       logout();
     } catch (error) {
       console.log(error);

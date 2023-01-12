@@ -12,12 +12,6 @@ import { createIdeaSchema } from "./createIdeaSchema";
 import { editIdeaSchema } from "./editIdeaSchema";
 import { ModalBodyStyled } from "./styles";
 
-interface iSelectOption {
-  value: string;
-  text: string;
-  setUpdateIdeas?: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 export const ModalBody = ({
   hideModal,
   editedIdeaData,
@@ -25,7 +19,7 @@ export const ModalBody = ({
 }: iModalCreateOrEditIdeaProps) => {
   const usedSchema = editedIdeaData ? editIdeaSchema : createIdeaSchema;
 
-  const { createIdea, editIdea, ideasCategories, ideasMaterials } =
+  const { createIdea, editIdea, ideasCategories, ideasMaterials, searchIdeas } =
     useContext(IdeasContext);
 
   const {
@@ -132,6 +126,8 @@ export const ModalBody = ({
         if (setUpdateIdeas) {
           setUpdateIdeas(true);
         }
+
+        searchIdeas([]);
       })}
     >
       <article>
