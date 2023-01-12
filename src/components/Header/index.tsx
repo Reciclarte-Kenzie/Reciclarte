@@ -37,11 +37,6 @@ const Header = () => {
     };
   }, []);
 
-  const logoutUser = () => {
-    setUser(null);
-    logout();
-  };
-
   return (
     <Container>
       <Content>
@@ -84,7 +79,7 @@ const Header = () => {
                   <img src={homeIcon} alt="" />
                 </button>
               )}
-              <button type="button" title="Deslogar" onClick={logoutUser}>
+              <button type="button" title="Deslogar" onClick={logout}>
                 <img src={logoutIcon} alt="" />
               </button>
             </>
