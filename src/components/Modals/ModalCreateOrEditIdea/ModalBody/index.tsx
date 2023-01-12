@@ -12,12 +12,6 @@ import { createIdeaSchema } from "./createIdeaSchema";
 import { editIdeaSchema } from "./editIdeaSchema";
 import { ModalBodyStyled } from "./styles";
 
-interface iSelectOption {
-  value: string;
-  text: string;
-  setUpdateIdeas?: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 export const ModalBody = ({
   hideModal,
   editedIdeaData,
@@ -25,12 +19,8 @@ export const ModalBody = ({
 }: iModalCreateOrEditIdeaProps) => {
   const usedSchema = editedIdeaData ? editIdeaSchema : createIdeaSchema;
 
-  const {
-    createIdea,
-    editIdea,
-    getIdeasMaterials,
-    getIdeasCategories,
-  } = useContext(IdeasContext);
+  const { createIdea, editIdea, ideasCategories, ideasMaterials, searchIdeas } =
+    useContext(IdeasContext);
 
   const {
     handleSubmit,
@@ -43,34 +33,16 @@ export const ModalBody = ({
     resolver: yupResolver(usedSchema),
   });
 
-  const [materialsList, setMaterialsList] = useState([] as iSelectOption[]);
-  const [categoriesList, setCategoriesList] = useState([] as iSelectOption[]);
   const [selectedMaterials, setSelectedMaterials] = useState([] as string[]);
   const [selectedCategories, setSelectedCategories] = useState([] as string[]);
   const [addedImagesList, setAddedImagesList] = useState([] as string[]);
 
-  useEffect(() => {
-    const getIdeasMaterialsResponse = async () => {
-      const materialsListResponse = (await getIdeasMaterials(hideModal))?.data;
-      const materialsTreated = materialsListResponse?.map((material) => {
-        return { value: material, text: material };
-      });
-
-      setMaterialsList(materialsTreated || []);
-    };
-
-    const getIdeasCategoriesResponse = async () => {
-      const categoriesListResponse = (await getIdeasCategories(hideModal))?.data;
-      const categoriesTreated = categoriesListResponse?.map((category) => {
-        return { value: category, text: category };
-      });
-
-      setCategoriesList(categoriesTreated || []);
-    };
-
-    getIdeasMaterialsResponse();
-    getIdeasCategoriesResponse();
-  }, []);
+  const materialsTreated = ideasMaterials.map((material) => {
+    return { value: material, text: material };
+  });
+  const categoriesTreated = ideasCategories.map((category) => {
+    return { value: category, text: category };
+  });
 
   useEffect(() => {
     const addSelectedValueIntoList = (event: Event) => {
@@ -114,7 +86,7 @@ export const ModalBody = ({
           title: editedIdeaData.title,
           description: editedIdeaData.description,
           steps: editedIdeaData.steps,
-          estimatedCost: editedIdeaData.estimatedCost
+          estimatedCost: editedIdeaData.estimatedCost,
         });
       };
 
@@ -124,12 +96,9 @@ export const ModalBody = ({
 
   const addImageIntoList = async () => {
     const insertedImage = getValues().imgs.toString();
-    const insertedImageIsValid = await usedSchema.validateAt(
-      "imgs",
-      {
-        imgs: insertedImage,
-      }
-    );
+    const insertedImageIsValid = await usedSchema.validateAt("imgs", {
+      imgs: insertedImage,
+    });
 
     if (insertedImageIsValid && insertedImage !== "") {
       setAddedImagesList([...addedImagesList, insertedImage]);
@@ -157,6 +126,8 @@ export const ModalBody = ({
         if (setUpdateIdeas) {
           setUpdateIdeas(true);
         }
+
+        searchIdeas([]);
       })}
     >
       <article>
@@ -195,7 +166,7 @@ export const ModalBody = ({
         <section>
           <div className="select-group">
             <Select
-              options={materialsList}
+              options={materialsTreated}
               placeholder="Selecione um material"
               id="materials"
               register={register("materials")}
@@ -207,7 +178,7 @@ export const ModalBody = ({
           </div>
           <div className="select-group">
             <Select
-              options={categoriesList}
+              options={categoriesTreated}
               placeholder="Selecione uma categoria"
               id="categories"
               register={register("categories")}
@@ -259,10 +230,7 @@ export const ModalBody = ({
           </article>
         </section>
       </article>
-      <Button
-        text={editedIdeaData ? "Editar" : "Criar"}
-        label="Criar ideia"
-      />
+      <Button text={editedIdeaData ? "Editar" : "Criar"} label="Criar ideia" />
     </ModalBodyStyled>
   );
 };

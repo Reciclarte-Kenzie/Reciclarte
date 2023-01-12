@@ -28,9 +28,15 @@ interface iIdeasContextProvider {
   deleteIdea: (deletedIdeaId: number, closeModal: () => void) => Promise<void>;
   searchIdeas: (queryParams: string[]) => void;
   getSpecificIdea: (ideaId: number) => Promise<iIdeaData | undefined>;
-  getIdeasMaterials: (closeModal ?: () => void) => Promise<AxiosResponse<string[]> | undefined>;
-  getIdeasCategories: (closeModal ?: () => void) => Promise<AxiosResponse<string[]> | undefined>;
+  getIdeasMaterials: (
+    closeModal?: () => void
+  ) => Promise<AxiosResponse<string[]> | undefined>;
+  getIdeasCategories: (
+    closeModal?: () => void
+  ) => Promise<AxiosResponse<string[]> | undefined>;
   foundIdeas: iIdeaData[];
+  ideasMaterials: string[];
+  ideasCategories: string[];
 }
 
 export const IdeasContext = createContext<iIdeasContextProvider>(
@@ -40,6 +46,62 @@ export const IdeasContext = createContext<iIdeasContextProvider>(
 export const IdeasProvider = () => {
   const [loading, setLoading] = useState(false);
   const [foundIdeas, setFoundIdeas] = useState([] as iIdeaData[]);
+
+  const ideasMaterials = [
+    "Madeira",
+    "Tecido",
+    "Papel",
+    "Garrafa PET",
+    "Vidro",
+    "Metal",
+    "Arame",
+    "Cola",
+    "Tinta",
+    "Pintura",
+    "Ferramentas manuais",
+    "Fios e cordas",
+    "Espuma",
+    "Pregos",
+    "Parafusos",
+    "Tinta spray",
+    "Tesoura",
+    "Feltro",
+    "Papelão",
+    "Fita adesiva",
+    "Palito",
+    "Lata",
+    "Fita dupla face",
+    "Cabide",
+    "Parafuso",
+    "Furadeira",
+    "Jeans",
+    "Régua",
+    "Linha",
+    "Caneta",
+  ];
+
+  const ideasCategories = [
+    "Jardinagem",
+    "Artesanato",
+    "Costura",
+    "Carpintaria",
+    "Eletrônica",
+    "Cozinha",
+    "Decoração",
+    "Fotografia",
+    "Vintage",
+    "Iluminação",
+    "Minimalista",
+    "Móveis",
+    "Quadrinhos e animação",
+    "Beleza e cuidados pessoais",
+    "Brinquedos",
+    "Jóias",
+    "Mecânica",
+    "Tecnologia",
+    "Cute",
+    "Escrita e impressão",
+  ];
 
   const headers = {
     headers: {
@@ -139,7 +201,7 @@ export const IdeasProvider = () => {
     }
   };
 
-  const getIdeasMaterials = async (closeModal ?: () => void) => {
+  const getIdeasMaterials = async (closeModal?: () => void) => {
     try {
       setLoading(true);
 
@@ -148,7 +210,9 @@ export const IdeasProvider = () => {
       return ideasMaterials;
     } catch (error) {
       if (closeModal) {
-        toast.error("Não foi possível buscar pelos materiais. Tente abrir o modal novamente.")
+        toast.error(
+          "Não foi possível buscar pelos materiais. Tente abrir o modal novamente."
+        );
         closeModal();
       } else {
         toast.error("Não foi possível buscar pelos materiais");
@@ -158,7 +222,7 @@ export const IdeasProvider = () => {
     }
   };
 
-  const getIdeasCategories = async (closeModal ?: () => void) => {
+  const getIdeasCategories = async (closeModal?: () => void) => {
     try {
       setLoading(true);
 
@@ -167,7 +231,9 @@ export const IdeasProvider = () => {
       return ideasCategories;
     } catch (error) {
       if (closeModal) {
-        toast.error("Não foi possível buscar pelas categorias. Tente abrir o modal novamente.")
+        toast.error(
+          "Não foi possível buscar pelas categorias. Tente abrir o modal novamente."
+        );
         closeModal();
       } else {
         toast.error("Não foi possível buscar pelas categorias");
@@ -189,6 +255,8 @@ export const IdeasProvider = () => {
         getIdeasMaterials,
         getIdeasCategories,
         foundIdeas,
+        ideasMaterials,
+        ideasCategories,
       }}
     >
       <Outlet />
