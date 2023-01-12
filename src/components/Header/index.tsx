@@ -23,12 +23,17 @@ const Header = () => {
   const { user, logout } = useContext(UserContext);
   const [showActions, setShowActions] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 968);
+  const [toggleModal, setToggleModal] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   const detectMobile = () => {
     setIsMobile(window.innerWidth < 968);
   };
+
+  const hideModal = () => {
+    setToggleModal(false);
+  }
 
   useEffect(() => {
     window.addEventListener("resize", detectMobile);
@@ -40,7 +45,7 @@ const Header = () => {
 
   return (
     <>
-      <ModalCreateOrEditIdea />
+      {toggleModal && <ModalCreateOrEditIdea hideModal={hideModal} />}
       <Container>
         <Content>
           <MainContent>

@@ -17,7 +17,6 @@ const Profile = () => {
   const [showDeleteUserModal, setShowDeleteUserModal] = useState(false);
   const [showEditIdeaModal, setShowEditIdeaModal] = useState(false);
   const [showDeleteIdeaModal, setShowDeleteIdeaModal] = useState(false);
-  const [showCreateIdeaModal, setShowCreateIdeaModal] = useState(false);
   const { user, getSpecificUserIdea } = useContext(UserContext);
   const [ideas, setIdeas] = useState<iIdeaData[]>();
 
@@ -45,9 +44,6 @@ const Profile = () => {
   };
   const toggleShowDeleteIdeaModal = () => {
     setShowDeleteIdeaModal(!showDeleteIdeaModal);
-  };
-  const toggleShowCreateIdeaModal = () => {
-    setShowCreateIdeaModal(!showCreateIdeaModal);
   };
 
   useEffect(() => {
