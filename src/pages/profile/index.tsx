@@ -102,11 +102,11 @@ const Profile = () => {
             toggleShowEditUserModal={toggleShowEditUserModal}
             toggleShowDeleteUserModal={toggleShowDeleteUserModal}
           />
-          <section>
+          <section className="ideas-section">
             <h1>Suas ideias</h1>
             <>
               {ideas && ideas.length > 0 ? (
-                <ul>
+                <ul className="ideas-list">
                   {ideas.map((idea) => (
                     <IdeaCard
                       idea={idea}
