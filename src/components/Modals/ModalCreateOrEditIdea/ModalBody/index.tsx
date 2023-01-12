@@ -51,7 +51,7 @@ export const ModalBody = ({
 
   useEffect(() => {
     const getIdeasMaterialsResponse = async () => {
-      const materialsListResponse = (await getIdeasMaterials())?.data;
+      const materialsListResponse = (await getIdeasMaterials(hideModal))?.data;
       const materialsTreated = materialsListResponse?.map((material) => {
         return { value: material, text: material };
       });
@@ -60,7 +60,7 @@ export const ModalBody = ({
     };
 
     const getIdeasCategoriesResponse = async () => {
-      const categoriesListResponse = (await getIdeasCategories())?.data;
+      const categoriesListResponse = (await getIdeasCategories(hideModal))?.data;
       const categoriesTreated = categoriesListResponse?.map((category) => {
         return { value: category, text: category };
       });
