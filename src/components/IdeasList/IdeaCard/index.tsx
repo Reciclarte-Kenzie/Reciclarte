@@ -7,9 +7,33 @@ interface iIdeaCardProps {
   title: string;
   description: string;
   id: number;
+  setIdeaId?: React.Dispatch<React.SetStateAction<number>>;
+  toggleShowEditIdeaModal?: () => void;
+  toggleShowDeleteIdeaModal?: () => void;
 }
 
-export const IdeaCard = ({ img, title, description, id }: iIdeaCardProps) => {
+export const IdeaCard = ({
+  img,
+  title,
+  description,
+  id,
+  setIdeaId,
+  toggleShowEditIdeaModal,
+  toggleShowDeleteIdeaModal,
+}: iIdeaCardProps) => {
+  const toggleShowEditModal = (id: number) => {
+    if (setIdeaId && toggleShowEditIdeaModal) {
+      setIdeaId(id);
+      toggleShowEditIdeaModal();
+    }
+  };
+  const toggleShowDeleteModal = (id: number) => {
+    if (setIdeaId && toggleShowDeleteIdeaModal) {
+      setIdeaId(id);
+      toggleShowDeleteIdeaModal();
+    }
+  };
+
   return (
     <StyleIdeaCard>
       <img src={img} alt="ideia" />
@@ -19,10 +43,19 @@ export const IdeaCard = ({ img, title, description, id }: iIdeaCardProps) => {
 
         {window.location.href.includes("profile") ? (
           <StyledContentButton>
-            <StyledButton padding="0" width="135.5px">
+            <StyledButton
+              padding="0"
+              width="135.5px"
+              onClick={() => toggleShowEditModal(id)}
+            >
               Editar ideia
             </StyledButton>
-            <StyledButton buttonType="grey" padding="0" width="135.5px">
+            <StyledButton
+              buttonType="grey"
+              padding="0"
+              width="135.5px"
+              onClick={() => toggleShowDeleteModal(id)}
+            >
               Excluir ideia
             </StyledButton>
           </StyledContentButton>

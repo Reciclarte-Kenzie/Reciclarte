@@ -3,11 +3,13 @@ import { ModalBody } from "./ModalBody";
 
 export interface iModalCreateOrEditIdeaProps {
   hideModal: () => void;
+  setUpdateIdeas?: React.Dispatch<React.SetStateAction<boolean>>;
   editedIdeaId?: number;
 }
 
 export const ModalCreateOrEditIdea = ({
   hideModal,
+  setUpdateIdeas,
   editedIdeaId,
 }: iModalCreateOrEditIdeaProps) => {
   return (
@@ -18,6 +20,7 @@ export const ModalCreateOrEditIdea = ({
         <ModalBody
           hideModal={hideModal}
           editedIdeaId={editedIdeaId}
+          setUpdateIdeas={setUpdateIdeas}
         />
       )}
     />

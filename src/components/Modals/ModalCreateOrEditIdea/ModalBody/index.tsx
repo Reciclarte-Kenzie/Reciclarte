@@ -14,11 +14,13 @@ import { ModalBodyStyled } from "./styles";
 interface iSelectOption {
   value: string;
   text: string;
+  setUpdateIdeas?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const ModalBody = ({
   hideModal,
   editedIdeaId,
+  setUpdateIdeas,
 }: iModalCreateOrEditIdeaProps) => {
   const {
     loading,
@@ -126,9 +128,12 @@ export const ModalBody = ({
 
   const addImageIntoList = async () => {
     const insertedImage = getValues().imgs.toString();
-    const insertedImageIsValid = await createOrEditIdeaSchema.validateAt("imgs", {
-      imgs: insertedImage,
-    });
+    const insertedImageIsValid = await createOrEditIdeaSchema.validateAt(
+      "imgs",
+      {
+        imgs: insertedImage,
+      }
+    );
 
     if (insertedImageIsValid && insertedImage !== "") {
       setAddedImagesList([...addedImagesList, insertedImage]);
@@ -152,6 +157,9 @@ export const ModalBody = ({
           await editIdea(editedIdeaId, data, hideModal);
         } else {
           await createIdea(data, hideModal);
+        }
+        if (setUpdateIdeas) {
+          setUpdateIdeas(true);
         }
       })}
     >

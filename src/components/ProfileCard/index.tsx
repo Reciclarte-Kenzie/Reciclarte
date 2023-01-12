@@ -13,9 +13,15 @@ import {
 
 interface Props {
   user: iUserData | null;
+  toggleShowEditUserModal: () => void;
+  toggleShowDeleteUserModal: () => void;
 }
 
-const ProfileCard = ({ user }: Props) => {
+const ProfileCard = ({
+  user,
+  toggleShowEditUserModal,
+  toggleShowDeleteUserModal,
+}: Props) => {
   return (
     <Container>
       <Content>
@@ -27,8 +33,8 @@ const ProfileCard = ({ user }: Props) => {
           </ContentText>
         </ContentInfo>
         <ContentActions>
-          <Button>Editar perfil</Button>
-          <Button>Excluir perfil</Button>
+          <Button onClick={toggleShowEditUserModal}>Editar perfil</Button>
+          <Button onClick={toggleShowDeleteUserModal}>Excluir perfil</Button>
         </ContentActions>
       </Content>
     </Container>
