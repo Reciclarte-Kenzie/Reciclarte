@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const Profile = styled.div`
-  main section {
+  .ideas-section {
     display: flex;
     flex-direction: column;
     gap: 30px;
     margin-top: 30px;
     padding: 0 12px;
 
-    & ul {
+    .ideas-list {
       display: flex;
       flex-direction: column;
       gap: 30px;
@@ -17,7 +17,7 @@ export const Profile = styled.div`
     @media screen and (min-width: 968px) {
       align-items: center;
 
-      & ul {
+      .ideas-list {
         display: grid;
         grid-template-columns: repeat(2, minmax(460px, 1fr));
         gap: 20px;

@@ -9,7 +9,7 @@ export const ModalBaseStyled = styled.div`
   height: 100%;
   justify-content: center;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
   -webkit-animation: show-background 0.8s ease;
 

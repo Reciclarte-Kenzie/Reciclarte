@@ -1,5 +1,4 @@
-import { useContext } from "react"
-import { UserContext } from "../../providers/UserProvider";
+import { iUserData } from "../../providers/UserProvider";
 import {
   ProfileCard as Container,
   Content,
@@ -12,9 +11,17 @@ import {
   Bio,
 } from "./styles";
 
-const ProfileCard = () => {
-  const { user } = useContext(UserContext);
+interface iProfileCardProps {
+  user: iUserData | null;
+  toggleShowEditUserModal: () => void;
+  toggleShowDeleteUserModal: () => void;
+}
 
+const ProfileCard = ({
+  user,
+  toggleShowEditUserModal,
+  toggleShowDeleteUserModal,
+}: iProfileCardProps) => {
   return (
     <Container>
       <Content>
@@ -26,8 +33,8 @@ const ProfileCard = () => {
           </ContentText>
         </ContentInfo>
         <ContentActions>
-          <Button>Editar perfil</Button>
-          <Button>Excluir perfil</Button>
+          <Button onClick={toggleShowEditUserModal}>Editar perfil</Button>
+          <Button onClick={toggleShowDeleteUserModal}>Excluir perfil</Button>
         </ContentActions>
       </Content>
     </Container>

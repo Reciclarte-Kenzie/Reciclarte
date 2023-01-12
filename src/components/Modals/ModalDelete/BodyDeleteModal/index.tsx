@@ -6,13 +6,21 @@ import { UserContext } from "../../../../providers/UserProvider";
 import { Button } from "../../../Button";
 import { StyledDeleteSection } from "./style";
 
-export const BodyModalDelete = ({ hideModal, user, id }: iDeleteBody) => {
+export const BodyModalDelete = ({
+  hideModal,
+  user,
+  id,
+  setUpdateIdeas,
+}: iDeleteBody) => {
   const { deleteIdea } = useContext(IdeasContext);
   const { deleteUser } = useContext(UserContext);
   const { handleSubmit } = useForm();
 
   const onSubmit = async () => {
     user ? await deleteUser(id) : await deleteIdea(id, hideModal);
+    if (setUpdateIdeas) {
+      setUpdateIdeas(true);
+    }
   };
   return (
     <StyledDeleteSection>

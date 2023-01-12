@@ -28,8 +28,8 @@ interface iIdeasContextProvider {
   deleteIdea: (deletedIdeaId: number, closeModal: () => void) => Promise<void>;
   searchIdeas: (queryParams: string[]) => void;
   getSpecificIdea: (ideaId: number) => Promise<iIdeaData | undefined>;
-  getIdeasMaterials: () => Promise<AxiosResponse<string[]> | undefined>;
-  getIdeasCategories: () => Promise<AxiosResponse<string[]> | undefined>;
+  getIdeasMaterials: (closeModal ?: () => void) => Promise<AxiosResponse<string[]> | undefined>;
+  getIdeasCategories: (closeModal ?: () => void) => Promise<AxiosResponse<string[]> | undefined>;
   foundIdeas: iIdeaData[];
 }
 
@@ -139,7 +139,7 @@ export const IdeasProvider = () => {
     }
   };
 
-  const getIdeasMaterials = async () => {
+  const getIdeasMaterials = async (closeModal ?: () => void) => {
     try {
       setLoading(true);
 
@@ -147,13 +147,18 @@ export const IdeasProvider = () => {
 
       return ideasMaterials;
     } catch (error) {
-      toast.error("Não foi possível buscar por materiais");
+      if (closeModal) {
+        toast.error("Não foi possível buscar pelos materiais. Tente abrir o modal novamente.")
+        closeModal();
+      } else {
+        toast.error("Não foi possível buscar pelos materiais");
+      }
     } finally {
       setLoading(false);
     }
   };
 
-  const getIdeasCategories = async () => {
+  const getIdeasCategories = async (closeModal ?: () => void) => {
     try {
       setLoading(true);
 
@@ -161,7 +166,12 @@ export const IdeasProvider = () => {
 
       return ideasCategories;
     } catch (error) {
-      toast.error("Não foi possível buscar pelas categorias");
+      if (closeModal) {
+        toast.error("Não foi possível buscar pelas categorias. Tente abrir o modal novamente.")
+        closeModal();
+      } else {
+        toast.error("Não foi possível buscar pelas categorias");
+      }
     } finally {
       setLoading(false);
     }

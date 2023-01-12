@@ -8,23 +8,26 @@ import { IdeaImage } from "../../../IdeaImage";
 import { Input } from "../../../Input";
 import { Select } from "../../../Input/Select";
 import { Slider } from "../../../Slider";
-import { createOrEditIdeaSchema } from "./createOrEditIdeaSchema";
+import { createIdeaSchema } from "./createIdeaSchema";
+import { editIdeaSchema } from "./editIdeaSchema";
 import { ModalBodyStyled } from "./styles";
 
 interface iSelectOption {
   value: string;
   text: string;
+  setUpdateIdeas?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const ModalBody = ({
   hideModal,
-  editedIdeaId,
+  editedIdeaData,
+  setUpdateIdeas,
 }: iModalCreateOrEditIdeaProps) => {
+  const usedSchema = editedIdeaData ? editIdeaSchema : createIdeaSchema;
+
   const {
-    loading,
     createIdea,
     editIdea,
-    getSpecificIdea,
     getIdeasMaterials,
     getIdeasCategories,
   } = useContext(IdeasContext);
@@ -37,7 +40,7 @@ export const ModalBody = ({
     formState: { errors },
   } = useForm<iIdeaData>({
     mode: "onBlur",
-    resolver: yupResolver(createOrEditIdeaSchema),
+    resolver: yupResolver(usedSchema),
   });
 
   const [materialsList, setMaterialsList] = useState([] as iSelectOption[]);
@@ -45,11 +48,10 @@ export const ModalBody = ({
   const [selectedMaterials, setSelectedMaterials] = useState([] as string[]);
   const [selectedCategories, setSelectedCategories] = useState([] as string[]);
   const [addedImagesList, setAddedImagesList] = useState([] as string[]);
-  const [editedIdea, setEditedIdea] = useState({} as iIdeaData);
 
   useEffect(() => {
     const getIdeasMaterialsResponse = async () => {
-      const materialsListResponse = (await getIdeasMaterials())?.data;
+      const materialsListResponse = (await getIdeasMaterials(hideModal))?.data;
       const materialsTreated = materialsListResponse?.map((material) => {
         return { value: material, text: material };
       });
@@ -58,7 +60,7 @@ export const ModalBody = ({
     };
 
     const getIdeasCategoriesResponse = async () => {
-      const categoriesListResponse = (await getIdeasCategories())?.data;
+      const categoriesListResponse = (await getIdeasCategories(hideModal))?.data;
       const categoriesTreated = categoriesListResponse?.map((category) => {
         return { value: category, text: category };
       });
@@ -102,21 +104,17 @@ export const ModalBody = ({
   }, [selectedMaterials, selectedCategories]);
 
   useEffect(() => {
-    if (editedIdeaId) {
+    if (editedIdeaData) {
       const getEditedIdea = async () => {
-        const editedIdeaResponse = await getSpecificIdea(editedIdeaId);
-
-        setEditedIdea(editedIdeaResponse || ({} as iIdeaData));
-        setAddedImagesList([...(editedIdea.imgs as string[])]);
-        setSelectedMaterials([...editedIdea.materials]);
-        setSelectedCategories([...editedIdea.categories]);
+        setAddedImagesList([...(editedIdeaData.imgs as string[])]);
+        setSelectedMaterials([...editedIdeaData.materials]);
+        setSelectedCategories([...editedIdeaData.categories]);
 
         reset({
-          title: editedIdea.title,
-          description: editedIdea.description,
-          steps: editedIdea.steps,
-          estimatedCost: editedIdea.estimatedCost,
-          difficultyLevel: editedIdea.difficultyLevel,
+          title: editedIdeaData.title,
+          description: editedIdeaData.description,
+          steps: editedIdeaData.steps,
+          estimatedCost: editedIdeaData.estimatedCost
         });
       };
 
@@ -126,9 +124,12 @@ export const ModalBody = ({
 
   const addImageIntoList = async () => {
     const insertedImage = getValues().imgs.toString();
-    const insertedImageIsValid = await createOrEditIdeaSchema.validateAt("imgs", {
-      imgs: insertedImage,
-    });
+    const insertedImageIsValid = await usedSchema.validateAt(
+      "imgs",
+      {
+        imgs: insertedImage,
+      }
+    );
 
     if (insertedImageIsValid && insertedImage !== "") {
       setAddedImagesList([...addedImagesList, insertedImage]);
@@ -148,10 +149,13 @@ export const ModalBody = ({
           userId: Number(localStorage.getItem("@USERID")),
         };
 
-        if (editedIdeaId) {
-          await editIdea(editedIdeaId, data, hideModal);
+        if (editedIdeaData) {
+          await editIdea(editedIdeaData.id, data, hideModal);
         } else {
           await createIdea(data, hideModal);
+        }
+        if (setUpdateIdeas) {
+          setUpdateIdeas(true);
         }
       })}
     >
@@ -163,7 +167,6 @@ export const ModalBody = ({
             id="title"
             register={register("title")}
             error={errors.title?.message}
-            disabled={loading}
           />
           <Input
             className="steps"
@@ -173,14 +176,12 @@ export const ModalBody = ({
             register={register("steps")}
             textarea
             error={errors.steps?.message}
-            disabled={loading}
           />
           <Slider
             register={register("difficultyLevel")}
-            defaultValue={2}
+            defaultValue={editedIdeaData ? editedIdeaData.difficultyLevel : 2}
             min={1}
             max={5}
-            disabled={loading}
           />
           <Input
             type="number"
@@ -189,7 +190,6 @@ export const ModalBody = ({
             id="estimatedCost"
             register={register("estimatedCost")}
             error={errors.estimatedCost?.message}
-            disabled={loading}
           />
         </section>
         <section>
@@ -201,7 +201,6 @@ export const ModalBody = ({
               register={register("materials")}
               label="Materiais"
               error={errors.materials?.message || ""}
-              disabled={loading}
               selOptions={selectedMaterials}
               setSelOptions={setSelectedMaterials}
             />
@@ -214,7 +213,6 @@ export const ModalBody = ({
               register={register("categories")}
               label="Categorias"
               error={errors.categories?.message || ""}
-              disabled={loading}
               selOptions={selectedCategories}
               setSelOptions={setSelectedCategories}
             />
@@ -226,7 +224,6 @@ export const ModalBody = ({
             id="description"
             register={register("description")}
             error={errors.description?.message}
-            disabled={loading}
             textarea
           />
           <article className="added-images">
@@ -238,14 +235,13 @@ export const ModalBody = ({
                 id="img"
                 register={register("imgs")}
                 error={errors.imgs?.message}
-                disabled={loading}
               />
               <Button
                 type="button"
                 action={addImageIntoList}
                 text="+"
                 label="adicionar imagem"
-                disabled={!!errors.imgs?.message || loading}
+                disabled={!!errors.imgs?.message}
               />
             </div>
             {addedImagesList.length !== 0 && (
@@ -264,9 +260,8 @@ export const ModalBody = ({
         </section>
       </article>
       <Button
-        text={editedIdeaId ? "Editar" : "Criar"}
+        text={editedIdeaData ? "Editar" : "Criar"}
         label="Criar ideia"
-        disabled={loading}
       />
     </ModalBodyStyled>
   );
