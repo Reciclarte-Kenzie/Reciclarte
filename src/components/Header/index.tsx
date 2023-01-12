@@ -23,7 +23,7 @@ const Header = () => {
   const { user, logout } = useContext(UserContext);
   const [showActions, setShowActions] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 968);
-  const [toggleModal, setToggleModal] = useState(false);
+  const [showCreateIdeaModal, setShowCreateIdeaModal] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -31,8 +31,8 @@ const Header = () => {
     setIsMobile(window.innerWidth < 968);
   };
 
-  const hideModal = () => {
-    setToggleModal(false);
+  const toggleShowCreateIdeaModal = () => {
+    setShowCreateIdeaModal(!showCreateIdeaModal);
   }
 
   useEffect(() => {
@@ -45,14 +45,14 @@ const Header = () => {
 
   return (
     <>
-      {toggleModal && <ModalCreateOrEditIdea hideModal={hideModal} />}
+      {showCreateIdeaModal && <ModalCreateOrEditIdea hideModal={toggleShowCreateIdeaModal} />}
       <Container>
         <Content>
           <MainContent>
             <img src={logo} alt="" />
             <div>
               {user && user.id ? (
-                <button type="button" title="Adicionar Ideia">
+                <button type="button" title="Adicionar Ideia" onClick={toggleShowCreateIdeaModal}>
                   <img src={plusIcon} alt="" />
                 </button>
               ) : (
