@@ -37,7 +37,7 @@
 
 <h2 id="Como acessar"> :computer_mouse: Como acessar?</h2>
 
-<a href="https://linktr.ee/reciclarteg1">Para conferir e utilizar o projeto clique aqui</a>.
+<a href="https://reciclarte-rho.vercel.app/">Para conferir e utilizar o projeto clique aqui</a>.
 
 <h2 id="descricao">:pencil2: Descrição</h2>
 Descartamos, diariamente, materiais que poderiam ser reaproveitados para produzir novos objetos.
@@ -106,7 +106,7 @@ Tais materiais podem ser comumente reutilizados por meio do artesanato, no entan
 ### Repositório da API
  * <a href="https://github.com/Reciclarte-Kenzie/reciclarte-server/tree/develop">Clique aqui</a> para acessar o repositório.
 
- >Interagir com o site por meio<a href="https://linktr.ee/reciclarteg1"> da Vercel</a>.
+ >Interagir com o site por meio<a href="https://reciclarte-rho.vercel.app/"> da Vercel</a>.
 
 <h2 id="doc">:page_facing_up: Documentação da API </h2>
 <a href="https://github.com/Reciclarte-Kenzie/reciclarte-server/blob/develop/README.md">Clique aqui para acessar a documentação</a>.
