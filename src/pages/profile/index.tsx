@@ -11,7 +11,6 @@ import { UserContext } from "../../providers/UserProvider";
 import { Profile as Container } from "./styles";
 
 const Profile = () => {
-  const { getSpecificUser, getSpecificUserIdea } = useContext(UserContext);
   const [ideaId, setIdeaId] = useState(0);
   const [updateIdeas, setUpdateIdeas] = useState(true);
   const [showEditUserModal, setShowEditUserModal] = useState(false);
@@ -19,18 +18,20 @@ const Profile = () => {
   const [showEditIdeaModal, setShowEditIdeaModal] = useState(false);
   const [showDeleteIdeaModal, setShowDeleteIdeaModal] = useState(false);
   const [showCreateIdeaModal, setShowCreateIdeaModal] = useState(false);
-  const [user, setUser] = useState<iUserData | null>(null);
+  const { user, getSpecificUserIdea } = useContext(UserContext);
   const [ideas, setIdeas] = useState<iIdeaData[]>();
 
   useEffect(() => {
-    const getUser = async () => {
-      const userId = localStorage.getItem("@USERID");
-      const response = await getSpecificUser(Number(userId));
-      setUser(response?.data || ({} as iUserData));
+    const getIdeas = async () => {
+      if (user) {
+        const response = await getSpecificUserIdea(user.id);
+        console.log(response);
+        setIdeas(response?.data.ideas);
+      }
     };
 
-    getUser();
-  }, []);
+    getIdeas();
+  }, [user]);
 
   const toggleShowEditUserModal = () => {
     setShowEditUserModal(!showEditUserModal);
